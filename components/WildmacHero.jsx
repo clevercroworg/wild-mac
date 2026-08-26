@@ -18,7 +18,7 @@ export default function WildmacHero() {
         justifyContent: 'space-between',
         paddingTop: '3rem',
         paddingBottom: '3rem',
-        overflow: 'hidden',
+        overflow: 'visible',
       }}
     >
       {/* Subtle Atmospheric Blue Field Underlay */}
@@ -226,13 +226,13 @@ export default function WildmacHero() {
             <div
               style={{
                 position: 'absolute',
-                bottom: '-2.25rem',
-                left: '-2rem',
+                bottom: '-1rem',
+                left: '-1.5rem',
                 zIndex: 2,
                 backgroundColor: 'var(--bg-pure-white)',
                 border: '1px solid var(--border-medium)',
                 boxShadow: '0 16px 36px -8px rgba(23, 50, 71, 0.22)',
-                padding: '0.6rem',
+                padding: '0.65rem 0.65rem 0.75rem 0.65rem',
                 borderRadius: '2px',
                 maxWidth: '240px',
               }}
@@ -245,7 +245,7 @@ export default function WildmacHero() {
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 />
               </div>
-              <div style={{ padding: '0.2rem 0.25rem' }}>
+              <div style={{ padding: '0.2rem 0.25rem 0.1rem' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', marginBottom: '0.2rem' }}>
                   <span style={{ width: '4px', height: '4px', backgroundColor: 'var(--accent-red)' }} />
                   <span style={{ fontSize: '0.65rem', fontFamily: 'var(--font-mono)', fontWeight: 700, letterSpacing: '0.08em', color: 'var(--text-deep-blue)', textTransform: 'uppercase' }}>
