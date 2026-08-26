@@ -2,22 +2,25 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Heart, ShieldCheck, ArrowRight, Compass, Sparkles, MapPin, Building, Trees, BookOpen, CheckCircle2, Copy, Check, Mail, Phone } from 'lucide-react';
+import { Heart, ShieldCheck, ArrowRight, Compass, Sparkles, MapPin, Building, Trees, BookOpen, CheckCircle2, Copy, Check, ExternalLink, Smartphone } from 'lucide-react';
 import WhatsAppIcon from '@/components/WhatsAppIcon';
 import MajorConsultationCTA from '@/components/MajorConsultationCTA';
 
 export default function DonatePage() {
   const [selectedAmount, setSelectedAmount] = useState('1000');
   const [customAmount, setCustomAmount] = useState('');
+  const [copiedUpi, setCopiedUpi] = useState(false);
   const [copiedGpay, setCopiedGpay] = useState(false);
 
   const presetAmounts = ['500', '1000', '2500', '5000', '10000'];
+  const upiId = 'almeida.mac6-1@okaxis';
   const gpayNumber = '9657080490';
   const displayGpayNumber = '+91 96570 80490';
-  const payeeName = 'Rodney Meck De Almeida';
+  const payeeName = 'Rodney De Almeida';
 
   const amountToPay = customAmount || selectedAmount || '1000';
-  const whatsappUrl = `https://wa.me/919657080490?text=${encodeURIComponent(`Hello Rodney, I would like to contribute ₹${amountToPay} via GPay towards Wildmac social & community initiatives.`)}`;
+  const upiDeepLink = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(payeeName)}&am=${amountToPay}&cu=INR&tn=${encodeURIComponent('Contribution to Wildmac Social Initiatives')}`;
+  const whatsappUrl = `https://wa.me/919657080490?text=${encodeURIComponent(`Hello Rodney, I would like to contribute ₹${amountToPay} via GPay/UPI towards Wildmac social & community initiatives.`)}`;
 
   const handlePresetClick = (amount) => {
     setSelectedAmount(amount);
@@ -27,6 +30,12 @@ export default function DonatePage() {
   const handleCustomChange = (e) => {
     setCustomAmount(e.target.value);
     setSelectedAmount(e.target.value);
+  };
+
+  const copyUpi = () => {
+    navigator.clipboard.writeText(upiId);
+    setCopiedUpi(true);
+    setTimeout(() => setCopiedUpi(false), 2500);
   };
 
   const copyGpay = () => {
@@ -73,14 +82,14 @@ export default function DonatePage() {
   return (
     <>
       {/* ===================================================================
-          01 — HERO & SIMPLE GPAY CONTRIBUTION CARD
+          01 — HERO & WORKING OFFICIAL GPAY QR CODE SECTION
           =================================================================== */}
       <section
         style={{
           borderBottom: '1px solid var(--border-subtle)',
           backgroundColor: 'var(--bg-paper-white)',
           paddingTop: '4.5rem',
-          paddingBottom: '4rem',
+          paddingBottom: '4.5rem',
           position: 'relative',
         }}
       >
@@ -112,11 +121,11 @@ export default function DonatePage() {
           </div>
 
           {/* =============================================================
-              CLEAN & SIMPLE GPAY CONTRIBUTION CARD
+              TWO-COLUMN DONATION & OFFICIAL WORKING QR CODE STAGE
               ============================================================= */}
           <div
             style={{
-              maxWidth: '680px',
+              maxWidth: '980px',
               margin: '0 auto',
               backgroundColor: 'var(--bg-pure-white)',
               border: '1px solid var(--border-medium)',
@@ -124,139 +133,217 @@ export default function DonatePage() {
               borderRadius: '4px',
               boxShadow: 'var(--shadow-book)',
               padding: '2.5rem 2.25rem',
+              display: 'grid',
+              gridTemplateColumns: 'minmax(0, 1.15fr) minmax(0, 1fr)',
+              gap: '3rem',
+              alignItems: 'center',
             }}
+            className="about-split-grid"
           >
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '0.5rem' }}>
-              <div>
-                <span style={{ fontSize: '0.72rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)', letterSpacing: '0.1em', textTransform: 'uppercase', display: 'block' }}>
-                  DIRECT GOOGLE PAY CONTRIBUTION
+            {/* Left Column: Preset Amount Selector & Direct Details */}
+            <div>
+              <div style={{ marginBottom: '1.5rem' }}>
+                <span style={{ fontSize: '0.72rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)', letterSpacing: '0.1em', textTransform: 'uppercase', display: 'block', marginBottom: '0.35rem' }}>
+                  STEP 01 // CHOOSE CONTRIBUTION AMOUNT
                 </span>
-                <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.55rem', color: 'var(--text-ink)', margin: '0.2rem 0 0 0', fontWeight: 650 }}>
-                  Choose Amount to Contribute
+                <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.65rem', color: 'var(--text-ink)', margin: 0, fontWeight: 650 }}>
+                  Select Contribution Tier
                 </h3>
               </div>
-              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', padding: '0.3rem 0.65rem', backgroundColor: 'rgba(27, 135, 63, 0.1)', borderRadius: '2px', color: '#1B873F', fontSize: '0.75rem', fontFamily: 'var(--font-mono)', fontWeight: 700 }}>
-                <ShieldCheck size={14} color="#1B873F" />
-                <span>GPAY VERIFIED</span>
+
+              {/* Amount Buttons Row */}
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(85px, 1fr))', gap: '0.65rem', marginBottom: '1.25rem' }}>
+                {presetAmounts.map((amt) => {
+                  const isSelected = selectedAmount === amt && !customAmount;
+                  return (
+                    <button
+                      key={amt}
+                      type="button"
+                      onClick={() => handlePresetClick(amt)}
+                      style={{
+                        padding: '0.75rem 0.4rem',
+                        backgroundColor: isSelected ? 'var(--text-deep-blue)' : 'var(--bg-paper-white)',
+                        color: isSelected ? '#FFFFFF' : 'var(--text-deep-blue)',
+                        border: '1px solid',
+                        borderColor: isSelected ? 'var(--text-deep-blue)' : 'var(--border-medium)',
+                        borderRadius: '2px',
+                        fontSize: '1rem',
+                        fontFamily: 'var(--font-display)',
+                        fontWeight: 700,
+                        cursor: 'pointer',
+                        transition: 'all var(--transition-fast)',
+                      }}
+                    >
+                      ₹{Number(amt).toLocaleString('en-IN')}
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* Custom Amount Input */}
+              <div style={{ marginBottom: '1.5rem' }}>
+                <div style={{ position: 'relative' }}>
+                  <span style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', fontFamily: 'var(--font-mono)', fontWeight: 700, color: 'var(--text-light)' }}>
+                    ₹
+                  </span>
+                  <input
+                    type="number"
+                    placeholder="Enter Custom Amount in INR"
+                    value={customAmount}
+                    onChange={handleCustomChange}
+                    style={{
+                      width: '100%',
+                      padding: '0.85rem 1rem 0.85rem 2.2rem',
+                      border: '1px solid var(--border-medium)',
+                      borderRadius: '2px',
+                      fontFamily: 'var(--font-mono)',
+                      fontSize: '0.95rem',
+                      color: 'var(--text-ink)',
+                      backgroundColor: 'var(--bg-paper-white)',
+                    }}
+                  />
+                </div>
+              </div>
+
+              {/* Direct UPI ID & GPay Copy Fields */}
+              <div style={{ borderTop: '1px solid var(--border-subtle)', paddingTop: '1.25rem', display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+                {/* UPI ID Field */}
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.7rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '0.3rem' }}>
+                    OFFICIAL UPI ID (All UPI Apps)
+                  </label>
+                  <div style={{ display: 'flex', gap: '0.5rem' }}>
+                    <div style={{ flex: 1, backgroundColor: 'var(--bg-paper-white)', border: '1px solid var(--border-medium)', borderRadius: '2px', padding: '0.65rem 0.85rem', fontFamily: 'var(--font-mono)', fontSize: '0.92rem', color: 'var(--text-ink)', fontWeight: 650 }}>
+                      {upiId}
+                    </div>
+                    <button
+                      type="button"
+                      onClick={copyUpi}
+                      style={{
+                        backgroundColor: copiedUpi ? '#25D366' : 'var(--text-deep-blue)',
+                        color: '#FFFFFF',
+                        border: 'none',
+                        borderRadius: '2px',
+                        padding: '0.65rem 0.95rem',
+                        fontSize: '0.75rem',
+                        fontFamily: 'var(--font-mono)',
+                        fontWeight: 600,
+                        cursor: 'pointer',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '0.35rem',
+                        transition: 'all var(--transition-fast)',
+                      }}
+                    >
+                      {copiedUpi ? <Check size={13} /> : <Copy size={13} />}
+                      <span>{copiedUpi ? 'COPIED' : 'COPY UPI'}</span>
+                    </button>
+                  </div>
+                </div>
+
+                {/* GPay Number Field */}
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.7rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '0.3rem' }}>
+                    GOOGLE PAY (GPAY) NUMBER
+                  </label>
+                  <div style={{ display: 'flex', gap: '0.5rem' }}>
+                    <div style={{ flex: 1, backgroundColor: 'var(--bg-paper-white)', border: '1px solid var(--border-medium)', borderRadius: '2px', padding: '0.65rem 0.85rem', fontFamily: 'var(--font-mono)', fontSize: '0.95rem', color: '#1B873F', fontWeight: 700 }}>
+                      {displayGpayNumber}
+                    </div>
+                    <button
+                      type="button"
+                      onClick={copyGpay}
+                      style={{
+                        backgroundColor: copiedGpay ? '#25D366' : 'var(--text-deep-blue)',
+                        color: '#FFFFFF',
+                        border: 'none',
+                        borderRadius: '2px',
+                        padding: '0.65rem 0.95rem',
+                        fontSize: '0.75rem',
+                        fontFamily: 'var(--font-mono)',
+                        fontWeight: 600,
+                        cursor: 'pointer',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '0.35rem',
+                        transition: 'all var(--transition-fast)',
+                      }}
+                    >
+                      {copiedGpay ? <Check size={13} /> : <Copy size={13} />}
+                      <span>{copiedGpay ? 'COPIED' : 'COPY GPAY'}</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Direct WhatsApp Confirmation Button */}
+              <div style={{ marginTop: '1.5rem' }}>
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-secondary"
+                  style={{ width: '100%', padding: '0.85rem', fontSize: '0.88rem', display: 'flex', justifyContent: 'center', gap: '0.5rem', borderColor: '#25D366', color: 'var(--text-ink)' }}
+                >
+                  <WhatsAppIcon size={16} color="#25D366" />
+                  <span>Notify Rodney on WhatsApp for ₹{Number(amountToPay).toLocaleString('en-IN')}</span>
+                </a>
               </div>
             </div>
 
-            {/* Amount Buttons Row */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(85px, 1fr))', gap: '0.65rem', marginBottom: '1.25rem' }}>
-              {presetAmounts.map((amt) => {
-                const isSelected = selectedAmount === amt && !customAmount;
-                return (
-                  <button
-                    key={amt}
-                    type="button"
-                    onClick={() => handlePresetClick(amt)}
-                    style={{
-                      padding: '0.75rem 0.4rem',
-                      backgroundColor: isSelected ? 'var(--text-deep-blue)' : 'var(--bg-paper-white)',
-                      color: isSelected ? '#FFFFFF' : 'var(--text-deep-blue)',
-                      border: '1px solid',
-                      borderColor: isSelected ? 'var(--text-deep-blue)' : 'var(--border-medium)',
-                      borderRadius: '2px',
-                      fontSize: '1rem',
-                      fontFamily: 'var(--font-display)',
-                      fontWeight: 700,
-                      cursor: 'pointer',
-                      transition: 'all var(--transition-fast)',
-                    }}
-                  >
-                    ₹{Number(amt).toLocaleString('en-IN')}
-                  </button>
-                );
-              })}
-            </div>
+            {/* Right Column: Official Working Google Pay QR Code Card */}
+            <div
+              style={{
+                backgroundColor: 'var(--bg-paper-white)',
+                border: '1px solid var(--border-medium)',
+                borderRadius: '4px',
+                padding: '1.75rem 1.25rem',
+                textAlign: 'center',
+                boxShadow: 'var(--shadow-subtle)',
+              }}
+            >
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', padding: '0.25rem 0.75rem', backgroundColor: 'rgba(201, 59, 43, 0.08)', borderRadius: '2px', color: 'var(--accent-red)', fontSize: '0.72rem', fontFamily: 'var(--font-mono)', fontWeight: 700, marginBottom: '1rem' }}>
+                <Heart size={12} fill="var(--accent-red)" />
+                <span>OFFICIAL VERIFIED QR SCANNER</span>
+              </div>
 
-            {/* Custom Amount Input */}
-            <div style={{ marginBottom: '1.75rem' }}>
-              <div style={{ position: 'relative' }}>
-                <span style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', fontFamily: 'var(--font-mono)', fontWeight: 700, color: 'var(--text-light)' }}>
-                  ₹
-                </span>
-                <input
-                  type="number"
-                  placeholder="Or Enter Custom Amount in INR"
-                  value={customAmount}
-                  onChange={handleCustomChange}
+              {/* Authentic Google Pay QR Code Display */}
+              <div
+                style={{
+                  maxWidth: '300px',
+                  margin: '0 auto 1.25rem auto',
+                  borderRadius: '12px',
+                  overflow: 'hidden',
+                  boxShadow: '0 8px 24px rgba(0, 0, 0, 0.12)',
+                  border: '1px solid var(--border-subtle)',
+                  backgroundColor: '#FFFFFF',
+                }}
+              >
+                <img
+                  src="/images/gpay-qr-code.png"
+                  alt="Official Rodney De Almeida Google Pay QR Code"
                   style={{
                     width: '100%',
-                    padding: '0.85rem 1rem 0.85rem 2.2rem',
-                    border: '1px solid var(--border-medium)',
-                    borderRadius: '2px',
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: '0.95rem',
-                    color: 'var(--text-ink)',
-                    backgroundColor: 'var(--bg-paper-white)',
+                    height: 'auto',
+                    display: 'block',
                   }}
                 />
               </div>
-            </div>
 
-            {/* Google Pay Direct Box */}
-            <div style={{ backgroundColor: 'var(--bg-paper-white)', border: '1px solid var(--border-medium)', borderRadius: '4px', padding: '1.5rem', marginBottom: '1.5rem' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem', flexWrap: 'wrap', gap: '0.4rem' }}>
-                <span style={{ fontSize: '0.72rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-                  GOOGLE PAY (GPAY) NUMBER
-                </span>
-                <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>
-                  Payee: <strong>{payeeName}</strong>
-                </span>
-              </div>
-
-              <div style={{ display: 'flex', gap: '0.65rem', alignItems: 'center', flexWrap: 'wrap' }}>
-                <div style={{ flex: '1 0 200px', backgroundColor: 'var(--bg-pure-white)', border: '1px solid var(--border-medium)', borderRadius: '2px', padding: '0.85rem 1rem', fontFamily: 'var(--font-mono)', fontSize: '1.15rem', color: '#1B873F', fontWeight: 700, letterSpacing: '0.04em' }}>
-                  {displayGpayNumber}
-                </div>
-                <button
-                  type="button"
-                  onClick={copyGpay}
-                  style={{
-                    backgroundColor: copiedGpay ? '#25D366' : 'var(--text-deep-blue)',
-                    color: '#FFFFFF',
-                    border: 'none',
-                    borderRadius: '2px',
-                    padding: '0.85rem 1.25rem',
-                    fontSize: '0.85rem',
-                    fontFamily: 'var(--font-mono)',
-                    fontWeight: 600,
-                    cursor: 'pointer',
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '0.4rem',
-                    transition: 'all var(--transition-fast)',
-                  }}
-                >
-                  {copiedGpay ? <Check size={15} /> : <Copy size={15} />}
-                  <span>{copiedGpay ? 'COPIED GPAY' : 'COPY GPAY NUMBER'}</span>
-                </button>
-              </div>
-            </div>
-
-            {/* Direct WhatsApp Confirmation Button */}
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-primary"
-              style={{ width: '100%', padding: '0.95rem', fontSize: '0.95rem', display: 'flex', justifyContent: 'center', gap: '0.6rem', marginBottom: '1.25rem' }}
-            >
-              <WhatsAppIcon size={18} color="#FFFFFF" />
-              <span>Connect on WhatsApp for ₹{Number(amountToPay).toLocaleString('en-IN')} Contribution</span>
-            </a>
-
-            {/* Direct Bank / Location Footer */}
-            <div style={{ borderTop: '1px solid var(--border-subtle)', paddingTop: '1.25rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.76rem', color: 'var(--text-light)', fontFamily: 'var(--font-mono)', flexWrap: 'wrap', gap: '0.5rem' }}>
-              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
-                <MapPin size={13} color="var(--accent-red)" />
-                <span>Caranzalem, Goa 403002, India</span>
-              </span>
-              <a href="mailto:contactmacalmeida@gmail.com" style={{ color: 'inherit', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
-                <Mail size={13} color="var(--accent-red)" />
-                <span>contactmacalmeida@gmail.com</span>
+              {/* Direct UPI App Trigger (Mobile Friendly) */}
+              <a
+                href={upiDeepLink}
+                className="btn btn-primary"
+                style={{ width: '100%', padding: '0.85rem', fontSize: '0.9rem', display: 'flex', justifyContent: 'center', gap: '0.5rem' }}
+              >
+                <span>Tap to Pay ₹{Number(amountToPay).toLocaleString('en-IN')} in UPI App</span>
+                <ExternalLink size={14} />
               </a>
+
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem', fontSize: '0.72rem', color: 'var(--text-light)', fontFamily: 'var(--font-mono)', marginTop: '0.85rem' }}>
+                <ShieldCheck size={13} color="#25D366" />
+                <span>Works with GPay, PhonePe, Paytm, BHIM & all UPI apps</span>
+              </div>
             </div>
           </div>
         </div>
@@ -361,8 +448,8 @@ export default function DonatePage() {
               — <strong>Rodney Meck De Almeida</strong>, Founder of Wildmac
             </p>
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.88rem', fontFamily: 'var(--font-mono)', color: 'var(--text-deep-blue)', backgroundColor: 'var(--bg-pure-white)', padding: '0.65rem 1.25rem', borderRadius: '2px', border: '1px solid var(--border-medium)' }}>
-              <span>GPay Direct:</span>
-              <strong style={{ color: '#1B873F', fontSize: '1rem' }}>+91 96570 80490</strong>
+              <span>UPI ID:</span>
+              <strong style={{ color: '#1B873F', fontSize: '1rem' }}>almeida.mac6-1@okaxis</strong>
             </div>
           </div>
         </div>
