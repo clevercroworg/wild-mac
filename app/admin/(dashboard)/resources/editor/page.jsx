@@ -16,6 +16,7 @@ import {
   FileCheck,
 } from 'lucide-react';
 import ImageUploader from '@/components/ImageUploader';
+import DocumentUploader from '@/components/DocumentUploader';
 
 function ResourceEditorForm() {
   const router = useRouter();
@@ -408,6 +409,46 @@ function ResourceEditorForm() {
                     )}
                   </div>
                 ))}
+              </div>
+            </div>
+
+            {/* Framework File / Document Attachment Upload */}
+            <div
+              style={{
+                backgroundColor: 'var(--bg-pure-white)',
+                border: '1px solid var(--border-medium)',
+                borderRadius: '4px',
+                padding: '1.75rem',
+                boxShadow: '0 2px 4px rgba(0,0,0,0.02)',
+              }}
+            >
+              <DocumentUploader
+                value={formData.downloadUrl}
+                onChange={(url) => setFormData((prev) => ({ ...prev, downloadUrl: url }))}
+                onSizeDetected={(size) => setFormData((prev) => ({ ...prev, fileSize: size }))}
+                label="Downloadable Framework Attachment (PDF, DOCX, XLSX, ZIP)"
+              />
+
+              <div>
+                <label style={{ display: 'block', fontSize: '0.7rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)', marginBottom: '0.35rem' }}>
+                  OR ENTER EXTERNAL DOWNLOAD LINK (GOOGLE DRIVE / CLOUD)
+                </label>
+                <input
+                  type="text"
+                  value={formData.downloadUrl}
+                  onChange={(e) => setFormData({ ...formData, downloadUrl: e.target.value })}
+                  placeholder="https://drive.google.com/file/... or /uploads/docs/framework.pdf"
+                  style={{
+                    width: '100%',
+                    padding: '0.55rem 0.75rem',
+                    fontSize: '0.8rem',
+                    fontFamily: 'var(--font-mono)',
+                    border: '1px solid var(--border-medium)',
+                    borderRadius: '2px',
+                    backgroundColor: 'var(--bg-paper-white)',
+                    boxSizing: 'border-box',
+                  }}
+                />
               </div>
             </div>
           </div>
