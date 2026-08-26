@@ -36,7 +36,7 @@ export default function WildmacHero() {
         }}
       />
 
-      {/* Mobile-Only Authentic Atmospheric Background Overlay */}
+      {/* Mobile-Only Authentic 9:16 Portrait Atmospheric Background Overlay */}
       <div
         className="mobile-hero-bg-overlay"
         style={{
@@ -49,14 +49,14 @@ export default function WildmacHero() {
         }}
       >
         <img
-          src="/images/community-dialogue.jpg"
+          src="/images/mobile-hero-portrait.jpg"
           alt="Atmospheric Wildmac advisory environment"
           style={{
             width: '100%',
             height: '100%',
             objectFit: 'cover',
-            objectPosition: 'center 20%',
-            filter: 'contrast(1.05) brightness(0.98)',
+            objectPosition: 'center top',
+            filter: 'contrast(1.05) brightness(0.96)',
           }}
         />
         {/* Editorial gradient veil that keeps text 100% crisp while revealing the rich background atmosphere */}
@@ -64,7 +64,7 @@ export default function WildmacHero() {
           style={{
             position: 'absolute',
             inset: 0,
-            background: 'linear-gradient(180deg, rgba(250, 250, 247, 0.86) 0%, rgba(250, 250, 247, 0.78) 40%, rgba(250, 250, 247, 0.94) 85%, rgba(250, 250, 247, 1) 100%)',
+            background: 'linear-gradient(180deg, rgba(250, 250, 247, 0.88) 0%, rgba(250, 250, 247, 0.72) 35%, rgba(250, 250, 247, 0.92) 80%, rgba(250, 250, 247, 1) 100%)',
           }}
         />
       </div>
@@ -190,7 +190,7 @@ export default function WildmacHero() {
               RIGHT / 40–45% — LAYERED STRATEGIC CAMPAIGN COMPOSITION
               =============================================================== */}
           <div
-            className="hero-visual-stage page-load-seq-5"
+            className="hero-visual-stage page-load-seq-5 hidden-mobile"
             style={{
               position: 'relative',
               width: '100%',
