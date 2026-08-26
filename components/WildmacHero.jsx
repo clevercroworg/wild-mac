@@ -55,16 +55,16 @@ export default function WildmacHero() {
             width: '100%',
             height: '100%',
             objectFit: 'cover',
-            objectPosition: 'center 25%',
-            opacity: 0.15,
-            filter: 'contrast(1.1) saturate(0.85)',
+            objectPosition: 'center 20%',
+            filter: 'contrast(1.05) brightness(0.98)',
           }}
         />
+        {/* Editorial gradient veil that keeps text 100% crisp while revealing the rich background atmosphere */}
         <div
           style={{
             position: 'absolute',
             inset: 0,
-            background: 'linear-gradient(180deg, rgba(250, 250, 247, 0.92) 0%, rgba(250, 250, 247, 0.85) 45%, rgba(250, 250, 247, 0.98) 100%)',
+            background: 'linear-gradient(180deg, rgba(250, 250, 247, 0.86) 0%, rgba(250, 250, 247, 0.78) 40%, rgba(250, 250, 247, 0.94) 85%, rgba(250, 250, 247, 1) 100%)',
           }}
         />
       </div>
