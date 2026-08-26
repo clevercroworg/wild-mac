@@ -327,6 +327,88 @@ p.lead {
 }
 
 /* ==========================================================================
+   EDITORIAL VIEWPORT SCROLL REVEALS & UNHURRIED MICRO-ANIMATIONS
+   ========================================================================== */
+
+#wildmac-scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2.5px;
+  background: linear-gradient(90deg, var(--accent-red), #E05D58);
+  transform-origin: 0% 50%;
+  transform: scaleX(0);
+  z-index: 1000;
+  pointer-events: none;
+  transition: transform 0.08s linear;
+}
+
+/* Subtle, Smooth, Unhurried Viewport Reveals */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-slide-left {
+  opacity: 0;
+  transform: translateX(-28px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-slide-left.is-revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-slide-right {
+  opacity: 0;
+  transform: translateX(28px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-slide-right.is-revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Staggered Children Transitions */
+.reveal-stagger > *:nth-child(1) { transition-delay: 0.04s; }
+.reveal-stagger > *:nth-child(2) { transition-delay: 0.12s; }
+.reveal-stagger > *:nth-child(3) { transition-delay: 0.20s; }
+.reveal-stagger > *:nth-child(4) { transition-delay: 0.28s; }
+.reveal-stagger > *:nth-child(5) { transition-delay: 0.36s; }
+.reveal-stagger > *:nth-child(6) { transition-delay: 0.44s; }
+
+/* Micro-Interaction Polish for Cards & Stamps */
+.card-interactive {
+  transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.38s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-interactive:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px -12px rgba(17, 24, 32, 0.1);
+  border-color: rgba(201, 59, 43, 0.35) !important;
+}
+
+.editorial-stamp {
+  transition: transform 0.25s ease, background-color 0.25s ease;
+}
+
+.editorial-stamp:hover {
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
    PHYSICAL BOOK COVER PRESENTATION
    ========================================================================== */
 

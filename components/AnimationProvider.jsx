@@ -6,16 +6,25 @@ import { usePathname } from 'next/navigation';
 export default function AnimationProvider() {
   const pathname = usePathname();
 
-  // 01 — Intersection Observer for Viewport Scroll Reveals
+  // 01 — Viewport Scroll Reveals Across All Pages
   useEffect(() => {
-    // Check for prefers-reduced-motion
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) {
-      document.querySelectorAll('.reveal-on-scroll, .reveal-slide-left, .reveal-slide-right, .reveal-image-mask, .reveal-divider').forEach((el) => {
+      document.querySelectorAll('.reveal-on-scroll, .reveal-slide-left, .reveal-slide-right, .reveal-image-mask, .reveal-divider, .card-interactive').forEach((el) => {
         el.classList.add('is-revealed');
       });
       return;
     }
+
+    // Automatically tag all major interactive cards and sections with smooth reveal
+    const autoElements = document.querySelectorAll(
+      '.card-interactive, .section-py h1, .section-py h2, .about-split-grid, .two-col-grid, .cta-section-grid'
+    );
+    autoElements.forEach((el) => {
+      if (!el.classList.contains('reveal-on-scroll') && !el.classList.contains('reveal-slide-left') && !el.classList.contains('reveal-slide-right')) {
+        el.classList.add('reveal-on-scroll');
+      }
+    });
 
     const observerCallback = (entries, observer) => {
       entries.forEach((entry) => {
@@ -28,8 +37,8 @@ export default function AnimationProvider() {
 
     const observer = new IntersectionObserver(observerCallback, {
       root: null,
-      rootMargin: '0px 0px -40px 0px',
-      threshold: 0.12,
+      rootMargin: '0px 0px -50px 0px',
+      threshold: 0.08,
     });
 
     const elementsToObserve = document.querySelectorAll(
@@ -43,7 +52,7 @@ export default function AnimationProvider() {
     };
   }, [pathname]);
 
-  // 02 — Top Page Scroll Progress Indicator (1.5px Wildmac Red)
+  // 02 — Top Page Scroll Progress Indicator (Smooth 2.5px Red Accent)
   useEffect(() => {
     const progressBar = document.getElementById('wildmac-scroll-progress');
     if (!progressBar) return;

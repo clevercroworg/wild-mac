@@ -305,64 +305,77 @@ export default function Navbar() {
                       </button>
                     </div>
 
-                    {/* Expandable Services Drawer Menu */}
-                    {mobileServicesOpen && (
-                      <div
-                        style={{
-                          backgroundColor: 'var(--bg-pure-white)',
-                          border: '1px solid var(--border-medium)',
-                          borderLeft: '3px solid var(--accent-red)',
-                          borderRadius: '2px',
-                          padding: '0.85rem 1rem',
-                          marginTop: '0.35rem',
-                          marginBottom: '0.75rem',
-                          display: 'flex',
-                          flexDirection: 'column',
-                          gap: '0.5rem',
-                        }}
-                      >
-                        <div style={{ paddingBottom: '0.4rem', borderBottom: '1px solid var(--border-subtle)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                          <span style={{ fontSize: '0.65rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
-                            PRACTICE MODULES
-                          </span>
-                          <Link
-                            href="/services"
-                            onClick={() => setMobileMenuOpen(false)}
-                            style={{ fontSize: '0.72rem', fontFamily: 'var(--font-mono)', color: 'var(--accent-red)', fontWeight: 600, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.2rem' }}
-                          >
-                            <span>ALL MODULES</span>
-                            <ChevronRight size={12} />
-                          </Link>
-                        </div>
+                    {/* Smooth Animated Expandable Services Drawer Menu */}
+                    <div
+                      style={{
+                        display: 'grid',
+                        gridTemplateRows: mobileServicesOpen ? '1fr' : '0fr',
+                        opacity: mobileServicesOpen ? 1 : 0,
+                        visibility: mobileServicesOpen ? 'visible' : 'hidden',
+                        marginTop: mobileServicesOpen ? '0.45rem' : '0',
+                        marginBottom: mobileServicesOpen ? '0.75rem' : '0',
+                        transition: 'grid-template-rows 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease, margin 0.35s ease, visibility 0.35s',
+                      }}
+                    >
+                      <div style={{ overflow: 'hidden' }}>
+                        <div
+                          style={{
+                            backgroundColor: 'var(--bg-pure-white)',
+                            border: '1px solid var(--border-medium)',
+                            borderLeft: '3px solid var(--accent-red)',
+                            borderRadius: '2px',
+                            padding: '0.85rem 1rem',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: '0.5rem',
+                            transform: mobileServicesOpen ? 'translateY(0)' : 'translateY(-10px)',
+                            transition: 'transform 0.45s cubic-bezier(0.16, 1, 0.3, 1)',
+                          }}
+                        >
+                          <div style={{ paddingBottom: '0.4rem', borderBottom: '1px solid var(--border-subtle)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                            <span style={{ fontSize: '0.65rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+                              PRACTICE MODULES
+                            </span>
+                            <Link
+                              href="/services"
+                              onClick={() => setMobileMenuOpen(false)}
+                              style={{ fontSize: '0.72rem', fontFamily: 'var(--font-mono)', color: 'var(--accent-red)', fontWeight: 600, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.2rem' }}
+                            >
+                              <span>ALL MODULES</span>
+                              <ChevronRight size={12} />
+                            </Link>
+                          </div>
 
-                        {servicesData.map((s) => (
-                          <Link
-                            key={s.id}
-                            href={`/services#${s.id}`}
-                            onClick={() => setMobileMenuOpen(false)}
-                            style={{
-                              padding: '0.55rem 0.5rem',
-                              fontSize: '0.88rem',
-                              color: 'var(--text-ink)',
-                              textDecoration: 'none',
-                              borderBottom: '1px solid var(--border-subtle)',
-                              display: 'flex',
-                              alignItems: 'center',
-                              justifyContent: 'space-between',
-                              borderRadius: '2px',
-                            }}
-                          >
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                              <span style={{ fontSize: '0.7rem', fontFamily: 'var(--font-mono)', color: 'var(--accent-red)', fontWeight: 600 }}>
-                                {s.number}
-                              </span>
-                              <span style={{ fontWeight: 550, color: 'var(--text-deep-blue)' }}>{s.title}</span>
-                            </div>
-                            <ChevronRight size={13} color="var(--text-light)" />
-                          </Link>
-                        ))}
+                          {servicesData.map((s) => (
+                            <Link
+                              key={s.id}
+                              href={`/services#${s.id}`}
+                              onClick={() => setMobileMenuOpen(false)}
+                              style={{
+                                padding: '0.55rem 0.5rem',
+                                fontSize: '0.88rem',
+                                color: 'var(--text-ink)',
+                                textDecoration: 'none',
+                                borderBottom: '1px solid var(--border-subtle)',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'space-between',
+                                borderRadius: '2px',
+                                transition: 'background-color 0.2s ease',
+                              }}
+                            >
+                              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                <span style={{ fontSize: '0.7rem', fontFamily: 'var(--font-mono)', color: 'var(--accent-red)', fontWeight: 600 }}>
+                                  {s.number}
+                                </span>
+                                <span style={{ fontWeight: 550, color: 'var(--text-deep-blue)' }}>{s.title}</span>
+                              </div>
+                              <ChevronRight size={13} color="var(--text-light)" />
+                            </Link>
+                          ))}
+                        </div>
                       </div>
-                    )}
+                    </div>
                   </div>
                 );
               }
