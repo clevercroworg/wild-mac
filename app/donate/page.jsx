@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Heart, ShieldCheck, ArrowRight, Compass, Sparkles, MapPin, Building, Trees, BookOpen, CheckCircle2, Copy, Check, ExternalLink, Smartphone } from 'lucide-react';
+import { Heart, ShieldCheck, ArrowRight, Check, Copy, ExternalLink, Compass, Building, Trees, BookOpen } from 'lucide-react';
 import WhatsAppIcon from '@/components/WhatsAppIcon';
 import MajorConsultationCTA from '@/components/MajorConsultationCTA';
 
@@ -43,41 +43,6 @@ export default function DonatePage() {
     setCopiedGpay(true);
     setTimeout(() => setCopiedGpay(false), 2500);
   };
-
-  const futureProjects = [
-    {
-      number: '01',
-      title: 'Ashram Sanctuary in Cancona',
-      location: 'Cancona, South Goa',
-      icon: Compass,
-      desc: 'A tranquil forest and coastal retreat designed for unhurried contemplation, meditation, philosophical study, and mental clarity for seekers and leaders.',
-      status: 'Land Acquisition & Architectural Planning',
-    },
-    {
-      number: '02',
-      title: 'Old Age Home in Taleigao',
-      location: 'Taleigao, Goa',
-      icon: Building,
-      desc: 'A dignified, loving residential haven providing elder care, health monitoring, compassionate community living, and nutritious holistic meals.',
-      status: 'Community Infrastructure Design',
-    },
-    {
-      number: '03',
-      title: 'Farm House & Permaculture Hub',
-      location: 'Caranzalem, Goa',
-      icon: Trees,
-      desc: 'An ecological sanctuary dedicated to sustainable organic farming, community dialogues, youthful leadership workshops, and nature-connected living.',
-      status: 'Project Blueprinting',
-    },
-    {
-      number: '04',
-      title: 'Upcoming Book & Knowledge Distribution',
-      location: 'Pan-India & Global',
-      icon: BookOpen,
-      desc: 'Publishing and subsidizing transformative literature on purpose, fatherhood, financial literacy, and engineering discipline for schools and young thinkers.',
-      status: 'Manuscript in Progress',
-    },
-  ];
 
   return (
     <>
@@ -350,76 +315,42 @@ export default function DonatePage() {
       </section>
 
       {/* ===================================================================
-          02 — FUTURE PROJECTS & PHILANTHROPIC ROADMAP
+          02 — DEDICATED LINK TO FUTURE PROJECTS ROADMAP PAGE
           =================================================================== */}
       <section className="section-py" style={{ backgroundColor: 'var(--bg-pure-white)', borderBottom: '1px solid var(--border-subtle)' }}>
         <div className="container">
-          <div style={{ maxWidth: '680px', marginBottom: '3.5rem' }}>
-            <div style={{ marginBottom: '1rem' }}>
-              <span className="editorial-stamp">WHERE YOUR CONTRIBUTION GOES</span>
+          <div
+            style={{
+              backgroundColor: 'var(--bg-paper-white)',
+              border: '1px solid var(--border-medium)',
+              borderLeft: '4px solid var(--accent-red)',
+              borderRadius: '3px',
+              padding: '2.25rem 2rem',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              gap: '2rem',
+              flexWrap: 'wrap',
+              boxShadow: 'var(--shadow-subtle)',
+            }}
+            className="card-interactive"
+          >
+            <div style={{ maxWidth: '640px' }}>
+              <div style={{ marginBottom: '0.5rem' }}>
+                <span className="editorial-stamp">WHERE YOUR CONTRIBUTION GOES</span>
+              </div>
+              <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.5rem, 2.8vw, 2.1rem)', color: 'var(--text-ink)', margin: '0 0 0.5rem 0', fontWeight: 650 }}>
+                Explore the Future Projects & Sanctuaries Roadmap.
+              </h2>
+              <p style={{ fontSize: '0.96rem', color: 'var(--text-deep-blue)', margin: 0, lineHeight: 1.65 }}>
+                Discover the architectural blueprints and ground milestones for the Cancona Ashram Retreat, Taleigao Elder Haven, Caranzalem Permaculture Hub, and Subsidized Literature programs.
+              </p>
             </div>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'clamp(2.1rem, 4vw, 3.2rem)',
-                color: 'var(--text-ink)',
-                lineHeight: 1.15,
-                marginBottom: '1rem',
-                letterSpacing: '-0.02em',
-              }}
-            >
-              Future Social Infrastructure & Purpose Projects.
-            </h2>
-            <p className="lead" style={{ color: 'var(--text-deep-blue)', lineHeight: 1.65 }}>
-              Under the direct leadership of Rodney De Almeida, Wildmac is establishing durable community sanctuaries across Goa.
-            </p>
-          </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.75rem' }}>
-            {futureProjects.map((project) => {
-              const IconComponent = project.icon;
-              return (
-                <div
-                  key={project.number}
-                  className="card-interactive"
-                  style={{
-                    backgroundColor: 'var(--bg-paper-white)',
-                    border: '1px solid var(--border-subtle)',
-                    borderTop: '3px solid var(--accent-red)',
-                    borderRadius: '2px',
-                    padding: '2rem 1.65rem',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'space-between',
-                  }}
-                >
-                  <div>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
-                      <span style={{ fontFamily: 'var(--font-display)', fontSize: '0.88rem', fontWeight: 700, color: 'var(--accent-red)' }}>
-                        {project.number}
-                      </span>
-                      <span style={{ fontSize: '0.68rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)', display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
-                        <MapPin size={11} color="var(--accent-red)" />
-                        <span>{project.location}</span>
-                      </span>
-                    </div>
-
-                    <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.35rem', fontWeight: 650, color: 'var(--text-ink)', marginBottom: '0.85rem', lineHeight: 1.25 }}>
-                      {project.title}
-                    </h3>
-
-                    <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: 1.65, marginBottom: '1.5rem' }}>
-                      {project.desc}
-                    </p>
-                  </div>
-
-                  <div style={{ borderTop: '1px solid var(--border-subtle)', paddingTop: '1rem', display: 'flex', alignItems: 'center', gap: '0.45rem', fontSize: '0.75rem', fontFamily: 'var(--font-mono)', color: 'var(--text-deep-blue)', fontWeight: 600 }}>
-                    <CheckCircle2 size={13} color="var(--accent-red)" />
-                    <span>{project.status}</span>
-                  </div>
-                </div>
-              );
-            })}
+            <Link href="/future-projects" className="btn btn-primary" style={{ padding: '0.85rem 1.6rem', fontSize: '0.9rem', whiteSpace: 'nowrap' }}>
+              <span>View Future Projects</span>
+              <ArrowRight size={14} />
+            </Link>
           </div>
         </div>
       </section>

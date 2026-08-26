@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X, ArrowRight, ChevronDown, ChevronRight, Mail, MessageSquare } from 'lucide-react';
+import { Menu, X, ArrowRight, ChevronDown, ChevronRight, Mail, MessageSquare, Heart } from 'lucide-react';
 import { servicesData } from '@/data/services';
 import LionLogo from '@/components/LionLogo';
 import WhatsAppIcon from '@/components/WhatsAppIcon';
@@ -63,10 +63,11 @@ export default function Navbar() {
     { name: 'About', href: '/about', num: '02' },
     { name: 'Services', href: '/services', isDropdown: true, num: '03' },
     { name: 'Books', href: '/books', num: '04' },
-    { name: 'Blog', href: '/blog', num: '05' },
-    { name: 'Collaborate', href: '/collaboration', num: '06' },
-    { name: 'Donate', href: '/donate', num: '07', isHighlight: true },
-    { name: 'Contact', href: '/contact', num: '08' },
+    { name: 'Projects', href: '/future-projects', num: '05' },
+    { name: 'Blog', href: '/blog', num: '06' },
+    { name: 'Collaborate', href: '/collaboration', num: '07' },
+    { name: 'Donate', href: '/donate', num: '08', isHighlight: true },
+    { name: 'Contact', href: '/contact', num: '09' },
   ];
 
   return (
@@ -163,6 +164,48 @@ export default function Navbar() {
                 );
               }
 
+              if (link.isHighlight) {
+                const isDonateActive = pathname === link.href;
+                return (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '0.35rem',
+                      padding: '0.32rem 0.85rem',
+                      backgroundColor: isDonateActive ? 'var(--accent-red)' : 'rgba(201, 59, 43, 0.08)',
+                      color: isDonateActive ? '#FFFFFF' : 'var(--accent-red)',
+                      border: '1px solid',
+                      borderColor: isDonateActive ? 'var(--accent-red)' : 'rgba(201, 59, 43, 0.35)',
+                      borderRadius: '999px',
+                      fontSize: '0.82rem',
+                      fontFamily: 'var(--font-sans)',
+                      fontWeight: 650,
+                      textDecoration: 'none',
+                      transition: 'all var(--transition-fast)',
+                      boxShadow: '0 2px 6px rgba(201, 59, 43, 0.1)',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.backgroundColor = 'var(--accent-red)';
+                      e.currentTarget.style.color = '#FFFFFF';
+                      e.currentTarget.style.borderColor = 'var(--accent-red)';
+                    }}
+                    onMouseLeave={(e) => {
+                      if (!isDonateActive) {
+                        e.currentTarget.style.backgroundColor = 'rgba(201, 59, 43, 0.08)';
+                        e.currentTarget.style.color = 'var(--accent-red)';
+                        e.currentTarget.style.borderColor = 'rgba(201, 59, 43, 0.35)';
+                      }
+                    }}
+                  >
+                    <Heart size={12} fill={isDonateActive ? '#FFFFFF' : 'var(--accent-red)'} />
+                    <span>{link.name}</span>
+                  </Link>
+                );
+              }
+
               const isActive = pathname === link.href || (link.href !== '/' && !link.href.includes('#') && pathname.startsWith(link.href));
               return (
                 <Link
@@ -176,9 +219,36 @@ export default function Navbar() {
             })}
           </nav>
 
-          {/* Action CTA */}
-          <div className="nav-actions">
-            <Link href="/consultation" className="btn btn-primary" style={{ padding: '0.65rem 1.35rem', fontSize: '0.85rem', gap: '0.5rem' }}>
+          {/* Action CTA & Mobile Donate Button */}
+          <div className="nav-actions" style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
+            {/* Direct Mobile Header Donate Button */}
+            <Link
+              href="/donate"
+              className="mobile-header-donate-btn"
+              style={{
+                display: 'none',
+                alignItems: 'center',
+                gap: '0.3rem',
+                padding: '0.38rem 0.8rem',
+                backgroundColor: pathname === '/donate' ? 'var(--accent-red)' : 'rgba(201, 59, 43, 0.08)',
+                color: pathname === '/donate' ? '#FFFFFF' : 'var(--accent-red)',
+                border: '1px solid',
+                borderColor: pathname === '/donate' ? 'var(--accent-red)' : 'rgba(201, 59, 43, 0.35)',
+                borderRadius: '999px',
+                fontSize: '0.78rem',
+                fontFamily: 'var(--font-mono)',
+                fontWeight: 700,
+                letterSpacing: '0.04em',
+                textDecoration: 'none',
+                boxShadow: '0 2px 6px rgba(201, 59, 43, 0.12)',
+              }}
+            >
+              <Heart size={12} fill={pathname === '/donate' ? '#FFFFFF' : 'var(--accent-red)'} />
+              <span>DONATE</span>
+            </Link>
+
+            {/* Desktop Book Consultation Button */}
+            <Link href="/consultation" className="btn btn-primary nav-desktop-cta" style={{ padding: '0.65rem 1.35rem', fontSize: '0.85rem', gap: '0.5rem' }}>
               <span>Book a Consultation</span>
               <ArrowRight size={14} />
             </Link>
@@ -378,6 +448,11 @@ export default function Navbar() {
                     </div>
                   </div>
                 );
+              }
+
+              if (link.isHighlight) {
+                // Donate button is placed directly on the top mobile navbar header bar
+                return null;
               }
 
               const isActive = pathname === link.href || (link.href !== '/' && !link.href.includes('#') && pathname.startsWith(link.href));

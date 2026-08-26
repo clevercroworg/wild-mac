@@ -924,8 +924,31 @@ p.lead {
     line-height: 1.18;
   }
 
-  .nav-links, .nav-actions .btn {
-    display: none;
+  .nav-links, .nav-actions .nav-desktop-cta {
+    display: none !important;
+  }
+
+  .mobile-header-donate-btn {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.35rem 0.75rem;
+    background-color: rgba(201, 59, 43, 0.08);
+    color: var(--accent-red);
+    border: 1px solid rgba(201, 59, 43, 0.35);
+    border-radius: 999px;
+    font-size: 0.76rem;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: all var(--transition-fast);
+  }
+
+  .mobile-header-donate-btn:hover, .mobile-header-donate-btn:active {
+    background-color: var(--accent-red);
+    color: #FFFFFF;
+    border-color: var(--accent-red);
   }
 
   .mobile-menu-btn {

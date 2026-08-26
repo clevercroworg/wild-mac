@@ -77,6 +77,7 @@ export default function Footer() {
               <li><Link href="/about">About Wildmac</Link></li>
               <li><Link href="/services">Services & Modules</Link></li>
               <li><Link href="/books">Books & Publications</Link></li>
+              <li><Link href="/future-projects">Future Projects</Link></li>
               <li><Link href="/collaboration">Collaborations</Link></li>
               <li><Link href="/donate" style={{ color: 'var(--accent-red)', fontWeight: 500 }}>Donate & Social Impact ♡</Link></li>
               <li><Link href="/careers">Careers at Wildmac</Link></li>
@@ -99,80 +100,75 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact Details */}
+          {/* Direct Desk Channels */}
           <div>
-            <h4 className="footer-col-title">Direct Desk</h4>
-            <ul className="footer-nav" style={{ fontSize: '0.88rem', color: '#C0CFDB', display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
-              <li>
-                <a href="mailto:contactmacalmeida@gmail.com" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', color: 'inherit', textDecoration: 'none' }}>
+            <h4 className="footer-col-title">Direct Desk Reach</h4>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.6rem', color: '#9BAEC0', fontSize: '0.86rem' }}>
+                <MapPin size={16} color="var(--accent-red)" style={{ flexShrink: 0, marginTop: '2px' }} />
+                <span>AG-1 Samarth Residency, Caranzalem, Goa 403002, India</span>
+              </div>
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
+                <a
+                  href="mailto:contactmacalmeida@gmail.com"
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', color: '#FFFFFF', fontSize: '0.85rem', textDecoration: 'none' }}
+                >
                   <Mail size={14} color="var(--accent-red)" />
                   <span>contactmacalmeida@gmail.com</span>
                 </a>
-              </li>
-              <li>
-                <a href="https://wa.me/919657080490" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', color: '#25D366', textDecoration: 'none', fontWeight: 600 }}>
-                  <WhatsAppIcon size={15} color="#25D366" />
+                <a
+                  href="mailto:rodusalmeida@gmail.com"
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', color: '#9BAEC0', fontSize: '0.8rem', textDecoration: 'none' }}
+                >
+                  <Mail size={12} color="#9BAEC0" />
+                  <span>rodusalmeida@gmail.com</span>
+                </a>
+              </div>
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem', marginTop: '0.25rem' }}>
+                <a
+                  href="https://wa.me/919657080490"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                    color: '#25D366',
+                    fontSize: '0.85rem',
+                    textDecoration: 'none',
+                    fontWeight: 600,
+                  }}
+                >
+                  <WhatsAppIcon size={16} color="#25D366" />
                   <span>+91 96570 80490 (WhatsApp)</span>
                 </a>
-              </li>
-              <li>
-                <a href="tel:+917776022622" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', color: 'inherit', textDecoration: 'none' }}>
-                  <Phone size={14} color="var(--accent-red)" />
-                  <span>+91 77760 22622</span>
+                <a
+                  href="tel:+917776022622"
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', color: '#9BAEC0', fontSize: '0.82rem', textDecoration: 'none' }}
+                >
+                  <Phone size={13} color="#9BAEC0" />
+                  <span>+91 77760 22622 (Direct Call)</span>
                 </a>
-              </li>
-              <li style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontSize: '0.82rem', color: '#9BAEC0' }}>
-                <MapPin size={14} color="var(--accent-red)" style={{ flexShrink: 0, marginTop: '2px' }} />
-                <span>AG-1 Samarth Residency, Caranzalem, Goa 403002</span>
-              </li>
-              <li style={{ marginTop: '0.5rem', display: 'flex', gap: '1rem', alignItems: 'center' }}>
                 <a
                   href="https://www.linkedin.com/in/rodney-de-almeida-958448409/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', color: '#0A66C2', fontWeight: 500, fontSize: '0.82rem' }}
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', color: '#9BAEC0', fontSize: '0.82rem', textDecoration: 'none' }}
                 >
-                  <Linkedin size={13} color="#0A66C2" />
-                  <span>LinkedIn</span>
+                  <Linkedin size={13} color="#9BAEC0" />
+                  <span>LinkedIn Profile</span>
                 </a>
-                <a
-                  href="https://www.amazon.in"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem', color: 'var(--accent-red)', fontWeight: 500, fontSize: '0.82rem' }}
-                >
-                  <span>Amazon Author</span>
-                  <ArrowUpRight size={12} />
-                </a>
-              </li>
-            </ul>
+              </div>
+            </div>
           </div>
         </div>
 
         {/* -------------------------------------------------------------
-            MOBILE FOOTER (<= 768px): Compact Brand + Collapsible Groups
+            MOBILE ACCORDION FOOTER (<= 768px): Sleek Accordion System
             ------------------------------------------------------------- */}
         <div className="footer-mobile-accordion">
-          {/* Brand Summary */}
-          <div style={{ marginBottom: '1.5rem' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', marginBottom: '0.75rem' }}>
-              <LionLogo size={36} />
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
-                <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.4rem', fontWeight: 600, letterSpacing: '0.06em', color: '#FFFFFF' }}>
-                  WILDMAC
-                </span>
-                <span style={{ width: '5px', height: '5px', backgroundColor: 'var(--accent-red)', borderRadius: '50%' }} />
-              </div>
-            </div>
-            <p style={{ color: '#9BAEC0', fontSize: '0.86rem', lineHeight: 1.6, margin: '0 0 1rem 0' }}>
-              Coaching, consulting and knowledge-driven advisory platform.
-            </p>
-            <Link href="/consultation" className="btn btn-editorial" style={{ backgroundColor: 'transparent', color: '#FFFFFF', borderColor: 'rgba(255, 255, 255, 0.25)', padding: '0.55rem 1.15rem', fontSize: '0.82rem', gap: '0.4rem', width: '100%', justifyContent: 'center' }}>
-              <span>Book a Consultation</span>
-              <ArrowRight size={13} color="var(--accent-red)" />
-            </Link>
-          </div>
-
           {/* Accordion Group 1: QUICK LINKS */}
           <div style={{ borderTop: '1px solid rgba(255, 255, 255, 0.1)' }}>
             <button
@@ -203,6 +199,7 @@ export default function Footer() {
                 <li><Link href="/about">About Wildmac</Link></li>
                 <li><Link href="/services">Services & Modules</Link></li>
                 <li><Link href="/books">Books & Publications</Link></li>
+                <li><Link href="/future-projects">Future Projects</Link></li>
                 <li><Link href="/collaboration">Collaborations</Link></li>
                 <li><Link href="/donate" style={{ color: 'var(--accent-red)', fontWeight: 500 }}>Donate & Social Impact ♡</Link></li>
                 <li><Link href="/careers">Careers at Wildmac</Link></li>
