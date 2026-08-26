@@ -4,8 +4,7 @@ import { notFound } from 'next/navigation';
 import { ArrowRight, ArrowUpRight, Check, BookOpen, Compass } from 'lucide-react';
 import { booksData, getBookBySlug } from '@/data/books';
 import BookCover3D from '@/components/BookCover3D';
-import EditorialQuote from '@/components/EditorialQuote';
-import Newsletter from '@/components/Newsletter';
+import MajorConsultationCTA from '@/components/MajorConsultationCTA';
 
 export async function generateStaticParams() {
   return booksData.map((book) => ({
@@ -19,7 +18,7 @@ export async function generateMetadata({ params }) {
   if (!book) return { title: 'Book Not Found' };
 
   return {
-    title: `${book.title} — Book Overview`,
+    title: `${book.title} — Book Overview | Wildmac`,
     description: `${book.title}: ${book.subtitle}. ${book.tagline}`,
   };
 }
@@ -37,25 +36,25 @@ export default async function BookDetailPage({ params }) {
   return (
     <>
       {/* ===================================================================
-          HERO TYPE E: INDIVIDUAL BOOK — "THE MANUSCRIPT OBJECT"
+          01 — HERO: THE MANUSCRIPT OBJECT
           =================================================================== */}
       <section
         style={{
           borderBottom: '1px solid var(--border-subtle)',
           backgroundColor: 'var(--bg-mist-blue)',
-          minHeight: '85vh',
+          minHeight: '80vh',
           display: 'flex',
           alignItems: 'center',
           paddingTop: '3.5rem',
-          paddingBottom: '4rem',
+          paddingBottom: '3.5rem',
           position: 'relative',
         }}
       >
         <div className="container">
           <div className="book-detail-hero-grid" style={{ alignItems: 'center' }}>
-            {/* Left: Large Physical Book Cover (35-45% of Viewport) */}
+            {/* Left: Large Physical Book Cover */}
             <div style={{ display: 'flex', justifyContent: 'center' }}>
-              <div style={{ maxWidth: '340px', width: '100%' }}>
+              <div style={{ maxWidth: '320px', width: '100%' }}>
                 <BookCover3D book={book} isLarge={true} />
               </div>
             </div>
@@ -64,17 +63,19 @@ export default async function BookDetailPage({ params }) {
             <div style={{ maxWidth: '600px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem', flexWrap: 'wrap' }}>
                 <span className="editorial-stamp" style={{ letterSpacing: '0.14em' }}>
-                  WM / BOOK VOLUME // {book.category}
+                  WILDMAC PUBLICATION // {book.category}
                 </span>
               </div>
 
               <h1
                 style={{
-                  fontFamily: 'var(--font-serif)',
-                  fontSize: 'clamp(2.5rem, 4.8vw, 3.8rem)',
+                  fontFamily: 'var(--font-display)',
+                  fontSize: 'clamp(2.4rem, 4.5vw, 3.6rem)',
+                  fontWeight: 700,
                   color: 'var(--text-ink)',
                   lineHeight: '1.1',
                   marginBottom: '0.75rem',
+                  letterSpacing: '-0.02em',
                 }}
               >
                 {book.title}
@@ -98,241 +99,155 @@ export default async function BookDetailPage({ params }) {
                   className="btn btn-amazon"
                   style={{ padding: '0.95rem 2rem', gap: '0.6rem' }}
                 >
-                  <span>Read on Amazon</span>
+                  <span>Buy on Amazon</span>
                   <ArrowUpRight size={15} />
                 </a>
+
                 <Link href="/books" className="editorial-link">
-                  <span>Explore the Full Library</span>
+                  <span>View All Books</span>
                   <ArrowRight size={14} />
                 </Link>
               </div>
-
-              <div style={{ marginTop: '2.25rem', display: 'flex', gap: '2rem', fontSize: '0.82rem', color: 'var(--text-light)', borderTop: '1px solid var(--border-subtle)', paddingTop: '1.25rem', flexWrap: 'wrap' }}>
-                <div>
-                  <span style={{ display: 'block', fontWeight: 600, color: 'var(--text-ink)' }}>PUBLISHER</span>
-                  <span>{book.publisher}</span>
-                </div>
-                <div>
-                  <span style={{ display: 'block', fontWeight: 600, color: 'var(--text-ink)' }}>FORMAT</span>
-                  <span>Hardcover & Digital</span>
-                </div>
-                <div>
-                  <span style={{ display: 'block', fontWeight: 600, color: 'var(--text-ink)' }}>THEME</span>
-                  <span>{book.theme}</span>
-                </div>
-              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* ===================================================================
-          02 & 03 — WHY THIS BOOK EXISTS & SYNOPSIS
-          =================================================================== */}
-      <section id="why-it-exists" className="section-py-lg" style={{ borderBottom: '1px solid var(--border-subtle)', backgroundColor: 'var(--bg-paper-white)' }}>
-        <div className="container-narrow">
-          <div style={{ marginBottom: '4rem' }}>
-            <span className="editorial-stamp" style={{ marginBottom: '1rem' }}>01 // ORIGIN & PURPOSE</span>
-            <h2 style={{ fontSize: '2.4rem', color: 'var(--text-ink)', marginBottom: '1.5rem' }}>
-              Why this book exists.
-            </h2>
-            <p style={{ fontSize: '1.15rem', lineHeight: '1.85', color: 'var(--text-deep-blue)' }}>
-              {book.whyItExists}
-            </p>
-          </div>
-
-          <div style={{ width: '100%', height: '1px', backgroundColor: 'var(--border-subtle)', margin: '3.5rem 0' }} />
-
-          <div>
-            <span className="editorial-stamp" style={{ marginBottom: '1rem' }}>02 // SYNOPSIS</span>
-            <h2 style={{ fontSize: '2.4rem', color: 'var(--text-ink)', marginBottom: '1.5rem' }}>
-              An overview of the work.
-            </h2>
-            <p style={{ fontSize: '1.1rem', lineHeight: '1.8', color: 'var(--text-muted)' }}>
-              {book.synopsis}
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ===================================================================
-          04 — WHAT THE READER WILL EXPLORE
+          02 — BOOK OVERVIEW & CHAPTER THEMES
           =================================================================== */}
       <section className="section-py-lg" style={{ backgroundColor: 'var(--bg-pure-white)', borderBottom: '1px solid var(--border-subtle)' }}>
-        <div className="container-narrow">
-          <span className="editorial-stamp" style={{ marginBottom: '1rem' }}>03 // INQUIRY & TOPICS</span>
-          <h2 style={{ fontSize: '2.4rem', color: 'var(--text-ink)', marginBottom: '2.5rem' }}>
-            What the reader will explore.
-          </h2>
-
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-            {book.whatYouWillExplore.map((item, idx) => (
-              <div
-                key={idx}
-                style={{
-                  padding: '1.5rem 1.75rem',
-                  backgroundColor: 'var(--bg-ice-blue)',
-                  border: '1px solid var(--border-subtle)',
-                  borderRadius: '2px',
-                  display: 'flex',
-                  alignItems: 'flex-start',
-                  gap: '1.25rem'
-                }}
-              >
-                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '1.1rem', color: 'var(--accent-red)', fontWeight: 600 }}>
-                  0{idx + 1}
-                </span>
-                <p style={{ fontSize: '1.05rem', color: 'var(--text-deep-blue)', margin: 0, lineHeight: '1.6' }}>
-                  {item}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ===================================================================
-          05 — SELECTED THEMES
-          =================================================================== */}
-      <section className="section-py-lg" style={{ borderBottom: '1px solid var(--border-subtle)', backgroundColor: 'var(--bg-paper-white)' }}>
         <div className="container">
-          <div style={{ maxWidth: '640px', marginBottom: '3.5rem' }}>
-            <span className="editorial-stamp" style={{ marginBottom: '0.75rem' }}>04 // CORE THEMES</span>
-            <h2 style={{ color: 'var(--text-ink)' }}>Pillars of the Manuscript</h2>
-          </div>
+          <div className="two-col-grid" style={{ alignItems: 'flex-start' }}>
+            {/* Left Column: Philosophical Overview */}
+            <div>
+              <div style={{ marginBottom: '1.25rem' }}>
+                <span className="editorial-stamp">ABOUT THE WORK</span>
+              </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '2rem' }}>
-            {book.selectedThemes.map((theme) => (
-              <div
-                key={theme.number}
+              <h2
                 style={{
-                  backgroundColor: 'var(--bg-pure-white)',
-                  border: '1px solid var(--border-subtle)',
-                  padding: '2.25rem 1.75rem',
-                  borderRadius: '2px',
+                  fontFamily: 'var(--font-display)',
+                  fontSize: 'clamp(2rem, 3.5vw, 2.8rem)',
+                  fontWeight: 700,
+                  color: 'var(--text-ink)',
+                  lineHeight: 1.15,
+                  marginBottom: '1.5rem',
+                  letterSpacing: '-0.02em',
                 }}
               >
-                <span className="chapter-number" style={{ display: 'block', marginBottom: '1rem' }}>
-                  {theme.number}
-                </span>
-                <h3 style={{ fontSize: '1.3rem', marginBottom: '0.75rem', color: 'var(--text-ink)' }}>
-                  {theme.title}
-                </h3>
-                <div style={{ width: '2rem', height: '1px', backgroundColor: 'var(--border-subtle)', marginBottom: '1rem' }} />
-                <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)', lineHeight: '1.65' }}>
-                  {theme.text}
+                The Heart of the Inquiry.
+              </h2>
+
+              <p style={{ fontSize: '1.05rem', lineHeight: 1.8, color: 'var(--text-deep-blue)', marginBottom: '1.5rem' }}>
+                {book.synopsis}
+              </p>
+
+              {/* Pull Quote */}
+              <div style={{ padding: '1.5rem', backgroundColor: 'var(--bg-ice-blue)', borderLeft: '3px solid var(--accent-red)', margin: '2rem 0', borderRadius: '0 2px 2px 0' }}>
+                <p style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: '1.2rem', color: 'var(--text-ink)', margin: 0, lineHeight: 1.55 }}>
+                  “{book.quote}”
                 </p>
+                <span style={{ display: 'block', marginTop: '0.65rem', fontSize: '0.78rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)' }}>
+                  — EXCERPT FROM {book.title.toUpperCase()}
+                </span>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
+            </div>
 
-      {/* ===================================================================
-          06 — AUTHOR'S NOTE
-          =================================================================== */}
-      <section className="section-py-lg" style={{ backgroundColor: 'var(--bg-ice-blue)', borderBottom: '1px solid var(--border-subtle)' }}>
-        <div className="container-reading">
-          <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
-            <span className="editorial-stamp">05 // AUTHOR’S NOTE</span>
-            <h2 style={{ fontSize: '2.2rem', color: 'var(--text-ink)', marginTop: '0.5rem' }}>
-              A Note from Wild Mac
-            </h2>
-          </div>
+            {/* Right Column: Themes & Chapter Highlights */}
+            <div>
+              <div style={{ marginBottom: '1.25rem' }}>
+                <span className="editorial-stamp">CORE THEMES</span>
+              </div>
 
-          <div className="editorial-card-pad-md" style={{ backgroundColor: 'var(--bg-pure-white)', border: '1px solid var(--border-subtle)', boxShadow: 'var(--shadow-subtle)', borderRadius: '2px' }}>
-            <p style={{ fontFamily: 'var(--font-body-serif)', fontSize: '1.18rem', lineHeight: '1.85', color: 'var(--text-ink)', marginBottom: '2rem' }}>
-              “{book.authorNote}”
-            </p>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderTop: '1px solid var(--border-subtle)', paddingTop: '1.25rem', flexWrap: 'wrap', gap: '0.75rem' }}>
-              <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-deep-blue)' }}>
-                Wild Mac
-              </span>
-              <span style={{ fontSize: '0.78rem', color: 'var(--accent-red)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-                WILD MAC PRESS
-              </span>
+              <div style={{ backgroundColor: 'var(--bg-paper-white)', border: '1px solid var(--border-subtle)', borderRadius: '2px', padding: '2rem' }}>
+                <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.35rem', fontWeight: 650, color: 'var(--text-ink)', marginBottom: '1.25rem' }}>
+                  What You Will Explore
+                </h3>
+
+                <ul style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                  {(book.whatYouWillExplore || []).map((theme, i) => (
+                    <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem', fontSize: '0.95rem', color: 'var(--text-deep-blue)', lineHeight: 1.6 }}>
+                      <span style={{ color: 'var(--accent-red)', fontWeight: 700, marginTop: '0.1rem' }}>✓</span>
+                      <span>{theme}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div style={{ borderTop: '1px solid var(--border-subtle)', paddingTop: '1.5rem', marginTop: '2rem' }}>
+                  <a
+                    href={book.amazonUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-primary"
+                    style={{ width: '100%', padding: '0.85rem', fontSize: '0.9rem', gap: '0.5rem' }}
+                  >
+                    <span>Order on Amazon</span>
+                    <ArrowUpRight size={14} />
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* ===================================================================
-          07 — PURCHASE OPTIONS / AMAZON
+          03 — OTHER BOOKS IN THE CATALOG
           =================================================================== */}
-      <section className="section-py-lg" style={{ backgroundColor: 'var(--bg-paper-white)', borderBottom: '1px solid var(--border-subtle)' }}>
-        <div className="container-narrow" style={{ textAlign: 'center' }}>
-          <span className="editorial-stamp" style={{ marginBottom: '1rem' }}>ACQUIRE THE VOLUME</span>
-          <h2 style={{ fontSize: '2.6rem', color: 'var(--text-ink)', marginBottom: '1rem' }}>
-            Read {book.title}
-          </h2>
-          <p style={{ fontSize: '1.1rem', color: 'var(--text-muted)', marginBottom: '2.5rem', maxWidth: '520px', margin: '0 auto 2.5rem auto' }}>
-            Available worldwide through Amazon in hardcover and digital editions.
-          </p>
-
-          <a
-            href={book.amazonUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-amazon"
-            style={{ padding: '1.1rem 2.5rem', fontSize: '1rem', gap: '0.75rem' }}
-          >
-            <span>Read on Amazon</span>
-            <ArrowUpRight size={17} />
-          </a>
-        </div>
-      </section>
-
-      {/* ===================================================================
-          08 — RELATED BOOKS
-          =================================================================== */}
-      <section className="section-py-lg" style={{ borderBottom: '1px solid var(--border-subtle)', backgroundColor: 'var(--bg-pure-white)' }}>
+      <section className="section-py" style={{ backgroundColor: 'var(--bg-paper-white)', borderBottom: '1px solid var(--border-subtle)' }}>
         <div className="container">
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '3.5rem', flexWrap: 'wrap', gap: '1.5rem' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '3rem', flexWrap: 'wrap', gap: '1rem' }}>
             <div>
-              <span className="editorial-stamp" style={{ marginBottom: '0.75rem' }}>FURTHER INQUIRY</span>
-              <h2 style={{ color: 'var(--text-ink)' }}>Other Published Works</h2>
+              <span className="editorial-stamp">COMPANION WORKS</span>
+              <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '2.2rem', fontWeight: 700, color: 'var(--text-ink)', marginTop: '0.5rem' }}>
+                Continue Reading
+              </h2>
             </div>
             <Link href="/books" className="editorial-link">
-              <span>View Full Library</span>
+              <span>View All 4 Books</span>
               <ArrowRight size={14} />
             </Link>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2.5rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
             {relatedBooks.map((relBook) => (
               <div
                 key={relBook.id}
                 style={{
-                  backgroundColor: 'var(--bg-paper-white)',
+                  backgroundColor: 'var(--bg-pure-white)',
                   border: '1px solid var(--border-subtle)',
-                  padding: '2.5rem 2rem',
+                  borderRadius: '2px',
+                  padding: '2rem',
                   display: 'flex',
                   flexDirection: 'column',
-                  borderRadius: '2px',
+                  justifyContent: 'space-between',
                 }}
               >
-                <div style={{ marginBottom: '1.5rem' }}>
-                  <BookCover3D book={relBook} href={`/books/${relBook.slug}`} />
+                <div>
+                  <div style={{ maxWidth: '160px', margin: '0 auto 1.5rem auto' }}>
+                    <BookCover3D book={relBook} href={`/books/${relBook.slug}`} />
+                  </div>
+                  <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', fontWeight: 650, color: 'var(--text-ink)', marginBottom: '0.4rem' }}>
+                    <Link href={`/books/${relBook.slug}`} style={{ color: 'inherit' }}>
+                      {relBook.title}
+                    </Link>
+                  </h4>
+                  <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', lineHeight: 1.6, margin: 0 }}>
+                    {relBook.tagline}
+                  </p>
                 </div>
-                <h3 style={{ fontSize: '1.4rem', marginBottom: '0.5rem' }}>
-                  <Link href={`/books/${relBook.slug}`} style={{ color: 'var(--text-ink)' }}>
-                    {relBook.title}
-                  </Link>
-                </h3>
-                <p style={{ fontSize: '0.92rem', color: 'var(--text-muted)', lineHeight: '1.6', marginBottom: '1.5rem', flexGrow: 1 }}>
-                  {relBook.tagline}
-                </p>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '1rem', borderTop: '1px solid var(--border-subtle)' }}>
-                  <Link href={`/books/${relBook.slug}`} className="editorial-link">
+
+                <div style={{ borderTop: '1px solid var(--border-subtle)', paddingTop: '1rem', marginTop: '1.25rem', display: 'flex', justifyContent: 'space-between' }}>
+                  <Link href={`/books/${relBook.slug}`} className="editorial-link" style={{ fontSize: '0.82rem' }}>
                     <span>Read Overview</span>
-                    <ArrowRight size={13} />
+                    <ArrowRight size={12} />
                   </Link>
                   <a
                     href={relBook.amazonUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn btn-editorial"
-                    style={{ padding: '0.45rem 0.85rem', fontSize: '0.78rem' }}
+                    style={{ fontSize: '0.82rem', color: 'var(--accent-red)', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}
                   >
                     <span>Amazon</span>
                     <ArrowUpRight size={12} />
@@ -344,14 +259,10 @@ export default async function BookDetailPage({ params }) {
         </div>
       </section>
 
-      {/* Quote */}
-      <EditorialQuote
-        quote={book.quote}
-        attribution={`Wild Mac, ${book.title}`}
-        subtitle="SELECTED PASSAGE"
-      />
-
-      <Newsletter />
+      {/* ===================================================================
+          04 — MAJOR CONSULTATION CTA
+          =================================================================== */}
+      <MajorConsultationCTA />
     </>
   );
 }

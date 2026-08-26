@@ -2,116 +2,136 @@ import React from 'react';
 import Link from 'next/link';
 import { ArrowRight, BookOpen, Clock, Calendar } from 'lucide-react';
 import { journalArticles } from '@/data/journal';
-import EditorialQuote from '@/components/EditorialQuote';
-import Newsletter from '@/components/Newsletter';
+import MajorConsultationCTA from '@/components/MajorConsultationCTA';
 
 export const metadata = {
-  title: 'Wild Mac Journal — Essays & Reflections',
-  description: 'Notes on living, building, learning, and becoming. Thoughtful essays across life, purpose, money, business, and perspective by Wild Mac.',
+  title: 'Wildmac Insights — Ideas to Help You Think, Decide and Grow',
+  description: 'Practical perspectives, strategic frameworks, and reflective essays across business, personal growth, real estate, investment education, and branding.',
 };
 
 export default function BlogPage() {
   const featuredArticle = journalArticles[0];
   const allArticles = journalArticles;
 
+  const articleImages = [
+    '/images/community-gathering.jpg',
+    '/images/service-business.jpg',
+    '/images/service-investment.jpg',
+    '/images/service-life.jpg',
+    '/images/service-branding.jpg',
+  ];
+
   return (
     <>
       {/* ===================================================================
-          HERO TYPE A: JOURNAL — "THE WILD MAC JOURNAL" (MAGAZINE FRONT PAGE)
+          01 — BLOG HERO: WILDMAC INSIGHTS
           =================================================================== */}
       <section
         style={{
           borderBottom: '1px solid var(--border-subtle)',
           backgroundColor: 'var(--bg-paper-white)',
-          minHeight: '80vh',
+          minHeight: '78vh',
           display: 'flex',
           alignItems: 'center',
           paddingTop: '3.5rem',
-          paddingBottom: '4rem',
+          paddingBottom: '3.5rem',
           position: 'relative',
         }}
       >
         <div className="container">
           <div className="two-col-grid" style={{ alignItems: 'center' }}>
             {/* Left: Magazine Heading */}
-            <div style={{ maxWidth: '640px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem', flexWrap: 'wrap' }}>
-                <span className="editorial-stamp" style={{ letterSpacing: '0.15em' }}>
-                  WM / THE JOURNAL // ESSAYS & DISPATCHES
-                </span>
-                <span style={{ fontSize: '0.75rem', color: 'var(--text-light)', fontFamily: 'var(--font-mono)' }}>
-                  EDITION 2026.04
-                </span>
+            <div style={{ maxWidth: '620px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem', flexWrap: 'wrap' }}>
+                <span className="editorial-stamp">WILDMAC INSIGHTS // WRITTEN ARCHIVE</span>
               </div>
 
               <h1
                 style={{
-                  marginBottom: '1.75rem',
-                  lineHeight: '1.08',
-                  fontSize: 'clamp(2.6rem, 5.2vw, 4.2rem)',
+                  marginBottom: '1.5rem',
+                  lineHeight: '1.06',
+                  fontSize: 'clamp(2.5rem, 5vw, 4.2rem)',
                   color: 'var(--text-ink)',
-                  letterSpacing: '-0.02em',
+                  letterSpacing: '-0.025em',
+                  fontFamily: 'var(--font-display)',
+                  fontWeight: 700,
                 }}
               >
-                Notes on living,<br />
-                building, learning,<br />
-                and becoming.
+                Ideas to Help You Think, Decide and Grow.
               </h1>
 
               <div style={{ width: '2.5rem', height: '2px', backgroundColor: 'var(--accent-red)', marginBottom: '1.75rem' }} />
 
-              <p className="lead" style={{ fontSize: '1.2rem', color: 'var(--text-deep-blue)', marginBottom: '1.5rem', lineHeight: '1.65' }}>
-                Long-form reflections, strategic perspectives, and private notebooks on what it means to live deliberately.
-              </p>
-
-              <p style={{ fontSize: '0.98rem', color: 'var(--text-muted)', lineHeight: '1.75', marginBottom: '2.25rem' }}>
-                Each essay is written as an unhurried inquiry into the quiet mechanics of human clarity, ambition, and inner peace.
+              <p className="lead" style={{ fontSize: '1.18rem', color: 'var(--text-deep-blue)', marginBottom: '1.25rem', lineHeight: 1.65 }}>
+                Practical perspectives on business operations, personal sovereignty, property strategy, investment education, and digital brand positioning.
               </p>
 
               <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', flexWrap: 'wrap' }}>
                 <Link href={`/blog/${featuredArticle.slug}`} className="btn btn-primary" style={{ padding: '0.9rem 1.85rem' }}>
-                  <span>Read Featured Dispatch</span>
+                  <span>Read Featured Essay</span>
                   <ArrowRight size={14} />
                 </Link>
-                <Link href="#archive" className="editorial-link">
-                  <span>Browse the Archive</span>
+                <a href="#archive" className="editorial-link">
+                  <span>Browse All Articles</span>
                   <ArrowRight size={14} />
-                </Link>
+                </a>
               </div>
             </div>
 
-            {/* Right: Featured Article Spotlight Card */}
+            {/* Right: Featured Article Spotlight Card with Image */}
             <div style={{ position: 'relative' }}>
               <div
-                className="editorial-card-pad"
                 style={{
-                  backgroundColor: 'var(--bg-ice-blue)',
+                  backgroundColor: 'var(--bg-pure-white)',
                   border: '1px solid var(--border-medium)',
                   borderRadius: '2px',
                   boxShadow: 'var(--shadow-subtle)',
+                  overflow: 'hidden',
                 }}
               >
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
-                  <span className="editorial-stamp">FEATURED ESSAY</span>
-                  <span style={{ fontSize: '0.78rem', color: 'var(--text-light)', fontFamily: 'var(--font-mono)' }}>
-                    {featuredArticle.readTime}
-                  </span>
+                <div style={{ position: 'relative', width: '100%', height: '220px' }}>
+                  <img
+                    src="/images/community-gathering.jpg"
+                    alt={featuredArticle.title}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  />
+                  <div
+                    style={{
+                      position: 'absolute',
+                      top: '0.85rem',
+                      left: '0.85rem',
+                      backgroundColor: 'rgba(17, 24, 32, 0.85)',
+                      backdropFilter: 'blur(6px)',
+                      color: '#FFFFFF',
+                      padding: '0.2rem 0.6rem',
+                      borderRadius: '2px',
+                      fontSize: '0.68rem',
+                      fontFamily: 'var(--font-mono)',
+                      letterSpacing: '0.08em',
+                    }}
+                  >
+                    FEATURED ESSAY // {featuredArticle.category}
+                  </div>
                 </div>
 
-                <h3 style={{ fontSize: '1.85rem', lineHeight: '1.2', marginBottom: '1rem' }}>
-                  <Link href={`/blog/${featuredArticle.slug}`} style={{ color: 'var(--text-ink)' }}>
-                    {featuredArticle.title}
-                  </Link>
-                </h3>
+                <div style={{ padding: '2rem' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem', fontSize: '0.78rem', color: 'var(--text-light)' }}>
+                    <span>{featuredArticle.date}</span>
+                    <span>{featuredArticle.readTime}</span>
+                  </div>
 
-                <p style={{ fontSize: '1rem', color: 'var(--text-deep-blue)', lineHeight: '1.7', marginBottom: '2rem' }}>
-                  {featuredArticle.excerpt}
-                </p>
+                  <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.45rem', fontWeight: 650, color: 'var(--text-ink)', lineHeight: 1.25, marginBottom: '0.75rem' }}>
+                    <Link href={`/blog/${featuredArticle.slug}`} style={{ color: 'inherit' }}>
+                      {featuredArticle.title}
+                    </Link>
+                  </h3>
 
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '1.25rem', borderTop: '1px solid var(--border-subtle)', fontSize: '0.82rem', color: 'var(--text-light)' }}>
-                  <span>Published on {featuredArticle.date}</span>
+                  <p style={{ fontSize: '0.92rem', color: 'var(--text-muted)', lineHeight: 1.65, marginBottom: '1.5rem' }}>
+                    {featuredArticle.excerpt}
+                  </p>
+
                   <Link href={`/blog/${featuredArticle.slug}`} className="editorial-link" style={{ fontSize: '0.85rem' }}>
-                    <span>Read Essay</span>
+                    <span>Read Complete Essay</span>
                     <ArrowRight size={13} />
                   </Link>
                 </div>
@@ -122,59 +142,99 @@ export default function BlogPage() {
       </section>
 
       {/* ===================================================================
-          ALL JOURNAL ARTICLES ARCHIVE
+          02 — ALL ARTICLES ARCHIVE GRID
           =================================================================== */}
-      <section id="archive" className="section-py-lg" style={{ borderBottom: '1px solid var(--border-subtle)', backgroundColor: 'var(--bg-pure-white)' }}>
+      <section id="archive" className="section-py-lg" style={{ backgroundColor: 'var(--bg-ice-blue)', borderBottom: '1px solid var(--border-subtle)' }}>
         <div className="container">
           <div style={{ maxWidth: '640px', marginBottom: '3.5rem' }}>
-            <span className="editorial-stamp" style={{ marginBottom: '0.75rem' }}>THE CHRONOLOGICAL CATALOG</span>
-            <h2 style={{ color: 'var(--text-ink)', marginBottom: '1rem' }}>
-              The Archive
+            <div style={{ marginBottom: '1rem' }}>
+              <span className="editorial-stamp">THE COMPLETE ARCHIVE</span>
+            </div>
+            <h2
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: 'clamp(2.2rem, 4vw, 3.4rem)',
+                color: 'var(--text-ink)',
+                lineHeight: 1.15,
+                marginBottom: '1rem',
+                letterSpacing: '-0.02em',
+              }}
+            >
+              Perspectives Across Disciplines.
             </h2>
-            <p className="lead">
-              Unordered thoughts, published essays, and field notes organized across five central inquiries.
+            <p className="lead" style={{ color: 'var(--text-deep-blue)', lineHeight: 1.65 }}>
+              Explore essays, frameworks, and practical inquiries organized by category.
             </p>
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2.5rem' }}>
-            {allArticles.map((article) => (
+            {allArticles.map((article, index) => (
               <div
                 key={article.slug}
-                className="editorial-card-pad-md"
                 style={{
-                  backgroundColor: 'var(--bg-paper-white)',
+                  backgroundColor: 'var(--bg-pure-white)',
                   border: '1px solid var(--border-subtle)',
                   borderRadius: '2px',
+                  overflow: 'hidden',
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'space-between',
+                  boxShadow: 'var(--shadow-subtle)',
                 }}
               >
-                <div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem', fontSize: '0.75rem' }}>
-                    <span style={{ color: 'var(--accent-red)', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-                      {article.category}
-                    </span>
-                    <span style={{ color: 'var(--text-light)' }}>{article.readTime}</span>
+                {/* Header Image */}
+                <div style={{ position: 'relative', width: '100%', height: '180px' }}>
+                  <img
+                    src={articleImages[index % articleImages.length]}
+                    alt={article.title}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  />
+                  <div
+                    style={{
+                      position: 'absolute',
+                      top: '0.75rem',
+                      left: '0.75rem',
+                      backgroundColor: 'rgba(17, 24, 32, 0.85)',
+                      backdropFilter: 'blur(6px)',
+                      color: '#FFFFFF',
+                      padding: '0.2rem 0.55rem',
+                      borderRadius: '2px',
+                      fontSize: '0.65rem',
+                      fontFamily: 'var(--font-mono)',
+                      letterSpacing: '0.08em',
+                    }}
+                  >
+                    {article.category}
                   </div>
-
-                  <h3 style={{ fontSize: '1.4rem', marginBottom: '0.75rem', lineHeight: '1.25' }}>
-                    <Link href={`/blog/${article.slug}`} style={{ color: 'var(--text-ink)', textDecoration: 'none' }}>
-                      {article.title}
-                    </Link>
-                  </h3>
-
-                  <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)', lineHeight: '1.7', marginBottom: '1.75rem' }}>
-                    {article.excerpt}
-                  </p>
                 </div>
 
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '1.25rem', borderTop: '1px solid var(--border-subtle)', fontSize: '0.82rem' }}>
-                  <span style={{ color: 'var(--text-light)' }}>{article.date}</span>
-                  <Link href={`/blog/${article.slug}`} className="editorial-link" style={{ fontSize: '0.82rem' }}>
-                    <span>Read Full Essay</span>
-                    <ArrowRight size={13} />
-                  </Link>
+                <div style={{ padding: '1.75rem 1.75rem 1.25rem', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                  <div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.65rem', fontSize: '0.75rem', color: 'var(--text-light)' }}>
+                      <span>{article.date}</span>
+                      <span>{article.readTime}</span>
+                    </div>
+
+                    <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.35rem', fontWeight: 650, color: 'var(--text-ink)', lineHeight: 1.25, marginBottom: '0.65rem' }}>
+                      <Link href={`/blog/${article.slug}`} style={{ color: 'inherit' }}>
+                        {article.title}
+                      </Link>
+                    </h3>
+
+                    <p style={{ fontSize: '0.92rem', color: 'var(--text-muted)', lineHeight: 1.65, marginBottom: '1.5rem' }}>
+                      {article.excerpt}
+                    </p>
+                  </div>
+
+                  <div style={{ borderTop: '1px solid var(--border-subtle)', paddingTop: '1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <span style={{ fontSize: '0.78rem', color: 'var(--text-light)' }}>
+                      By Wildmac Editorial
+                    </span>
+                    <Link href={`/blog/${article.slug}`} className="editorial-link" style={{ fontSize: '0.82rem' }}>
+                      <span>Read Essay</span>
+                      <ArrowRight size={12} />
+                    </Link>
+                  </div>
                 </div>
               </div>
             ))}
@@ -182,14 +242,10 @@ export default function BlogPage() {
         </div>
       </section>
 
-      {/* Quote */}
-      <EditorialQuote
-        quote="We write not to impress the world, but to give form to the things that would otherwise remain silent inside us."
-        attribution="Wild Mac"
-        subtitle="THE ESSAYIST’S CRAFT"
-      />
-
-      <Newsletter />
+      {/* ===================================================================
+          03 — MAJOR CONSULTATION CTA
+          =================================================================== */}
+      <MajorConsultationCTA />
     </>
   );
 }

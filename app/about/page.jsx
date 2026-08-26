@@ -1,20 +1,28 @@
 import React from 'react';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, CheckCircle2, Compass, ShieldCheck, Target, Users, BookOpen, Layers } from 'lucide-react';
 import { aboutData } from '@/data/about';
-import EditorialQuote from '@/components/EditorialQuote';
-import Newsletter from '@/components/Newsletter';
+import MajorConsultationCTA from '@/components/MajorConsultationCTA';
 
 export const metadata = {
-  title: 'About the Author',
-  description: 'Behind the books is a life of questions, experience, and perspective. The story, philosophy, and background of Wild Mac.',
+  title: 'About Wildmac — Purpose, Experience & Strategic Direction',
+  description: 'The story, vision, and multi-disciplinary leadership behind Wildmac. Built by Rodney Almeida across 25+ years of engineering, enterprise leadership, published works, and strategic advisory.',
 };
 
 export default function AboutPage() {
+  const pillars = [
+    { number: '01', title: 'Coaching', desc: 'Direct, unhurried personal and executive dialogues designed to unlock internal clarity and sustainable performance.' },
+    { number: '02', title: 'Strategy', desc: 'Translating high-level ambitions into concrete, executable roadmaps with disciplined risk mitigation.' },
+    { number: '03', title: 'Knowledge', desc: 'Distilling complex business, property, capital, and life principles into actionable frameworks and published works.' },
+    { number: '04', title: 'Experience', desc: 'Rooted in 25+ years of real-world engineering, corporate governance, multi-venture ownership, and authorial reflection.' },
+    { number: '05', title: 'People', desc: 'Centering human relationships, family sovereignty, and genuine alignment as the true measures of lasting success.' },
+    { number: '06', title: 'Growth', desc: 'Building durable, intergenerational value that survives market cycles and preserves personal peace.' },
+  ];
+
   return (
     <>
       {/* ===================================================================
-          HERO TYPE D/E: ABOUT — "THE PERSON BEHIND THE BOOKS" (MAGAZINE PROFILE)
+          01 — ABOUT HERO: PLATFORM VISION & LEADERSHIP
           =================================================================== */}
       <section
         style={{
@@ -31,66 +39,46 @@ export default function AboutPage() {
       >
         <div className="container">
           <div className="hero-grid" style={{ alignItems: 'center' }}>
-            {/* Left: Magazine Profile Headline */}
+            {/* Left: Manifesto Headline */}
             <div style={{ maxWidth: '640px' }}>
-              <div style={{ marginBottom: '1.5rem' }}>
-                <span className="editorial-stamp" style={{ letterSpacing: '0.15em' }}>
-                  WM / THE AUTHOR // BIOGRAPHY
-                </span>
+              <div style={{ marginBottom: '1.25rem' }}>
+                <span className="editorial-stamp">WILDMAC // PLATFORM ORIGINS & LEADERSHIP</span>
               </div>
 
               <h1
                 style={{
-                  marginBottom: '1.75rem',
-                  lineHeight: '1.08',
-                  fontSize: 'clamp(2.6rem, 5.2vw, 4.2rem)',
+                  marginBottom: '1.5rem',
+                  lineHeight: '1.06',
+                  fontSize: 'clamp(2.5rem, 5vw, 4.2rem)',
                   color: 'var(--text-ink)',
-                  letterSpacing: '-0.02em',
+                  letterSpacing: '-0.025em',
+                  fontFamily: 'var(--font-display)',
+                  fontWeight: 700,
                 }}
               >
-                Behind the books<br />
-                is a life of questions,<br />
-                experience, and perspective.
+                Founded on Purpose, Experience and Strategic Clarity.
               </h1>
 
               <div style={{ width: '2.5rem', height: '2px', backgroundColor: 'var(--accent-red)', marginBottom: '1.75rem' }} />
 
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2.25rem' }}>
-                <span style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: '1.25rem', color: 'var(--text-deep-blue)' }}>
-                  Founder / Wild Mac
-                </span>
-                <span style={{ color: 'var(--text-light)' }}>•</span>
-                <span style={{ fontSize: '0.85rem', color: 'var(--text-light)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
-                  TWO DECADES OF TRIAL & PRACTICE
-                </span>
-              </div>
+              <p className="lead" style={{ color: 'var(--text-deep-blue)', lineHeight: 1.65, marginBottom: '2.25rem' }}>
+                Wildmac brings together coaching, consulting, education, and published ideas to help individuals, professionals, and businesses make confident decisions and move forward with purpose.
+              </p>
 
               <div style={{ display: 'flex', gap: '1.25rem', flexWrap: 'wrap' }}>
-                <Link href="#story" className="btn btn-primary" style={{ padding: '0.9rem 1.85rem' }}>
-                  <span>Read the Author Story</span>
+                <Link href="/services" className="btn btn-primary" style={{ padding: '0.9rem 1.85rem' }}>
+                  <span>Explore Advisory Services</span>
                   <ArrowRight size={14} />
                 </Link>
-                <Link href="/books" className="btn btn-secondary" style={{ padding: '0.9rem 1.85rem' }}>
-                  <span>Explore Published Works</span>
+                <Link href="/consultation" className="btn btn-secondary" style={{ padding: '0.9rem 1.85rem' }}>
+                  <span>Book a Consultation</span>
+                  <ArrowUpRight size={14} />
                 </Link>
               </div>
             </div>
 
-            {/* Right: Oversized Authentic Portrait Spread (Breaking Grid Margins) */}
+            {/* Right: Layered Photographic Narrative (Portrait + Strategy Environment) */}
             <div style={{ position: 'relative', display: 'flex', justifyContent: 'center' }}>
-              <div
-                style={{
-                  position: 'absolute',
-                  top: '-8%',
-                  left: '-6%',
-                  width: '95%',
-                  height: '114%',
-                  backgroundColor: 'var(--bg-mist-blue)',
-                  borderRadius: '2px',
-                  zIndex: 0,
-                }}
-              />
-
               <div
                 style={{
                   position: 'relative',
@@ -100,21 +88,67 @@ export default function AboutPage() {
                   border: '1px solid var(--border-subtle)',
                   boxShadow: 'var(--shadow-book)',
                   borderRadius: '2px',
+                  maxWidth: '430px',
                   width: '100%',
-                  maxWidth: '460px',
                 }}
               >
-                <div style={{ position: 'relative', aspectRatio: '4/3', overflow: 'hidden' }}>
+                <div style={{ position: 'relative', aspectRatio: '4 / 3.2', overflow: 'hidden', borderRadius: '1px', marginBottom: '0.85rem' }}>
                   <img
                     src="/images/author-portrait.jpg"
-                    alt="Wild Mac reviewing manuscripts in private library"
+                    alt="Rodney Almeida, Founder of Wildmac"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  />
+                  <div
+                    style={{
+                      position: 'absolute',
+                      top: '0.75rem',
+                      left: '0.75rem',
+                      backgroundColor: 'rgba(17, 24, 32, 0.85)',
+                      backdropFilter: 'blur(6px)',
+                      color: '#FFFFFF',
+                      padding: '0.2rem 0.6rem',
+                      borderRadius: '2px',
+                      fontSize: '0.68rem',
+                      fontFamily: 'var(--font-mono)',
+                      letterSpacing: '0.08em',
+                    }}
+                  >
+                    FOUNDER // RODNEY ALMEIDA
+                  </div>
+                </div>
+
+                <div style={{ padding: '0.5rem 0.25rem 0.25rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.75rem', color: 'var(--text-light)', borderTop: '1px solid var(--border-subtle)' }}>
+                  <span>ELECTRICAL ENGINEER · AUTHOR · ADVISOR</span>
+                  <span style={{ color: 'var(--accent-red)', fontWeight: 600 }}>25+ YRS EXPERIENCE</span>
+                </div>
+              </div>
+
+              {/* Floating Inset: Collaborative Dialogue (Bottom Left) */}
+              <div
+                style={{
+                  position: 'absolute',
+                  bottom: '-2rem',
+                  left: '-1.5rem',
+                  zIndex: 2,
+                  backgroundColor: 'var(--bg-pure-white)',
+                  padding: '0.5rem',
+                  border: '1px solid var(--border-medium)',
+                  boxShadow: '0 16px 36px -10px rgba(17, 24, 32, 0.2)',
+                  borderRadius: '2px',
+                  width: '190px',
+                }}
+                className="hidden-mobile"
+              >
+                <div style={{ position: 'relative', width: '100%', height: '100px', overflow: 'hidden' }}>
+                  <img
+                    src="/images/community-dialogue.jpg"
+                    alt="Collaborative conversation"
                     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                   />
                 </div>
-                <div style={{ padding: '0.85rem 0.5rem 0.35rem', display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', color: 'var(--text-light)', borderTop: '1px solid var(--border-subtle)', marginTop: '0.75rem', flexWrap: 'wrap', gap: '0.5rem' }}>
-                  <span>PORTRAIT // PRIVATE STUDY</span>
-                  <span style={{ color: 'var(--accent-red)', fontWeight: 600 }}>WILD MAC ARCHIVE</span>
-                </div>
+                <span style={{ display: 'block', fontSize: '0.65rem', fontFamily: 'var(--font-mono)', color: 'var(--text-deep-blue)', fontWeight: 600, padding: '0.35rem 0.2rem 0' }}>
+                  EXPERIENCE SHARED
+                </span>
               </div>
             </div>
           </div>
@@ -122,127 +156,59 @@ export default function AboutPage() {
       </section>
 
       {/* ===================================================================
-          AUTHOR STORY & ESSAY
+          02 — THE 6 BRAND PILLARS OF WILDMAC
           =================================================================== */}
-      <section id="story" className="section-py-lg" style={{ borderBottom: '1px solid var(--border-subtle)', backgroundColor: 'var(--bg-pure-white)' }}>
-        <div className="container-narrow">
-          <div style={{ maxWidth: '680px', margin: '0 auto' }}>
-            <div style={{ marginBottom: '1.25rem' }}>
-              <span className="editorial-stamp">THE WRITER’S DISCIPLINE</span>
-            </div>
-
-            <h2 style={{ fontSize: 'clamp(2rem, 3.5vw, 2.75rem)', marginBottom: '2rem', color: 'var(--text-ink)', lineHeight: '1.2' }}>
-              A life lived through questions.
-            </h2>
-
-            {aboutData.biography.map((paragraph, idx) => (
-              <p key={idx} style={{ fontSize: '1.12rem', lineHeight: '1.85', color: 'var(--text-deep-blue)', marginBottom: '1.75rem' }}>
-                {paragraph}
-              </p>
-            ))}
-
-            <div style={{ marginTop: '3rem', paddingTop: '2rem', borderTop: '1px solid var(--border-subtle)', display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
-              <Link href="/books" className="btn btn-primary">
-                <span>Examine the Published Volumes</span>
-                <ArrowRight size={14} />
-              </Link>
-              <Link href="/consultation" className="btn btn-secondary">
-                <span>Book an Advisory Dialogue</span>
-                <ArrowRight size={14} />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ===================================================================
-          FOUNDER QUOTE SPREAD
-          =================================================================== */}
-      <EditorialQuote
-        quote={aboutData.founderMessage}
-        attribution={aboutData.founderAttribution}
-        subtitle="THE CORE COMMITMENT"
-      />
-
-      {/* ===================================================================
-          PHILOSOPHY PILLARS
-          =================================================================== */}
-      <section className="section-py-lg" style={{ borderBottom: '1px solid var(--border-subtle)', backgroundColor: 'var(--bg-paper-white)' }}>
+      <section className="section-py" style={{ backgroundColor: 'var(--bg-pure-white)', borderBottom: '1px solid var(--border-subtle)' }}>
         <div className="container">
           <div style={{ maxWidth: '640px', marginBottom: '3.5rem' }}>
-            <span className="editorial-stamp" style={{ marginBottom: '0.75rem' }}>THE WILD MAC MANIFESTO</span>
-            <h2 style={{ color: 'var(--text-ink)', marginBottom: '1rem' }}>
-              Principles that guide our thinking.
+            <div style={{ marginBottom: '1rem' }}>
+              <span className="editorial-stamp">THE WILDMAC ECOSYSTEM</span>
+            </div>
+            <h2
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: 'clamp(2.2rem, 4vw, 3.4rem)',
+                color: 'var(--text-ink)',
+                lineHeight: 1.15,
+                marginBottom: '1rem',
+                letterSpacing: '-0.02em',
+              }}
+            >
+              Built Across Six Connected Pillars.
             </h2>
-            <p className="lead">
-              These tenets inform every chapter we publish, every advisory session we conduct, and every project we undertake.
+            <p className="lead" style={{ color: 'var(--text-deep-blue)', lineHeight: 1.65 }}>
+              Wildmac operates at the intersection of practical business execution and human purpose.
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '2rem' }}>
-            {aboutData.philosophyPillars.map((pillar) => (
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
+            {pillars.map((p) => (
               <div
-                key={pillar.number}
+                key={p.number}
                 style={{
-                  backgroundColor: 'var(--bg-pure-white)',
+                  backgroundColor: 'var(--bg-paper-white)',
                   border: '1px solid var(--border-subtle)',
-                  padding: '2.25rem 1.75rem',
                   borderRadius: '2px',
-                }}
-              >
-                <span className="chapter-number" style={{ display: 'block', marginBottom: '1rem' }}>
-                  {pillar.number}
-                </span>
-                <h3 style={{ fontSize: '1.35rem', marginBottom: '0.75rem', color: 'var(--text-ink)' }}>
-                  {pillar.title}
-                </h3>
-                <div style={{ width: '2rem', height: '1px', backgroundColor: 'var(--border-subtle)', marginBottom: '1rem' }} />
-                <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)', lineHeight: '1.65' }}>
-                  {pillar.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ===================================================================
-          TIMELINE OF EXPERIENCE
-          =================================================================== */}
-      <section className="section-py-lg" style={{ backgroundColor: 'var(--bg-ice-blue)', borderBottom: '1px solid var(--border-subtle)' }}>
-        <div className="container-narrow">
-          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-            <span className="editorial-stamp" style={{ marginBottom: '0.75rem' }}>CHRONOLOGY</span>
-            <h2 style={{ color: 'var(--text-ink)' }}>The Arc of Experience</h2>
-            <p style={{ maxWidth: '520px', margin: '0 auto', marginTop: '0.75rem' }}>
-              How decades of trial, business ownership, and reflection distilled into a unified body of work.
-            </p>
-          </div>
-
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-            {aboutData.timelineMilestones.map((milestone, idx) => (
-              <div
-                key={idx}
-                className="timeline-grid"
-                style={{
-                  backgroundColor: 'var(--bg-pure-white)',
-                  border: '1px solid var(--border-subtle)',
-                  padding: '1.75rem 2rem',
-                  borderRadius: '2px',
-                  alignItems: 'flex-start',
+                  padding: '2.25rem 2rem',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
                 }}
               >
                 <div>
-                  <span style={{ fontSize: '0.75rem', fontFamily: 'var(--font-mono)', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--accent-red)' }}>
-                    {milestone.period}
-                  </span>
-                  <h4 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.25rem', marginTop: '0.25rem', color: 'var(--text-ink)' }}>
-                    {milestone.title}
-                  </h4>
-                </div>
-                <div>
-                  <p style={{ fontSize: '0.98rem', color: 'var(--text-muted)', lineHeight: '1.7', margin: 0 }}>
-                    {milestone.description}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1.25rem' }}>
+                    <span style={{ width: '4px', height: '4px', backgroundColor: 'var(--accent-red)', borderRadius: '50%' }} />
+                    <span style={{ fontFamily: 'var(--font-display)', fontSize: '0.85rem', fontWeight: 700, color: 'var(--accent-red)' }}>
+                      {p.number}
+                    </span>
+                  </div>
+
+                  <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.45rem', fontWeight: 650, color: 'var(--text-ink)', marginBottom: '0.75rem' }}>
+                    {p.title}
+                  </h3>
+
+                  <p style={{ fontSize: '0.94rem', color: 'var(--text-muted)', lineHeight: 1.7, margin: 0 }}>
+                    {p.desc}
                   </p>
                 </div>
               </div>
@@ -251,8 +217,110 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Newsletter */}
-      <Newsletter />
+      {/* ===================================================================
+          03 — FOUNDER CREDIBILITY & PHILOSOPHY
+          =================================================================== */}
+      <section className="section-py-lg" style={{ backgroundColor: 'var(--bg-ice-blue)', borderBottom: '1px solid var(--border-subtle)' }}>
+        <div className="container">
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'minmax(0, 1.25fr) minmax(0, 1fr)',
+              gap: '4.5rem',
+              alignItems: 'center',
+            }}
+            className="about-split-grid"
+          >
+            {/* Left: Biography Narrative */}
+            <div>
+              <div style={{ marginBottom: '1.25rem' }}>
+                <span className="editorial-stamp">THE FOUNDER’S JOURNEY</span>
+              </div>
+
+              <h2
+                style={{
+                  fontFamily: 'var(--font-display)',
+                  fontSize: 'clamp(2.2rem, 4vw, 3.4rem)',
+                  color: 'var(--text-ink)',
+                  lineHeight: 1.15,
+                  marginBottom: '1.5rem',
+                  letterSpacing: '-0.02em',
+                }}
+              >
+                25 Years of Engineering, Enterprise and Reflection.
+              </h2>
+
+              <div style={{ padding: '1.25rem 1.5rem', backgroundColor: 'var(--bg-pure-white)', borderLeft: '3px solid var(--accent-red)', marginBottom: '1.75rem', borderRadius: '0 2px 2px 0' }}>
+                <p style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: '1.25rem', color: 'var(--text-ink)', margin: 0, lineHeight: 1.5 }}>
+                  “Experience creates perspective. Perspective becomes useful when shared.”
+                </p>
+              </div>
+
+              <p style={{ fontSize: '1.02rem', lineHeight: 1.8, color: 'var(--text-deep-blue)', marginBottom: '1.25rem' }}>
+                Wildmac was founded by Rodney Almeida, an Electrical Engineering graduate whose career spans over two decades of high-stakes corporate management, entrepreneurial ventures, and deep personal study.
+              </p>
+
+              <p style={{ fontSize: '1.02rem', lineHeight: 1.8, color: 'var(--text-muted)', marginBottom: '1.5rem' }}>
+                Having authored four published books exploring fatherhood, purpose, financial awareness, and decision-making, Rodney established Wildmac to bridge high-leverage commercial strategy with deep human purpose.
+              </p>
+
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', flexWrap: 'wrap' }}>
+                <Link href="/books" className="editorial-link">
+                  <span>Explore Published Books</span>
+                  <ArrowRight size={14} />
+                </Link>
+                <Link href="/consultation" className="editorial-link">
+                  <span>Schedule Advisory Discussion</span>
+                  <ArrowRight size={14} />
+                </Link>
+              </div>
+            </div>
+
+            {/* Right: Strategy & Manuscript Still Life */}
+            <div style={{ position: 'relative' }}>
+              <div
+                style={{
+                  backgroundColor: 'var(--bg-pure-white)',
+                  padding: '0.75rem',
+                  border: '1px solid var(--border-subtle)',
+                  borderRadius: '2px',
+                  boxShadow: 'var(--shadow-book)',
+                }}
+              >
+                <div style={{ position: 'relative', aspectRatio: '4/3', overflow: 'hidden', borderRadius: '1px' }}>
+                  <img
+                    src="/images/author-workspace.jpg"
+                    alt="Strategic desk still life with manuscripts and planning tools"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  />
+                  <div
+                    style={{
+                      position: 'absolute',
+                      bottom: '0.75rem',
+                      left: '0.75rem',
+                      backgroundColor: 'rgba(17, 24, 32, 0.85)',
+                      backdropFilter: 'blur(6px)',
+                      color: '#FFFFFF',
+                      padding: '0.2rem 0.6rem',
+                      borderRadius: '2px',
+                      fontSize: '0.68rem',
+                      fontFamily: 'var(--font-mono)',
+                      letterSpacing: '0.08em',
+                    }}
+                  >
+                    WM // THE WRITING DESK & MANUSCRIPTS
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===================================================================
+          04 — MAJOR CONSULTATION CTA
+          =================================================================== */}
+      <MajorConsultationCTA />
     </>
   );
 }

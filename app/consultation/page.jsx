@@ -2,10 +2,8 @@
 
 import React, { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { ArrowDown, Clock, ShieldCheck, UserCheck } from 'lucide-react';
+import { ArrowDown, Clock, ShieldCheck, MessageSquare, ArrowRight } from 'lucide-react';
 import ConsultationFlow from '@/components/ConsultationFlow';
-import EditorialQuote from '@/components/EditorialQuote';
-import Newsletter from '@/components/Newsletter';
 
 function ConsultationContent() {
   const searchParams = useSearchParams();
@@ -14,144 +12,116 @@ function ConsultationContent() {
   return (
     <>
       {/* ===================================================================
-          HERO TYPE B: CONSULTATION — "THE CONVERSATION" (DEEP NAVY HERO)
+          01 — CONSULTATION HERO: DEEP NAVY HIGH-CONTRAST
           =================================================================== */}
       <section
         style={{
           backgroundColor: 'var(--text-ink)',
           color: '#FAFAF7',
           borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
-          minHeight: '80vh',
+          minHeight: '75vh',
           display: 'flex',
           alignItems: 'center',
           paddingTop: '4rem',
-          paddingBottom: '4.5rem',
+          paddingBottom: '4rem',
           position: 'relative',
         }}
       >
         <div className="container">
-          <div style={{ maxWidth: '820px', margin: '0 auto', textAlign: 'center' }}>
-            <div style={{ marginBottom: '1.75rem' }}>
+          <div style={{ maxWidth: '780px', margin: '0 auto', textAlign: 'center' }}>
+            <div style={{ marginBottom: '1.25rem' }}>
               <span style={{ fontSize: '0.75rem', fontFamily: 'var(--font-mono)', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#BFDCEB' }}>
-                WM / THE CONSULTATION // ADVISORY PRACTICE
+                WILDMAC // STRATEGIC INTAKE & CONSULTATION
               </span>
             </div>
 
             <h1
               style={{
                 fontFamily: 'var(--font-display)',
-                fontSize: 'clamp(2.6rem, 5.5vw, 4.4rem)',
+                fontSize: 'clamp(2.5rem, 5.2vw, 4.2rem)',
+                fontWeight: 700,
                 color: '#FFFFFF',
                 lineHeight: '1.08',
                 letterSpacing: '-0.025em',
-                marginBottom: '1.75rem',
+                marginBottom: '1.5rem',
               }}
             >
-              Some conversations<br />
-              change the direction<br />
-              of a life.
+              Ready to Move Forward with Greater Clarity?
             </h1>
 
-            <div style={{ width: '3rem', height: '2px', backgroundColor: 'var(--accent-red)', margin: '0 auto 2rem auto' }} />
+            <div style={{ width: '2.5rem', height: '2px', backgroundColor: 'var(--accent-red)', margin: '0 auto 1.75rem auto' }} />
 
             <p
               style={{
-                fontFamily: 'var(--font-serif)',
-                fontStyle: 'italic',
-                fontSize: 'clamp(1.15rem, 2vw, 1.35rem)',
-                color: '#DCECF4',
+                fontSize: 'clamp(1.05rem, 1.8vw, 1.22rem)',
+                color: '#D7E8F1',
                 lineHeight: '1.65',
-                marginBottom: '3rem',
-                maxWidth: '680px',
-                margin: '0 auto 3rem auto',
+                marginBottom: '2.5rem',
               }}
             >
-              “When you are ready to examine your decisions with unvarnished clarity, book a confidential session directly with Wild Mac.”
+              Direct, unhurried advisory dialogues tailored to your business crossroads, personal growth, real estate positioning, investment education, or brand strategy.
             </p>
 
-            <a
-              href="#booking-stage"
-              className="btn btn-primary"
-              style={{
-                backgroundColor: '#FFFFFF',
-                color: 'var(--text-ink)',
-                borderColor: '#FFFFFF',
-                padding: '1rem 2.25rem',
-                fontSize: '0.95rem',
-                gap: '0.65rem',
-              }}
-            >
-              <span>Begin Confidential Booking</span>
-              <ArrowDown size={15} />
-            </a>
+            {/* Credibility Badges */}
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '2.5rem', flexWrap: 'wrap', fontSize: '0.85rem', color: '#BFDCEB', fontFamily: 'var(--font-mono)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <Clock size={16} color="var(--accent-red)" />
+                <span>45–60 MINUTE SESSION</span>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <ShieldCheck size={16} color="var(--accent-red)" />
+                <span>CONFIDENTIAL PRACTICE</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* ===================================================================
-          BOOKING FLOW STAGE
+          02 — 3-STEP CONSULTATION FLOW CONTAINER
           =================================================================== */}
-      <section id="booking-stage" className="section-py-lg" style={{ backgroundColor: 'var(--bg-paper-white)', borderBottom: '1px solid var(--border-subtle)' }}>
-        <div className="container-narrow">
-          <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
-            <div style={{ marginBottom: '1rem' }}>
-              <span className="editorial-stamp">SESSION RESERVATION</span>
-            </div>
-            <h2 style={{ fontSize: 'clamp(2.1rem, 3.8vw, 3rem)', color: 'var(--text-ink)', marginBottom: '1rem' }}>
-              Schedule Your Dialogue
+      <section className="section-py-lg" style={{ backgroundColor: 'var(--bg-paper-white)', borderBottom: '1px solid var(--border-subtle)' }}>
+        <div className="container">
+          <div style={{ maxWidth: '640px', margin: '0 auto 3rem auto', textAlign: 'center' }}>
+            <span className="editorial-stamp">RESERVATION PORTAL</span>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '2.2rem', fontWeight: 700, color: 'var(--text-ink)', marginTop: '0.5rem' }}>
+              Request Your Consultation Window
             </h2>
-            <p className="lead" style={{ maxWidth: '580px', margin: '0 auto' }}>
-              Complete the 3-step intake below. All discussions are strictly private and held via secure video call.
+            <p style={{ color: 'var(--text-muted)', fontSize: '1rem', marginTop: '0.5rem' }}>
+              Complete the three-step intake below to reserve your strategic session.
             </p>
           </div>
 
-          {/* Interactive Intake Module */}
           <ConsultationFlow preselectedServiceId={preselectedService} />
 
-          {/* Trust Guarantees */}
-          <div style={{ marginTop: '3.5rem', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '2rem', borderTop: '1px solid var(--border-subtle)', paddingTop: '2.5rem' }}>
-            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.85rem' }}>
-              <ShieldCheck size={20} color="var(--accent-red)" style={{ flexShrink: 0, marginTop: '0.2rem' }} />
-              <div>
-                <span style={{ display: 'block', fontWeight: 600, fontSize: '0.9rem', color: 'var(--text-ink)', marginBottom: '0.25rem' }}>Confidentiality Guaranteed</span>
-                <span style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>Strict nondisclosure standard applied to all conversations.</span>
-              </div>
-            </div>
-
-            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.85rem' }}>
-              <UserCheck size={20} color="var(--accent-red)" style={{ flexShrink: 0, marginTop: '0.2rem' }} />
-              <div>
-                <span style={{ display: 'block', fontWeight: 600, fontSize: '0.9rem', color: 'var(--text-ink)', marginBottom: '0.25rem' }}>Direct Author Dialogue</span>
-                <span style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>You will speak directly with Wild Mac, not an associate.</span>
-              </div>
-            </div>
-
-            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.85rem' }}>
-              <Clock size={20} color="var(--accent-red)" style={{ flexShrink: 0, marginTop: '0.2rem' }} />
-              <div>
-                <span style={{ display: 'block', fontWeight: 600, fontSize: '0.9rem', color: 'var(--text-ink)', marginBottom: '0.25rem' }}>Unhurried Time</span>
-                <span style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>Sessions are structured to allow genuine depth and conclusion.</span>
-              </div>
-            </div>
+          {/* Alternative WhatsApp Direct Option */}
+          <div style={{ maxWidth: '640px', margin: '3.5rem auto 0 auto', textAlign: 'center', padding: '1.75rem', backgroundColor: 'var(--bg-ice-blue)', border: '1px solid var(--border-subtle)', borderRadius: '2px' }}>
+            <span style={{ fontSize: '0.75rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)', letterSpacing: '0.08em', textTransform: 'uppercase', display: 'block', marginBottom: '0.4rem' }}>
+              PREFER IMMEDIATE CORRESPONDENCE?
+            </span>
+            <p style={{ fontSize: '0.95rem', color: 'var(--text-deep-blue)', marginBottom: '1.25rem' }}>
+              You can connect directly with our strategic desk via WhatsApp for quick questions or preliminary inquiries.
+            </p>
+            <a
+              href="https://wa.me/?text=Hello%20Wildmac%20Team,%20I%20would%20like%20to%20inquire%20about%20a%20consultation."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-secondary"
+              style={{ backgroundColor: 'var(--bg-pure-white)', gap: '0.5rem' }}
+            >
+              <MessageSquare size={15} color="var(--accent-red)" />
+              <span>Chat on WhatsApp Direct</span>
+            </a>
           </div>
         </div>
       </section>
-
-      {/* Quote */}
-      <EditorialQuote
-        quote="A single conversation with the right person at the right moment can save years of misdirected effort."
-        attribution="Wild Mac"
-        subtitle="THE VALUE OF PERSPECTIVE"
-      />
-
-      <Newsletter />
     </>
   );
 }
 
 export default function ConsultationPage() {
   return (
-    <Suspense fallback={<div className="section-py text-center">Loading consultation room...</div>}>
+    <Suspense fallback={<div className="container section-py" style={{ textAlign: 'center' }}>Loading Consultation Portal...</div>}>
       <ConsultationContent />
     </Suspense>
   );

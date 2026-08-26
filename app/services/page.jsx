@@ -2,29 +2,28 @@ import React from 'react';
 import Link from 'next/link';
 import { ArrowRight, ArrowUpRight, CheckCircle2 } from 'lucide-react';
 import { servicesData } from '@/data/services';
-import EditorialQuote from '@/components/EditorialQuote';
-import Newsletter from '@/components/Newsletter';
+import MajorConsultationCTA from '@/components/MajorConsultationCTA';
 
 export const metadata = {
-  title: 'Services & Advisory Modules',
-  description: 'Experience becomes useful when it is shared. High-level advisory across business, life coaching, real estate, investment mindset, and brand presence.',
+  title: 'Advisory Practice & Modules — Wildmac',
+  description: 'Practical, high-judgment coaching, strategic guidance, and education across business, personal growth, real estate, investment education, and branding.',
 };
 
 export default function ServicesPage() {
   return (
     <>
       {/* ===================================================================
-          HERO: SERVICES — "EXPERIENCE BECOMES USEFUL WHEN IT IS SHARED"
+          01 — SERVICES HERO: SCOPE OF ADVISORY PRACTICE
           =================================================================== */}
       <section
         style={{
           borderBottom: '1px solid var(--border-subtle)',
           backgroundColor: 'var(--bg-paper-white)',
-          minHeight: '82vh',
+          minHeight: '75vh',
           display: 'flex',
           alignItems: 'center',
           paddingTop: '3.5rem',
-          paddingBottom: '4rem',
+          paddingBottom: '3.5rem',
           position: 'relative',
           overflow: 'hidden',
         }}
@@ -32,35 +31,33 @@ export default function ServicesPage() {
         <div className="container">
           <div className="hero-grid" style={{ alignItems: 'center' }}>
             {/* Left: Statement & Action */}
-            <div style={{ maxWidth: '620px' }}>
-              <div style={{ marginBottom: '1.5rem' }}>
-                <span className="editorial-stamp" style={{ letterSpacing: '0.15em' }}>
-                  WM / EXPERIENCE → ACTION // ADVISORY PRACTICE
-                </span>
+            <div style={{ maxWidth: '640px' }}>
+              <div style={{ marginBottom: '1.25rem' }}>
+                <span className="editorial-stamp">WILDMAC // SCOPE OF ADVISORY PRACTICE</span>
               </div>
 
               <h1
                 style={{
-                  marginBottom: '1.75rem',
-                  lineHeight: '1.08',
-                  fontSize: 'clamp(2.6rem, 5.2vw, 4.2rem)',
+                  marginBottom: '1.5rem',
+                  lineHeight: '1.06',
+                  fontSize: 'clamp(2.5rem, 5vw, 4.2rem)',
                   color: 'var(--text-ink)',
-                  letterSpacing: '-0.02em',
+                  letterSpacing: '-0.025em',
+                  fontFamily: 'var(--font-display)',
+                  fontWeight: 700,
                 }}
               >
-                Experience becomes<br />
-                useful when it is<br />
-                shared.
+                Solutions Designed for Personal and Professional Growth.
               </h1>
 
               <div style={{ width: '2.5rem', height: '2px', backgroundColor: 'var(--accent-red)', marginBottom: '1.75rem' }} />
 
-              <p className="lead" style={{ fontSize: '1.2rem', color: 'var(--text-deep-blue)', marginBottom: '1.25rem', lineHeight: '1.65' }}>
-                Thoughtful, unhurried dialogues around business decisions, personal direction, real estate positioning, and wealth mindset.
+              <p className="lead" style={{ fontSize: '1.18rem', color: 'var(--text-deep-blue)', marginBottom: '1.25rem', lineHeight: 1.65 }}>
+                Thoughtful, unhurried dialogues around business decisions, personal growth, real estate positioning, investment education, and brand architecture.
               </p>
 
-              <p style={{ fontSize: '0.98rem', color: 'var(--text-muted)', lineHeight: '1.75', marginBottom: '2.25rem' }}>
-                Every consultation is conducted directly with the author, offering confidential, high-judgment clarity tailored to your specific circumstances.
+              <p style={{ fontSize: '1rem', color: 'var(--text-muted)', lineHeight: 1.75, marginBottom: '2.25rem' }}>
+                Every consultation is conducted directly with high-judgment clarity tailored to your unique objectives, constraints, and decision horizons.
               </p>
 
               <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', flexWrap: 'wrap' }}>
@@ -69,7 +66,7 @@ export default function ServicesPage() {
                   <ArrowRight size={15} />
                 </Link>
                 <a href="#modules" className="editorial-link">
-                  <span>Explore the 5 Advisory Chapters</span>
+                  <span>Explore the 5 Advisory Disciplines</span>
                   <ArrowRight size={14} />
                 </a>
               </div>
@@ -79,23 +76,23 @@ export default function ServicesPage() {
             <div style={{ position: 'relative', display: 'flex', justifyContent: 'center' }}>
               <div
                 style={{
-                  backgroundColor: 'var(--bg-ice-blue)',
+                  backgroundColor: 'var(--bg-pure-white)',
                   border: '1px solid var(--border-medium)',
-                  padding: '2.5rem 2rem',
+                  padding: '2.25rem 2rem',
                   borderRadius: '2px',
                   width: '100%',
                   maxWidth: '440px',
                   boxShadow: 'var(--shadow-subtle)',
                 }}
               >
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', borderBottom: '1px solid var(--border-subtle)', paddingBottom: '1rem' }}>
-                  <span className="editorial-stamp">WM / SCOPE OF PRACTICE</span>
-                  <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.6rem', color: 'var(--accent-red)', fontWeight: 600 }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem', borderBottom: '1px solid var(--border-subtle)', paddingBottom: '0.85rem' }}>
+                  <span className="editorial-stamp">5 ADVISORY DISCIPLINES</span>
+                  <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.4rem', color: 'var(--accent-red)', fontWeight: 700 }}>
                     05
                   </span>
                 </div>
 
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                   {servicesData.map((s) => (
                     <a
                       key={s.id}
@@ -104,23 +101,23 @@ export default function ServicesPage() {
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'space-between',
-                        padding: '0.85rem 1rem',
-                        backgroundColor: 'var(--bg-pure-white)',
-                        border: '1px solid var(--border-subtle)',
+                        padding: '0.75rem 1rem',
+                        backgroundColor: 'var(--bg-paper-white)',
                         borderRadius: '2px',
-                        transition: 'all var(--transition-fast)',
+                        border: '1px solid var(--border-subtle)',
                         textDecoration: 'none',
+                        transition: 'all var(--transition-fast)',
                       }}
                     >
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
-                        <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', color: 'var(--accent-red)', fontWeight: 600 }}>
+                      <div>
+                        <span style={{ display: 'block', fontSize: '0.68rem', fontFamily: 'var(--font-mono)', color: 'var(--accent-red)', fontWeight: 700 }}>
                           {s.number}
                         </span>
-                        <span style={{ fontFamily: 'var(--font-serif)', fontSize: '1.15rem', color: 'var(--text-ink)', fontWeight: 600 }}>
+                        <span style={{ fontFamily: 'var(--font-display)', fontSize: '1rem', fontWeight: 650, color: 'var(--text-ink)' }}>
                           {s.title}
                         </span>
                       </div>
-                      <ArrowRight size={13} color="var(--text-light)" />
+                      <ArrowRight size={14} color="var(--text-deep-blue)" />
                     </a>
                   ))}
                 </div>
@@ -131,12 +128,33 @@ export default function ServicesPage() {
       </section>
 
       {/* ===================================================================
-          SERVICES DETAILED MODULES (EDITORIAL CHAPTER MONOGRAPHS)
+          02 — FIVE COMPREHENSIVE SERVICE MONOGRAPHS
           =================================================================== */}
-      <section id="modules" className="section-py-lg" style={{ borderBottom: '1px solid var(--border-subtle)', backgroundColor: 'var(--bg-paper-white)' }}>
+      <section id="modules" className="section-py-lg" style={{ backgroundColor: 'var(--bg-ice-blue)', borderBottom: '1px solid var(--border-subtle)' }}>
         <div className="container">
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '4.5rem' }}>
-            {servicesData.map((service, index) => (
+          <div style={{ maxWidth: '640px', marginBottom: '4rem' }}>
+            <div style={{ marginBottom: '1rem' }}>
+              <span className="editorial-stamp">DETAILED ADVISORY MODULES</span>
+            </div>
+            <h2
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: 'clamp(2.2rem, 4vw, 3.4rem)',
+                color: 'var(--text-ink)',
+                lineHeight: 1.15,
+                marginBottom: '1rem',
+                letterSpacing: '-0.02em',
+              }}
+            >
+              Tailored Guidance Across Critical Growth Areas.
+            </h2>
+            <p className="lead" style={{ color: 'var(--text-deep-blue)', lineHeight: 1.65 }}>
+              Each practice area is structured as a dedicated engagement format designed to deliver actionable clarity.
+            </p>
+          </div>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '3.5rem' }}>
+            {servicesData.map((service) => (
               <div
                 key={service.id}
                 id={service.id}
@@ -148,17 +166,17 @@ export default function ServicesPage() {
                   overflow: 'hidden',
                 }}
               >
-                {/* 2-Column Split: Visual Storytelling Photograph & Core Details */}
+                {/* 2-Column Split: Photography & Details */}
                 <div
                   style={{
                     display: 'grid',
-                    gridTemplateColumns: 'minmax(0, 1.05fr) minmax(0, 1.15fr)',
+                    gridTemplateColumns: 'minmax(0, 1.05fr) minmax(0, 1.2fr)',
                     alignItems: 'stretch',
                   }}
                   className="services-detail-grid"
                 >
                   {/* Left Column: Authentic Editorial Photograph */}
-                  <div style={{ position: 'relative', minHeight: '340px', backgroundColor: 'var(--bg-mist-blue)' }}>
+                  <div style={{ position: 'relative', minHeight: '340px', backgroundColor: 'var(--text-deep-blue)' }}>
                     <img
                       src={service.image}
                       alt={service.title}
@@ -174,10 +192,10 @@ export default function ServicesPage() {
                         position: 'absolute',
                         top: '1.25rem',
                         left: '1.25rem',
-                        backgroundColor: 'rgba(18, 26, 34, 0.82)',
+                        backgroundColor: 'rgba(17, 24, 32, 0.85)',
                         backdropFilter: 'blur(6px)',
-                        color: '#fff',
-                        padding: '0.35rem 0.85rem',
+                        color: '#FFFFFF',
+                        padding: '0.3rem 0.75rem',
                         borderRadius: '2px',
                         fontSize: '0.72rem',
                         fontFamily: 'var(--font-mono)',
@@ -185,7 +203,7 @@ export default function ServicesPage() {
                         letterSpacing: '0.1em',
                       }}
                     >
-                      CHAPTER {service.number}
+                      DISCIPLINE {service.number}
                     </div>
                   </div>
 
@@ -209,6 +227,7 @@ export default function ServicesPage() {
                         style={{
                           fontFamily: 'var(--font-display)',
                           fontSize: 'clamp(2rem, 3.5vw, 2.75rem)',
+                          fontWeight: 700,
                           color: 'var(--text-ink)',
                           lineHeight: 1.15,
                           marginBottom: '0.75rem',
@@ -218,7 +237,7 @@ export default function ServicesPage() {
                         {service.title}
                       </h2>
 
-                      <p style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: '1.15rem', color: 'var(--text-deep-blue)', marginBottom: '1.5rem', lineHeight: 1.5 }}>
+                      <p style={{ fontSize: '1.08rem', color: 'var(--text-deep-blue)', fontWeight: 500, marginBottom: '1.5rem', lineHeight: 1.5 }}>
                         {service.subtitle}
                       </p>
 
@@ -255,7 +274,7 @@ export default function ServicesPage() {
                     {/* Footer Action */}
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid var(--border-subtle)', paddingTop: '1.5rem', flexWrap: 'wrap', gap: '1rem' }}>
                       <span style={{ fontSize: '0.82rem', color: 'var(--text-light)' }}>
-                        Direct dialogue with Wild Mac
+                        Confidential strategic dialogue
                       </span>
                       <Link
                         href={`/consultation?service=${service.id}`}
@@ -274,14 +293,10 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Quote */}
-      <EditorialQuote
-        quote="The best advice does not tell you what to do. It helps you see clearly what you already know you must do."
-        attribution="Wild Mac"
-        subtitle="THE ADVISORY STANCE"
-      />
-
-      <Newsletter />
+      {/* ===================================================================
+          03 — MAJOR CONSULTATION CTA
+          =================================================================== */}
+      <MajorConsultationCTA />
     </>
   );
 }
