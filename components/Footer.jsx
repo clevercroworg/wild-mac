@@ -62,9 +62,11 @@ export default function Footer() {
               <li><Link href="/about">About Wildmac</Link></li>
               <li><Link href="/services">Services & Modules</Link></li>
               <li><Link href="/books">Books & Publications</Link></li>
+              <li><Link href="/collaboration">Collaborations</Link></li>
+              <li><Link href="/donate" style={{ color: 'var(--accent-red)', fontWeight: 500 }}>Donate & Social Impact ♡</Link></li>
+              <li><Link href="/careers">Careers at Wildmac</Link></li>
               <li><Link href="/blog">Wildmac Insights</Link></li>
-              <li><Link href="/#resources">Knowledge Resources</Link></li>
-              <li><Link href="/contact">Contact</Link></li>
+              <li><Link href="/contact">Contact Direct Desk</Link></li>
             </ul>
           </div>
 
@@ -167,9 +169,11 @@ export default function Footer() {
                 <li><Link href="/about">About Wildmac</Link></li>
                 <li><Link href="/services">Services & Modules</Link></li>
                 <li><Link href="/books">Books & Publications</Link></li>
+                <li><Link href="/collaboration">Collaborations</Link></li>
+                <li><Link href="/donate" style={{ color: 'var(--accent-red)', fontWeight: 500 }}>Donate & Social Impact ♡</Link></li>
+                <li><Link href="/careers">Careers at Wildmac</Link></li>
                 <li><Link href="/blog">Wildmac Insights</Link></li>
-                <li><Link href="/#resources">Knowledge Resources</Link></li>
-                <li><Link href="/contact">Contact</Link></li>
+                <li><Link href="/contact">Contact Direct Desk</Link></li>
               </ul>
             )}
           </div>

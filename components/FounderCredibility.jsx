@@ -48,9 +48,9 @@ export default function FounderCredibility() {
             >
               <div style={{ position: 'relative', aspectRatio: '4 / 3.4', overflow: 'hidden', borderRadius: '1px' }}>
                 <img
-                  src="/images/author-portrait.jpg"
+                  src="/images/author.jpeg"
                   alt="Rodney Almeida, Founder of Wildmac"
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 20%' }}
                 />
                 <div
                   style={{

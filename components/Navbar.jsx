@@ -63,8 +63,9 @@ export default function Navbar() {
     { name: 'Services', href: '/services', isDropdown: true, num: '03' },
     { name: 'Books', href: '/books', num: '04' },
     { name: 'Blog', href: '/blog', num: '05' },
-    { name: 'Resources', href: '/#resources', num: '06' },
-    { name: 'Contact', href: '/contact', num: '07' },
+    { name: 'Collaborate', href: '/collaboration', num: '06' },
+    { name: 'Donate', href: '/donate', num: '07', isHighlight: true },
+    { name: 'Contact', href: '/contact', num: '08' },
   ];
 
   return (

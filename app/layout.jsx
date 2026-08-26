@@ -4,6 +4,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import CustomCursor from '@/components/CustomCursor';
 import AnimationProvider from '@/components/AnimationProvider';
+import StickyWhatsApp from '@/components/StickyWhatsApp';
 
 const sora = Sora({
   subsets: ['latin'],
@@ -62,6 +63,7 @@ export default function RootLayout({ children }) {
         <Navbar />
         <main>{children}</main>
         <Footer />
+        <StickyWhatsApp />
       </body>
     </html>
   );
