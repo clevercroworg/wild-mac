@@ -47,11 +47,8 @@ export default function CollaborationPage() {
         style={{
           borderBottom: '1px solid var(--border-subtle)',
           backgroundColor: 'var(--bg-paper-white)',
-          minHeight: '82vh',
-          display: 'flex',
-          alignItems: 'center',
-          paddingTop: '5rem',
-          paddingBottom: '5rem',
+          paddingTop: '3.5rem',
+          paddingBottom: '3.25rem',
           position: 'relative',
           overflow: 'hidden',
         }}
@@ -86,17 +83,17 @@ export default function CollaborationPage() {
 
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div style={{ maxWidth: '780px' }}>
-            <div style={{ marginBottom: '1.25rem' }}>
+            <div style={{ marginBottom: '1rem' }}>
               <span className="editorial-stamp">GLOBAL PARTNERSHIPS & ALLIANCES</span>
             </div>
 
             <h1
               style={{
                 fontFamily: 'var(--font-display)',
-                fontSize: 'clamp(2.5rem, 5.5vw, 4.4rem)',
+                fontSize: 'clamp(2.3rem, 4.5vw, 3.8rem)',
                 color: 'var(--text-ink)',
-                lineHeight: 1.08,
-                marginBottom: '1.5rem',
+                lineHeight: 1.1,
+                marginBottom: '1rem',
                 letterSpacing: '-0.025em',
                 fontWeight: 700,
               }}
@@ -104,14 +101,14 @@ export default function CollaborationPage() {
               National & International Collaborations.
             </h1>
 
-            <div style={{ width: '2.5rem', height: '2px', backgroundColor: 'var(--accent-red)', marginBottom: '1.75rem' }} />
+            <div style={{ width: '2.5rem', height: '2px', backgroundColor: 'var(--accent-red)', marginBottom: '1.25rem' }} />
 
-            <p className="lead" style={{ color: 'var(--text-deep-blue)', lineHeight: 1.7, marginBottom: '2.25rem' }}>
+            <p className="lead" style={{ color: 'var(--text-deep-blue)', lineHeight: 1.65, marginBottom: '1.5rem' }}>
               Wildmac partners with ambitious founders, institutions, authors, and investors worldwide. We operate with zero intermediaries and direct principal-to-principal dialogue with Rodney De Almeida.
             </p>
 
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.6rem', padding: '0.65rem 1.15rem', backgroundColor: 'rgba(255, 255, 255, 0.95)', border: '1px solid var(--border-medium)', borderRadius: '2px', fontSize: '0.82rem', fontFamily: 'var(--font-mono)', color: 'var(--text-deep-blue)', boxShadow: 'var(--shadow-subtle)' }}>
-              <ShieldCheck size={16} color="var(--accent-red)" />
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.45rem 0.95rem', backgroundColor: 'rgba(255, 255, 255, 0.95)', border: '1px solid var(--border-medium)', borderRadius: '2px', fontSize: '0.78rem', fontFamily: 'var(--font-mono)', color: 'var(--text-deep-blue)', boxShadow: 'var(--shadow-subtle)' }}>
+              <ShieldCheck size={15} color="var(--accent-red)" />
               <span>DIRECT DESK PROTOCOL // NO FORMS OR THIRD PARTIES</span>
             </div>
           </div>

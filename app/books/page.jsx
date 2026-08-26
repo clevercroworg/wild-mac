@@ -193,10 +193,14 @@ export default function BooksPage() {
                   </p>
                 </div>
 
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid var(--border-subtle)', paddingTop: '1.25rem' }}>
-                  <Link href={`/books/${book.slug}`} className="editorial-link" style={{ fontSize: '0.85rem' }}>
-                    <span>Read Monograph</span>
-                    <ArrowRight size={13} />
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.6rem', borderTop: '1px solid var(--border-subtle)', paddingTop: '1.25rem', marginTop: 'auto' }}>
+                  <Link
+                    href={`/books/${book.slug}`}
+                    className="btn btn-secondary"
+                    style={{ padding: '0.65rem 0.5rem', fontSize: '0.82rem', justifyContent: 'center', whiteSpace: 'nowrap', width: '100%', gap: '0.35rem' }}
+                  >
+                    <span>Overview</span>
+                    <ArrowRight size={12} />
                   </Link>
 
                   <a
@@ -204,7 +208,7 @@ export default function BooksPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn btn-editorial"
-                    style={{ padding: '0.5rem 0.95rem', fontSize: '0.78rem', gap: '0.35rem' }}
+                    style={{ padding: '0.65rem 0.5rem', fontSize: '0.82rem', justifyContent: 'center', whiteSpace: 'nowrap', width: '100%', gap: '0.35rem' }}
                   >
                     <span>Amazon</span>
                     <ArrowUpRight size={12} />
