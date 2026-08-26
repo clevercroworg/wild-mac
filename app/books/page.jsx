@@ -221,139 +221,82 @@ export default function BooksPage() {
       </section>
 
       {/* ===================================================================
-          03 — UPCOMING PUBLICATIONS & WORKS IN PROGRESS (NEW SECTION)
+          03 — UPCOMING PUBLICATIONS & WORKS IN PROGRESS (MINIMAL COMPACT)
           =================================================================== */}
-      <section id="upcoming" className="section-py-lg" style={{ backgroundColor: 'var(--bg-pure-white)', borderBottom: '1px solid var(--border-subtle)' }}>
+      <section id="upcoming" className="section-py" style={{ backgroundColor: 'var(--bg-pure-white)', borderBottom: '1px solid var(--border-subtle)' }}>
         <div className="container">
-          <div style={{ maxWidth: '640px', marginBottom: '3rem' }}>
-            <div style={{ marginBottom: '1rem' }}>
-              <span className="editorial-stamp">WORKS IN PROGRESS // FUTURE PUBLICATIONS</span>
+          <div style={{ marginBottom: '1.75rem' }}>
+            <div style={{ marginBottom: '0.5rem' }}>
+              <span className="editorial-stamp">WORKS IN PROGRESS</span>
             </div>
             <h2
               style={{
                 fontFamily: 'var(--font-display)',
-                fontSize: 'clamp(2.2rem, 4vw, 3.4rem)',
+                fontSize: 'clamp(1.8rem, 3.2vw, 2.6rem)',
                 color: 'var(--text-ink)',
                 lineHeight: 1.15,
-                marginBottom: '1rem',
+                marginBottom: '0.5rem',
                 letterSpacing: '-0.02em',
               }}
             >
               Next Book Coming Up.
             </h2>
-            <p className="lead" style={{ color: 'var(--text-deep-blue)', lineHeight: 1.65 }}>
-              Rodney De Almeida’s fifth forthcoming volume exploring the architecture of unhurried mastery, engineering discipline, and intergenerational stewardship.
-            </p>
           </div>
 
-          {/* Upcoming Book Feature Card */}
+          {/* Minimal Compact Upcoming Book Plate */}
           <div
             style={{
+              maxWidth: '840px',
               backgroundColor: 'var(--bg-paper-white)',
               border: '1px solid var(--border-medium)',
-              borderLeft: '4px solid var(--accent-red)',
+              borderLeft: '3px solid var(--accent-red)',
               borderRadius: '2px',
-              padding: '2.5rem 2.25rem',
-              boxShadow: 'var(--shadow-subtle)',
-              display: 'grid',
-              gridTemplateColumns: 'minmax(0, 1.35fr) minmax(0, 1fr)',
-              gap: '3rem',
+              padding: '1.35rem 1.65rem',
+              display: 'flex',
               alignItems: 'center',
+              justifyContent: 'space-between',
+              gap: '1.5rem',
+              flexWrap: 'wrap',
             }}
-            className="about-split-grid"
+            className="card-interactive"
           >
-            <div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem', flexWrap: 'wrap' }}>
-                <span style={{ padding: '0.25rem 0.65rem', backgroundColor: 'rgba(201, 59, 43, 0.08)', color: 'var(--accent-red)', borderRadius: '2px', fontSize: '0.72rem', fontFamily: 'var(--font-mono)', fontWeight: 700 }}>
+            <div style={{ maxWidth: '520px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.35rem' }}>
+                <span style={{ fontSize: '0.68rem', fontFamily: 'var(--font-mono)', fontWeight: 700, color: 'var(--accent-red)', letterSpacing: '0.08em' }}>
                   VOLUME 05 // IN DEVELOPMENT
                 </span>
-                <span style={{ fontSize: '0.75rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)' }}>
-                  MANUSCRIPT DRAFTING STAGE
+                <span style={{ fontSize: '0.68rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)' }}>
+                  · MANUSCRIPT DRAFTING
                 </span>
               </div>
 
               <h3
                 style={{
                   fontFamily: 'var(--font-display)',
-                  fontSize: 'clamp(1.65rem, 3vw, 2.35rem)',
+                  fontSize: '1.3rem',
                   color: 'var(--text-ink)',
-                  lineHeight: 1.2,
-                  marginBottom: '1rem',
-                  fontWeight: 700,
+                  lineHeight: 1.25,
+                  margin: '0 0 0.35rem 0',
+                  fontWeight: 650,
                 }}
               >
                 The Architecture of Unhurried Mastery
               </h3>
 
-              <p style={{ fontStyle: 'italic', fontFamily: 'var(--font-serif)', fontSize: '1.15rem', color: 'var(--text-deep-blue)', marginBottom: '1.25rem' }}>
-                “How to engineer enduring clarity, wealth stewardship, and personal peace in an accelerating world.”
+              <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', margin: 0, lineHeight: 1.55 }}>
+                Rodney De Almeida’s forthcoming 5th volume on engineering first-principles, decision clarity, and life stewardship.
               </p>
-
-              <p style={{ fontSize: '0.96rem', color: 'var(--text-muted)', lineHeight: 1.7, marginBottom: '1.5rem' }}>
-                Building upon 25+ years of engineering and enterprise leadership, this upcoming volume synthesizes the practical methodologies for stepping off the treadmill of reactive urgency, building durable personal sovereignty, and cultivating sanctuaries that outlast market cycles.
-              </p>
-
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginBottom: '2rem' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.86rem', color: 'var(--text-deep-blue)' }}>
-                  <CheckCircle2 size={14} color="var(--accent-red)" />
-                  <span>The First-Principles Framework of High-Leverage Decisions</span>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.86rem', color: 'var(--text-deep-blue)' }}>
-                  <CheckCircle2 size={14} color="var(--accent-red)" />
-                  <span>Converting Commercial Success into Generational Peace</span>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.86rem', color: 'var(--text-deep-blue)' }}>
-                  <CheckCircle2 size={14} color="var(--accent-red)" />
-                  <span>Architectural Principles of Sanctuaries & Living Well</span>
-                </div>
-              </div>
-
-              <a
-                href="mailto:books@wildmac.com?subject=Register%20Interest%20in%20The%20Architecture%20of%20Unhurried%20Mastery"
-                className="btn btn-primary"
-                style={{ padding: '0.85rem 1.65rem', fontSize: '0.88rem' }}
-              >
-                <Mail size={14} />
-                <span>Register for Advance Manuscript Notice</span>
-              </a>
             </div>
 
-            {/* Right Still Life Image */}
-            <div style={{ position: 'relative' }}>
-              <div
-                style={{
-                  backgroundColor: 'var(--bg-pure-white)',
-                  padding: '0.75rem',
-                  border: '1px solid var(--border-subtle)',
-                  borderRadius: '2px',
-                  boxShadow: 'var(--shadow-book)',
-                }}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
+              <a
+                href="mailto:contactmacalmeida@gmail.com?subject=Register%20Interest%20in%20The%20Architecture%20of%20Unhurried%20Mastery"
+                className="btn btn-primary"
+                style={{ padding: '0.65rem 1.15rem', fontSize: '0.82rem', whiteSpace: 'nowrap' }}
               >
-                <div style={{ position: 'relative', aspectRatio: '4/3.2', overflow: 'hidden', borderRadius: '1px' }}>
-                  <img
-                    src="/images/author-workspace.jpg"
-                    alt="Manuscript development at writing desk"
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                  />
-                  <div
-                    style={{
-                      position: 'absolute',
-                      bottom: '0.75rem',
-                      left: '0.75rem',
-                      backgroundColor: 'rgba(17, 24, 32, 0.88)',
-                      backdropFilter: 'blur(6px)',
-                      color: '#FFFFFF',
-                      padding: '0.25rem 0.65rem',
-                      borderRadius: '2px',
-                      fontSize: '0.68rem',
-                      fontFamily: 'var(--font-mono)',
-                      letterSpacing: '0.08em',
-                    }}
-                  >
-                    WM // FORTHCOMING MANUSCRIPT
-                  </div>
-                </div>
-              </div>
+                <Mail size={13} />
+                <span>Register Interest</span>
+              </a>
             </div>
           </div>
         </div>
