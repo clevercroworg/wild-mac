@@ -99,21 +99,11 @@ export default function HomePage() {
           </div>
 
           {/* Balanced 2-Column Magazine Hierarchy with Editorial Photography */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1.2fr) minmax(0, 1fr)', gap: '2.5rem', alignItems: 'stretch' }} className="insights-split-grid">
+          <div className="insights-split-grid">
             {/* Left Column: Large Featured Article with Hero Photograph */}
-            <div
-              style={{
-                backgroundColor: 'var(--bg-ice-blue)',
-                border: '1px solid var(--border-medium)',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'space-between',
-                borderRadius: '2px',
-                overflow: 'hidden',
-              }}
-            >
+            <div className="insights-featured-card card-interactive">
               {/* Featured Article Image */}
-              <div style={{ position: 'relative', width: '100%', height: '260px', overflow: 'hidden' }}>
+              <div className="insights-featured-img">
                 <img
                   src="/images/community-gathering.jpg"
                   alt={featuredArticle.title}
@@ -122,14 +112,14 @@ export default function HomePage() {
                 <div
                   style={{
                     position: 'absolute',
-                    top: '1rem',
-                    left: '1rem',
+                    top: '0.85rem',
+                    left: '0.85rem',
                     backgroundColor: 'rgba(17, 24, 32, 0.85)',
                     backdropFilter: 'blur(6px)',
                     color: '#FFFFFF',
-                    padding: '0.25rem 0.65rem',
+                    padding: '0.2rem 0.6rem',
                     borderRadius: '2px',
-                    fontSize: '0.7rem',
+                    fontSize: '0.68rem',
                     fontFamily: 'var(--font-mono)',
                     letterSpacing: '0.08em',
                   }}
@@ -138,28 +128,28 @@ export default function HomePage() {
                 </div>
               </div>
 
-              <div style={{ padding: '2.25rem 2rem', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+              <div className="insights-featured-body">
                 <div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem', fontSize: '0.78rem', color: 'var(--text-light)' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.75rem', fontSize: '0.75rem', color: 'var(--text-light)' }}>
                     <span>{featuredArticle.date}</span>
                     <span>•</span>
                     <span>{featuredArticle.readTime}</span>
                   </div>
 
-                  <h3 style={{ fontSize: '1.75rem', lineHeight: '1.22', marginBottom: '1rem' }}>
+                  <h3 style={{ fontSize: 'clamp(1.25rem, 2.5vw, 1.7rem)', lineHeight: 1.24, marginBottom: '0.75rem' }}>
                     <Link href={`/blog/${featuredArticle.slug}`} style={{ color: 'var(--text-ink)' }}>
                       {featuredArticle.title}
                     </Link>
                   </h3>
 
-                  <p style={{ fontSize: '1.02rem', color: 'var(--text-deep-blue)', lineHeight: '1.75', marginBottom: '1.75rem' }}>
+                  <p style={{ fontSize: '0.94rem', color: 'var(--text-deep-blue)', lineHeight: 1.65, marginBottom: '1.25rem' }}>
                     {featuredArticle.excerpt}
                   </p>
                 </div>
 
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '1.25rem', borderTop: '1px solid var(--border-subtle)', fontSize: '0.85rem' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '1rem', borderTop: '1px solid var(--border-subtle)', fontSize: '0.82rem' }}>
                   <span style={{ color: 'var(--text-light)' }}>By Wildmac Editorial</span>
-                  <Link href={`/blog/${featuredArticle.slug}`} className="editorial-link" style={{ fontSize: '0.85rem' }}>
+                  <Link href={`/blog/${featuredArticle.slug}`} className="editorial-link" style={{ fontSize: '0.82rem' }}>
                     <span>Read Complete Essay</span>
                     <ArrowRight size={13} />
                   </Link>
@@ -168,26 +158,16 @@ export default function HomePage() {
             </div>
 
             {/* Right Column: 2 Companion Articles with Thumbnail Photographs */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.75rem', justifyContent: 'space-between' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', justifyContent: 'space-between' }}>
               {recentArticles.map((article, idx) => {
                 const articleThumb = idx === 0 ? '/images/service-business.jpg' : '/images/service-investment.jpg';
                 return (
                   <div
                     key={article.slug}
-                    style={{
-                      backgroundColor: 'var(--bg-paper-white)',
-                      border: '1px solid var(--border-subtle)',
-                      borderRadius: '2px',
-                      overflow: 'hidden',
-                      display: 'grid',
-                      gridTemplateColumns: '140px 1fr',
-                      alignItems: 'stretch',
-                      flex: 1,
-                    }}
-                    className="companion-article-card"
+                    className="companion-article-card card-interactive"
                   >
                     {/* Thumbnail Image */}
-                    <div style={{ position: 'relative', width: '100%', minHeight: '140px' }}>
+                    <div className="companion-article-img">
                       <img
                         src={articleThumb}
                         alt={article.title}
@@ -196,30 +176,30 @@ export default function HomePage() {
                     </div>
 
                     {/* Content */}
-                    <div style={{ padding: '1.5rem 1.35rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                    <div className="companion-article-body">
                       <div>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem', fontSize: '0.72rem' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.35rem', fontSize: '0.7rem' }}>
                           <span style={{ color: 'var(--accent-red)', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
                             {article.category}
                           </span>
                           <span style={{ color: 'var(--text-light)' }}>{article.readTime}</span>
                         </div>
 
-                        <h4 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', lineHeight: '1.3' }}>
+                        <h4 style={{ fontSize: 'clamp(1rem, 1.8vw, 1.15rem)', marginBottom: '0.35rem', lineHeight: 1.3 }}>
                           <Link href={`/blog/${article.slug}`} style={{ color: 'var(--text-ink)', textDecoration: 'none' }}>
                             {article.title}
                           </Link>
                         </h4>
 
-                        <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', lineHeight: '1.6', margin: 0 }}>
-                          {article.excerpt.slice(0, 110)}...
+                        <p style={{ fontSize: '0.84rem', color: 'var(--text-muted)', lineHeight: 1.55, margin: 0 }}>
+                          {article.excerpt.slice(0, 95)}...
                         </p>
                       </div>
 
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '0.85rem', borderTop: '1px solid var(--border-subtle)', fontSize: '0.78rem', marginTop: '1rem' }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '0.65rem', borderTop: '1px solid var(--border-subtle)', fontSize: '0.75rem', marginTop: '0.75rem' }}>
                         <span style={{ color: 'var(--text-light)' }}>{article.date}</span>
-                        <Link href={`/blog/${article.slug}`} className="editorial-link" style={{ fontSize: '0.78rem' }}>
-                          <span>Read Essay</span>
+                        <Link href={`/blog/${article.slug}`} className="editorial-link" style={{ fontSize: '0.75rem' }}>
+                          <span>Read</span>
                           <ArrowRight size={11} />
                         </Link>
                       </div>

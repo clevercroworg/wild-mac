@@ -654,6 +654,110 @@ p.lead {
   }
 }
 
+/* ==========================================================================
+   INSIGHTS SECTION RESPONSIVE SYSTEM (DESKTOP & MOBILE)
+   ========================================================================== */
+.insights-split-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 2.5rem;
+  align-items: stretch;
+}
+
+.insights-featured-card {
+  background-color: var(--bg-ice-blue);
+  border: 1px solid var(--border-medium);
+  display: flex;
+  flex-direction: column;
+  justifyContent: space-between;
+  border-radius: var(--radius-subtle);
+  overflow: hidden;
+}
+
+.insights-featured-img {
+  position: relative;
+  width: 100%;
+  height: 260px;
+  overflow: hidden;
+}
+
+.insights-featured-body {
+  padding: 2.25rem 2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justifyContent: space-between;
+}
+
+.companion-article-card {
+  background-color: var(--bg-paper-white);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-subtle);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  align-items: stretch;
+  flex: 1;
+}
+
+.companion-article-img {
+  position: relative;
+  width: 100%;
+  min-height: 140px;
+}
+
+.companion-article-body {
+  padding: 1.5rem 1.35rem;
+  display: flex;
+  flex-direction: column;
+  justifyContent: space-between;
+}
+
+@media (max-width: 900px) {
+  .insights-split-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+  }
+
+  .insights-featured-img {
+    height: 180px !important;
+  }
+
+  .insights-featured-body {
+    padding: 1.35rem 1.25rem !important;
+  }
+
+  .companion-article-card {
+    grid-template-columns: 100px 1fr !important;
+  }
+
+  .companion-article-img {
+    min-height: 100px !important;
+  }
+
+  .companion-article-body {
+    padding: 1rem 1.1rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .insights-featured-img {
+    height: 155px !important;
+  }
+
+  .companion-article-card {
+    grid-template-columns: 85px 1fr !important;
+  }
+
+  .companion-article-img {
+    min-height: 85px !important;
+  }
+
+  .companion-article-body {
+    padding: 0.85rem 0.95rem !important;
+  }
+}
+
 .hidden-mobile {
   display: block;
 }
