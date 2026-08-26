@@ -25,10 +25,11 @@ export default function AboutPage() {
           01 — ABOUT HERO: PLATFORM VISION & LEADERSHIP
           =================================================================== */}
       <section
+        className="about-hero-section"
         style={{
           borderBottom: '1px solid var(--border-subtle)',
           backgroundColor: 'var(--bg-paper-white)',
-          minHeight: '82vh',
+          minHeight: '78vh',
           display: 'flex',
           alignItems: 'center',
           paddingTop: '3.5rem',
@@ -49,7 +50,7 @@ export default function AboutPage() {
                 style={{
                   marginBottom: '1.5rem',
                   lineHeight: '1.06',
-                  fontSize: 'clamp(2.5rem, 5vw, 4.2rem)',
+                  fontSize: 'clamp(2.35rem, 5vw, 4.2rem)',
                   color: 'var(--text-ink)',
                   letterSpacing: '-0.025em',
                   fontFamily: 'var(--font-display)',
@@ -66,11 +67,11 @@ export default function AboutPage() {
               </p>
 
               <div style={{ display: 'flex', gap: '1.25rem', flexWrap: 'wrap' }}>
-                <Link href="/services" className="btn btn-primary" style={{ padding: '0.9rem 1.85rem' }}>
+                <Link href="/services" className="btn btn-primary" style={{ padding: '0.85rem 1.85rem' }}>
                   <span>Explore Advisory Services</span>
                   <ArrowRight size={14} />
                 </Link>
-                <Link href="/consultation" className="btn btn-secondary" style={{ padding: '0.9rem 1.85rem' }}>
+                <Link href="/consultation" className="btn btn-secondary" style={{ padding: '0.85rem 1.85rem' }}>
                   <span>Book a Consultation</span>
                   <ArrowUpRight size={14} />
                 </Link>
@@ -160,7 +161,7 @@ export default function AboutPage() {
           =================================================================== */}
       <section className="section-py" style={{ backgroundColor: 'var(--bg-pure-white)', borderBottom: '1px solid var(--border-subtle)' }}>
         <div className="container">
-          <div style={{ maxWidth: '640px', marginBottom: '3.5rem' }}>
+          <div style={{ maxWidth: '640px', marginBottom: '3rem' }}>
             <div style={{ marginBottom: '1rem' }}>
               <span className="editorial-stamp">THE WILDMAC ECOSYSTEM</span>
             </div>
@@ -181,33 +182,34 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
             {pillars.map((p) => (
               <div
                 key={p.number}
+                className="card-interactive"
                 style={{
                   backgroundColor: 'var(--bg-paper-white)',
                   border: '1px solid var(--border-subtle)',
                   borderRadius: '2px',
-                  padding: '2.25rem 2rem',
+                  padding: '1.75rem 1.5rem',
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'space-between',
                 }}
               >
                 <div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1.25rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
                     <span style={{ width: '4px', height: '4px', backgroundColor: 'var(--accent-red)', borderRadius: '50%' }} />
-                    <span style={{ fontFamily: 'var(--font-display)', fontSize: '0.85rem', fontWeight: 700, color: 'var(--accent-red)' }}>
+                    <span style={{ fontFamily: 'var(--font-display)', fontSize: '0.82rem', fontWeight: 700, color: 'var(--accent-red)' }}>
                       {p.number}
                     </span>
                   </div>
 
-                  <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.45rem', fontWeight: 650, color: 'var(--text-ink)', marginBottom: '0.75rem' }}>
+                  <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.35rem', fontWeight: 650, color: 'var(--text-ink)', marginBottom: '0.65rem' }}>
                     {p.title}
                   </h3>
 
-                  <p style={{ fontSize: '0.94rem', color: 'var(--text-muted)', lineHeight: 1.7, margin: 0 }}>
+                  <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: 1.65, margin: 0 }}>
                     {p.desc}
                   </p>
                 </div>
@@ -218,15 +220,15 @@ export default function AboutPage() {
       </section>
 
       {/* ===================================================================
-          03 — FOUNDER CREDIBILITY & PHILOSOPHY
+          03 — FOUNDER CREDIBILITY & PHILOSOPHY (RESPONSIVE & STRUCTURED)
           =================================================================== */}
-      <section className="section-py-lg" style={{ backgroundColor: 'var(--bg-ice-blue)', borderBottom: '1px solid var(--border-subtle)' }}>
+      <section className="section-py-lg founder-journey-section" style={{ backgroundColor: 'var(--bg-ice-blue)', borderBottom: '1px solid var(--border-subtle)' }}>
         <div className="container">
           <div
             style={{
               display: 'grid',
               gridTemplateColumns: 'minmax(0, 1.25fr) minmax(0, 1fr)',
-              gap: '4.5rem',
+              gap: '3.5rem',
               alignItems: 'center',
             }}
             className="about-split-grid"
@@ -240,38 +242,38 @@ export default function AboutPage() {
               <h2
                 style={{
                   fontFamily: 'var(--font-display)',
-                  fontSize: 'clamp(2.2rem, 4vw, 3.4rem)',
+                  fontSize: 'clamp(2.1rem, 4vw, 3.4rem)',
                   color: 'var(--text-ink)',
                   lineHeight: 1.15,
-                  marginBottom: '1.5rem',
+                  marginBottom: '1.25rem',
                   letterSpacing: '-0.02em',
                 }}
               >
                 25 Years of Engineering, Enterprise and Reflection.
               </h2>
 
-              <div style={{ padding: '1.25rem 1.5rem', backgroundColor: 'var(--bg-pure-white)', borderLeft: '3px solid var(--accent-red)', marginBottom: '1.75rem', borderRadius: '0 2px 2px 0' }}>
-                <p style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: '1.25rem', color: 'var(--text-ink)', margin: 0, lineHeight: 1.5 }}>
+              <div style={{ padding: '1rem 1.25rem', backgroundColor: 'var(--bg-pure-white)', borderLeft: '3px solid var(--accent-red)', marginBottom: '1.5rem', borderRadius: '0 2px 2px 0', border: '1px solid var(--border-subtle)', borderLeftWidth: '3px', borderLeftColor: 'var(--accent-red)' }}>
+                <p style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: '1.15rem', color: 'var(--text-ink)', margin: 0, lineHeight: 1.45 }}>
                   “Experience creates perspective. Perspective becomes useful when shared.”
                 </p>
               </div>
 
-              <p style={{ fontSize: '1.02rem', lineHeight: 1.8, color: 'var(--text-deep-blue)', marginBottom: '1.25rem' }}>
-                Wildmac was founded by Rodney Almeida, an Electrical Engineering graduate whose career spans over two decades of high-stakes corporate management, entrepreneurial ventures, and deep personal study.
+              <p style={{ fontSize: '1rem', lineHeight: 1.7, color: 'var(--text-deep-blue)', marginBottom: '1.15rem' }}>
+                Wildmac was founded by Rodney Almeida, an Electrical Engineering graduate whose career spans over two decades of corporate management, entrepreneurial ventures, and deep personal study.
               </p>
 
-              <p style={{ fontSize: '1.02rem', lineHeight: 1.8, color: 'var(--text-muted)', marginBottom: '1.5rem' }}>
-                Having authored four published books exploring fatherhood, purpose, financial awareness, and decision-making, Rodney established Wildmac to bridge high-leverage commercial strategy with deep human purpose.
+              <p style={{ fontSize: '1rem', lineHeight: 1.7, color: 'var(--text-muted)', marginBottom: '1.75rem' }}>
+                Having authored four published books exploring purpose, financial awareness, and decision-making, Rodney established Wildmac to bridge high-leverage commercial strategy with deep human purpose.
               </p>
 
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', flexWrap: 'wrap' }}>
-                <Link href="/books" className="editorial-link">
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', flexWrap: 'wrap' }}>
+                <Link href="/books" className="btn btn-primary" style={{ padding: '0.8rem 1.6rem', fontSize: '0.88rem' }}>
                   <span>Explore Published Books</span>
-                  <ArrowRight size={14} />
+                  <ArrowRight size={13} />
                 </Link>
-                <Link href="/consultation" className="editorial-link">
+                <Link href="/consultation" className="editorial-link" style={{ fontSize: '0.88rem' }}>
                   <span>Schedule Advisory Discussion</span>
-                  <ArrowRight size={14} />
+                  <ArrowRight size={13} />
                 </Link>
               </div>
             </div>
@@ -287,7 +289,7 @@ export default function AboutPage() {
                   boxShadow: 'var(--shadow-book)',
                 }}
               >
-                <div style={{ position: 'relative', aspectRatio: '4/3', overflow: 'hidden', borderRadius: '1px' }}>
+                <div style={{ position: 'relative', aspectRatio: '16 / 11', overflow: 'hidden', borderRadius: '1px' }}>
                   <img
                     src="/images/author-workspace.jpg"
                     alt="Strategic desk still life with manuscripts and planning tools"
@@ -298,7 +300,7 @@ export default function AboutPage() {
                       position: 'absolute',
                       bottom: '0.75rem',
                       left: '0.75rem',
-                      backgroundColor: 'rgba(17, 24, 32, 0.85)',
+                      backgroundColor: 'rgba(17, 24, 32, 0.88)',
                       backdropFilter: 'blur(6px)',
                       color: '#FFFFFF',
                       padding: '0.2rem 0.6rem',
