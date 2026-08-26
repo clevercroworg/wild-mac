@@ -98,11 +98,10 @@ export default function HomePage() {
             </Link>
           </div>
 
-          {/* Balanced 2-Column Magazine Hierarchy */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2.5rem', alignItems: 'stretch' }}>
-            {/* Left Column: Large Featured Article */}
+          {/* Balanced 2-Column Magazine Hierarchy with Editorial Photography */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1.2fr) minmax(0, 1fr)', gap: '2.5rem', alignItems: 'stretch' }} className="insights-split-grid">
+            {/* Left Column: Large Featured Article with Hero Photograph */}
             <div
-              className="editorial-card-pad-md"
               style={{
                 backgroundColor: 'var(--bg-ice-blue)',
                 border: '1px solid var(--border-medium)',
@@ -110,89 +109,124 @@ export default function HomePage() {
                 flexDirection: 'column',
                 justifyContent: 'space-between',
                 borderRadius: '2px',
+                overflow: 'hidden',
               }}
             >
-              <div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem', flexWrap: 'wrap' }}>
-                  <span className="editorial-stamp">FEATURED ESSAY</span>
-                  <span style={{ fontSize: '0.75rem', color: 'var(--accent-red)', fontWeight: 600 }}>
-                    {featuredArticle.category}
-                  </span>
-                  <span style={{ fontSize: '0.75rem', color: 'var(--text-light)' }}>•</span>
-                  <span style={{ fontSize: '0.78rem', color: 'var(--text-light)' }}>{featuredArticle.readTime}</span>
-                </div>
-
-                <h3 style={{ fontSize: '1.75rem', lineHeight: '1.22', marginBottom: '1.25rem' }}>
-                  <Link href={`/blog/${featuredArticle.slug}`} style={{ color: 'var(--text-ink)' }}>
-                    {featuredArticle.title}
-                  </Link>
-                </h3>
-
-                <p style={{ fontSize: '1.02rem', color: 'var(--text-deep-blue)', lineHeight: '1.75', marginBottom: '1.75rem' }}>
-                  {featuredArticle.excerpt}
-                </p>
-
-                {/* Excerpt Pull-quote Preview */}
-                <div style={{ padding: '1.1rem 1.25rem', backgroundColor: 'var(--bg-pure-white)', borderLeft: '2px solid var(--accent-red)', borderRadius: '0 2px 2px 0', marginBottom: '1.75rem' }}>
-                  <p style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: '0.98rem', color: 'var(--text-ink)', margin: 0, lineHeight: '1.6' }}>
-                    “Unhurried time is not passive indulgence; it is the deliberate discipline of protecting your mental territory from shallow urgency.”
-                  </p>
+              {/* Featured Article Image */}
+              <div style={{ position: 'relative', width: '100%', height: '260px', overflow: 'hidden' }}>
+                <img
+                  src="/images/community-gathering.jpg"
+                  alt={featuredArticle.title}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+                <div
+                  style={{
+                    position: 'absolute',
+                    top: '1rem',
+                    left: '1rem',
+                    backgroundColor: 'rgba(17, 24, 32, 0.85)',
+                    backdropFilter: 'blur(6px)',
+                    color: '#FFFFFF',
+                    padding: '0.25rem 0.65rem',
+                    borderRadius: '2px',
+                    fontSize: '0.7rem',
+                    fontFamily: 'var(--font-mono)',
+                    letterSpacing: '0.08em',
+                  }}
+                >
+                  FEATURED ESSAY // {featuredArticle.category}
                 </div>
               </div>
 
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '1.25rem', borderTop: '1px solid var(--border-subtle)', fontSize: '0.82rem', color: 'var(--text-light)', flexWrap: 'wrap', gap: '0.75rem' }}>
-                <span>Published on {featuredArticle.date}</span>
-                <Link href={`/blog/${featuredArticle.slug}`} className="editorial-link" style={{ fontSize: '0.82rem' }}>
-                  <span>Read Complete Essay</span>
-                  <ArrowRight size={12} />
-                </Link>
+              <div style={{ padding: '2.25rem 2rem', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                <div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem', fontSize: '0.78rem', color: 'var(--text-light)' }}>
+                    <span>{featuredArticle.date}</span>
+                    <span>•</span>
+                    <span>{featuredArticle.readTime}</span>
+                  </div>
+
+                  <h3 style={{ fontSize: '1.75rem', lineHeight: '1.22', marginBottom: '1rem' }}>
+                    <Link href={`/blog/${featuredArticle.slug}`} style={{ color: 'var(--text-ink)' }}>
+                      {featuredArticle.title}
+                    </Link>
+                  </h3>
+
+                  <p style={{ fontSize: '1.02rem', color: 'var(--text-deep-blue)', lineHeight: '1.75', marginBottom: '1.75rem' }}>
+                    {featuredArticle.excerpt}
+                  </p>
+                </div>
+
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '1.25rem', borderTop: '1px solid var(--border-subtle)', fontSize: '0.85rem' }}>
+                  <span style={{ color: 'var(--text-light)' }}>By Wildmac Editorial</span>
+                  <Link href={`/blog/${featuredArticle.slug}`} className="editorial-link" style={{ fontSize: '0.85rem' }}>
+                    <span>Read Complete Essay</span>
+                    <ArrowRight size={13} />
+                  </Link>
+                </div>
               </div>
             </div>
 
-            {/* Right Column: 2 Companion Articles */}
+            {/* Right Column: 2 Companion Articles with Thumbnail Photographs */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.75rem', justifyContent: 'space-between' }}>
-              {recentArticles.map((article) => (
-                <div
-                  key={article.slug}
-                  className="editorial-card-pad-md"
-                  style={{
-                    backgroundColor: 'var(--bg-paper-white)',
-                    border: '1px solid var(--border-subtle)',
-                    borderRadius: '2px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'space-between',
-                    flex: 1,
-                  }}
-                >
-                  <div>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem', fontSize: '0.75rem' }}>
-                      <span style={{ color: 'var(--accent-red)', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-                        {article.category}
-                      </span>
-                      <span style={{ color: 'var(--text-light)' }}>{article.readTime}</span>
+              {recentArticles.map((article, idx) => {
+                const articleThumb = idx === 0 ? '/images/service-business.jpg' : '/images/service-investment.jpg';
+                return (
+                  <div
+                    key={article.slug}
+                    style={{
+                      backgroundColor: 'var(--bg-paper-white)',
+                      border: '1px solid var(--border-subtle)',
+                      borderRadius: '2px',
+                      overflow: 'hidden',
+                      display: 'grid',
+                      gridTemplateColumns: '140px 1fr',
+                      alignItems: 'stretch',
+                      flex: 1,
+                    }}
+                    className="companion-article-card"
+                  >
+                    {/* Thumbnail Image */}
+                    <div style={{ position: 'relative', width: '100%', minHeight: '140px' }}>
+                      <img
+                        src={articleThumb}
+                        alt={article.title}
+                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                      />
                     </div>
 
-                    <h4 style={{ fontSize: '1.35rem', marginBottom: '0.75rem', lineHeight: '1.25' }}>
-                      <Link href={`/blog/${article.slug}`} style={{ color: 'var(--text-ink)', textDecoration: 'none' }}>
-                        {article.title}
-                      </Link>
-                    </h4>
+                    {/* Content */}
+                    <div style={{ padding: '1.5rem 1.35rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                      <div>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem', fontSize: '0.72rem' }}>
+                          <span style={{ color: 'var(--accent-red)', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+                            {article.category}
+                          </span>
+                          <span style={{ color: 'var(--text-light)' }}>{article.readTime}</span>
+                        </div>
 
-                    <p style={{ fontSize: '0.92rem', color: 'var(--text-muted)', lineHeight: '1.65', marginBottom: '1.5rem' }}>
-                      {article.excerpt}
-                    </p>
-                  </div>
+                        <h4 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', lineHeight: '1.3' }}>
+                          <Link href={`/blog/${article.slug}`} style={{ color: 'var(--text-ink)', textDecoration: 'none' }}>
+                            {article.title}
+                          </Link>
+                        </h4>
 
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '1rem', borderTop: '1px solid var(--border-subtle)', fontSize: '0.82rem' }}>
-                    <span style={{ color: 'var(--text-light)' }}>{article.date}</span>
-                    <Link href={`/blog/${article.slug}`} className="editorial-link" style={{ fontSize: '0.82rem' }}>
-                      <span>Read Essay</span>
-                      <ArrowRight size={12} />
-                    </Link>
+                        <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', lineHeight: '1.6', margin: 0 }}>
+                          {article.excerpt.slice(0, 110)}...
+                        </p>
+                      </div>
+
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '0.85rem', borderTop: '1px solid var(--border-subtle)', fontSize: '0.78rem', marginTop: '1rem' }}>
+                        <span style={{ color: 'var(--text-light)' }}>{article.date}</span>
+                        <Link href={`/blog/${article.slug}`} className="editorial-link" style={{ fontSize: '0.78rem' }}>
+                          <span>Read Essay</span>
+                          <ArrowRight size={11} />
+                        </Link>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>

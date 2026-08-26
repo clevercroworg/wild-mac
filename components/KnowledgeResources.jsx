@@ -5,6 +5,11 @@ import { resourcesData } from '@/data/resources';
 
 export default function KnowledgeResources() {
   const featuredResources = resourcesData.slice(0, 3);
+  const resourceImages = [
+    '/images/service-business.jpg',
+    '/images/author-workspace.jpg',
+    '/images/service-branding.jpg'
+  ];
 
   return (
     <section id="resources" className="section-py" style={{ backgroundColor: 'var(--bg-ice-blue)', borderBottom: '1px solid var(--border-subtle)' }}>
@@ -38,68 +43,96 @@ export default function KnowledgeResources() {
           </Link>
         </div>
 
-        {/* 3 Resources Cards Grid */}
+        {/* 3 Resources Cards Grid with Header Images */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(310px, 1fr))', gap: '2rem' }}>
-          {featuredResources.map((resource) => (
+          {featuredResources.map((resource, index) => (
             <div
               key={resource.id}
               style={{
                 backgroundColor: 'var(--bg-pure-white)',
                 border: '1px solid var(--border-subtle)',
                 borderRadius: '2px',
-                padding: '2.25rem 2rem',
+                overflow: 'hidden',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
                 boxShadow: 'var(--shadow-subtle)',
               }}
             >
-              <div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
-                  <span style={{ color: 'var(--accent-red)', fontSize: '0.72rem', fontFamily: 'var(--font-mono)', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-                    {resource.category}
-                  </span>
-                  <span style={{ fontSize: '0.75rem', color: 'var(--text-light)', fontFamily: 'var(--font-mono)' }}>
-                    {resource.format}
-                  </span>
-                </div>
-
-                <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.45rem', color: 'var(--text-ink)', lineHeight: 1.25, marginBottom: '0.75rem' }}>
-                  {resource.title}
-                </h3>
-
-                <p style={{ fontSize: '0.94rem', color: 'var(--text-muted)', lineHeight: 1.7, marginBottom: '1.5rem' }}>
-                  {resource.description}
-                </p>
-
-                {/* Key Takeaways */}
-                <div style={{ backgroundColor: 'var(--bg-paper-white)', padding: '1rem', borderRadius: '2px', marginBottom: '1.75rem' }}>
-                  <span style={{ display: 'block', fontSize: '0.68rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)', letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: '0.4rem' }}>
-                    INCLUDED TOOLS:
-                  </span>
-                  <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
-                    {resource.keyTakeaways.map((item, idx) => (
-                      <li key={idx} style={{ fontSize: '0.82rem', color: 'var(--text-deep-blue)', display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
-                        <span style={{ width: '4px', height: '4px', backgroundColor: 'var(--accent-red)', borderRadius: '50%' }} />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
+              {/* Header Image */}
+              <div style={{ position: 'relative', width: '100%', height: '160px', overflow: 'hidden' }}>
+                <img
+                  src={resourceImages[index % resourceImages.length]}
+                  alt={resource.title}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+                <div
+                  style={{
+                    position: 'absolute',
+                    top: '0.75rem',
+                    left: '0.75rem',
+                    backgroundColor: 'rgba(17, 24, 32, 0.85)',
+                    backdropFilter: 'blur(6px)',
+                    color: '#FFFFFF',
+                    padding: '0.2rem 0.55rem',
+                    borderRadius: '2px',
+                    fontSize: '0.65rem',
+                    fontFamily: 'var(--font-mono)',
+                    letterSpacing: '0.08em',
+                  }}
+                >
+                  {resource.category}
                 </div>
               </div>
 
-              <div style={{ borderTop: '1px solid var(--border-subtle)', paddingTop: '1.25rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <span style={{ fontSize: '0.78rem', color: 'var(--text-light)' }}>
-                  {resource.fileSize} · Free Resource
-                </span>
-                <a
-                  href="/consultation"
-                  className="btn btn-editorial"
-                  style={{ padding: '0.55rem 1rem', fontSize: '0.8rem', gap: '0.45rem' }}
-                >
-                  <Download size={13} color="var(--accent-red)" />
-                  <span>Access Resource</span>
-                </a>
+              <div style={{ padding: '1.75rem 1.75rem 1.25rem', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                <div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
+                    <span style={{ fontSize: '0.72rem', color: 'var(--text-light)', fontFamily: 'var(--font-mono)' }}>
+                      {resource.format}
+                    </span>
+                    <span style={{ fontSize: '0.72rem', color: 'var(--text-light)' }}>
+                      {resource.readTime}
+                    </span>
+                  </div>
+
+                  <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.35rem', fontWeight: 650, color: 'var(--text-ink)', lineHeight: 1.25, marginBottom: '0.65rem' }}>
+                    {resource.title}
+                  </h3>
+
+                  <p style={{ fontSize: '0.92rem', color: 'var(--text-muted)', lineHeight: 1.65, marginBottom: '1.25rem' }}>
+                    {resource.description}
+                  </p>
+
+                  {/* Key Takeaways */}
+                  <div style={{ backgroundColor: 'var(--bg-paper-white)', padding: '0.85rem 1rem', borderRadius: '2px', marginBottom: '1.25rem' }}>
+                    <span style={{ display: 'block', fontSize: '0.65rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)', letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: '0.35rem' }}>
+                      INCLUDED TOOLS:
+                    </span>
+                    <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.3rem' }}>
+                      {resource.keyTakeaways.map((item, idx) => (
+                        <li key={idx} style={{ fontSize: '0.78rem', color: 'var(--text-deep-blue)', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                          <span style={{ width: '4px', height: '4px', backgroundColor: 'var(--accent-red)', borderRadius: '50%', flexShrink: 0 }} />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                <div style={{ borderTop: '1px solid var(--border-subtle)', paddingTop: '1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <span style={{ fontSize: '0.75rem', color: 'var(--text-light)' }}>
+                    {resource.fileSize} · Free
+                  </span>
+                  <a
+                    href="/consultation"
+                    className="btn btn-editorial"
+                    style={{ padding: '0.5rem 0.95rem', fontSize: '0.78rem', gap: '0.4rem' }}
+                  >
+                    <Download size={12} color="var(--accent-red)" />
+                    <span>Access Resource</span>
+                  </a>
+                </div>
               </div>
             </div>
           ))}

@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
 import { ArrowRight, MessageSquare } from 'lucide-react';
@@ -14,87 +16,151 @@ export default function MajorConsultationCTA() {
         overflow: 'hidden',
       }}
     >
-      {/* Subtle Atmospheric Grid Lines */}
-      <div
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundImage: 'radial-gradient(ellipse at 50% 50%, rgba(215, 232, 241, 0.06) 0%, transparent 70%)',
-          pointerEvents: 'none',
-          zIndex: 0,
-        }}
-      />
-
-      <div className="container-narrow" style={{ position: 'relative', zIndex: 1, textAlign: 'center' }}>
-        <div style={{ marginBottom: '1.25rem' }}>
-          <span style={{ fontSize: '0.75rem', fontFamily: 'var(--font-mono)', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#BFDCEB' }}>
-            WM / CONSULTATION // TAKE THE NEXT STEP
-          </span>
-        </div>
-
-        <h2
+      <div className="container">
+        <div
           style={{
-            fontFamily: 'var(--font-display)',
-            fontSize: 'clamp(2.3rem, 5vw, 3.8rem)',
-            color: '#FFFFFF',
-            lineHeight: 1.12,
-            letterSpacing: '-0.02em',
-            marginBottom: '1.5rem',
+            display: 'grid',
+            gridTemplateColumns: 'minmax(0, 1.2fr) minmax(0, 0.9fr)',
+            gap: '4.5rem',
+            alignItems: 'center',
           }}
+          className="cta-section-grid"
         >
-          Ready to Move Forward with Greater Clarity?
-        </h2>
+          {/* Left Column: Heading, Supporting Narrative & Action CTAs */}
+          <div>
+            <div style={{ marginBottom: '1.25rem' }}>
+              <span style={{ fontSize: '0.75rem', fontFamily: 'var(--font-mono)', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#BFDCEB' }}>
+                WM / CONSULTATION // TAKE THE NEXT STEP
+              </span>
+            </div>
 
-        <p
-          style={{
-            fontSize: 'clamp(1.05rem, 1.8vw, 1.25rem)',
-            color: '#D7E8F1',
-            lineHeight: 1.7,
-            maxWidth: '680px',
-            margin: '0 auto 2.75rem auto',
-          }}
-        >
-          Whether you are building a business, seeking personal direction, exploring real estate, improving your investment knowledge or strengthening your brand, Wildmac can help you identify the next step.
-        </p>
+            <h2
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: 'clamp(2.3rem, 4.5vw, 3.6rem)',
+                color: '#FFFFFF',
+                lineHeight: 1.12,
+                letterSpacing: '-0.02em',
+                marginBottom: '1.5rem',
+              }}
+            >
+              Ready to Move Forward with Greater Clarity?
+            </h2>
 
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '1.25rem', flexWrap: 'wrap' }}>
-          <Link
-            href="/consultation"
-            className="btn btn-primary"
-            style={{
-              backgroundColor: '#FFFFFF',
-              color: 'var(--text-ink)',
-              borderColor: '#FFFFFF',
-              padding: '1rem 2.25rem',
-              fontSize: '0.95rem',
-              gap: '0.6rem',
-            }}
-          >
-            <span>Book a Consultation</span>
-            <ArrowRight size={15} />
-          </Link>
+            <div style={{ width: '2.5rem', height: '2px', backgroundColor: 'var(--accent-red)', marginBottom: '1.5rem' }} />
 
-          <a
-            href="https://wa.me/?text=Hello%20Wildmac%20Team,%20I%20would%20like%20to%20inquire%20about%20a%20strategic%20consultation."
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-secondary"
-            style={{
-              color: '#FFFFFF',
-              borderColor: 'rgba(255, 255, 255, 0.3)',
-              padding: '1rem 2rem',
-              fontSize: '0.95rem',
-              gap: '0.6rem',
-            }}
-          >
-            <MessageSquare size={16} color="var(--accent-red)" />
-            <span>Chat on WhatsApp</span>
-          </a>
+            <p
+              style={{
+                fontSize: 'clamp(1.05rem, 1.8vw, 1.2rem)',
+                color: '#D7E8F1',
+                lineHeight: 1.7,
+                marginBottom: '2.5rem',
+                maxWidth: '580px',
+              }}
+            >
+              Whether you are building a business, seeking personal direction, exploring real estate, improving your investment knowledge or strengthening your brand, Wildmac can help you identify the next step.
+            </p>
+
+            <div style={{ display: 'flex', gap: '1.25rem', flexWrap: 'wrap' }}>
+              <Link
+                href="/consultation"
+                className="btn btn-primary"
+                style={{
+                  backgroundColor: '#FFFFFF',
+                  color: 'var(--text-ink)',
+                  borderColor: '#FFFFFF',
+                  padding: '0.95rem 2rem',
+                  fontSize: '0.92rem',
+                  gap: '0.6rem',
+                }}
+              >
+                <span>Book a Consultation</span>
+                <ArrowRight size={15} />
+              </Link>
+
+              <a
+                href="https://wa.me/?text=Hello%20Wildmac%20Team,%20I%20would%20like%20to%20inquire%20about%20a%20strategic%20consultation."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-secondary"
+                style={{
+                  color: '#FFFFFF',
+                  borderColor: 'rgba(255, 255, 255, 0.3)',
+                  padding: '0.95rem 1.85rem',
+                  fontSize: '0.92rem',
+                  gap: '0.6rem',
+                }}
+              >
+                <MessageSquare size={16} color="var(--accent-red)" />
+                <span>Chat on WhatsApp</span>
+              </a>
+            </div>
+          </div>
+
+          {/* Right Column: Directional Architectural Imagery Spread */}
+          <div style={{ position: 'relative' }}>
+            <div
+              style={{
+                position: 'absolute',
+                top: '-1rem',
+                right: '-1rem',
+                width: '92%',
+                height: '106%',
+                backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+                borderRadius: '2px',
+                zIndex: 0,
+              }}
+            />
+
+            <div
+              style={{
+                position: 'relative',
+                zIndex: 1,
+                backgroundColor: 'rgba(255, 255, 255, 0.08)',
+                padding: '0.75rem',
+                border: '1px solid rgba(255, 255, 255, 0.15)',
+                borderRadius: '2px',
+                boxShadow: '0 24px 50px -15px rgba(0, 0, 0, 0.4)',
+              }}
+            >
+              <div style={{ position: 'relative', aspectRatio: '4/3', overflow: 'hidden', borderRadius: '1px' }}>
+                <img
+                  src="/images/service-realestate.jpg"
+                  alt="Contemporary architectural pavilion representing forward vision and strategic clarity"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+                <div
+                  style={{
+                    position: 'absolute',
+                    bottom: '0.75rem',
+                    left: '0.75rem',
+                    backgroundColor: 'rgba(17, 24, 32, 0.9)',
+                    backdropFilter: 'blur(6px)',
+                    color: '#FFFFFF',
+                    padding: '0.25rem 0.65rem',
+                    borderRadius: '2px',
+                    fontSize: '0.68rem',
+                    fontFamily: 'var(--font-mono)',
+                    letterSpacing: '0.08em',
+                  }}
+                >
+                  FORWARD DIRECTION // PURPOSE & STRATEGY
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+
+      <style jsx>{`
+        @media (max-width: 900px) {
+          .cta-section-grid {
+            grid-template-columns: 1fr !important;
+            gap: 3rem !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

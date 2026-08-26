@@ -221,34 +221,40 @@ export default function WildmacHero() {
               </div>
             </div>
 
-            {/* Overlapping Layered Inset Card (Bottom-Left) */}
+            {/* Overlapping Secondary Photographic Card (Bottom-Left: People & Dialogue) */}
             <div
               style={{
                 position: 'absolute',
-                bottom: '-2rem',
-                left: '-1.5rem',
+                bottom: '-2.25rem',
+                left: '-2rem',
                 zIndex: 2,
                 backgroundColor: 'var(--bg-pure-white)',
                 border: '1px solid var(--border-medium)',
-                boxShadow: '0 16px 36px -8px rgba(23, 50, 71, 0.16)',
-                padding: '1.25rem 1.5rem',
+                boxShadow: '0 16px 36px -8px rgba(23, 50, 71, 0.22)',
+                padding: '0.6rem',
                 borderRadius: '2px',
                 maxWidth: '240px',
               }}
               className="hidden-mobile"
             >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.4rem' }}>
-                <span style={{ width: '5px', height: '5px', backgroundColor: 'var(--accent-red)' }} />
-                <span style={{ fontSize: '0.68rem', fontFamily: 'var(--font-mono)', fontWeight: 700, letterSpacing: '0.08em', color: 'var(--text-deep-blue)', textTransform: 'uppercase' }}>
-                  CORE DISCIPLINES
-                </span>
+              <div style={{ position: 'relative', width: '100%', height: '110px', overflow: 'hidden', borderRadius: '1px', marginBottom: '0.5rem' }}>
+                <img
+                  src="/images/community-dialogue.jpg"
+                  alt="Collaborative conversation & coaching"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
               </div>
-              <p style={{ fontFamily: 'var(--font-display)', fontSize: '1.1rem', color: 'var(--text-ink)', margin: 0, lineHeight: 1.3 }}>
-                5 Structured Advisory Modules
-              </p>
-              <span style={{ fontSize: '0.72rem', color: 'var(--text-light)', display: 'block', marginTop: '0.35rem' }}>
-                Business · Life · Property · Capital · Brand
-              </span>
+              <div style={{ padding: '0.2rem 0.25rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', marginBottom: '0.2rem' }}>
+                  <span style={{ width: '4px', height: '4px', backgroundColor: 'var(--accent-red)' }} />
+                  <span style={{ fontSize: '0.65rem', fontFamily: 'var(--font-mono)', fontWeight: 700, letterSpacing: '0.08em', color: 'var(--text-deep-blue)', textTransform: 'uppercase' }}>
+                    COLLABORATIVE CLARITY
+                  </span>
+                </div>
+                <p style={{ fontFamily: 'var(--font-display)', fontSize: '0.88rem', fontWeight: 650, color: 'var(--text-ink)', margin: 0, lineHeight: 1.25 }}>
+                  Purpose → Strategy → Action
+                </p>
+              </div>
             </div>
           </div>
         </div>
