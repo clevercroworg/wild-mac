@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, BookOpen, Compass, Award } from 'lucide-react';
 
 export default function FounderCredibility() {
   return (
@@ -12,26 +12,28 @@ export default function FounderCredibility() {
           className="founder-section-grid reveal-on-scroll"
           style={{
             display: 'grid',
-            gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1.25fr)',
-            gap: '4.5rem',
+            gridTemplateColumns: 'minmax(0, 1.05fr) minmax(0, 1.2fr)',
+            gap: '3.5rem',
             alignItems: 'center',
           }}
         >
           {/* Left Column: Authentic Portrait of Rodney Almeida */}
-          <div style={{ position: 'relative' }}>
+          <div style={{ position: 'relative', width: '100%', maxWidth: '490px' }}>
+            {/* Background Mist Plate */}
             <div
               style={{
                 position: 'absolute',
-                top: '-1rem',
-                left: '-1rem',
-                width: '90%',
-                height: '106%',
+                top: '-0.75rem',
+                left: '-0.75rem',
+                width: '100%',
+                height: '103%',
                 backgroundColor: 'var(--bg-mist-blue)',
                 borderRadius: '2px',
                 zIndex: 0,
               }}
             />
 
+            {/* Main Portrait Card */}
             <div
               style={{
                 position: 'relative',
@@ -41,20 +43,50 @@ export default function FounderCredibility() {
                 border: '1px solid var(--border-subtle)',
                 boxShadow: 'var(--shadow-book)',
                 borderRadius: '2px',
-                maxWidth: '420px',
-                margin: '0 auto',
+                width: '100%',
               }}
             >
-              <div style={{ position: 'relative', aspectRatio: '4/3', overflow: 'hidden' }}>
+              <div style={{ position: 'relative', aspectRatio: '4 / 3.4', overflow: 'hidden', borderRadius: '1px' }}>
                 <img
                   src="/images/author-portrait.jpg"
                   alt="Rodney Almeida, Founder of Wildmac"
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 />
+                <div
+                  style={{
+                    position: 'absolute',
+                    bottom: '0.75rem',
+                    left: '0.75rem',
+                    backgroundColor: 'rgba(17, 24, 32, 0.88)',
+                    backdropFilter: 'blur(6px)',
+                    color: '#FFFFFF',
+                    padding: '0.25rem 0.6rem',
+                    borderRadius: '2px',
+                    fontSize: '0.68rem',
+                    fontFamily: 'var(--font-mono)',
+                    letterSpacing: '0.08em',
+                  }}
+                >
+                  FOUNDER // RODNEY ALMEIDA
+                </div>
               </div>
-              <div style={{ padding: '0.85rem 0.5rem 0.25rem', display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', color: 'var(--text-light)', borderTop: '1px solid var(--border-subtle)', marginTop: '0.75rem', flexWrap: 'wrap', gap: '0.5rem' }}>
-                <span>RODNEY ALMEIDA // FOUNDER</span>
-                <span style={{ color: 'var(--accent-red)', fontWeight: 600 }}>25+ YEARS EXPERIENCE</span>
+
+              {/* Credential Status Bar */}
+              <div style={{ padding: '0.85rem 0.5rem 0.4rem', borderTop: '1px solid var(--border-subtle)', marginTop: '0.65rem' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.75rem', marginBottom: '0.6rem', flexWrap: 'wrap', gap: '0.4rem' }}>
+                  <span style={{ color: 'var(--text-ink)', fontWeight: 600 }}>RODNEY ALMEIDA</span>
+                  <span style={{ color: 'var(--accent-red)', fontWeight: 600, fontFamily: 'var(--font-mono)', fontSize: '0.72rem' }}>
+                    25+ YEARS EXPERIENCE
+                  </span>
+                </div>
+
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap', fontSize: '0.72rem', color: 'var(--text-light)', fontFamily: 'var(--font-mono)' }}>
+                  <span>ENGINEERING</span>
+                  <span>•</span>
+                  <span>4 BOOKS</span>
+                  <span>•</span>
+                  <span>STRATEGY</span>
+                </div>
               </div>
             </div>
           </div>
@@ -78,7 +110,7 @@ export default function FounderCredibility() {
               Founded on Experience, Knowledge and Purpose.
             </h2>
 
-            <div style={{ padding: '1.25rem 1.5rem', backgroundColor: 'var(--bg-pure-white)', borderLeft: '3px solid var(--accent-red)', marginBottom: '1.75rem', borderRadius: '0 2px 2px 0' }}>
+            <div style={{ padding: '1.25rem 1.5rem', backgroundColor: 'var(--bg-pure-white)', borderLeft: '3px solid var(--accent-red)', marginBottom: '1.75rem', borderRadius: '0 2px 2px 0', border: '1px solid var(--border-subtle)', borderLeftWidth: '3px', borderLeftColor: 'var(--accent-red)' }}>
               <p style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: '1.2rem', color: 'var(--text-ink)', margin: 0, lineHeight: 1.5 }}>
                 “Experience creates perspective. Perspective becomes useful when shared.”
               </p>
