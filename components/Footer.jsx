@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { ArrowRight, ArrowUpRight, ShieldCheck, Mail, Phone, MessageSquare, Plus, Minus } from 'lucide-react';
 import { booksData } from '@/data/books';
 import { servicesData } from '@/data/services';
+import LionLogo from '@/components/LionLogo';
 
 export default function Footer() {
   const [openGroup, setOpenGroup] = useState(null);
@@ -35,11 +36,14 @@ export default function Footer() {
         <div className="footer-desktop-grid footer-top">
           {/* Brand Col */}
           <div style={{ maxWidth: '340px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', marginBottom: '1.25rem' }}>
-              <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.6rem', fontWeight: 600, letterSpacing: '0.06em', color: '#FFFFFF' }}>
-                WILDMAC
-              </span>
-              <span style={{ width: '5px', height: '5px', backgroundColor: 'var(--accent-red)', borderRadius: '50%' }} />
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
+              <LionLogo size={32} isLight={true} />
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+                <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.55rem', fontWeight: 600, letterSpacing: '0.06em', color: '#FFFFFF' }}>
+                  WILDMAC
+                </span>
+                <span style={{ width: '5px', height: '5px', backgroundColor: 'var(--accent-red)', borderRadius: '50%' }} />
+              </div>
             </div>
             <p style={{ color: '#9BAEC0', fontSize: '0.92rem', lineHeight: 1.7, marginBottom: '1.75rem' }}>
               Wildmac is a coaching, consulting and knowledge-driven brand helping individuals, professionals and businesses move forward with purpose, clarity and practical strategy.
@@ -115,11 +119,14 @@ export default function Footer() {
         <div className="footer-mobile-accordion">
           {/* Brand Summary */}
           <div style={{ marginBottom: '1.5rem' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', marginBottom: '0.75rem' }}>
-              <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.4rem', fontWeight: 600, letterSpacing: '0.06em', color: '#FFFFFF' }}>
-                WILDMAC
-              </span>
-              <span style={{ width: '5px', height: '5px', backgroundColor: 'var(--accent-red)', borderRadius: '50%' }} />
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', marginBottom: '0.75rem' }}>
+              <LionLogo size={28} isLight={true} />
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+                <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.4rem', fontWeight: 600, letterSpacing: '0.06em', color: '#FFFFFF' }}>
+                  WILDMAC
+                </span>
+                <span style={{ width: '5px', height: '5px', backgroundColor: 'var(--accent-red)', borderRadius: '50%' }} />
+              </div>
             </div>
             <p style={{ color: '#9BAEC0', fontSize: '0.86rem', lineHeight: 1.6, margin: '0 0 1rem 0' }}>
               Coaching, consulting and knowledge-driven advisory platform.
