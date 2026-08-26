@@ -901,13 +901,14 @@ p.lead {
   right: 0;
   bottom: 0;
   background-color: var(--bg-paper-white);
-  z-index: 200;
+  z-index: 300;
   display: flex;
   flex-direction: column;
-  padding: 2rem 1.5rem;
+  padding: 1.5rem 1.25rem 1.25rem;
   transform: translateX(100%);
-  transition: transform var(--transition-smooth);
+  transition: transform 0.36s cubic-bezier(0.22, 1, 0.36, 1);
   overflow-y: auto;
+  box-shadow: -15px 0 45px rgba(17, 24, 32, 0.15);
 }
 
 .mobile-nav-drawer.open {
