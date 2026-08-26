@@ -33,7 +33,7 @@ export default function ConnectWildmac() {
           className="connect-section-grid"
         >
           {/* Left Column: Direct Communication Statement */}
-          <div>
+          <div className="reveal-on-scroll">
             <div style={{ marginBottom: '1.25rem' }}>
               <span className="editorial-stamp">CONNECT WITH WILDMAC</span>
             </div>

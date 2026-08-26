@@ -14,7 +14,7 @@ export default function FeaturedBooksSection() {
     <section className="section-py-lg" style={{ backgroundColor: 'var(--bg-ice-blue)', borderBottom: '1px solid var(--border-subtle)' }}>
       <div className="container">
         {/* Section Header */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '3.5rem', flexWrap: 'wrap', gap: '1.5rem' }}>
+        <div className="reveal-on-scroll" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '3.5rem', flexWrap: 'wrap', gap: '1.5rem' }}>
           <div style={{ maxWidth: '600px' }}>
             <div style={{ marginBottom: '0.75rem' }}>
               <span className="editorial-stamp">BOOKS & IDEAS</span>

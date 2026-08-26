@@ -27,7 +27,7 @@ export default function MajorConsultationCTA() {
           className="cta-section-grid"
         >
           {/* Left Column: Heading, Supporting Narrative & Action CTAs */}
-          <div>
+          <div className="reveal-on-scroll">
             <div style={{ marginBottom: '1.25rem' }}>
               <span style={{ fontSize: '0.75rem', fontFamily: 'var(--font-mono)', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#BFDCEB' }}>
                 WM / CONSULTATION // TAKE THE NEXT STEP

@@ -70,7 +70,7 @@ export default function HomePage() {
           =================================================================== */}
       <section className="section-py" style={{ backgroundColor: 'var(--bg-pure-white)', borderBottom: '1px solid var(--border-subtle)' }}>
         <div className="container">
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '3.5rem', flexWrap: 'wrap', gap: '1.5rem' }}>
+          <div className="reveal-on-scroll" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '3.5rem', flexWrap: 'wrap', gap: '1.5rem' }}>
             <div style={{ maxWidth: '640px' }}>
               <div style={{ marginBottom: '0.75rem' }}>
                 <span className="editorial-stamp">WILDMAC INSIGHTS</span>

@@ -1,0 +1,401 @@
+/* ==========================================================================
+   WILDMAC — ANIMATION & MICRO-INTERACTION SYSTEM
+   Aesthetic: Slow + Premium + Subtle + Confident + Editorial + Professional
+   Easings: cubic-bezier(0.22, 1, 0.36, 1) & cubic-bezier(0.16, 1, 0.3, 1)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   01 — GLOBAL TOP SCROLL PROGRESS BAR (1.5px Wildmac Red)
+   -------------------------------------------------------------------------- */
+#wildmac-scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--accent-red);
+  transform-origin: left;
+  transform: scaleX(0);
+  z-index: 99999;
+  pointer-events: none;
+  transition: transform 80ms linear;
+}
+
+/* --------------------------------------------------------------------------
+   02 — PAGE LOAD ENTRANCE SEQUENCE (HERO & HEADERS)
+   Sequential Stagger: Label (0ms) -> H1 (100ms) -> Body (220ms) -> CTA (340ms) -> Visual (460ms)
+   -------------------------------------------------------------------------- */
+.page-load-seq-1 {
+  animation: pageLoadFadeUp var(--dur-text) var(--ease-wildmac-primary) 0ms forwards;
+  opacity: 0;
+  will-change: opacity, transform;
+}
+
+.page-load-seq-2 {
+  animation: pageLoadFadeUp var(--dur-text) var(--ease-wildmac-primary) 100ms forwards;
+  opacity: 0;
+  will-change: opacity, transform;
+}
+
+.page-load-seq-3 {
+  animation: pageLoadFadeUp var(--dur-text) var(--ease-wildmac-primary) 220ms forwards;
+  opacity: 0;
+  will-change: opacity, transform;
+}
+
+.page-load-seq-4 {
+  animation: pageLoadFadeUp var(--dur-text) var(--ease-wildmac-primary) 340ms forwards;
+  opacity: 0;
+  will-change: opacity, transform;
+}
+
+.page-load-seq-5 {
+  animation: pageLoadImageReveal var(--dur-reveal) var(--ease-wildmac-primary) 460ms forwards;
+  opacity: 0;
+  will-change: opacity, transform, clip-path;
+}
+
+@keyframes pageLoadFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pageLoadImageReveal {
+  0% {
+    opacity: 0;
+    clip-path: inset(4% 0 4% 0 round 2px);
+    transform: translateY(24px) scale(0.985);
+  }
+  100% {
+    opacity: 1;
+    clip-path: inset(0% 0 0% 0 round 2px);
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   03 — VIEWPORT SCROLL-REVEAL SYSTEM (INTERSECTION OBSERVER)
+   Triggered once when element enters 15-25% of viewport
+   -------------------------------------------------------------------------- */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity var(--dur-text) var(--ease-wildmac-primary),
+              transform var(--dur-text) var(--ease-wildmac-primary);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Directional Slide-ins */
+.reveal-slide-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity var(--dur-text) var(--ease-wildmac-primary),
+              transform var(--dur-text) var(--ease-wildmac-primary);
+  will-change: opacity, transform;
+}
+
+.reveal-slide-left.is-revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-slide-right {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity var(--dur-text) var(--ease-wildmac-primary),
+              transform var(--dur-text) var(--ease-wildmac-primary);
+  will-change: opacity, transform;
+}
+
+.reveal-slide-right.is-revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Editorial Image Mask Reveal */
+.reveal-image-mask {
+  opacity: 0;
+  clip-path: inset(4% 0 4% 0 round 2px);
+  transform: translateY(20px) scale(0.99);
+  transition: opacity var(--dur-reveal) var(--ease-wildmac-primary),
+              clip-path var(--dur-reveal) var(--ease-wildmac-primary),
+              transform var(--dur-reveal) var(--ease-wildmac-primary);
+  will-change: opacity, transform, clip-path;
+}
+
+.reveal-image-mask.is-revealed {
+  opacity: 1;
+  clip-path: inset(0% 0 0% 0 round 2px);
+  transform: translateY(0) scale(1);
+}
+
+/* Section Rule & Divider Reveal */
+.reveal-divider {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-text) var(--ease-wildmac-primary);
+  will-change: transform;
+}
+
+.reveal-divider.is-revealed {
+  transform: scaleX(1);
+}
+
+/* Stagger Helpers for Lists / Grids */
+.stagger-1 { transition-delay: 0ms !important; }
+.stagger-2 { transition-delay: 90ms !important; }
+.stagger-3 { transition-delay: 180ms !important; }
+.stagger-4 { transition-delay: 270ms !important; }
+.stagger-5 { transition-delay: 360ms !important; }
+.stagger-6 { transition-delay: 450ms !important; }
+
+/* --------------------------------------------------------------------------
+   04 — BUTTON HOVER & SIGNATURE ARROW INTERACTION
+   -------------------------------------------------------------------------- */
+.btn {
+  transition: background-color var(--dur-hover) var(--ease-wildmac-primary),
+              border-color var(--dur-hover) var(--ease-wildmac-primary),
+              color var(--dur-hover) var(--ease-wildmac-primary),
+              box-shadow var(--dur-hover) var(--ease-wildmac-primary),
+              transform var(--dur-micro) var(--ease-wildmac-primary);
+  will-change: transform;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn svg,
+.btn .btn-arrow {
+  transition: transform var(--dur-hover) var(--ease-wildmac-primary);
+  will-change: transform;
+}
+
+.btn:hover svg,
+.btn:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+/* --------------------------------------------------------------------------
+   05 — EDITORIAL TEXT-LINK HOVER & LEFT-TO-RIGHT UNDERLINE
+   -------------------------------------------------------------------------- */
+.editorial-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color var(--dur-hover) var(--ease-wildmac-primary);
+}
+
+.editorial-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-hover) var(--ease-wildmac-primary);
+}
+
+.editorial-link:hover::after {
+  transform: scaleX(1);
+}
+
+.editorial-link svg {
+  transition: transform var(--dur-hover) var(--ease-wildmac-primary);
+  will-change: transform;
+}
+
+.editorial-link:hover svg {
+  transform: translateX(4px);
+}
+
+/* --------------------------------------------------------------------------
+   06 — NAVIGATION ITEM HOVER UNDERLINE & ACTIVE STATE
+   -------------------------------------------------------------------------- */
+.nav-item {
+  position: relative;
+  transition: color var(--dur-hover) var(--ease-wildmac-primary);
+}
+
+.nav-item::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  background-color: var(--text-ink);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-hover) var(--ease-wildmac-primary);
+}
+
+.nav-item:hover::after,
+.nav-item.active::after {
+  transform: scaleX(1);
+}
+
+.nav-brand-dot {
+  transition: transform var(--dur-hover) var(--ease-wildmac-primary);
+}
+
+.nav-brand:hover .nav-brand-dot {
+  transform: scale(1.25);
+}
+
+/* --------------------------------------------------------------------------
+   07 — CARD HOVER & SHADOW ELEVATION
+   Restrained: translateY(-4px) + soft shadow + subtle border shift
+   -------------------------------------------------------------------------- */
+.card-interactive {
+  transition: transform var(--dur-card) var(--ease-wildmac-primary),
+              box-shadow var(--dur-card) var(--ease-wildmac-primary),
+              border-color var(--dur-card) var(--ease-wildmac-primary);
+  will-change: transform;
+}
+
+.card-interactive:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 45px -12px rgba(17, 24, 32, 0.12);
+  border-color: var(--text-deep-blue);
+}
+
+/* --------------------------------------------------------------------------
+   08 — IMAGE HOVER ZOOM (1.00 -> 1.025 over 600ms)
+   -------------------------------------------------------------------------- */
+.image-zoom-container {
+  overflow: hidden;
+}
+
+.image-zoom-container img {
+  transition: transform var(--dur-image) var(--ease-wildmac-primary);
+  will-change: transform;
+}
+
+.image-zoom-container:hover img {
+  transform: scale(1.025);
+}
+
+/* --------------------------------------------------------------------------
+   09 — PHYSICAL BOOK HOVER
+   -------------------------------------------------------------------------- */
+.book-cover-3d-wrapper {
+  transition: transform var(--dur-card) var(--ease-wildmac-primary),
+              box-shadow var(--dur-card) var(--ease-wildmac-primary);
+  will-change: transform;
+}
+
+.book-cover-3d-wrapper:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: var(--shadow-book-hover);
+}
+
+/* --------------------------------------------------------------------------
+   10 — FORM FIELD FOCUS INTERACTION
+   -------------------------------------------------------------------------- */
+.form-input,
+.form-textarea,
+.form-select {
+  transition: border-color var(--dur-micro) var(--ease-wildmac-primary),
+              box-shadow var(--dur-micro) var(--ease-wildmac-primary),
+              background-color var(--dur-micro) var(--ease-wildmac-primary);
+}
+
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+  border-color: var(--text-deep-blue);
+  outline: none;
+  box-shadow: 0 0 0 1px var(--text-deep-blue);
+  background-color: var(--bg-pure-white);
+}
+
+/* --------------------------------------------------------------------------
+   11 — EDITORIAL STAMP ACCENT MICRO-PULSE
+   -------------------------------------------------------------------------- */
+.editorial-stamp::before {
+  transition: transform var(--dur-micro) var(--ease-wildmac-primary);
+}
+
+.editorial-stamp:hover::before {
+  transform: scale(1.2);
+}
+
+/* --------------------------------------------------------------------------
+   12 — MOBILE OPTIMIZATIONS (SCREENS <= 768px)
+   Reduces vertical travel distance to keep animation fluid and lightweight
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .reveal-on-scroll {
+    transform: translateY(14px);
+  }
+
+  .reveal-slide-left,
+  .reveal-slide-right {
+    transform: translateY(14px);
+  }
+
+  .card-interactive:hover {
+    transform: none;
+  }
+
+  .book-cover-3d-wrapper:hover {
+    transform: none;
+  }
+
+  .image-zoom-container:hover img {
+    transform: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   13 — PREFERS-REDUCED-MOTION SUPPORT
+   Disables transforms and large motions, keeping only instant opacity transitions
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  #wildmac-scroll-progress {
+    display: none !important;
+  }
+
+  .reveal-on-scroll,
+  .reveal-slide-left,
+  .reveal-slide-right,
+  .reveal-image-mask,
+  .page-load-seq-1,
+  .page-load-seq-2,
+  .page-load-seq-3,
+  .page-load-seq-4,
+  .page-load-seq-5 {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
+
+  .reveal-divider {
+    transform: scaleX(1) !important;
+  }
+}

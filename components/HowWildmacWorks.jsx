@@ -44,7 +44,7 @@ export default function HowWildmacWorks() {
     <section className="section-py" style={{ backgroundColor: 'var(--bg-paper-white)', borderBottom: '1px solid var(--border-subtle)' }}>
       <div className="container">
         {/* Section Header */}
-        <div style={{ maxWidth: '640px', marginBottom: '3.5rem' }}>
+        <div className="reveal-on-scroll" style={{ maxWidth: '640px', marginBottom: '3.5rem' }}>
           <div style={{ marginBottom: '1rem' }}>
             <span className="editorial-stamp">OUR APPROACH</span>
           </div>

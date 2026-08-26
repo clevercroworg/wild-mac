@@ -27,7 +27,7 @@ export default function AboutWildmac() {
           className="about-split-grid"
         >
           {/* Left: Heading & Narrative */}
-          <div>
+          <div className="reveal-on-scroll">
             <div style={{ marginBottom: '1.25rem' }}>
               <span className="editorial-stamp">ABOUT WILDMAC</span>
             </div>
@@ -91,7 +91,7 @@ export default function AboutWildmac() {
           </div>
 
           {/* Right: Dual Editorial Photography Spread (People + Strategy Environment) */}
-          <div style={{ position: 'relative' }}>
+          <div className="reveal-image-mask" style={{ position: 'relative' }}>
             {/* Background Mist Plate */}
             <div
               style={{

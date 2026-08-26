@@ -51,7 +51,7 @@ export default function WildmacHero() {
               =============================================================== */}
           <div className="hero-text-col" style={{ maxWidth: '640px' }}>
             {/* Top Micro Label */}
-            <div style={{ marginBottom: '1.75rem' }}>
+            <div className="page-load-seq-1" style={{ marginBottom: '1.75rem' }}>
               <span
                 className="editorial-stamp"
                 style={{
@@ -67,7 +67,7 @@ export default function WildmacHero() {
 
             {/* Main Heading (H1) */}
             <h1
-              className="hero-main-title"
+              className="hero-main-title page-load-seq-2"
               style={{
                 fontFamily: 'var(--font-display)',
                 fontWeight: 500,
@@ -83,11 +83,11 @@ export default function WildmacHero() {
             </h1>
 
             {/* 1px Editorial Red Accent Line */}
-            <div style={{ width: '2.5rem', height: '2px', backgroundColor: 'var(--accent-red)', marginBottom: '1.75rem' }} />
+            <div className="page-load-seq-2 reveal-divider" style={{ width: '2.5rem', height: '2px', backgroundColor: 'var(--accent-red)', marginBottom: '1.75rem' }} />
 
             {/* Supporting Copy */}
             <p
-              className="lead hero-lead-text"
+              className="lead hero-lead-text page-load-seq-3"
               style={{
                 fontSize: 'clamp(1.05rem, 1.8vw, 1.22rem)',
                 color: 'var(--text-deep-blue)',
@@ -100,7 +100,7 @@ export default function WildmacHero() {
             </p>
 
             {/* Dual Action CTAs */}
-            <div className="hero-actions-row" style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', flexWrap: 'wrap', marginBottom: '3rem' }}>
+            <div className="hero-actions-row page-load-seq-4" style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', flexWrap: 'wrap', marginBottom: '3rem' }}>
               <Link
                 href="/services"
                 className="btn btn-primary"
@@ -129,6 +129,7 @@ export default function WildmacHero() {
 
             {/* Ecosystem Pillars Footer Indicator */}
             <div
+              className="page-load-seq-4"
               style={{
                 display: 'flex',
                 alignItems: 'center',
@@ -155,7 +156,7 @@ export default function WildmacHero() {
               RIGHT / 40–45% — LAYERED STRATEGIC CAMPAIGN COMPOSITION
               =============================================================== */}
           <div
-            className="hero-visual-stage"
+            className="hero-visual-stage page-load-seq-5"
             style={{
               position: 'relative',
               width: '100%',

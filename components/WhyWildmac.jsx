@@ -43,7 +43,7 @@ export default function WhyWildmac() {
     >
       <div className="container">
         {/* Section Header */}
-        <div style={{ maxWidth: '680px', marginBottom: '4rem' }}>
+        <div className="reveal-on-scroll" style={{ maxWidth: '680px', marginBottom: '4rem' }}>
           <div style={{ marginBottom: '1.25rem' }}>
             <span style={{ fontSize: '0.75rem', fontFamily: 'var(--font-mono)', letterSpacing: '0.16em', textTransform: 'uppercase', color: '#BFDCEB' }}>
               WM / WHY WILDMAC? // OUR EDGE

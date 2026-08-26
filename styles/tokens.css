@@ -57,12 +57,22 @@
   --radius-subtle: 2px;
   --radius-standard: 3px;
 
-  /* --- TRANSITIONS & EASINGS --- */
-  --ease-editorial: cubic-bezier(0.16, 1, 0.3, 1);
+  /* --- DEFINITIVE MOTION & ANIMATION SYSTEM --- */
+  --ease-wildmac-primary: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-wildmac-secondary: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-editorial: var(--ease-wildmac-primary);
   --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-fast: 160ms var(--ease-editorial);
-  --transition-smooth: 320ms var(--ease-editorial);
-  --transition-slow: 550ms var(--ease-editorial);
+
+  --dur-micro: 240ms;
+  --dur-hover: 300ms;
+  --dur-card: 380ms;
+  --dur-image: 600ms;
+  --dur-text: 750ms;
+  --dur-reveal: 950ms;
+
+  --transition-fast: var(--dur-micro) var(--ease-wildmac-primary);
+  --transition-smooth: var(--dur-hover) var(--ease-wildmac-primary);
+  --transition-slow: var(--dur-image) var(--ease-wildmac-primary);
 
   /* --- SHADOWS --- */
   --shadow-book: 0 16px 40px -10px rgba(17, 24, 32, 0.16), 0 4px 14px -2px rgba(17, 24, 32, 0.06);

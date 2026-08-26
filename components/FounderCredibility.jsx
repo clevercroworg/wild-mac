@@ -9,13 +9,13 @@ export default function FounderCredibility() {
     <section className="section-py" style={{ backgroundColor: 'var(--bg-paper-white)', borderBottom: '1px solid var(--border-subtle)' }}>
       <div className="container">
         <div
+          className="founder-section-grid reveal-on-scroll"
           style={{
             display: 'grid',
             gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1.25fr)',
             gap: '4.5rem',
             alignItems: 'center',
           }}
-          className="founder-section-grid"
         >
           {/* Left Column: Authentic Portrait of Rodney Almeida */}
           <div style={{ position: 'relative' }}>

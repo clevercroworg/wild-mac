@@ -23,7 +23,7 @@ export default function ServicesContinuum() {
         {/* ===================================================================
             01 — SECTION INTRO (SHORT & SHARP)
             =================================================================== */}
-        <div style={{ maxWidth: '680px', marginBottom: '3.5rem' }}>
+        <div className="reveal-on-scroll" style={{ maxWidth: '680px', marginBottom: '3.5rem' }}>
           <div style={{ marginBottom: '1rem' }}>
             <span className="editorial-stamp">WHAT WE DO</span>
           </div>
