@@ -6,7 +6,7 @@ import { ArrowRight, BookOpen, Compass, Award } from 'lucide-react';
 
 export default function FounderCredibility() {
   return (
-    <section className="section-py" style={{ backgroundColor: 'var(--bg-paper-white)', borderBottom: '1px solid var(--border-subtle)' }}>
+    <section className="section-py-lg" style={{ backgroundColor: 'var(--bg-ice-blue)', borderBottom: '1px solid var(--border-subtle)' }}>
       <div className="container">
         <div
           className="founder-section-grid reveal-on-scroll"
@@ -126,7 +126,7 @@ export default function FounderCredibility() {
 
             <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', flexWrap: 'wrap', marginTop: '1.5rem' }}>
               <Link href="/about" className="btn btn-primary" style={{ padding: '0.85rem 1.75rem', fontSize: '0.9rem' }}>
-                <span>Read Our Story</span>
+                <span>Read Founder's Story</span>
                 <ArrowRight size={14} />
               </Link>
               <Link href="/consultation" className="editorial-link" style={{ fontSize: '0.88rem' }}>

@@ -31,39 +31,39 @@ export default function HomePage() {
       <WildmacHero />
 
       {/* ===================================================================
-          02 — ABOUT WILDMAC (PURPOSE → CLARITY → STRATEGY → ACTION)
+          02 — THE VISION BEHIND WILDMAC: FOUNDER CREDIBILITY (RODNEY DE ALMEIDA)
+          =================================================================== */}
+      <FounderCredibility />
+
+      {/* ===================================================================
+          03 — ABOUT WILDMAC (PURPOSE → CLARITY → STRATEGY → ACTION)
           =================================================================== */}
       <AboutWildmac />
 
       {/* ===================================================================
-          03 — WHAT WE DO: INTERACTIVE EDITORIAL SERVICE INDEX
+          04 — WHAT WE DO: INTERACTIVE EDITORIAL SERVICE INDEX
           =================================================================== */}
       <ServicesContinuum />
 
       {/* ===================================================================
-          04 — WHO WE HELP: 6 LARGE AUDIENCE PILLARS
+          05 — WHO WE HELP: 6 LARGE AUDIENCE PILLARS
           =================================================================== */}
       <WhoWeHelp />
 
       {/* ===================================================================
-          05 — WHY WILDMAC: EXPERIENCE-LED GUIDANCE (DEEP NAVY CONTRAST)
+          06 — WHY WILDMAC: EXPERIENCE-LED GUIDANCE (DEEP NAVY CONTRAST)
           =================================================================== */}
       <WhyWildmac />
 
       {/* ===================================================================
-          06 — OUR APPROACH: 5-STAGE PROGRESSION PROCESS
+          07 — OUR APPROACH: 5-STAGE PROGRESSION PROCESS
           =================================================================== */}
       <HowWildmacWorks />
 
       {/* ===================================================================
-          07 — BOOKS & IDEAS: 4-VOLUME PUBLICATION CATALOG (PALE BLUE)
+          08 — BOOKS & IDEAS: 4-VOLUME PUBLICATION CATALOG (PALE BLUE)
           =================================================================== */}
       <FeaturedBooksSection />
-
-      {/* ===================================================================
-          08 — THE VISION BEHIND WILDMAC: FOUNDER CREDIBILITY (RODNEY ALMEIDA)
-          =================================================================== */}
-      <FounderCredibility />
 
       {/* ===================================================================
           09 — WILDMAC INSIGHTS: IDEAS TO HELP YOU THINK, DECIDE AND GROW
