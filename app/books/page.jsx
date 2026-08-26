@@ -239,10 +239,10 @@ export default function BooksPage() {
                 letterSpacing: '-0.02em',
               }}
             >
-              Coming Up Next Book.
+              Next Book Coming Up.
             </h2>
             <p className="lead" style={{ color: 'var(--text-deep-blue)', lineHeight: 1.65 }}>
-              Rodney Almeida’s fifth forthcoming volume exploring the architecture of unhurried mastery, engineering discipline, and intergenerational stewardship.
+              Rodney De Almeida’s fifth forthcoming volume exploring the architecture of unhurried mastery, engineering discipline, and intergenerational stewardship.
             </p>
           </div>
 
