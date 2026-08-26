@@ -1,0 +1,69 @@
+/* ==========================================================================
+   WILD MAC — NEXT-GENERATION VISUAL DESIGN SYSTEM TOKENS
+   Visual Concept: "The Open Book"
+   Palette: Paper White · Ice Blue · Mist Blue · Soft Blue · Deep Blue · Ink · Editorial Red
+   ========================================================================== */
+
+:root {
+  /* --- PALETTE SYSTEM --- */
+  --bg-paper-white: #FAFAF7;       /* Primary Page Background (warm unbleached paper) */
+  --bg-pure-white: #FFFFFF;        /* Pure Paper Spread */
+  --bg-ice-blue: #EFF6FA;          /* Layer 1: Subtle atmospheric wash */
+  --bg-mist-blue: #DCECF4;         /* Layer 2: Chapter breaks & backplates */
+  --bg-soft-blue: #BFDCEB;         /* Layer 3: Accent backplates & book focus */
+  
+  /* Aliases for backwards compatibility */
+  --bg-ivory: var(--bg-paper-white);
+  --bg-paper: var(--bg-pure-white);
+  --bg-mist: var(--bg-ice-blue);
+
+  /* --- INK & TYPOGRAPHY SYSTEM --- */
+  --text-deep-blue: #183348;       /* Primary Deep Midnight Text */
+  --text-ink: #121A22;             /* Pure Display Ink (Headlines, Chapters) */
+  --text-muted: #485B6C;           /* High-Legibility Body Text */
+  --text-light: #708496;           /* Metadata, Chapter numbers, Footnotes */
+  --text-whisper: #9BAEC0;         /* Fine Margin Notes & Sub-labels */
+  
+  /* Aliases */
+  --text-navy: var(--text-deep-blue);
+
+  /* --- EDITORIAL RED INK (2% of Visual Canvas) --- */
+  --accent-red: #C94742;           /* Editorial Crimson Ink */
+  --accent-red-hover: #AF3834;
+  --accent-red-subtle: rgba(201, 71, 66, 0.08);
+  --accent-red-border: rgba(201, 71, 66, 0.35);
+
+  /* --- RULES & MARGINS --- */
+  --border-subtle: rgba(18, 26, 34, 0.07);
+  --border-medium: rgba(18, 26, 34, 0.14);
+  --border-strong: rgba(18, 26, 34, 0.25);
+  --border-blue: rgba(191, 220, 235, 0.4);
+
+  /* --- TYPOGRAPHY --- */
+  --font-serif: var(--font-cormorant), 'Libre Baskerville', Georgia, serif;
+  --font-display: var(--font-cormorant), Georgia, serif;
+  --font-body-serif: var(--font-libre), 'Newsreader', Georgia, serif;
+  --font-sans: var(--font-inter), 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+
+  /* --- GEOMETRY & GRIDS --- */
+  --container-max: 1280px;
+  --container-wide: 1400px;
+  --container-narrow: 860px;
+  --container-reading: 680px;      /* 60-75 characters per line */
+  
+  --radius-sharp: 0px;
+  --radius-subtle: 2px;
+
+  /* --- TRANSITIONS & EASINGS --- */
+  --ease-editorial: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: 180ms var(--ease-editorial);
+  --transition-smooth: 320ms var(--ease-editorial);
+  --transition-slow: 600ms var(--ease-editorial);
+
+  /* --- PHYSICAL BOOK SHADOWS --- */
+  --shadow-book: 0 16px 40px -10px rgba(18, 26, 34, 0.16), 0 4px 14px -2px rgba(18, 26, 34, 0.06);
+  --shadow-book-hover: 0 24px 56px -12px rgba(18, 26, 34, 0.22), 0 8px 22px -4px rgba(18, 26, 34, 0.1);
+  --shadow-subtle: 0 2px 16px rgba(18, 26, 34, 0.04);
+}
