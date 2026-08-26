@@ -410,43 +410,41 @@ export default function ServicesContinuum() {
                       </div>
 
                       {/* For Label */}
-                      <div style={{ marginBottom: '0.5rem' }}>
-                        <span className="editorial-stamp" style={{ fontSize: '0.7rem' }}>
-                          FOR / {service.whoItIsFor.split(',')[0]}
+                      <div style={{ marginBottom: '0.4rem' }}>
+                        <span className="editorial-stamp" style={{ fontSize: '0.65rem' }}>
+                          FOR // {service.whoItIsFor.split(',')[0]}
                         </span>
                       </div>
 
-                      {/* Strategic Copy */}
-                      <p style={{ fontSize: '0.92rem', color: 'var(--text-muted)', lineHeight: 1.65, marginBottom: '1.25rem' }}>
-                        {service.overview}
+                      {/* Strategic Copy (1-2 sentences limit) */}
+                      <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', lineHeight: 1.55, marginBottom: '1rem' }}>
+                        {service.description}
                       </p>
 
-                      {/* Action Buttons */}
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                        <Link
-                          href="/consultation"
-                          className="btn btn-primary"
-                          style={{
-                            width: '100%',
-                            padding: '0.85rem 1.25rem',
-                            fontSize: '0.88rem',
-                            gap: '0.5rem',
-                          }}
-                        >
-                          <span>Book a Consultation</span>
-                          <ArrowRight size={14} />
-                        </Link>
-
+                      {/* Action Links */}
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid var(--border-subtle)', paddingTop: '0.85rem' }}>
                         <Link
                           href={`/services#${service.id}`}
                           className="editorial-link"
                           style={{
-                            justifyContent: 'center',
-                            fontSize: '0.85rem',
+                            fontSize: '0.82rem',
                           }}
                         >
-                          <span>Explore details</span>
+                          <span>View Full Scope</span>
                           <ArrowRight size={12} />
+                        </Link>
+
+                        <Link
+                          href="/consultation"
+                          style={{
+                            fontSize: '0.8rem',
+                            fontFamily: 'var(--font-mono)',
+                            color: 'var(--accent-red)',
+                            fontWeight: 600,
+                            textDecoration: 'none',
+                          }}
+                        >
+                          Book Session →
                         </Link>
                       </div>
                     </div>

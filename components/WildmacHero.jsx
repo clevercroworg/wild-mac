@@ -300,11 +300,25 @@ export default function WildmacHero() {
         @media (max-width: 900px) {
           .wildmac-hero-section {
             padding-top: 2rem !important;
-            padding-bottom: 2rem !important;
+            padding-bottom: 1.5rem !important;
             min-height: auto !important;
           }
+          .hero-main-title {
+            font-size: 2.35rem !important;
+            line-height: 1.08 !important;
+            margin-bottom: 1.25rem !important;
+          }
+          .hero-lead-text {
+            font-size: 1rem !important;
+            line-height: 1.55 !important;
+            margin-bottom: 1.75rem !important;
+          }
+          .hero-actions-row {
+            margin-bottom: 2rem !important;
+            gap: 1rem !important;
+          }
           .hero-visual-stage {
-            margin-top: 1rem;
+            margin-top: 0.5rem;
           }
         }
       `}</style>

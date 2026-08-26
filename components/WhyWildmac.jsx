@@ -1,8 +1,12 @@
-import React from 'react';
+'use client';
+
+import React, { useState } from 'react';
 import Link from 'next/link';
-import { ArrowRight, ShieldCheck } from 'lucide-react';
+import { ArrowRight, ShieldCheck, ChevronDown, ChevronUp } from 'lucide-react';
 
 export default function WhyWildmac() {
+  const [expandedMobileIndex, setExpandedMobileIndex] = useState(0);
+
   const strengths = [
     {
       number: "01",
@@ -43,7 +47,7 @@ export default function WhyWildmac() {
     >
       <div className="container">
         {/* Section Header */}
-        <div className="reveal-on-scroll" style={{ maxWidth: '680px', marginBottom: '4rem' }}>
+        <div className="reveal-on-scroll" style={{ maxWidth: '680px', marginBottom: '3.5rem' }}>
           <div style={{ marginBottom: '1.25rem' }}>
             <span style={{ fontSize: '0.75rem', fontFamily: 'var(--font-mono)', letterSpacing: '0.16em', textTransform: 'uppercase', color: '#BFDCEB' }}>
               WM / WHY WILDMAC? // OUR EDGE
@@ -76,8 +80,10 @@ export default function WhyWildmac() {
           </p>
         </div>
 
-        {/* 5 Distinct Editorial Strengths */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
+        {/* -------------------------------------------------------------
+            DESKTOP VIEW (> 768px): 5 Distinct Editorial Strengths Cards
+            ------------------------------------------------------------- */}
+        <div className="why-desktop-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
           {strengths.map((item) => (
             <div
               key={item.number}
@@ -111,10 +117,70 @@ export default function WhyWildmac() {
           ))}
         </div>
 
+        {/* -------------------------------------------------------------
+            MOBILE VIEW (<= 768px): Compact Single-Expand Accordion List
+            ------------------------------------------------------------- */}
+        <div className="why-mobile-accordion">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+            {strengths.map((item, idx) => {
+              const isExpanded = expandedMobileIndex === idx;
+              return (
+                <div
+                  key={item.number}
+                  style={{
+                    backgroundColor: isExpanded ? 'rgba(255, 255, 255, 0.07)' : 'rgba(255, 255, 255, 0.03)',
+                    border: '1px solid',
+                    borderColor: isExpanded ? 'rgba(255, 255, 255, 0.25)' : 'rgba(255, 255, 255, 0.08)',
+                    borderLeft: isExpanded ? '3px solid var(--accent-red)' : '1px solid rgba(255, 255, 255, 0.08)',
+                    borderRadius: '2px',
+                    overflow: 'hidden',
+                    transition: 'all var(--transition-fast)',
+                  }}
+                >
+                  <button
+                    type="button"
+                    onClick={() => setExpandedMobileIndex(isExpanded ? -1 : idx)}
+                    style={{
+                      width: '100%',
+                      padding: '1.1rem 1.25rem',
+                      background: 'none',
+                      border: 'none',
+                      color: '#FFFFFF',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      cursor: 'pointer',
+                      textAlign: 'left',
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                      <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', fontWeight: 700, color: 'var(--accent-red)' }}>
+                        {item.number}
+                      </span>
+                      <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.1rem', fontWeight: 650, color: '#FFFFFF', margin: 0 }}>
+                        {item.title}
+                      </h3>
+                    </div>
+                    <div style={{ color: isExpanded ? 'var(--accent-red)' : '#9BAEC0', flexShrink: 0 }}>
+                      {isExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                    </div>
+                  </button>
+
+                  {isExpanded && (
+                    <div style={{ padding: '0 1.25rem 1.25rem 2.85rem', color: '#D7E8F1', fontSize: '0.9rem', lineHeight: 1.6 }}>
+                      {item.description}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
         {/* Bottom Closing Bar */}
         <div
           style={{
-            marginTop: '4rem',
+            marginTop: '3.5rem',
             paddingTop: '2rem',
             borderTop: '1px solid rgba(255, 255, 255, 0.1)',
             display: 'flex',
@@ -144,6 +210,24 @@ export default function WhyWildmac() {
           </Link>
         </div>
       </div>
+
+      <style jsx>{`
+        .why-desktop-grid {
+          display: grid;
+        }
+        .why-mobile-accordion {
+          display: none;
+        }
+
+        @media (max-width: 768px) {
+          .why-desktop-grid {
+            display: none !important;
+          }
+          .why-mobile-accordion {
+            display: block !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

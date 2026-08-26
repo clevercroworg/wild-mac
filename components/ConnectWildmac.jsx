@@ -58,7 +58,7 @@ export default function ConnectWildmac() {
             </p>
 
             {/* Direct Contact Pillars */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', borderTop: '1px solid var(--border-subtle)', paddingTop: '1.75rem' }}>
+            <div className="contact-pillars-wrap" style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', borderTop: '1px solid var(--border-subtle)', paddingTop: '1.75rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                 <div style={{ width: '40px', height: '40px', backgroundColor: 'var(--bg-ice-blue)', borderRadius: '2px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <Mail size={18} color="var(--accent-red)" />
@@ -99,6 +99,7 @@ export default function ConnectWildmac() {
 
           {/* Right Column: Structured Inquiry Form */}
           <div
+            className="contact-form-box"
             style={{
               backgroundColor: 'var(--bg-paper-white)',
               border: '1px solid var(--border-subtle)',
@@ -138,12 +139,14 @@ export default function ConnectWildmac() {
 
                 <div className="form-split-grid">
                   <div className="form-group">
-                    <label className="form-label" htmlFor="fullName">Full Name</label>
+                    <label htmlFor="fullName" className="form-label">
+                      Full Name *
+                    </label>
                     <input
-                      id="fullName"
                       type="text"
+                      id="fullName"
                       required
-                      placeholder="e.g. Rodney Vance"
+                      placeholder="e.g. Eleanor Vance"
                       value={formData.fullName}
                       onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                       className="form-input"
@@ -151,12 +154,14 @@ export default function ConnectWildmac() {
                   </div>
 
                   <div className="form-group">
-                    <label className="form-label" htmlFor="email">Email Address</label>
+                    <label htmlFor="email" className="form-label">
+                      Email Address *
+                    </label>
                     <input
-                      id="email"
                       type="email"
+                      id="email"
                       required
-                      placeholder="name@company.com"
+                      placeholder="e.g. eleanor@vance-holdings.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       className="form-input"
@@ -166,10 +171,12 @@ export default function ConnectWildmac() {
 
                 <div className="form-split-grid">
                   <div className="form-group">
-                    <label className="form-label" htmlFor="phone">Phone Number (Optional)</label>
+                    <label htmlFor="phone" className="form-label">
+                      Phone Number
+                    </label>
                     <input
-                      id="phone"
                       type="tel"
+                      id="phone"
                       placeholder="+1 (555) 000-0000"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -178,45 +185,34 @@ export default function ConnectWildmac() {
                   </div>
 
                   <div className="form-group">
-                    <label className="form-label" htmlFor="preferredContact">Preferred Contact Method</label>
+                    <label htmlFor="serviceRequired" className="form-label">
+                      Primary Practice Focus
+                    </label>
                     <select
-                      id="preferredContact"
-                      value={formData.preferredContact}
-                      onChange={(e) => setFormData({ ...formData, preferredContact: e.target.value })}
+                      id="serviceRequired"
+                      value={formData.serviceRequired}
+                      onChange={(e) => setFormData({ ...formData, serviceRequired: e.target.value })}
                       className="form-select"
                     >
-                      <option value="Email">Email</option>
-                      <option value="WhatsApp">WhatsApp</option>
-                      <option value="Phone Call">Phone Call</option>
+                      <option value="Business Coaching">Business Coaching & Advisory</option>
+                      <option value="Life Coaching">Life Coaching & Clarity</option>
+                      <option value="Real Estate">Real Estate Strategy</option>
+                      <option value="Investment Education">Investment Education</option>
+                      <option value="Branding & Digital">Branding & Digital Marketing</option>
+                      <option value="General Exploration">General Strategic Dialogue</option>
                     </select>
                   </div>
                 </div>
 
                 <div className="form-group">
-                  <label className="form-label" htmlFor="serviceRequired">Service or Inquiry Focus</label>
-                  <select
-                    id="serviceRequired"
-                    value={formData.serviceRequired}
-                    onChange={(e) => setFormData({ ...formData, serviceRequired: e.target.value })}
-                    className="form-select"
-                  >
-                    <option value="Business Coaching">Business Coaching</option>
-                    <option value="Life Coaching">Life Coaching</option>
-                    <option value="Real Estate">Real Estate Strategy</option>
-                    <option value="Investment Strategy">Investment Strategy</option>
-                    <option value="Branding and Digital Marketing">Branding & Digital Marketing</option>
-                    <option value="Book-Related Enquiry">Book-Related Enquiry</option>
-                    <option value="General Enquiry">General Enquiry</option>
-                  </select>
-                </div>
-
-                <div className="form-group">
-                  <label className="form-label" htmlFor="message">How Can We Support You?</label>
+                  <label htmlFor="message" className="form-label">
+                    Brief Summary of Your Situation or Goals *
+                  </label>
                   <textarea
                     id="message"
                     required
                     rows={4}
-                    placeholder="Share your goals, challenges, or requirements..."
+                    placeholder="Tell us what you are looking to solve, build, or navigate..."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     className="form-textarea"
@@ -241,7 +237,10 @@ export default function ConnectWildmac() {
         @media (max-width: 900px) {
           .connect-section-grid {
             grid-template-columns: 1fr !important;
-            gap: 3rem !important;
+            gap: 2rem !important;
+          }
+          .contact-form-box {
+            padding: 1.5rem 1.25rem !important;
           }
         }
       `}</style>

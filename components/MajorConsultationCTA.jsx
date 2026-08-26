@@ -157,7 +157,7 @@ export default function MajorConsultationCTA() {
         @media (max-width: 900px) {
           .cta-section-grid {
             grid-template-columns: 1fr !important;
-            gap: 3rem !important;
+            gap: 2rem !important;
           }
         }
       `}</style>

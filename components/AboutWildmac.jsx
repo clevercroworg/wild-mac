@@ -49,7 +49,7 @@ export default function AboutWildmac() {
               Wildmac is a coaching, consulting and knowledge-driven brand created to support individuals, professionals, entrepreneurs and businesses in navigating important decisions and discovering new opportunities.
             </p>
 
-            <p style={{ fontSize: '1.02rem', lineHeight: 1.8, color: 'var(--text-muted)', marginBottom: '2rem' }}>
+            <p className="hidden-mobile" style={{ fontSize: '1.02rem', lineHeight: 1.8, color: 'var(--text-muted)', marginBottom: '2rem' }}>
               Our approach combines experience, practical thinking and structured guidance across business, personal growth, real estate, investment education, branding and digital marketing.
             </p>
 

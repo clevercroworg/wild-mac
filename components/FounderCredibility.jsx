@@ -84,22 +84,22 @@ export default function FounderCredibility() {
               </p>
             </div>
 
-            <p style={{ fontSize: '1.02rem', lineHeight: 1.8, color: 'var(--text-deep-blue)', marginBottom: '1.25rem' }}>
+            <p style={{ fontSize: '1.02rem', lineHeight: 1.75, color: 'var(--text-deep-blue)', marginBottom: '1.25rem' }}>
               Wildmac was founded by Rodney Almeida, an Electrical Engineering graduate with more than 25 years of professional experience and a journey shaped by learning, leadership and adventure.
             </p>
 
-            <p style={{ fontSize: '1.02rem', lineHeight: 1.8, color: 'var(--text-muted)', marginBottom: '2.5rem' }}>
+            <p className="hidden-mobile" style={{ fontSize: '1.02rem', lineHeight: 1.8, color: 'var(--text-muted)', marginBottom: '2.5rem' }}>
               As the author of four published books, Rodney brings together his professional background, personal insights and passion for helping people make better decisions. Wildmac transforms this vision into a platform for coaching, strategic guidance, education and meaningful growth.
             </p>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', flexWrap: 'wrap' }}>
-              <Link href="/about" className="btn btn-primary" style={{ padding: '0.9rem 1.85rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', flexWrap: 'wrap', marginTop: '1.5rem' }}>
+              <Link href="/about" className="btn btn-primary" style={{ padding: '0.85rem 1.75rem', fontSize: '0.9rem' }}>
                 <span>Read Our Story</span>
                 <ArrowRight size={14} />
               </Link>
-              <Link href="/consultation" className="editorial-link">
-                <span>Book a Conversation with Rodney</span>
-                <ArrowRight size={14} />
+              <Link href="/consultation" className="editorial-link" style={{ fontSize: '0.88rem' }}>
+                <span>Book a Conversation</span>
+                <ArrowRight size={13} />
               </Link>
             </div>
           </div>
@@ -110,7 +110,7 @@ export default function FounderCredibility() {
         @media (max-width: 900px) {
           .founder-section-grid {
             grid-template-columns: 1fr !important;
-            gap: 3rem !important;
+            gap: 2rem !important;
           }
         }
       `}</style>
