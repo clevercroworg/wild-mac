@@ -4,12 +4,12 @@ import React from 'react';
 
 /**
  * LionLogo — High-resolution transparent PNG logo image component for Wildmac.
- * Renders the custom architectural lion emblem asset.
+ * Renders the authentic full-color architectural lion emblem asset.
  */
-export default function LionLogo({ size = 50, isLight = false, className = '', style = {} }) {
+export default function LionLogo({ size = 50, className = '', style = {} }) {
   return (
     <img
-      src={isLight ? '/images/wildmac-lion-logo-light.png' : '/images/wildmac-lion-logo.png'}
+      src="/images/wildmac-lion-logo.png"
       alt="Wildmac Lion Emblem"
       className={className}
       style={{

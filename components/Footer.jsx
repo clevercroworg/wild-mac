@@ -37,7 +37,7 @@ export default function Footer() {
           {/* Brand Col */}
           <div style={{ maxWidth: '340px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem', marginBottom: '1.25rem' }}>
-              <LionLogo size={46} isLight={true} />
+              <LionLogo size={46} />
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
                 <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.65rem', fontWeight: 600, letterSpacing: '0.06em', color: '#FFFFFF' }}>
                   WILDMAC
@@ -120,7 +120,7 @@ export default function Footer() {
           {/* Brand Summary */}
           <div style={{ marginBottom: '1.5rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', marginBottom: '0.75rem' }}>
-              <LionLogo size={28} isLight={true} />
+              <LionLogo size={36} />
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
                 <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.4rem', fontWeight: 600, letterSpacing: '0.06em', color: '#FFFFFF' }}>
                   WILDMAC
