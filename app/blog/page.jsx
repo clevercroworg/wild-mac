@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { ArrowRight, BookOpen, Clock, Calendar } from 'lucide-react';
-import { journalArticles } from '@/data/journal';
+import { getAllBlogs } from '@/lib/db';
 import MajorConsultationCTA from '@/components/MajorConsultationCTA';
 
 export const metadata = {
@@ -9,9 +9,19 @@ export const metadata = {
   description: 'Practical perspectives, strategic frameworks, and reflective essays across business, personal growth, real estate, investment education, and branding.',
 };
 
-export default function BlogPage() {
-  const featuredArticle = journalArticles[0];
-  const allArticles = journalArticles;
+export const dynamic = 'force-dynamic';
+
+export default async function BlogPage() {
+  const allArticles = await getAllBlogs({ includeDrafts: false });
+  const featuredArticle = allArticles.find((a) => a.isFeatured) || allArticles[0] || {
+    slug: 'on-the-architecture-of-unhurried-time',
+    title: 'On the Architecture of Unhurried Time',
+    category: 'Life',
+    date: 'October 14, 2024',
+    readTime: '6 min read',
+    excerpt: 'Most people do not suffer from a lack of time; they suffer from a fragmentation of attention.',
+    coverImage: '/images/community-gathering.jpg',
+  };
 
   const articleImages = [
     '/images/community-gathering.jpg',

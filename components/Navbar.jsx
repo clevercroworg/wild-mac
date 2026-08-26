@@ -63,11 +63,12 @@ export default function Navbar() {
     { name: 'About', href: '/about', num: '02' },
     { name: 'Services', href: '/services', isDropdown: true, num: '03' },
     { name: 'Books', href: '/books', num: '04' },
-    { name: 'Projects', href: '/future-projects', num: '05' },
-    { name: 'Blog', href: '/blog', num: '06' },
-    { name: 'Collaborate', href: '/collaboration', num: '07' },
-    { name: 'Donate', href: '/donate', num: '08', isHighlight: true },
-    { name: 'Contact', href: '/contact', num: '09' },
+    { name: 'Resources', href: '/resources', num: '05' },
+    { name: 'Projects', href: '/future-projects', num: '06' },
+    { name: 'Blog', href: '/blog', num: '07' },
+    { name: 'Collaborate', href: '/collaboration', num: '08' },
+    { name: 'Donate', href: '/donate', num: '09', isHighlight: true },
+    { name: 'Contact', href: '/contact', num: '10' },
   ];
 
   return (

@@ -1,12 +1,25 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { ArrowRight, Download, FileText, CheckCircle } from 'lucide-react';
-import { resourcesData } from '@/data/resources';
+import { resourcesData as fallbackResources } from '@/data/resources';
 
 export default function KnowledgeResources() {
-  const featuredResources = resourcesData.slice(0, 3);
+  const [resources, setResources] = useState(fallbackResources.slice(0, 3));
+
+  useEffect(() => {
+    fetch('/api/resources')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success && data.resources?.length > 0) {
+          setResources(data.resources.slice(0, 3));
+        }
+      })
+      .catch(() => {});
+  }, []);
+
+  const featuredResources = resources;
   const resourceImages = [
     '/images/service-business.jpg',
     '/images/author-workspace.jpg',
@@ -39,8 +52,8 @@ export default function KnowledgeResources() {
             </p>
           </div>
 
-          <Link href="/consultation" className="editorial-link" style={{ fontSize: '0.92rem' }}>
-            <span>Request Custom Framework</span>
+          <Link href="/resources" className="editorial-link" style={{ fontSize: '0.92rem' }}>
+            <span>Explore All Resources</span>
             <ArrowRight size={14} />
           </Link>
         </div>

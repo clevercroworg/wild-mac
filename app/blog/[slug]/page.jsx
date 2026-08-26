@@ -2,35 +2,32 @@ import React from 'react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, ArrowRight, Clock, Calendar } from 'lucide-react';
-import { journalArticles, getArticleBySlug } from '@/data/journal';
+import { getBlogBySlug, getAllBlogs } from '@/lib/db';
 import MajorConsultationCTA from '@/components/MajorConsultationCTA';
 
-export async function generateStaticParams() {
-  return journalArticles.map((article) => ({
-    slug: article.slug,
-  }));
-}
+export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  const article = getArticleBySlug(slug);
-  if (!article) return { title: 'Essay Not Found' };
+  const article = await getBlogBySlug(slug);
+  if (!article) return { title: 'Essay Not Found — Wildmac Insights' };
 
   return {
     title: `${article.title} — Wildmac Insights`,
-    description: article.excerpt,
+    description: article.excerpt || article.subtitle,
   };
 }
 
 export default async function BlogPostPage({ params }) {
   const { slug } = await params;
-  const article = getArticleBySlug(slug);
+  const article = await getBlogBySlug(slug);
 
-  if (!article) {
+  if (!article || (!article.isPublished && process.env.NODE_ENV === 'production')) {
     notFound();
   }
 
-  const otherArticles = journalArticles.filter((a) => a.slug !== article.slug).slice(0, 2);
+  const allArticles = await getAllBlogs({ includeDrafts: false });
+  const otherArticles = allArticles.filter((a) => a.slug !== article.slug).slice(0, 2);
 
   return (
     <>

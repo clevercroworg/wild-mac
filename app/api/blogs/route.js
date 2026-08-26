@@ -1,0 +1,47 @@
+import { NextResponse } from 'next/server';
+import { getAllBlogs, createBlog } from '@/lib/db';
+import { getAdminSession } from '@/lib/auth';
+
+export async function GET(request) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const category = searchParams.get('category');
+    const search = searchParams.get('search') || '';
+    const includeDraftsParam = searchParams.get('includeDrafts');
+
+    let includeDrafts = false;
+    if (includeDraftsParam === 'true') {
+      // Only allow seeing drafts if admin is authenticated
+      const session = await getAdminSession();
+      if (session) {
+        includeDrafts = true;
+      }
+    }
+
+    const blogs = await getAllBlogs({ includeDrafts, category, search });
+    return NextResponse.json({ success: true, count: blogs.length, blogs });
+  } catch (err) {
+    console.error('API /api/blogs GET error:', err);
+    return NextResponse.json({ error: 'Failed to fetch blog articles' }, { status: 500 });
+  }
+}
+
+export async function POST(request) {
+  try {
+    const session = await getAdminSession();
+    if (!session) {
+      return NextResponse.json({ error: 'Unauthorized: Admin session required' }, { status: 401 });
+    }
+
+    const body = await request.json();
+    if (!body.title || !body.content) {
+      return NextResponse.json({ error: 'Article title and content are required' }, { status: 400 });
+    }
+
+    const newBlog = await createBlog(body);
+    return NextResponse.json({ success: true, blog: newBlog }, { status: 201 });
+  } catch (err) {
+    console.error('API /api/blogs POST error:', err);
+    return NextResponse.json({ error: 'Failed to create blog article' }, { status: 500 });
+  }
+}
