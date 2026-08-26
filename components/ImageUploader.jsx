@@ -3,7 +3,7 @@
 import React, { useState, useRef } from 'react';
 import { UploadCloud, CheckCircle2, AlertCircle, Loader2, Image as ImageIcon } from 'lucide-react';
 
-export default function ImageUploader({ value, onChange, label = 'Cover Photograph' }) {
+export default function ImageUploader({ value, onChange, label = 'Cover Picture' }) {
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState('');
   const [dragOver, setDragOver] = useState(false);
@@ -30,7 +30,7 @@ export default function ImageUploader({ value, onChange, label = 'Cover Photogra
 
       onChange(data.url);
     } catch (err) {
-      setError(err.message || 'Error uploading file');
+      setError(err.message || 'Error uploading image');
     } finally {
       setUploading(false);
     }
@@ -46,20 +46,25 @@ export default function ImageUploader({ value, onChange, label = 'Cover Photogra
 
   return (
     <div>
-      <label style={{ display: 'block', fontSize: '0.72rem', fontFamily: 'var(--font-mono)', color: 'var(--text-deep-blue)', fontWeight: 650, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.45rem' }}>
-        {label}
-      </label>
+      <div style={{ marginBottom: '0.45rem' }}>
+        <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 650, color: 'var(--text-ink)', marginBottom: '0.15rem' }}>
+          {label}
+        </label>
+        <span style={{ fontSize: '0.75rem', color: 'var(--text-light)', display: 'block' }}>
+          Upload an image from your computer
+        </span>
+      </div>
 
       {/* Image Preview Box */}
       {value && (
-        <div style={{ position: 'relative', height: '140px', width: '100%', borderRadius: '2px', overflow: 'hidden', marginBottom: '0.75rem', border: '1px solid var(--border-subtle)' }}>
+        <div style={{ position: 'relative', height: '140px', width: '100%', borderRadius: '4px', overflow: 'hidden', marginBottom: '0.75rem', border: '1px solid var(--border-subtle)' }}>
           <img
             src={value}
             alt="Uploaded Preview"
             style={{ width: '100%', height: '100%', objectFit: 'cover' }}
           />
-          <div style={{ position: 'absolute', bottom: '0.5rem', left: '0.5rem', backgroundColor: 'rgba(17, 24, 32, 0.85)', backdropFilter: 'blur(4px)', color: '#FFFFFF', padding: '0.2rem 0.5rem', borderRadius: '2px', fontSize: '0.68rem', fontFamily: 'var(--font-mono)' }}>
-            CURRENT COVER
+          <div style={{ position: 'absolute', bottom: '0.5rem', left: '0.5rem', backgroundColor: 'rgba(17, 24, 32, 0.85)', backdropFilter: 'blur(4px)', color: '#FFFFFF', padding: '0.2rem 0.55rem', borderRadius: '3px', fontSize: '0.72rem', fontWeight: 600 }}>
+            Active Image
           </div>
         </div>
       )}
@@ -73,8 +78,8 @@ export default function ImageUploader({ value, onChange, label = 'Cover Photogra
         style={{
           border: '2px dashed',
           borderColor: dragOver ? 'var(--accent-red)' : 'var(--border-medium)',
-          backgroundColor: dragOver ? 'rgba(201, 59, 43, 0.04)' : 'var(--bg-paper-white)',
-          borderRadius: '3px',
+          backgroundColor: dragOver ? 'rgba(201, 59, 43, 0.04)' : '#F9FBFC',
+          borderRadius: '4px',
           padding: '1.25rem 1rem',
           textAlign: 'center',
           cursor: uploading ? 'wait' : 'pointer',
@@ -92,16 +97,16 @@ export default function ImageUploader({ value, onChange, label = 'Cover Photogra
 
         {uploading ? (
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.4rem', color: 'var(--accent-red)' }}>
-            <Loader2 size={24} className="spin-animate" style={{ animation: 'spin 1s linear infinite' }} />
-            <span style={{ fontSize: '0.78rem', fontFamily: 'var(--font-mono)', fontWeight: 600 }}>UPLOADING TO STORAGE...</span>
+            <Loader2 size={24} style={{ animation: 'spin 1s linear infinite' }} />
+            <span style={{ fontSize: '0.82rem', fontWeight: 600 }}>Uploading image... please wait</span>
           </div>
         ) : (
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.35rem' }}>
-            <UploadCloud size={24} color="var(--text-light)" />
-            <div style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-ink)' }}>
-              Click to browse or drag & drop image
+            <UploadCloud size={24} color="var(--text-deep-blue)" />
+            <div style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-ink)' }}>
+              Click to choose picture or drag & drop here
             </div>
-            <span style={{ fontSize: '0.7rem', color: 'var(--text-light)', fontFamily: 'var(--font-mono)' }}>
+            <span style={{ fontSize: '0.72rem', color: 'var(--text-light)' }}>
               JPG, PNG, WebP (Max 10MB)
             </span>
           </div>
@@ -109,7 +114,7 @@ export default function ImageUploader({ value, onChange, label = 'Cover Photogra
       </div>
 
       {error && (
-        <div style={{ fontSize: '0.75rem', color: 'var(--accent-red)', display: 'flex', alignItems: 'center', gap: '0.35rem', marginBottom: '0.5rem' }}>
+        <div style={{ fontSize: '0.78rem', color: 'var(--accent-red)', display: 'flex', alignItems: 'center', gap: '0.35rem', marginBottom: '0.5rem' }}>
           <AlertCircle size={13} />
           <span>{error}</span>
         </div>

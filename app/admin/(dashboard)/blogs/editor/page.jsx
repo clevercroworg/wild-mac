@@ -12,7 +12,6 @@ import {
   FileText,
   Sparkles,
   Image as ImageIcon,
-  HelpCircle,
   Heading2,
   Heading3,
   Bold,
@@ -58,17 +57,16 @@ function BlogEditorForm() {
     { label: 'Community Gathering (Goan Heritage)', url: '/images/community-gathering.jpg' },
     { label: 'Author Study Portrait', url: '/images/author-study-portrait.jpg' },
     { label: 'Author Workspace Still', url: '/images/author-workspace.jpg' },
-    { label: 'Business Practice Desk', url: '/images/service-business.jpg' },
-    { label: 'Life Advisory & Sanctuary', url: '/images/service-life.jpg' },
+    { label: 'Business & Desk', url: '/images/service-business.jpg' },
+    { label: 'Life Strategy & Home', url: '/images/service-life.jpg' },
     { label: 'Real Estate & Land Matrix', url: '/images/service-realestate.jpg' },
-    { label: 'Investment Advisory Hub', url: '/images/service-investment.jpg' },
+    { label: 'Investment & Finance', url: '/images/service-investment.jpg' },
     { label: 'Branding & Architecture', url: '/images/service-branding.jpg' },
-    { label: 'Boardroom Collaboration Wide', url: '/images/collaboration-hero-wide.jpg' },
+    { label: 'Boardroom Discussion Wide', url: '/images/collaboration-hero-wide.jpg' },
   ];
 
   const categories = ['Strategy', 'Business', 'Life', 'Money', 'Purpose', 'Real Estate', 'Branding', 'Philosophy'];
 
-  // Load data if in edit mode
   useEffect(() => {
     if (!isEditing) return;
 
@@ -104,7 +102,6 @@ function BlogEditorForm() {
     loadArticle();
   }, [editId, isEditing]);
 
-  // Word count & read time calculator
   const wordCount = formData.content.trim() ? formData.content.trim().split(/\s+/).length : 0;
   const estimatedMins = Math.max(1, Math.ceil(wordCount / 200));
 
@@ -117,7 +114,6 @@ function BlogEditorForm() {
     }));
   };
 
-  // Quick formatting insertion helper
   const insertFormatting = (prefix, suffix = '', placeholder = '') => {
     const textarea = textareaRef.current;
     if (!textarea) return;
@@ -162,7 +158,7 @@ function BlogEditorForm() {
         throw new Error(data.error || 'Failed to save article');
       }
 
-      setSuccessMsg(isEditing ? 'Article updated successfully!' : 'Article created and published!');
+      setSuccessMsg(isEditing ? 'Article updated successfully!' : 'Article published successfully!');
 
       if (!isEditing && data.blog?.id) {
         setTimeout(() => {
@@ -178,7 +174,7 @@ function BlogEditorForm() {
 
   if (loading) {
     return (
-      <div style={{ padding: '3rem', textAlign: 'center', color: 'var(--text-light)', fontSize: '0.9rem' }}>
+      <div style={{ padding: '3rem', textAlign: 'center', color: 'var(--text-light)' }}>
         Loading article editor...
       </div>
     );
@@ -195,22 +191,24 @@ function BlogEditorForm() {
               display: 'inline-flex',
               alignItems: 'center',
               justifyContent: 'center',
-              width: '36px',
-              height: '36px',
+              width: '38px',
+              height: '38px',
               backgroundColor: 'var(--bg-pure-white)',
               border: '1px solid var(--border-medium)',
-              borderRadius: '2px',
+              borderRadius: '4px',
               color: 'var(--text-deep-blue)',
+              textDecoration: 'none',
             }}
+            title="Back to Articles"
           >
-            <ArrowLeft size={16} />
+            <ArrowLeft size={17} />
           </Link>
           <div>
-            <span style={{ fontSize: '0.7rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)', textTransform: 'uppercase' }}>
-              {isEditing ? 'EDITING ARCHIVED ARTICLE' : 'CREATING NEW PUBLICATION'}
+            <span style={{ fontSize: '0.75rem', color: 'var(--text-light)', fontWeight: 550 }}>
+              Blog Articles / {isEditing ? 'Edit Article' : 'Write New Article'}
             </span>
-            <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '1.75rem', color: 'var(--text-ink)', margin: 0, fontWeight: 700 }}>
-              {formData.title || 'Untitled Publication'}
+            <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '1.75rem', color: 'var(--text-ink)', margin: 0, fontWeight: 750 }}>
+              {formData.title || 'Untitled Article'}
             </h1>
           </div>
         </div>
@@ -221,10 +219,10 @@ function BlogEditorForm() {
               href={`/blog/${formData.slug}`}
               target="_blank"
               className="btn btn-editorial"
-              style={{ padding: '0.6rem 1rem', fontSize: '0.82rem', gap: '0.4rem' }}
+              style={{ padding: '0.65rem 1rem', fontSize: '0.85rem', gap: '0.4rem' }}
             >
-              <Eye size={14} />
-              <span>View Public</span>
+              <Eye size={15} />
+              <span>View on Website</span>
             </Link>
           )}
           <button
@@ -232,10 +230,10 @@ function BlogEditorForm() {
             onClick={handleSubmit}
             disabled={saving}
             className="btn btn-primary"
-            style={{ padding: '0.6rem 1.25rem', fontSize: '0.85rem', gap: '0.45rem' }}
+            style={{ padding: '0.65rem 1.4rem', fontSize: '0.88rem', gap: '0.45rem' }}
           >
-            <Save size={15} />
-            <span>{saving ? 'Saving...' : isEditing ? 'Update Article' : 'Publish Article'}</span>
+            <Save size={16} />
+            <span>{saving ? 'Saving...' : isEditing ? 'Save Changes' : 'Publish Article'}</span>
           </button>
         </div>
       </div>
@@ -246,7 +244,7 @@ function BlogEditorForm() {
           style={{
             backgroundColor: 'rgba(37, 211, 102, 0.1)',
             border: '1px solid rgba(37, 211, 102, 0.35)',
-            borderRadius: '2px',
+            borderRadius: '4px',
             padding: '0.85rem 1.25rem',
             marginBottom: '1.5rem',
             display: 'flex',
@@ -254,10 +252,10 @@ function BlogEditorForm() {
             gap: '0.65rem',
             color: '#1E8E48',
             fontSize: '0.88rem',
-            fontWeight: 550,
+            fontWeight: 600,
           }}
         >
-          <CheckCircle2 size={16} />
+          <CheckCircle2 size={18} />
           <span>{successMsg}</span>
         </div>
       )}
@@ -267,7 +265,7 @@ function BlogEditorForm() {
           style={{
             backgroundColor: 'rgba(201, 59, 43, 0.08)',
             border: '1px solid rgba(201, 59, 43, 0.35)',
-            borderRadius: '2px',
+            borderRadius: '4px',
             padding: '0.85rem 1.25rem',
             marginBottom: '1.5rem',
             display: 'flex',
@@ -275,9 +273,10 @@ function BlogEditorForm() {
             gap: '0.65rem',
             color: 'var(--accent-red)',
             fontSize: '0.88rem',
+            fontWeight: 550,
           }}
         >
-          <AlertCircle size={16} />
+          <AlertCircle size={18} />
           <span>{errorMsg}</span>
         </div>
       )}
@@ -285,22 +284,25 @@ function BlogEditorForm() {
       {/* Main Form Body */}
       <form onSubmit={handleSubmit}>
         <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '2rem' }} className="admin-editor-grid">
-          {/* Left Column: Title, Subtitle, Markdown Editor, Pull Quote */}
+          {/* Left Column: Title, Subtitle, Content Editor, Quote */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
             {/* Title & Subtitle Card */}
             <div
               style={{
                 backgroundColor: 'var(--bg-pure-white)',
                 border: '1px solid var(--border-medium)',
-                borderRadius: '4px',
+                borderRadius: '6px',
                 padding: '1.75rem',
                 boxShadow: '0 2px 4px rgba(0,0,0,0.02)',
               }}
             >
               <div style={{ marginBottom: '1.25rem' }}>
-                <label style={{ display: 'block', fontSize: '0.72rem', fontFamily: 'var(--font-mono)', color: 'var(--text-deep-blue)', fontWeight: 650, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.45rem' }}>
-                  Article Headline / Title *
+                <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 650, color: 'var(--text-ink)', marginBottom: '0.2rem' }}>
+                  Article Title *
                 </label>
+                <span style={{ display: 'block', fontSize: '0.75rem', color: 'var(--text-light)', marginBottom: '0.45rem' }}>
+                  The main headline that appears at the top of your post
+                </span>
                 <input
                   type="text"
                   required
@@ -310,12 +312,12 @@ function BlogEditorForm() {
                   style={{
                     width: '100%',
                     padding: '0.75rem 1rem',
-                    fontSize: '1.15rem',
+                    fontSize: '1.1rem',
                     fontWeight: 600,
                     fontFamily: 'var(--font-display)',
                     border: '1px solid var(--border-medium)',
-                    borderRadius: '2px',
-                    backgroundColor: 'var(--bg-paper-white)',
+                    borderRadius: '4px',
+                    backgroundColor: '#F9FBFC',
                     color: 'var(--text-ink)',
                     outline: 'none',
                     boxSizing: 'border-box',
@@ -324,9 +326,12 @@ function BlogEditorForm() {
               </div>
 
               <div style={{ marginBottom: '1.25rem' }}>
-                <label style={{ display: 'block', fontSize: '0.72rem', fontFamily: 'var(--font-mono)', color: 'var(--text-deep-blue)', fontWeight: 650, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.45rem' }}>
-                  Subtitle / Editorial Proposition
+                <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 650, color: 'var(--text-ink)', marginBottom: '0.2rem' }}>
+                  Subtitle / One-line Summary (Optional)
                 </label>
+                <span style={{ display: 'block', fontSize: '0.75rem', color: 'var(--text-light)', marginBottom: '0.45rem' }}>
+                  A supporting sentence explaining the core message
+                </span>
                 <input
                   type="text"
                   value={formData.subtitle}
@@ -335,10 +340,10 @@ function BlogEditorForm() {
                   style={{
                     width: '100%',
                     padding: '0.65rem 1rem',
-                    fontSize: '0.9rem',
+                    fontSize: '0.88rem',
                     border: '1px solid var(--border-medium)',
-                    borderRadius: '2px',
-                    backgroundColor: 'var(--bg-paper-white)',
+                    borderRadius: '4px',
+                    backgroundColor: '#F9FBFC',
                     color: 'var(--text-ink)',
                     outline: 'none',
                     boxSizing: 'border-box',
@@ -347,9 +352,12 @@ function BlogEditorForm() {
               </div>
 
               <div>
-                <label style={{ display: 'block', fontSize: '0.72rem', fontFamily: 'var(--font-mono)', color: 'var(--text-deep-blue)', fontWeight: 650, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.45rem' }}>
-                  Summary / Excerpt (Shows in Catalog Cards)
+                <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 650, color: 'var(--text-ink)', marginBottom: '0.2rem' }}>
+                  Short Card Summary (Shows on Blog Page)
                 </label>
+                <span style={{ display: 'block', fontSize: '0.75rem', color: 'var(--text-light)', marginBottom: '0.45rem' }}>
+                  A brief 2-sentence preview shown to readers before opening the post
+                </span>
                 <textarea
                   rows={3}
                   value={formData.excerpt}
@@ -361,8 +369,8 @@ function BlogEditorForm() {
                     fontSize: '0.88rem',
                     lineHeight: 1.5,
                     border: '1px solid var(--border-medium)',
-                    borderRadius: '2px',
-                    backgroundColor: 'var(--bg-paper-white)',
+                    borderRadius: '4px',
+                    backgroundColor: '#F9FBFC',
                     color: 'var(--text-ink)',
                     outline: 'none',
                     boxSizing: 'border-box',
@@ -372,22 +380,22 @@ function BlogEditorForm() {
               </div>
             </div>
 
-            {/* Markdown Content Editor with Formatting Tools */}
+            {/* Markdown Content Editor with Simple Toolbar */}
             <div
               style={{
                 backgroundColor: 'var(--bg-pure-white)',
                 border: '1px solid var(--border-medium)',
-                borderRadius: '4px',
+                borderRadius: '6px',
                 padding: '1.75rem',
                 boxShadow: '0 2px 4px rgba(0,0,0,0.02)',
               }}
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem', paddingBottom: '0.75rem', borderBottom: '1px solid var(--border-subtle)' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                  <label style={{ fontSize: '0.72rem', fontFamily: 'var(--font-mono)', color: 'var(--text-deep-blue)', fontWeight: 650, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-                    Body Content (Markdown Supported) *
+                <div>
+                  <label style={{ fontSize: '0.88rem', fontWeight: 650, color: 'var(--text-ink)', display: 'block' }}>
+                    Article Content *
                   </label>
-                  <span style={{ fontSize: '0.72rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)', backgroundColor: 'var(--bg-ice-blue)', padding: '0.15rem 0.45rem', borderRadius: '2px' }}>
+                  <span style={{ fontSize: '0.75rem', color: 'var(--text-light)' }}>
                     {wordCount} words (~{estimatedMins} min read)
                   </span>
                 </div>
@@ -398,37 +406,35 @@ function BlogEditorForm() {
                     type="button"
                     onClick={() => setActiveTab('write')}
                     style={{
-                      padding: '0.3rem 0.75rem',
-                      fontSize: '0.72rem',
-                      fontFamily: 'var(--font-mono)',
+                      padding: '0.35rem 0.85rem',
+                      fontSize: '0.78rem',
                       fontWeight: 600,
                       border: '1px solid',
                       borderColor: activeTab === 'write' ? 'var(--text-deep-blue)' : 'var(--border-medium)',
-                      backgroundColor: activeTab === 'write' ? 'var(--text-deep-blue)' : 'var(--bg-ice-blue)',
+                      backgroundColor: activeTab === 'write' ? 'var(--text-deep-blue)' : '#F0F4F8',
                       color: activeTab === 'write' ? '#FFFFFF' : 'var(--text-deep-blue)',
-                      borderRadius: '2px',
+                      borderRadius: '4px',
                       cursor: 'pointer',
                     }}
                   >
-                    WRITE
+                    Edit
                   </button>
                   <button
                     type="button"
                     onClick={() => setActiveTab('preview')}
                     style={{
-                      padding: '0.3rem 0.75rem',
-                      fontSize: '0.72rem',
-                      fontFamily: 'var(--font-mono)',
+                      padding: '0.35rem 0.85rem',
+                      fontSize: '0.78rem',
                       fontWeight: 600,
                       border: '1px solid',
                       borderColor: activeTab === 'preview' ? 'var(--text-deep-blue)' : 'var(--border-medium)',
-                      backgroundColor: activeTab === 'preview' ? 'var(--text-deep-blue)' : 'var(--bg-ice-blue)',
+                      backgroundColor: activeTab === 'preview' ? 'var(--text-deep-blue)' : '#F0F4F8',
                       color: activeTab === 'preview' ? '#FFFFFF' : 'var(--text-deep-blue)',
-                      borderRadius: '2px',
+                      borderRadius: '4px',
                       cursor: 'pointer',
                     }}
                   >
-                    PREVIEW
+                    Live Preview
                   </button>
                 </div>
               </div>
@@ -441,78 +447,84 @@ function BlogEditorForm() {
                     alignItems: 'center',
                     gap: '0.35rem',
                     flexWrap: 'wrap',
-                    padding: '0.4rem 0.5rem',
-                    backgroundColor: 'var(--bg-ice-blue)',
+                    padding: '0.45rem 0.6rem',
+                    backgroundColor: '#F0F4F8',
                     border: '1px solid var(--border-medium)',
-                    borderRadius: '2px',
+                    borderRadius: '4px',
                     marginBottom: '0.75rem',
                   }}
                 >
                   <button
                     type="button"
-                    onClick={() => insertFormatting('\n## ', '', 'Heading 2')}
-                    title="Insert Heading 2"
-                    style={{ padding: '0.3rem 0.5rem', background: '#FFFFFF', border: '1px solid var(--border-medium)', borderRadius: '2px', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '0.2rem', fontSize: '0.72rem', fontWeight: 600 }}
+                    onClick={() => insertFormatting('\n## ', '', 'Section Title')}
+                    title="Insert Heading"
+                    style={{ padding: '0.35rem 0.6rem', background: '#FFFFFF', border: '1px solid var(--border-medium)', borderRadius: '3px', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '0.25rem', fontSize: '0.78rem', fontWeight: 600 }}
                   >
-                    <Heading2 size={13} />
-                    <span>H2</span>
+                    <Heading2 size={14} />
+                    <span>Heading</span>
                   </button>
                   <button
                     type="button"
-                    onClick={() => insertFormatting('\n### ', '', 'Heading 3')}
-                    title="Insert Heading 3"
-                    style={{ padding: '0.3rem 0.5rem', background: '#FFFFFF', border: '1px solid var(--border-medium)', borderRadius: '2px', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '0.2rem', fontSize: '0.72rem', fontWeight: 600 }}
+                    onClick={() => insertFormatting('\n### ', '', 'Subheading')}
+                    title="Insert Subheading"
+                    style={{ padding: '0.35rem 0.6rem', background: '#FFFFFF', border: '1px solid var(--border-medium)', borderRadius: '3px', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '0.25rem', fontSize: '0.78rem', fontWeight: 600 }}
                   >
-                    <Heading3 size={13} />
-                    <span>H3</span>
+                    <Heading3 size={14} />
+                    <span>Subheading</span>
                   </button>
                   <button
                     type="button"
                     onClick={() => insertFormatting('**', '**', 'bold text')}
                     title="Bold"
-                    style={{ padding: '0.3rem 0.5rem', background: '#FFFFFF', border: '1px solid var(--border-medium)', borderRadius: '2px', cursor: 'pointer', display: 'inline-flex' }}
+                    style={{ padding: '0.35rem 0.6rem', background: '#FFFFFF', border: '1px solid var(--border-medium)', borderRadius: '3px', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '0.2rem', fontSize: '0.78rem', fontWeight: 600 }}
                   >
-                    <Bold size={13} />
+                    <Bold size={14} />
+                    <span>Bold</span>
                   </button>
                   <button
                     type="button"
                     onClick={() => insertFormatting('*', '*', 'italic text')}
                     title="Italic"
-                    style={{ padding: '0.3rem 0.5rem', background: '#FFFFFF', border: '1px solid var(--border-medium)', borderRadius: '2px', cursor: 'pointer', display: 'inline-flex' }}
+                    style={{ padding: '0.35rem 0.6rem', background: '#FFFFFF', border: '1px solid var(--border-medium)', borderRadius: '3px', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '0.2rem', fontSize: '0.78rem' }}
                   >
-                    <Italic size={13} />
+                    <Italic size={14} />
+                    <span>Italic</span>
                   </button>
                   <button
                     type="button"
                     onClick={() => insertFormatting('\n> "', '"', 'Notable quote or principle')}
-                    title="Blockquote"
-                    style={{ padding: '0.3rem 0.5rem', background: '#FFFFFF', border: '1px solid var(--border-medium)', borderRadius: '2px', cursor: 'pointer', display: 'inline-flex' }}
+                    title="Quote Box"
+                    style={{ padding: '0.35rem 0.6rem', background: '#FFFFFF', border: '1px solid var(--border-medium)', borderRadius: '3px', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '0.25rem', fontSize: '0.78rem' }}
                   >
-                    <Quote size={13} />
+                    <Quote size={14} />
+                    <span>Quote</span>
                   </button>
                   <button
                     type="button"
                     onClick={() => insertFormatting('\n- ', '', 'Bullet point item')}
                     title="Bullet List"
-                    style={{ padding: '0.3rem 0.5rem', background: '#FFFFFF', border: '1px solid var(--border-medium)', borderRadius: '2px', cursor: 'pointer', display: 'inline-flex' }}
+                    style={{ padding: '0.35rem 0.6rem', background: '#FFFFFF', border: '1px solid var(--border-medium)', borderRadius: '3px', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '0.25rem', fontSize: '0.78rem' }}
                   >
-                    <List size={13} />
+                    <List size={14} />
+                    <span>List</span>
                   </button>
                   <button
                     type="button"
                     onClick={() => insertFormatting('\n\n---\n\n', '', '')}
-                    title="Horizontal Rule"
-                    style={{ padding: '0.3rem 0.5rem', background: '#FFFFFF', border: '1px solid var(--border-medium)', borderRadius: '2px', cursor: 'pointer', display: 'inline-flex' }}
+                    title="Divider Line"
+                    style={{ padding: '0.35rem 0.6rem', background: '#FFFFFF', border: '1px solid var(--border-medium)', borderRadius: '3px', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '0.25rem', fontSize: '0.78rem' }}
                   >
-                    <Minus size={13} />
+                    <Minus size={14} />
+                    <span>Divider</span>
                   </button>
                   <button
                     type="button"
                     onClick={() => insertFormatting('[', '](https://example.com)', 'link text')}
                     title="Insert Link"
-                    style={{ padding: '0.3rem 0.5rem', background: '#FFFFFF', border: '1px solid var(--border-medium)', borderRadius: '2px', cursor: 'pointer', display: 'inline-flex' }}
+                    style={{ padding: '0.35rem 0.6rem', background: '#FFFFFF', border: '1px solid var(--border-medium)', borderRadius: '3px', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '0.25rem', fontSize: '0.78rem' }}
                   >
-                    <Link2 size={13} />
+                    <Link2 size={14} />
+                    <span>Link</span>
                   </button>
                 </div>
               )}
@@ -524,35 +536,34 @@ function BlogEditorForm() {
                   rows={18}
                   value={formData.content}
                   onChange={(e) => setFormData({ ...formData, content: e.target.value })}
-                  placeholder={`Write in Markdown:\n\n### Section Title\n\nYour unhurried editorial reflections here...\n\n> "Notable quote here"\n\n- Key insight 1\n- Key insight 2`}
+                  placeholder={`Write your article here...\n\n## Section Title\n\nYour reflections and insights here...\n\n> "A memorable quote goes here"\n\n- Key point 1\n- Key point 2`}
                   style={{
                     width: '100%',
                     padding: '1rem',
-                    fontSize: '0.92rem',
-                    lineHeight: 1.6,
-                    fontFamily: 'var(--font-mono), monospace',
+                    fontSize: '0.95rem',
+                    lineHeight: 1.7,
                     border: '1px solid var(--border-medium)',
-                    borderRadius: '2px',
-                    backgroundColor: 'var(--bg-paper-white)',
+                    borderRadius: '4px',
+                    backgroundColor: '#F9FBFC',
                     color: 'var(--text-ink)',
                     outline: 'none',
                     boxSizing: 'border-box',
                     resize: 'vertical',
+                    fontFamily: 'inherit',
                   }}
                 />
               ) : (
                 <div
                   style={{
                     padding: '1.5rem',
-                    backgroundColor: 'var(--bg-paper-white)',
+                    backgroundColor: '#F9FBFC',
                     border: '1px solid var(--border-subtle)',
-                    borderRadius: '2px',
+                    borderRadius: '4px',
                     minHeight: '350px',
-                    fontSize: '0.95rem',
+                    fontSize: '1rem',
                     lineHeight: 1.7,
                     color: 'var(--text-ink)',
                     whiteSpace: 'pre-wrap',
-                    fontFamily: 'var(--font-serif)',
                   }}
                 >
                   {formData.content || '(No content written yet)'}
@@ -565,14 +576,17 @@ function BlogEditorForm() {
               style={{
                 backgroundColor: 'var(--bg-pure-white)',
                 border: '1px solid var(--border-medium)',
-                borderRadius: '4px',
+                borderRadius: '6px',
                 padding: '1.5rem',
                 boxShadow: '0 2px 4px rgba(0,0,0,0.02)',
               }}
             >
-              <label style={{ display: 'block', fontSize: '0.72rem', fontFamily: 'var(--font-mono)', color: 'var(--text-deep-blue)', fontWeight: 650, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.45rem' }}>
-                Featured Pull Quote (Accent Plate)
+              <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 650, color: 'var(--text-ink)', marginBottom: '0.2rem' }}>
+                Highlight Quote (Optional)
               </label>
+              <span style={{ display: 'block', fontSize: '0.75rem', color: 'var(--text-light)', marginBottom: '0.45rem' }}>
+                A standout quote that is highlighted in a special box inside the article
+              </span>
               <input
                 type="text"
                 value={formData.quote}
@@ -580,12 +594,12 @@ function BlogEditorForm() {
                 placeholder="e.g. Time is not a resource to be spent in haste; it is the canvas upon which character is painted."
                 style={{
                   width: '100%',
-                  padding: '0.65rem 1rem',
-                  fontSize: '0.88rem',
+                  padding: '0.7rem 1rem',
+                  fontSize: '0.9rem',
                   fontStyle: 'italic',
                   border: '1px solid var(--border-medium)',
-                  borderRadius: '2px',
-                  backgroundColor: 'var(--bg-paper-white)',
+                  borderRadius: '4px',
+                  backgroundColor: '#F9FBFC',
                   color: 'var(--text-ink)',
                   outline: 'none',
                   boxSizing: 'border-box',
@@ -601,51 +615,54 @@ function BlogEditorForm() {
               style={{
                 backgroundColor: 'var(--bg-pure-white)',
                 border: '1px solid var(--border-medium)',
-                borderRadius: '4px',
+                borderRadius: '6px',
                 padding: '1.5rem',
                 boxShadow: '0 2px 4px rgba(0,0,0,0.02)',
               }}
             >
-              <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.1rem', color: 'var(--text-ink)', margin: '0 0 1rem 0', fontWeight: 650 }}>
-                Publishing Settings
+              <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.15rem', color: 'var(--text-ink)', margin: '0 0 1rem 0', fontWeight: 700 }}>
+                Publish Options
               </h3>
 
               {/* Status Toggle */}
               <div style={{ marginBottom: '1.25rem' }}>
                 <label style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer' }}>
-                  <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-deep-blue)' }}>
-                    Published to Public
+                  <span style={{ fontSize: '0.88rem', fontWeight: 650, color: 'var(--text-deep-blue)' }}>
+                    Make Live on Website
                   </span>
                   <input
                     type="checkbox"
                     checked={formData.isPublished}
                     onChange={(e) => setFormData({ ...formData, isPublished: e.target.checked })}
-                    style={{ width: '18px', height: '18px', cursor: 'pointer', accentColor: 'var(--accent-red)' }}
+                    style={{ width: '20px', height: '20px', cursor: 'pointer', accentColor: 'var(--accent-red)' }}
                   />
                 </label>
-                <span style={{ fontSize: '0.72rem', color: 'var(--text-light)', display: 'block', marginTop: '0.25rem' }}>
-                  {formData.isPublished ? 'Visible on /blog and home feeds.' : 'Saved as private draft.'}
+                <span style={{ fontSize: '0.75rem', color: 'var(--text-light)', display: 'block', marginTop: '0.3rem' }}>
+                  {formData.isPublished ? '✓ Visible to readers on /blog' : 'Hidden as draft (private)'}
                 </span>
               </div>
 
               {/* Featured Article Toggle */}
               <div style={{ marginBottom: '1.25rem', paddingTop: '1rem', borderTop: '1px solid var(--border-subtle)' }}>
                 <label style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer' }}>
-                  <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-deep-blue)' }}>
-                    Feature on Homepage
+                  <span style={{ fontSize: '0.88rem', fontWeight: 650, color: 'var(--text-deep-blue)' }}>
+                    Show on Homepage
                   </span>
                   <input
                     type="checkbox"
                     checked={formData.isFeatured}
                     onChange={(e) => setFormData({ ...formData, isFeatured: e.target.checked })}
-                    style={{ width: '18px', height: '18px', cursor: 'pointer', accentColor: 'var(--accent-red)' }}
+                    style={{ width: '20px', height: '20px', cursor: 'pointer', accentColor: 'var(--accent-red)' }}
                   />
                 </label>
+                <span style={{ fontSize: '0.75rem', color: 'var(--text-light)', display: 'block', marginTop: '0.3rem' }}>
+                  Highlights this article on the homepage feed
+                </span>
               </div>
 
               {/* Category Selector */}
               <div style={{ marginBottom: '1.25rem', paddingTop: '1rem', borderTop: '1px solid var(--border-subtle)' }}>
-                <label style={{ display: 'block', fontSize: '0.72rem', fontFamily: 'var(--font-mono)', color: 'var(--text-deep-blue)', fontWeight: 650, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.45rem' }}>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 650, color: 'var(--text-deep-blue)', marginBottom: '0.35rem' }}>
                   Category
                 </label>
                 <select
@@ -656,8 +673,8 @@ function BlogEditorForm() {
                     padding: '0.65rem 0.85rem',
                     fontSize: '0.85rem',
                     border: '1px solid var(--border-medium)',
-                    borderRadius: '2px',
-                    backgroundColor: 'var(--bg-paper-white)',
+                    borderRadius: '4px',
+                    backgroundColor: '#F9FBFC',
                     color: 'var(--text-ink)',
                     outline: 'none',
                     cursor: 'pointer',
@@ -674,8 +691,8 @@ function BlogEditorForm() {
               {/* Read Time & Date */}
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', marginBottom: '1.25rem' }}>
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.7rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)', marginBottom: '0.3rem' }}>
-                    READ TIME
+                  <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 600, color: 'var(--text-light)', marginBottom: '0.3rem' }}>
+                    Reading Time
                   </label>
                   <input
                     type="text"
@@ -684,17 +701,17 @@ function BlogEditorForm() {
                     style={{
                       width: '100%',
                       padding: '0.55rem',
-                      fontSize: '0.82rem',
+                      fontSize: '0.85rem',
                       border: '1px solid var(--border-medium)',
-                      borderRadius: '2px',
-                      backgroundColor: 'var(--bg-paper-white)',
+                      borderRadius: '4px',
+                      backgroundColor: '#F9FBFC',
                       boxSizing: 'border-box',
                     }}
                   />
                 </div>
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.7rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)', marginBottom: '0.3rem' }}>
-                    DATE
+                  <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 600, color: 'var(--text-light)', marginBottom: '0.3rem' }}>
+                    Publish Date
                   </label>
                   <input
                     type="text"
@@ -703,10 +720,10 @@ function BlogEditorForm() {
                     style={{
                       width: '100%',
                       padding: '0.55rem',
-                      fontSize: '0.82rem',
+                      fontSize: '0.85rem',
                       border: '1px solid var(--border-medium)',
-                      borderRadius: '2px',
-                      backgroundColor: 'var(--bg-paper-white)',
+                      borderRadius: '4px',
+                      backgroundColor: '#F9FBFC',
                       boxSizing: 'border-box',
                     }}
                   />
@@ -715,8 +732,8 @@ function BlogEditorForm() {
 
               {/* Slug URL */}
               <div>
-                <label style={{ display: 'block', fontSize: '0.72rem', fontFamily: 'var(--font-mono)', color: 'var(--text-deep-blue)', fontWeight: 650, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.45rem' }}>
-                  URL Slug
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 650, color: 'var(--text-deep-blue)', marginBottom: '0.35rem' }}>
+                  Web Link Address (Slug)
                 </label>
                 <input
                   type="text"
@@ -726,31 +743,30 @@ function BlogEditorForm() {
                   style={{
                     width: '100%',
                     padding: '0.55rem 0.75rem',
-                    fontSize: '0.78rem',
-                    fontFamily: 'var(--font-mono)',
+                    fontSize: '0.8rem',
                     border: '1px solid var(--border-medium)',
-                    borderRadius: '2px',
-                    backgroundColor: 'var(--bg-paper-white)',
+                    borderRadius: '4px',
+                    backgroundColor: '#F9FBFC',
                     boxSizing: 'border-box',
                   }}
                 />
               </div>
             </div>
 
-            {/* Cover Image Selector & Uploader */}
+            {/* Cover Picture Card */}
             <div
               style={{
                 backgroundColor: 'var(--bg-pure-white)',
                 border: '1px solid var(--border-medium)',
-                borderRadius: '4px',
+                borderRadius: '6px',
                 padding: '1.5rem',
                 boxShadow: '0 2px 4px rgba(0,0,0,0.02)',
               }}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', marginBottom: '1rem' }}>
-                <ImageIcon size={16} color="var(--accent-red)" />
-                <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.1rem', color: 'var(--text-ink)', margin: 0, fontWeight: 650 }}>
-                  Cover Photograph
+                <ImageIcon size={18} color="var(--accent-red)" />
+                <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.15rem', color: 'var(--text-ink)', margin: 0, fontWeight: 700 }}>
+                  Cover Picture
                 </h3>
               </div>
 
@@ -758,24 +774,24 @@ function BlogEditorForm() {
               <ImageUploader
                 value={formData.coverImage}
                 onChange={(url) => setFormData({ ...formData, coverImage: url })}
-                label="Upload Image (Local Storage)"
+                label="Upload Cover Picture"
               />
 
               {/* Preset Selector */}
               <div style={{ marginBottom: '1rem' }}>
-                <label style={{ display: 'block', fontSize: '0.7rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)', marginBottom: '0.35rem' }}>
-                  OR SELECT CURATED EDITORIAL PHOTO
+                <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 600, color: 'var(--text-light)', marginBottom: '0.35rem' }}>
+                  Or Choose from Ready-to-Use Photos
                 </label>
                 <select
                   value={formData.coverImage}
                   onChange={(e) => setFormData({ ...formData, coverImage: e.target.value })}
                   style={{
                     width: '100%',
-                    padding: '0.55rem',
-                    fontSize: '0.8rem',
+                    padding: '0.6rem',
+                    fontSize: '0.82rem',
                     border: '1px solid var(--border-medium)',
-                    borderRadius: '2px',
-                    backgroundColor: 'var(--bg-paper-white)',
+                    borderRadius: '4px',
+                    backgroundColor: '#F9FBFC',
                     outline: 'none',
                     cursor: 'pointer',
                   }}
@@ -790,21 +806,21 @@ function BlogEditorForm() {
 
               {/* Custom Image URL */}
               <div>
-                <label style={{ display: 'block', fontSize: '0.7rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)', marginBottom: '0.35rem' }}>
-                  OR ENTER CUSTOM IMAGE PATH / URL
+                <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 600, color: 'var(--text-light)', marginBottom: '0.35rem' }}>
+                  Or Paste an Image URL
                 </label>
                 <input
                   type="text"
                   value={formData.coverImage}
                   onChange={(e) => setFormData({ ...formData, coverImage: e.target.value })}
+                  placeholder="/images/... or https://..."
                   style={{
                     width: '100%',
-                    padding: '0.5rem 0.65rem',
-                    fontSize: '0.75rem',
-                    fontFamily: 'var(--font-mono)',
+                    padding: '0.55rem 0.65rem',
+                    fontSize: '0.78rem',
                     border: '1px solid var(--border-medium)',
-                    borderRadius: '2px',
-                    backgroundColor: 'var(--bg-paper-white)',
+                    borderRadius: '4px',
+                    backgroundColor: '#F9FBFC',
                     boxSizing: 'border-box',
                   }}
                 />
@@ -827,7 +843,7 @@ function BlogEditorForm() {
 
 export default function BlogEditorPage() {
   return (
-    <Suspense fallback={<div style={{ padding: '3rem', textAlign: 'center', color: 'var(--text-light)', fontFamily: 'var(--font-mono)' }}>INITIALIZING ARTICLE EDITOR...</div>}>
+    <Suspense fallback={<div style={{ padding: '3rem', textAlign: 'center', color: 'var(--text-light)' }}>Loading article editor...</div>}>
       <BlogEditorForm />
     </Suspense>
   );
