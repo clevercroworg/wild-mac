@@ -52,10 +52,10 @@ export default function Navbar() {
       <header className={`site-header ${isScrolled ? 'scrolled' : ''}`}>
         <div className="container nav-container">
           {/* Brand Logo with Lion Emblem */}
-          <Link href="/" className="nav-brand" onClick={() => setMobileMenuOpen(false)} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.65rem', textDecoration: 'none' }}>
-            <LionLogo size={28} color="var(--text-ink)" />
+          <Link href="/" className="nav-brand" onClick={() => setMobileMenuOpen(false)} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.85rem', textDecoration: 'none' }}>
+            <LionLogo size={50} />
             <div style={{ display: 'inline-flex', alignItems: 'center' }}>
-              <span style={{ letterSpacing: '0.06em', fontWeight: 600 }}>WILDMAC</span>
+              <span style={{ letterSpacing: '0.06em', fontWeight: 600, fontSize: '1.45rem' }}>WILDMAC</span>
               <span className="nav-brand-dot" aria-hidden="true" />
             </div>
           </Link>

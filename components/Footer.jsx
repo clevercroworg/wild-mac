@@ -36,10 +36,10 @@ export default function Footer() {
         <div className="footer-desktop-grid footer-top">
           {/* Brand Col */}
           <div style={{ maxWidth: '340px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
-              <LionLogo size={32} isLight={true} />
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem', marginBottom: '1.25rem' }}>
+              <LionLogo size={46} isLight={true} />
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
-                <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.55rem', fontWeight: 600, letterSpacing: '0.06em', color: '#FFFFFF' }}>
+                <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.65rem', fontWeight: 600, letterSpacing: '0.06em', color: '#FFFFFF' }}>
                   WILDMAC
                 </span>
                 <span style={{ width: '5px', height: '5px', backgroundColor: 'var(--accent-red)', borderRadius: '50%' }} />
