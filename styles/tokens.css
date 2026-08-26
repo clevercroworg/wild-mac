@@ -1,16 +1,16 @@
 /* ==========================================================================
-   WILD MAC — NEXT-GENERATION VISUAL DESIGN SYSTEM TOKENS
-   Visual Concept: "The Open Book"
-   Palette: Paper White · Ice Blue · Mist Blue · Soft Blue · Deep Blue · Ink · Editorial Red
+   WILDMAC — DEFINITIVE GLOBAL DESIGN SYSTEM TOKENS
+   Positioning: Coaching + Consulting + Knowledge + Strategy + Community
+   Palette: Warm White · Soft Blue · Mist Blue · Deep Navy · Ink · Muted · Editorial Red
    ========================================================================== */
 
 :root {
   /* --- PALETTE SYSTEM --- */
-  --bg-paper-white: #FAFAF7;       /* Primary Page Background (warm unbleached paper) */
-  --bg-pure-white: #FFFFFF;        /* Pure Paper Spread */
-  --bg-ice-blue: #EFF6FA;          /* Layer 1: Subtle atmospheric wash */
-  --bg-mist-blue: #DCECF4;         /* Layer 2: Chapter breaks & backplates */
-  --bg-soft-blue: #BFDCEB;         /* Layer 3: Accent backplates & book focus */
+  --bg-paper-white: #F8F8F5;       /* Warm White — Primary Background */
+  --bg-pure-white: #FFFFFF;        /* Pure Crisp White Spread */
+  --bg-ice-blue: #EAF2F7;          /* Soft Blue — Secondary Layer & Accents */
+  --bg-mist-blue: #D8E8F0;         /* Mist Blue — Structural Panels & Backplates */
+  --bg-soft-blue: #EAF2F7;         /* Soft Blue Alias */
   
   /* Aliases for backwards compatibility */
   --bg-ivory: var(--bg-paper-white);
@@ -18,52 +18,54 @@
   --bg-mist: var(--bg-ice-blue);
 
   /* --- INK & TYPOGRAPHY SYSTEM --- */
-  --text-deep-blue: #183348;       /* Primary Deep Midnight Text */
-  --text-ink: #121A22;             /* Pure Display Ink (Headlines, Chapters) */
-  --text-muted: #485B6C;           /* High-Legibility Body Text */
-  --text-light: #708496;           /* Metadata, Chapter numbers, Footnotes */
-  --text-whisper: #9BAEC0;         /* Fine Margin Notes & Sub-labels */
+  --text-deep-blue: #173247;       /* Primary Deep Navy — Authority & Anchors */
+  --text-ink: #111820;             /* Pure Display Ink — Headings & High Contrast */
+  --text-muted: #637180;           /* High-Legibility Body & Secondary Copy */
+  --text-light: #7E8D9B;           /* Metadata, Chapter numbers, Sub-labels */
+  --text-whisper: #9BAEC0;         /* Fine Margin Notes & Hairlines */
   
   /* Aliases */
   --text-navy: var(--text-deep-blue);
 
-  /* --- EDITORIAL RED INK (2% of Visual Canvas) --- */
-  --accent-red: #C94742;           /* Editorial Crimson Ink */
-  --accent-red-hover: #AF3834;
-  --accent-red-subtle: rgba(201, 71, 66, 0.08);
-  --accent-red-border: rgba(201, 71, 66, 0.35);
+  /* --- EDITORIAL RED SIGNAL (1–2% of Visual Canvas) --- */
+  --accent-red: #C74A45;           /* Editorial Crimson Signal Ink */
+  --accent-red-hover: #AE3833;
+  --accent-red-subtle: rgba(199, 74, 69, 0.08);
+  --accent-red-border: rgba(199, 74, 69, 0.35);
 
-  /* --- RULES & MARGINS --- */
-  --border-subtle: rgba(18, 26, 34, 0.07);
-  --border-medium: rgba(18, 26, 34, 0.14);
-  --border-strong: rgba(18, 26, 34, 0.25);
-  --border-blue: rgba(191, 220, 235, 0.4);
+  /* --- RULES & BORDERS --- */
+  --border-subtle: rgba(17, 24, 32, 0.08);
+  --border-medium: rgba(17, 24, 32, 0.16);
+  --border-strong: rgba(17, 24, 32, 0.28);
+  --border-blue: rgba(216, 232, 240, 0.6);
 
-  /* --- TYPOGRAPHY --- */
-  --font-serif: var(--font-cormorant), 'Libre Baskerville', Georgia, serif;
-  --font-display: var(--font-cormorant), Georgia, serif;
-  --font-body-serif: var(--font-libre), 'Newsreader', Georgia, serif;
-  --font-sans: var(--font-inter), 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  /* --- DEFINITIVE TYPOGRAPHY SYSTEM --- */
+  --font-display: var(--font-sora), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-sans: var(--font-instrument-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-serif: var(--font-instrument-serif), Georgia, serif;
+  --font-editorial-serif: var(--font-instrument-serif), Georgia, serif;
+  --font-body-serif: var(--font-instrument-serif), Georgia, serif;
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
 
   /* --- GEOMETRY & GRIDS --- */
-  --container-max: 1280px;
-  --container-wide: 1400px;
-  --container-narrow: 860px;
-  --container-reading: 680px;      /* 60-75 characters per line */
+  --container-max: 1360px;
+  --container-wide: 1440px;
+  --container-narrow: 880px;
+  --container-reading: 700px;
   
   --radius-sharp: 0px;
   --radius-subtle: 2px;
+  --radius-standard: 3px;
 
   /* --- TRANSITIONS & EASINGS --- */
   --ease-editorial: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-fast: 180ms var(--ease-editorial);
+  --transition-fast: 160ms var(--ease-editorial);
   --transition-smooth: 320ms var(--ease-editorial);
-  --transition-slow: 600ms var(--ease-editorial);
+  --transition-slow: 550ms var(--ease-editorial);
 
-  /* --- PHYSICAL BOOK SHADOWS --- */
-  --shadow-book: 0 16px 40px -10px rgba(18, 26, 34, 0.16), 0 4px 14px -2px rgba(18, 26, 34, 0.06);
-  --shadow-book-hover: 0 24px 56px -12px rgba(18, 26, 34, 0.22), 0 8px 22px -4px rgba(18, 26, 34, 0.1);
-  --shadow-subtle: 0 2px 16px rgba(18, 26, 34, 0.04);
+  /* --- SHADOWS --- */
+  --shadow-book: 0 16px 40px -10px rgba(17, 24, 32, 0.16), 0 4px 14px -2px rgba(17, 24, 32, 0.06);
+  --shadow-book-hover: 0 24px 56px -12px rgba(17, 24, 32, 0.22), 0 8px 22px -4px rgba(17, 24, 32, 0.1);
+  --shadow-subtle: 0 2px 16px rgba(17, 24, 32, 0.04);
 }

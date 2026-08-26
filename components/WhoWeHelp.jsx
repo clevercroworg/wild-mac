@@ -2,61 +2,61 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { ArrowRight, Users, Briefcase, Rocket, User, Building, Globe } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 export default function WhoWeHelp() {
-  const [activeAudience, setActiveAudience] = useState(0);
+  const [hoveredIndex, setHoveredIndex] = useState(0);
 
   const audiences = [
     {
       number: "01",
-      title: "Entrepreneurs and Business Owners",
+      title: "Entrepreneurs & Business Owners",
       tag: "FOUNDERS & LEADERS",
-      description: "Navigating operational complexity, scaling challenges, team dynamics, and high-stakes commercial crossroads with objective perspective.",
-      focus: "Operational clarity · Growth strategy · Leadership sustainability"
+      description: "Navigating operational bottlenecks, scaling challenges, team leadership dynamics, and high-stakes commercial crossroads with objective, experience-led perspective.",
+      cta: "Explore Business Coaching"
     },
     {
       number: "02",
-      title: "Startups and Emerging Brands",
+      title: "Startups & Emerging Brands",
       tag: "EARLY-STAGE VENTURES",
-      description: "Establishing strong brand architecture, customer positioning, and commercial focus before capital is deployed.",
-      focus: "Brand foundations · Value proposition · Go-to-market discipline"
+      description: "Establishing durable brand foundations, customer positioning, and commercial focus before capital is deployed.",
+      cta: "Explore Brand Foundations"
     },
     {
       number: "03",
       title: "Working Professionals",
       tag: "CAREER & LEADERSHIP",
       description: "Navigating career inflection points, executive leadership transitions, and aligning professional ambition with personal sovereignty.",
-      focus: "Executive presence · Transition strategy · High-leverage skills"
+      cta: "Explore Professional Growth"
     },
     {
       number: "04",
       title: "Individuals Seeking Personal Growth",
       tag: "LIFE & PURPOSE",
-      description: "Designing deliberate daily habits, auditing time and energy allocation, and building unshakeable internal clarity.",
-      focus: "Personal alignment · Habit architecture · Purpose discovery"
+      description: "Designing deliberate daily habits, auditing time and capital allocation, and building unshakeable internal clarity.",
+      cta: "Explore Life Coaching"
     },
     {
       number: "05",
-      title: "Property Buyers and Investors",
+      title: "Property Buyers & Investors",
       tag: "REAL ESTATE & CAPITAL",
       description: "Evaluating property decisions through an unhurried, conservative lens to protect capital and build intergenerational value.",
-      focus: "Risk assessment · Property strategy · Long-term capital positioning"
+      cta: "Explore Real Estate Strategy"
     },
     {
       number: "06",
       title: "Businesses Building Their Digital Presence",
       tag: "BRANDING & DIGITAL",
       description: "Crafting distinct visual identities and dignified digital experiences that turn audience attention into lasting respect and commercial results.",
-      focus: "Editorial storytelling · Digital positioning · Authentic conversion"
+      cta: "Explore Digital Strategy"
     }
   ];
 
   return (
-    <section className="section-py" style={{ backgroundColor: 'var(--bg-paper-white)', borderBottom: '1px solid var(--border-subtle)' }}>
+    <section className="section-py" style={{ backgroundColor: 'var(--bg-pure-white)', borderBottom: '1px solid var(--border-subtle)' }}>
       <div className="container">
         {/* Section Header */}
-        <div style={{ maxWidth: '640px', marginBottom: '3.5rem' }}>
+        <div style={{ maxWidth: '680px', marginBottom: '3.5rem' }}>
           <div style={{ marginBottom: '1rem' }}>
             <span className="editorial-stamp">WHO WE HELP</span>
           </div>
@@ -77,66 +77,118 @@ export default function WhoWeHelp() {
           </p>
         </div>
 
-        {/* 6 Large Audience Pillars Grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.75rem' }}>
+        {/* Large Typographic Index (Row by Row) */}
+        <div style={{ display: 'flex', flexDirection: 'column', borderTop: '1px solid var(--border-subtle)' }}>
           {audiences.map((aud, index) => {
-            const isActive = index === activeAudience;
+            const isHovered = hoveredIndex === index;
             return (
               <div
                 key={aud.number}
-                onMouseEnter={() => setActiveAudience(index)}
+                onMouseEnter={() => setHoveredIndex(index)}
                 style={{
-                  backgroundColor: 'var(--bg-pure-white)',
-                  border: '1px solid',
-                  borderColor: isActive ? 'var(--text-deep-blue)' : 'var(--border-subtle)',
-                  borderRadius: '2px',
-                  padding: '2rem 1.75rem',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  transition: 'all var(--transition-fast)',
-                  boxShadow: isActive ? '0 12px 28px -6px rgba(23, 50, 71, 0.1)' : 'var(--shadow-subtle)',
+                  borderBottom: '1px solid var(--border-subtle)',
+                  paddingTop: '1.75rem',
+                  paddingBottom: '1.75rem',
+                  transition: 'background-color var(--transition-fast)',
                   position: 'relative',
+                  backgroundColor: isHovered ? 'var(--bg-ice-blue)' : 'transparent',
                 }}
               >
-                {/* Active Top Marker Line */}
-                {isActive && (
-                  <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '3px', backgroundColor: 'var(--accent-red)' }} />
+                {/* Active Red Marker Indicator on Left */}
+                {isHovered && (
+                  <div
+                    style={{
+                      position: 'absolute',
+                      top: 0,
+                      bottom: 0,
+                      left: 0,
+                      width: '4px',
+                      backgroundColor: 'var(--accent-red)',
+                    }}
+                  />
                 )}
 
-                <div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', fontWeight: 700, color: isActive ? 'var(--accent-red)' : 'var(--text-light)' }}>
-                      {aud.number}
-                    </span>
-                    <span style={{ fontSize: '0.68rem', fontFamily: 'var(--font-sans)', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-light)' }}>
+                <div
+                  style={{
+                    paddingLeft: isHovered ? '1.5rem' : '0.5rem',
+                    paddingRight: '1rem',
+                    display: 'grid',
+                    gridTemplateColumns: '80px 1.4fr 1.6fr auto',
+                    gap: '2rem',
+                    alignItems: 'center',
+                    transition: 'padding var(--transition-fast)',
+                  }}
+                  className="audience-index-row"
+                >
+                  {/* Large Number */}
+                  <span
+                    style={{
+                      fontFamily: 'var(--font-display)',
+                      fontSize: '1.4rem',
+                      fontWeight: 700,
+                      color: isHovered ? 'var(--accent-red)' : 'var(--text-light)',
+                      transition: 'color var(--transition-fast)',
+                    }}
+                  >
+                    {aud.number}
+                  </span>
+
+                  {/* Large Title */}
+                  <div>
+                    <h3
+                      style={{
+                        fontFamily: 'var(--font-display)',
+                        fontSize: 'clamp(1.25rem, 2.2vw, 1.6rem)',
+                        fontWeight: 650,
+                        color: isHovered ? 'var(--text-ink)' : 'var(--text-deep-blue)',
+                        lineHeight: 1.25,
+                        margin: 0,
+                      }}
+                    >
+                      {aud.title}
+                    </h3>
+                    <span style={{ fontSize: '0.7rem', fontFamily: 'var(--font-sans)', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-light)', display: 'block', marginTop: '0.25rem' }}>
                       {aud.tag}
                     </span>
                   </div>
 
-                  <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.45rem', color: 'var(--text-ink)', lineHeight: 1.25, marginBottom: '0.85rem' }}>
-                    {aud.title}
-                  </h3>
-
-                  <p style={{ fontSize: '0.94rem', color: 'var(--text-muted)', lineHeight: 1.7, marginBottom: '1.5rem' }}>
+                  {/* Explanatory Line / Description */}
+                  <p style={{ fontSize: '0.94rem', color: 'var(--text-muted)', lineHeight: 1.65, margin: 0 }}>
                     {aud.description}
                   </p>
-                </div>
 
-                <div style={{ borderTop: '1px solid var(--border-subtle)', paddingTop: '1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <span style={{ fontSize: '0.78rem', color: 'var(--text-deep-blue)', fontWeight: 500 }}>
-                    {aud.focus.split('·')[0]}
-                  </span>
-                  <Link href="/consultation" className="editorial-link" style={{ fontSize: '0.82rem' }}>
-                    <span>Discuss Goals</span>
-                    <ArrowRight size={13} />
-                  </Link>
+                  {/* CTA Action */}
+                  <div style={{ whiteSpace: 'nowrap' }}>
+                    <Link
+                      href="/consultation"
+                      className="editorial-link"
+                      style={{
+                        fontSize: '0.85rem',
+                        color: isHovered ? 'var(--accent-red)' : 'var(--text-deep-blue)',
+                      }}
+                    >
+                      <span>Discuss Goals</span>
+                      <ArrowRight size={13} />
+                    </Link>
+                  </div>
                 </div>
               </div>
             );
           })}
         </div>
       </div>
+
+      <style jsx>{`
+        @media (max-width: 900px) {
+          .audience-index-row {
+            grid-template-columns: 50px 1fr !important;
+            gap: 1rem !important;
+          }
+          .audience-index-row p, .audience-index-row div:last-child {
+            grid-column: 2 !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

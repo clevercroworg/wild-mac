@@ -85,7 +85,7 @@ ul, ol {
   padding-right: 1.5rem;
 }
 
-/* Section Spacing (Refined & Balanced) */
+/* Section Spacing */
 .section-py {
   padding-top: 4.5rem;
   padding-bottom: 4.5rem;
@@ -102,12 +102,8 @@ ul, ol {
 }
 
 /* ==========================================================================
-   TYPOGRAPHY SYSTEM
+   DEFINITIVE TYPOGRAPHY SYSTEM (SORA + INSTRUMENT SANS + INSTRUMENT SERIF)
    ========================================================================== */
-
-.font-serif {
-  font-family: var(--font-serif);
-}
 
 .font-display {
   font-family: var(--font-display);
@@ -117,12 +113,16 @@ ul, ol {
   font-family: var(--font-sans);
 }
 
-/* Editorial Display Headlines */
+.font-serif, .quote-editorial {
+  font-family: var(--font-serif);
+}
+
+/* Display Headlines (Sora) */
 h1, .h1-display {
   font-family: var(--font-display);
-  font-weight: 500;
-  font-size: clamp(2.4rem, 5.2vw, 4.25rem);
-  line-height: 1.08;
+  font-weight: 700;
+  font-size: clamp(2.6rem, 5.5vw, 5.2rem);
+  line-height: 1.05;
   letter-spacing: -0.025em;
   color: var(--text-ink);
   overflow-wrap: break-word;
@@ -130,8 +130,8 @@ h1, .h1-display {
 
 h2, .h2-display {
   font-family: var(--font-display);
-  font-weight: 500;
-  font-size: clamp(1.85rem, 3.6vw, 3rem);
+  font-weight: 650;
+  font-size: clamp(2rem, 3.8vw, 3.4rem);
   line-height: 1.15;
   letter-spacing: -0.02em;
   color: var(--text-ink);
@@ -139,11 +139,11 @@ h2, .h2-display {
 }
 
 h3, .h3-display {
-  font-family: var(--font-serif);
+  font-family: var(--font-display);
   font-weight: 600;
-  font-size: clamp(1.3rem, 2.2vw, 1.8rem);
+  font-size: clamp(1.35rem, 2.4vw, 2.1rem);
   line-height: 1.25;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
   color: var(--text-ink);
   overflow-wrap: break-word;
 }
@@ -157,6 +157,7 @@ h4 {
 }
 
 p {
+  font-family: var(--font-sans);
   color: var(--text-muted);
   font-size: 1.05rem;
   line-height: 1.7;
@@ -176,7 +177,7 @@ p.lead {
   gap: 0.6rem;
   font-family: var(--font-sans);
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--text-navy);
@@ -198,9 +199,9 @@ p.lead {
 .chapter-number {
   font-family: var(--font-display);
   font-size: 1.35rem;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--accent-red);
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
 }
 
 /* Hairline Rules */
@@ -221,7 +222,7 @@ p.lead {
 }
 
 /* ==========================================================================
-   BUTTONS & LINKS (Restrained, Editorial)
+   BUTTONS & LINKS (Restrained, Sharp 2–4px Radius)
    ========================================================================== */
 
 .btn {
@@ -229,11 +230,11 @@ p.lead {
   align-items: center;
   justify-content: center;
   gap: 0.6rem;
-  padding: 0.85rem 1.65rem;
+  padding: 0.85rem 1.75rem;
   font-family: var(--font-sans);
-  font-size: 0.88rem;
-  font-weight: 500;
-  letter-spacing: 0.02em;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
   border-radius: var(--radius-subtle);
   cursor: pointer;
   transition: all var(--transition-fast);
@@ -244,13 +245,13 @@ p.lead {
 
 .btn-primary {
   background-color: var(--text-navy);
-  color: var(--bg-ivory);
+  color: var(--bg-paper-white);
   border-color: var(--text-navy);
 }
 
 .btn-primary:hover {
-  background-color: #0b1a29;
-  border-color: #0b1a29;
+  background-color: #0d1f2d;
+  border-color: #0d1f2d;
   transform: translateY(-1px);
 }
 
@@ -262,32 +263,32 @@ p.lead {
 
 .btn-secondary:hover {
   border-color: var(--text-navy);
-  background-color: rgba(17, 38, 58, 0.03);
+  background-color: rgba(23, 50, 71, 0.04);
 }
 
 .btn-editorial {
-  background-color: var(--bg-paper);
+  background-color: var(--bg-pure-white);
   color: var(--text-navy);
   border: 1px solid var(--border-medium);
-  box-shadow: 0 1px 3px rgba(17, 38, 58, 0.04);
+  box-shadow: 0 1px 3px rgba(23, 50, 71, 0.04);
 }
 
 .btn-editorial:hover {
   border-color: var(--accent-red);
   color: var(--accent-red);
-  box-shadow: 0 2px 8px rgba(201, 71, 66, 0.08);
+  box-shadow: 0 2px 8px rgba(199, 74, 69, 0.08);
 }
 
 .btn-amazon {
-  background-color: #17202A;
+  background-color: #111820;
   color: #FFFFFF;
-  border: 1px solid #17202A;
-  font-weight: 500;
+  border: 1px solid #111820;
+  font-weight: 600;
 }
 
 .btn-amazon:hover {
-  background-color: #0d131a;
-  border-color: #0d131a;
+  background-color: #000000;
+  border-color: #000000;
   transform: translateY(-1px);
 }
 
@@ -295,10 +296,10 @@ p.lead {
 .editorial-link {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.45rem;
   font-family: var(--font-sans);
-  font-size: 0.88rem;
-  font-weight: 500;
+  font-size: 0.9rem;
+  font-weight: 600;
   color: var(--text-navy);
   position: relative;
   padding-bottom: 2px;
@@ -346,7 +347,7 @@ p.lead {
   box-shadow: var(--shadow-book);
   transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
   transform: rotateY(0deg) translateY(0);
-  background-color: var(--bg-paper);
+  background-color: var(--bg-pure-white);
 }
 
 .book-cover-3d::before {
@@ -390,28 +391,6 @@ p.lead {
 }
 
 /* ==========================================================================
-   EDITORIAL SPREAD QUOTES
-   ========================================================================== */
-
-.founder-spread {
-  background-color: var(--bg-mist);
-  position: relative;
-  overflow: hidden;
-}
-
-.founder-quote-mark {
-  font-family: var(--font-display);
-  font-size: clamp(5rem, 10vw, 9rem);
-  line-height: 0.8;
-  color: rgba(17, 38, 58, 0.1);
-  user-select: none;
-  pointer-events: none;
-  position: absolute;
-  top: 1rem;
-  left: 1.5rem;
-}
-
-/* ==========================================================================
    NAVIGATION BAR
    ========================================================================== */
 
@@ -419,16 +398,16 @@ p.lead {
   position: sticky;
   top: 0;
   z-index: 100;
-  background-color: rgba(250, 250, 247, 0.95);
+  background-color: rgba(248, 248, 245, 0.95);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--border-subtle);
   transition: padding var(--transition-smooth), background-color var(--transition-smooth), border-color var(--transition-smooth);
 }
 
 .site-header.scrolled {
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
-  background-color: rgba(250, 250, 247, 0.98);
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+  background-color: rgba(248, 248, 245, 0.98);
   border-bottom: 1px solid var(--border-medium);
 }
 
@@ -441,14 +420,14 @@ p.lead {
 }
 
 .site-header.scrolled .nav-container {
-  height: 3.6rem;
+  height: 3.8rem;
 }
 
 .nav-brand {
   font-family: var(--font-display);
   font-size: 1.45rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  font-weight: 700;
+  letter-spacing: 0.06em;
   color: var(--text-ink);
   display: flex;
   align-items: center;
@@ -471,7 +450,7 @@ p.lead {
 
 .nav-item {
   font-family: var(--font-sans);
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   font-weight: 500;
   color: var(--text-muted);
   position: relative;
@@ -542,8 +521,8 @@ p.lead {
 
 .footer-col-title {
   font-family: var(--font-sans);
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-size: 0.78rem;
+  font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #8CA2B5;
@@ -575,7 +554,7 @@ p.lead {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
 }
 
 .form-label {
@@ -590,7 +569,7 @@ p.lead {
 .form-input, .form-textarea, .form-select {
   width: 100%;
   padding: 0.85rem 1rem;
-  background-color: var(--bg-paper);
+  background-color: var(--bg-paper-white);
   border: 1px solid var(--border-medium);
   border-radius: var(--radius-subtle);
   color: var(--text-navy);
@@ -602,11 +581,11 @@ p.lead {
 .form-input:focus, .form-textarea:focus, .form-select:focus {
   outline: none;
   border-color: var(--text-navy);
-  box-shadow: 0 0 0 2px rgba(17, 38, 58, 0.08);
+  box-shadow: 0 0 0 2px rgba(23, 50, 71, 0.08);
 }
 
 .form-textarea {
-  min-height: 120px;
+  min-height: 110px;
   resize: vertical;
 }
 
@@ -659,22 +638,6 @@ p.lead {
   display: grid;
   grid-template-columns: 340px 1fr;
   gap: 4.5rem;
-  align-items: center;
-}
-
-.service-row-card {
-  padding: 2rem 2.25rem;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 2rem;
-  align-items: center;
-}
-
-.article-row-card {
-  padding: 2rem 2.5rem;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 2rem;
   align-items: center;
 }
 
@@ -749,8 +712,6 @@ p.lead {
   .two-col-grid,
   .book-featured-grid,
   .book-detail-hero-grid,
-  .service-row-card,
-  .article-row-card,
   .timeline-grid,
   .form-split-grid {
     grid-template-columns: 1fr !important;
@@ -766,12 +727,12 @@ p.lead {
   }
 
   h1, .h1-display {
-    font-size: 2.25rem;
-    line-height: 1.12;
+    font-size: 2.35rem;
+    line-height: 1.1;
   }
 
   h2, .h2-display {
-    font-size: 1.8rem;
+    font-size: 1.85rem;
     line-height: 1.18;
   }
 
@@ -814,7 +775,7 @@ p.lead {
   }
 
   h1, .h1-display {
-    font-size: 2rem;
+    font-size: 2.1rem;
   }
 
   .btn {

@@ -24,9 +24,9 @@ export default function ServicesContinuum() {
         {/* ===================================================================
             01 — SECTION INTRO (SHORT & SHARP)
             =================================================================== */}
-        <div style={{ maxWidth: '640px', marginBottom: '3.5rem' }}>
+        <div style={{ maxWidth: '680px', marginBottom: '3.5rem' }}>
           <div style={{ marginBottom: '1rem' }}>
-            <span className="editorial-stamp">WM / EXPERIENCE → ACTION</span>
+            <span className="editorial-stamp">WHAT WE DO</span>
           </div>
 
           <h2
@@ -39,7 +39,7 @@ export default function ServicesContinuum() {
               marginBottom: '1rem',
             }}
           >
-            Experience becomes<br />useful when it is shared.
+            Solutions Designed for<br />Personal and Professional Growth.
           </h2>
 
           <p
@@ -50,7 +50,7 @@ export default function ServicesContinuum() {
               lineHeight: 1.65,
             }}
           >
-            Wild Mac brings practical perspective to conversations around business, life, property, investment, and building a meaningful presence.
+            Wildmac brings together coaching, strategy and education to help people and businesses move forward with greater clarity and confidence.
           </p>
         </div>
 
@@ -318,30 +318,32 @@ export default function ServicesContinuum() {
                 </div>
 
                 {/* Direct Action Link */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', flexWrap: 'wrap' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1.75rem', flexWrap: 'wrap' }}>
                   <Link
-                    href="/consultation"
+                    href={`/services#${activeService.id}`}
                     className="editorial-link"
                     style={{
-                      fontSize: '0.95rem',
+                      fontSize: '0.92rem',
                       fontWeight: 600,
                       gap: '0.5rem',
+                      color: 'var(--text-ink)',
                     }}
                   >
-                    <span>Book a conversation regarding {activeService.title}</span>
-                    <ArrowRight size={15} />
+                    <span>Explore this service</span>
+                    <ArrowRight size={14} />
                   </Link>
 
                   <Link
-                    href="/services"
+                    href="/consultation"
+                    className="btn btn-primary"
                     style={{
-                      fontSize: '0.82rem',
-                      color: 'var(--text-light)',
-                      fontFamily: 'var(--font-sans)',
-                      textDecoration: 'none',
+                      padding: '0.65rem 1.35rem',
+                      fontSize: '0.85rem',
+                      gap: '0.5rem',
                     }}
                   >
-                    View All Modules →
+                    <span>Book a Consultation</span>
+                    <ArrowRight size={14} />
                   </Link>
                 </div>
               </div>
