@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { Menu, X, ArrowRight, ChevronDown, ChevronRight, Mail, MessageSquare } from 'lucide-react';
 import { servicesData } from '@/data/services';
 import LionLogo from '@/components/LionLogo';
+import WhatsAppIcon from '@/components/WhatsAppIcon';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -420,14 +421,14 @@ export default function Navbar() {
 
           {/* Desk Contact Quick Row */}
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.75rem', color: 'var(--text-light)', fontFamily: 'var(--font-mono)', marginBottom: '0.75rem', padding: '0 0.25rem' }}>
-            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
+            <a href="mailto:contactmacalmeida@gmail.com" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', color: 'inherit', textDecoration: 'none' }}>
               <Mail size={12} color="var(--accent-red)" />
-              <span>desk@wildmac.com</span>
-            </span>
-            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
-              <MessageSquare size={12} color="var(--accent-red)" />
+              <span>contactmacalmeida@gmail.com</span>
+            </a>
+            <a href="https://wa.me/919657080490" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', color: '#25D366', textDecoration: 'none', fontWeight: 600 }}>
+              <WhatsAppIcon size={13} color="#25D366" />
               <span>WhatsApp Direct</span>
-            </span>
+            </a>
           </div>
 
           <p style={{ margin: 0, fontSize: '0.72rem', color: 'var(--text-light)', textAlign: 'center', fontFamily: 'var(--font-mono)', letterSpacing: '0.08em' }}>

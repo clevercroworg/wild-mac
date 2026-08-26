@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
-import { Mail, MessageSquare, Phone, MapPin, Globe, Compass, ArrowUpRight, ArrowRight, ShieldCheck, FileText, CheckCircle2 } from 'lucide-react';
+import { Mail, Phone, MapPin, Globe, Compass, ArrowUpRight, ArrowRight, ShieldCheck, FileText, CheckCircle2, Linkedin } from 'lucide-react';
+import WhatsAppIcon from '@/components/WhatsAppIcon';
 import MajorConsultationCTA from '@/components/MajorConsultationCTA';
 
 export const metadata = {
@@ -33,26 +34,58 @@ export default function CollaborationPage() {
     {
       number: '05',
       title: 'Philanthropic & Social Ventures',
-      desc: 'Co-creating social infrastructure including community ashrams, elder care havens, and youth financial literacy programs.',
+      desc: 'Co-creating social infrastructure including community ashrams in Cancona, elder care havens in Taleigao, and youth financial literacy programs.',
     },
   ];
 
   return (
     <>
       {/* ===================================================================
-          01 — HERO SECTION
+          01 — HERO SECTION WITH WIDE CINEMATIC BOARDROOM BACKGROUND
           =================================================================== */}
       <section
         style={{
           borderBottom: '1px solid var(--border-subtle)',
           backgroundColor: 'var(--bg-paper-white)',
-          paddingTop: '4.5rem',
-          paddingBottom: '4rem',
+          minHeight: '82vh',
+          display: 'flex',
+          alignItems: 'center',
+          paddingTop: '5rem',
+          paddingBottom: '5rem',
           position: 'relative',
+          overflow: 'hidden',
         }}
       >
-        <div className="container">
-          <div style={{ maxWidth: '760px' }}>
+        {/* Full Wide Architectural Background Photograph */}
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            zIndex: 0,
+          }}
+        >
+          <img
+            src="/images/collaboration-hero-wide.jpg"
+            alt="Global executive boardroom and strategic summit lounge"
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              objectPosition: 'center 40%',
+            }}
+          />
+          {/* Calibrated Editorial Gradient Mask for Pristine Contrast */}
+          <div
+            style={{
+              position: 'absolute',
+              inset: 0,
+              background: 'linear-gradient(90deg, rgba(250, 250, 247, 0.97) 0%, rgba(250, 250, 247, 0.93) 48%, rgba(250, 250, 247, 0.82) 75%, rgba(250, 250, 247, 0.55) 100%)',
+            }}
+          />
+        </div>
+
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+          <div style={{ maxWidth: '780px' }}>
             <div style={{ marginBottom: '1.25rem' }}>
               <span className="editorial-stamp">GLOBAL PARTNERSHIPS & ALLIANCES</span>
             </div>
@@ -60,7 +93,7 @@ export default function CollaborationPage() {
             <h1
               style={{
                 fontFamily: 'var(--font-display)',
-                fontSize: 'clamp(2.4rem, 5vw, 4.2rem)',
+                fontSize: 'clamp(2.5rem, 5.5vw, 4.4rem)',
                 color: 'var(--text-ink)',
                 lineHeight: 1.08,
                 marginBottom: '1.5rem',
@@ -73,11 +106,11 @@ export default function CollaborationPage() {
 
             <div style={{ width: '2.5rem', height: '2px', backgroundColor: 'var(--accent-red)', marginBottom: '1.75rem' }} />
 
-            <p className="lead" style={{ color: 'var(--text-deep-blue)', lineHeight: 1.7, marginBottom: '2.5rem' }}>
-              Wildmac partners with ambitious founders, institutions, authors, and investors worldwide. We operate with zero intermediaries and direct principal-to-principal dialogue.
+            <p className="lead" style={{ color: 'var(--text-deep-blue)', lineHeight: 1.7, marginBottom: '2.25rem' }}>
+              Wildmac partners with ambitious founders, institutions, authors, and investors worldwide. We operate with zero intermediaries and direct principal-to-principal dialogue with Rodney De Almeida.
             </p>
 
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.6rem', padding: '0.6rem 1rem', backgroundColor: 'var(--bg-ice-blue)', border: '1px solid var(--border-medium)', borderRadius: '2px', fontSize: '0.82rem', fontFamily: 'var(--font-mono)', color: 'var(--text-deep-blue)' }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.6rem', padding: '0.65rem 1.15rem', backgroundColor: 'rgba(255, 255, 255, 0.95)', border: '1px solid var(--border-medium)', borderRadius: '2px', fontSize: '0.82rem', fontFamily: 'var(--font-mono)', color: 'var(--text-deep-blue)', boxShadow: 'var(--shadow-subtle)' }}>
               <ShieldCheck size={16} color="var(--accent-red)" />
               <span>DIRECT DESK PROTOCOL // NO FORMS OR THIRD PARTIES</span>
             </div>
@@ -140,14 +173,22 @@ export default function CollaborationPage() {
                 </p>
               </div>
 
-              <a
-                href="mailto:rodney@wildmac.com?subject=Strategic%20Collaboration%20Proposal"
-                className="btn btn-primary"
-                style={{ width: '100%', padding: '0.85rem', fontSize: '0.88rem' }}
-              >
-                <span>rodney@wildmac.com</span>
-                <ArrowRight size={14} />
-              </a>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                <a
+                  href="mailto:contactmacalmeida@gmail.com?subject=Strategic%20Collaboration%20Proposal"
+                  className="btn btn-primary"
+                  style={{ width: '100%', padding: '0.85rem', fontSize: '0.86rem' }}
+                >
+                  <span>contactmacalmeida@gmail.com</span>
+                  <ArrowRight size={14} />
+                </a>
+                <a
+                  href="mailto:rodusalmeida@gmail.com?subject=Strategic%20Collaboration%20Proposal"
+                  style={{ fontSize: '0.82rem', fontFamily: 'var(--font-mono)', color: 'var(--text-muted)', textAlign: 'center', textDecoration: 'none', padding: '0.25rem 0' }}
+                >
+                  alt: rodusalmeida@gmail.com
+                </a>
+              </div>
             </div>
 
             {/* Channel 2: WhatsApp Hotline Direct */}
@@ -165,29 +206,38 @@ export default function CollaborationPage() {
             >
               <div>
                 <div style={{ width: '44px', height: '44px', borderRadius: '50%', backgroundColor: 'rgba(37, 211, 102, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.25rem', color: '#25D366' }}>
-                  <MessageSquare size={22} />
+                  <WhatsAppIcon size={24} color="#25D366" />
                 </div>
                 <span style={{ fontSize: '0.72rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
                   INSTANT ADVISORY DIALOGUE
                 </span>
                 <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.4rem', color: 'var(--text-ink)', margin: '0.5rem 0 0.75rem 0', fontWeight: 650 }}>
-                  WhatsApp Direct Desk
+                  WhatsApp & Phone Hotline
                 </h3>
                 <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: 1.6, marginBottom: '1.5rem' }}>
-                  For urgent scheduling, confidential speaking inquiries, and real-time alliance discussions.
+                  For real-time discussions, confidential speaking inquiries, and alliance scheduling directly with Rodney.
                 </p>
               </div>
 
-              <a
-                href="https://wa.me/919822158888?text=Hello%20Rodney%2C%20I%20am%20reaching%20out%20to%20discuss%20a%20strategic%20collaboration."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-secondary"
-                style={{ width: '100%', padding: '0.85rem', fontSize: '0.88rem', borderColor: '#25D366', color: 'var(--text-ink)' }}
-              >
-                <span>+91 98221 58888</span>
-                <ArrowUpRight size={14} color="#25D366" />
-              </a>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                <a
+                  href="https://wa.me/919657080490?text=Hello%20Rodney%2C%20I%20am%20reaching%20out%20to%20discuss%20a%20strategic%20collaboration."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-secondary"
+                  style={{ width: '100%', padding: '0.85rem', fontSize: '0.88rem', borderColor: '#25D366', color: 'var(--text-ink)', gap: '0.5rem' }}
+                >
+                  <WhatsAppIcon size={16} color="#25D366" />
+                  <span>+91 96570 80490 (WhatsApp)</span>
+                  <ArrowUpRight size={14} color="#25D366" />
+                </a>
+                <a
+                  href="tel:+917776022622"
+                  style={{ fontSize: '0.82rem', fontFamily: 'var(--font-mono)', color: 'var(--text-muted)', textAlign: 'center', textDecoration: 'none', padding: '0.25rem 0' }}
+                >
+                  Direct Call: +91 77760 22622
+                </a>
+              </div>
             </div>
 
             {/* Channel 3: Headquarters & In-Person Retreats */}
@@ -208,18 +258,18 @@ export default function CollaborationPage() {
                   <MapPin size={22} />
                 </div>
                 <span style={{ fontSize: '0.72rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
-                  LOCATION & STUDIO
+                  STUDIO & RESIDENTIAL LOCATION
                 </span>
                 <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.4rem', color: 'var(--text-ink)', margin: '0.5rem 0 0.75rem 0', fontWeight: 650 }}>
-                  Goa & Mumbai HQ
+                  Caranzalem, Goa HQ
                 </h3>
                 <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: 1.6, marginBottom: '1.5rem' }}>
-                  Primary executive sanctuary in Panaji / Cancona, Goa, with regular strategic consultations in Mumbai and Bangalore.
+                  Executive advisory office and creative studio in Caranzalem & Cancona, Goa, with global digital desk availability.
                 </p>
               </div>
 
               <div style={{ padding: '0.65rem 0.85rem', backgroundColor: 'var(--bg-pure-white)', border: '1px solid var(--border-subtle)', borderRadius: '2px', fontSize: '0.8rem', fontFamily: 'var(--font-mono)', color: 'var(--text-deep-blue)', textAlign: 'center' }}>
-                Panaji, Goa 403001, India
+                AG-1 Samarth Residency, Caranzalem, Goa 403002
               </div>
             </div>
           </div>

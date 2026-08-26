@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Mail, MessageSquare, Phone, Send, CheckCircle2, ArrowRight } from 'lucide-react';
+import { Mail, MessageSquare, Phone, Send, CheckCircle2, MapPin, ArrowRight, ArrowUpRight, Linkedin } from 'lucide-react';
 import MajorConsultationCTA from '@/components/MajorConsultationCTA';
 
 export default function ContactPage() {
@@ -34,8 +34,8 @@ export default function ContactPage() {
           minHeight: '80vh',
           display: 'flex',
           alignItems: 'center',
-          paddingTop: '3.5rem',
-          paddingBottom: '3.5rem',
+          paddingTop: '4rem',
+          paddingBottom: '4rem',
           position: 'relative',
         }}
       >
@@ -64,35 +64,87 @@ export default function ContactPage() {
               <div style={{ width: '2.5rem', height: '2px', backgroundColor: 'var(--accent-red)', marginBottom: '1.75rem' }} />
 
               <p className="lead" style={{ fontSize: '1.18rem', color: 'var(--text-deep-blue)', marginBottom: '1.25rem', lineHeight: 1.65 }}>
-                For business coaching, life direction, property strategy, investment education, branding inquiries, or book-related questions.
+                For business coaching, life direction, property strategy, investment education, branding inquiries, collaboration, or book-related questions.
               </p>
 
               <p style={{ fontSize: '1rem', color: 'var(--text-muted)', lineHeight: 1.75, marginBottom: '2.5rem' }}>
-                Every message is reviewed directly. We prioritize thoughtful, unhurried correspondence and respond within 24–48 business hours.
+                Every message is reviewed directly by Rodney De Almeida. We prioritize thoughtful, unhurried correspondence and respond within 24–48 business hours.
               </p>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', borderTop: '1px solid var(--border-subtle)', paddingTop: '1.75rem' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                  <div style={{ width: '42px', height: '42px', backgroundColor: 'var(--bg-ice-blue)', borderRadius: '2px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                {/* Email Direct */}
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
+                  <div style={{ width: '42px', height: '42px', backgroundColor: 'var(--bg-ice-blue)', borderRadius: '2px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                     <Mail size={18} color="var(--accent-red)" />
                   </div>
                   <div>
                     <span style={{ display: 'block', fontSize: '0.72rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-                      DIRECT DESK EMAIL
+                      DIRECT DESK EMAILS
                     </span>
-                    <span style={{ fontWeight: 600, fontSize: '0.95rem', color: 'var(--text-ink)' }}>desk@wildmac.com</span>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem', marginTop: '0.2rem' }}>
+                      <a href="mailto:contactmacalmeida@gmail.com" style={{ fontWeight: 600, fontSize: '0.95rem', color: 'var(--text-ink)', textDecoration: 'none' }}>
+                        contactmacalmeida@gmail.com
+                      </a>
+                      <a href="mailto:rodusalmeida@gmail.com" style={{ fontSize: '0.88rem', color: 'var(--text-muted)', textDecoration: 'none' }}>
+                        rodusalmeida@gmail.com
+                      </a>
+                    </div>
                   </div>
                 </div>
 
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                  <div style={{ width: '42px', height: '42px', backgroundColor: 'var(--bg-ice-blue)', borderRadius: '2px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <MessageSquare size={18} color="var(--accent-red)" />
+                {/* Phone & WhatsApp */}
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
+                  <div style={{ width: '42px', height: '42px', backgroundColor: 'rgba(37, 211, 102, 0.1)', borderRadius: '2px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <MessageSquare size={18} color="#25D366" />
                   </div>
                   <div>
                     <span style={{ display: 'block', fontSize: '0.72rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-                      WHATSAPP DIRECT
+                      WHATSAPP & DIRECT PHONE
                     </span>
-                    <span style={{ fontWeight: 600, fontSize: '0.95rem', color: 'var(--text-ink)' }}>+1 (800) WILD-MAC</span>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem', marginTop: '0.2rem' }}>
+                      <a href="https://wa.me/919657080490" target="_blank" rel="noopener noreferrer" style={{ fontWeight: 600, fontSize: '0.95rem', color: 'var(--text-ink)', textDecoration: 'none' }}>
+                        +91 96570 80490 <span style={{ fontSize: '0.75rem', color: '#25D366', fontFamily: 'var(--font-mono)' }}>(WhatsApp Primary)</span>
+                      </a>
+                      <a href="tel:+917776022622" style={{ fontSize: '0.88rem', color: 'var(--text-muted)', textDecoration: 'none' }}>
+                        +91 77760 22622 <span style={{ fontSize: '0.75rem', color: 'var(--text-light)', fontFamily: 'var(--font-mono)' }}>(Direct Line)</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Physical Location */}
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
+                  <div style={{ width: '42px', height: '42px', backgroundColor: 'var(--bg-ice-blue)', borderRadius: '2px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <MapPin size={18} color="var(--accent-red)" />
+                  </div>
+                  <div>
+                    <span style={{ display: 'block', fontSize: '0.72rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+                      STUDIO & RESIDENCE
+                    </span>
+                    <span style={{ fontWeight: 600, fontSize: '0.95rem', color: 'var(--text-ink)', display: 'block', marginTop: '0.2rem' }}>
+                      AG-1 Samarth Residency, Caranzalem, Goa 403002, India
+                    </span>
+                  </div>
+                </div>
+
+                {/* LinkedIn Profile */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginTop: '0.25rem' }}>
+                  <div style={{ width: '42px', height: '42px', backgroundColor: 'rgba(10, 102, 194, 0.1)', borderRadius: '2px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <Linkedin size={18} color="#0A66C2" />
+                  </div>
+                  <div>
+                    <span style={{ display: 'block', fontSize: '0.72rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+                      PROFESSIONAL NETWORK
+                    </span>
+                    <a
+                      href="https://www.linkedin.com/in/rodney-de-almeida-958448409/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ fontWeight: 600, fontSize: '0.92rem', color: '#0A66C2', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.3rem' }}
+                    >
+                      <span>linkedin.com/in/rodney-de-almeida</span>
+                      <ArrowUpRight size={13} />
+                    </a>
                   </div>
                 </div>
               </div>
@@ -119,7 +171,7 @@ export default function ContactPage() {
                       Thank You for Reaching Out
                     </h3>
                     <p style={{ color: 'var(--text-muted)', lineHeight: '1.7', maxWidth: '420px', margin: '0 auto 2rem auto' }}>
-                      Your message has been received at the Wildmac desk. A member of our team will respond within 24–48 business hours.
+                      Your message has been received at Rodney Almeida’s direct desk. A response will be delivered within 24–48 business hours.
                     </p>
                     <button
                       type="button"
@@ -145,7 +197,7 @@ export default function ContactPage() {
                           id="name"
                           type="text"
                           required
-                          placeholder="e.g. Rodney Vance"
+                          placeholder="Your Name"
                           value={formData.name}
                           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                           className="form-input"
@@ -172,7 +224,7 @@ export default function ContactPage() {
                         <input
                           id="phone"
                           type="tel"
-                          placeholder="+1 (555) 000-0000"
+                          placeholder="+91 00000 00000"
                           value={formData.phone}
                           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                           className="form-input"
@@ -202,12 +254,13 @@ export default function ContactPage() {
                         onChange={(e) => setFormData({ ...formData, serviceRequired: e.target.value })}
                         className="form-select"
                       >
-                        <option value="Business Coaching">Business Coaching</option>
-                        <option value="Life Coaching">Life Coaching</option>
-                        <option value="Real Estate">Real Estate Strategy</option>
-                        <option value="Investment Strategy">Investment Strategy</option>
-                        <option value="Branding and Digital Marketing">Branding & Digital Marketing</option>
-                        <option value="Book-Related Enquiry">Book-Related Enquiry</option>
+                        <option value="Business Coaching">Business Coaching & Enterprise Strategy</option>
+                        <option value="Life Coaching">Life Coaching & Personal Growth</option>
+                        <option value="Real Estate">Real Estate & Land Advisory</option>
+                        <option value="Investment Strategy">Investment Strategy & Capital Direction</option>
+                        <option value="Branding and Digital Marketing">Branding, Identity & Positioning</option>
+                        <option value="Book-Related Enquiry">Book-Related Enquiry & Publications</option>
+                        <option value="Collaborations">National & International Collaboration</option>
                         <option value="General Enquiry">General Enquiry</option>
                       </select>
                     </div>

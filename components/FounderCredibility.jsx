@@ -67,21 +67,21 @@ export default function FounderCredibility() {
                     letterSpacing: '0.08em',
                   }}
                 >
-                  FOUNDER // RODNEY ALMEIDA
+                  FOUNDER // RODNEY DE ALMEIDA
                 </div>
               </div>
 
               {/* Credential Status Bar */}
               <div style={{ padding: '0.85rem 0.5rem 0.4rem', borderTop: '1px solid var(--border-subtle)', marginTop: '0.65rem' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.75rem', marginBottom: '0.6rem', flexWrap: 'wrap', gap: '0.4rem' }}>
-                  <span style={{ color: 'var(--text-ink)', fontWeight: 600 }}>RODNEY ALMEIDA</span>
+                  <span style={{ color: 'var(--text-ink)', fontWeight: 600 }}>RODNEY DE ALMEIDA</span>
                   <span style={{ color: 'var(--accent-red)', fontWeight: 600, fontFamily: 'var(--font-mono)', fontSize: '0.72rem' }}>
                     25+ YEARS EXPERIENCE
                   </span>
                 </div>
 
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap', fontSize: '0.72rem', color: 'var(--text-light)', fontFamily: 'var(--font-mono)' }}>
-                  <span>ENGINEERING</span>
+                  <span>ELECTRONICS ENG</span>
                   <span>•</span>
                   <span>4 BOOKS</span>
                   <span>•</span>
@@ -112,16 +112,16 @@ export default function FounderCredibility() {
 
             <div style={{ padding: '1.25rem 1.5rem', backgroundColor: 'var(--bg-pure-white)', borderLeft: '3px solid var(--accent-red)', marginBottom: '1.75rem', borderRadius: '0 2px 2px 0', border: '1px solid var(--border-subtle)', borderLeftWidth: '3px', borderLeftColor: 'var(--accent-red)' }}>
               <p style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: '1.2rem', color: 'var(--text-ink)', margin: 0, lineHeight: 1.5 }}>
-                “Experience creates perspective. Perspective becomes useful when shared.”
+                “My philosophy is to feed the hungry, build community sanctuaries, and share knowledge that empowers.”
               </p>
             </div>
 
             <p style={{ fontSize: '1.02rem', lineHeight: 1.75, color: 'var(--text-deep-blue)', marginBottom: '1.25rem' }}>
-              Wildmac was founded by Rodney Almeida, an Electrical Engineering graduate with more than 25 years of professional experience and a journey shaped by learning, leadership and adventure.
+              Wildmac was founded by <strong>Rodney Meck De Almeida</strong>, an Electronics Engineering graduate with more than 25 years of cross-industry leadership in India and the UK.
             </p>
 
             <p className="hidden-mobile" style={{ fontSize: '1.02rem', lineHeight: 1.8, color: 'var(--text-muted)', marginBottom: '2.5rem' }}>
-              As the author of four published books, Rodney brings together his professional background, personal insights and passion for helping people make better decisions. Wildmac transforms this vision into a platform for coaching, strategic guidance, education and meaningful growth.
+              As the author of four published books on Amazon, Rodney brings together his engineering background, entrepreneurial ventures, and deep personal passion for helping individuals and businesses make confident, enduring decisions.
             </p>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', flexWrap: 'wrap', marginTop: '1.5rem' }}>

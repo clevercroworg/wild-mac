@@ -1,11 +1,11 @@
 'use client';
 
 import React, { useState } from 'react';
-import { MessageCircle } from 'lucide-react';
+import WhatsAppIcon from '@/components/WhatsAppIcon';
 
 export default function StickyWhatsApp() {
   const [isHovered, setIsHovered] = useState(false);
-  const phoneNumber = '919822158888'; // Official Direct Desk Hotline
+  const phoneNumber = '919657080490'; // Official Direct WhatsApp Desk
   const defaultMessage = encodeURIComponent('Hello Rodney, I would like to connect regarding Wildmac advisory & initiatives.');
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${defaultMessage}`;
 
@@ -92,8 +92,8 @@ export default function StickyWhatsApp() {
           }}
         />
 
-        {/* WhatsApp Icon */}
-        <MessageCircle size={28} color="#FFFFFF" strokeWidth={2.2} />
+        {/* Authentic WhatsApp Vector Icon */}
+        <WhatsAppIcon size={28} color="#FFFFFF" />
       </a>
 
       <style jsx>{`

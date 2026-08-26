@@ -2,10 +2,11 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { ArrowRight, ArrowUpRight, ShieldCheck, Mail, Phone, MessageSquare, Plus, Minus } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, ShieldCheck, Mail, Phone, Plus, Minus, MapPin, Linkedin } from 'lucide-react';
 import { booksData } from '@/data/books';
 import { servicesData } from '@/data/services';
 import LionLogo from '@/components/LionLogo';
+import WhatsAppIcon from '@/components/WhatsAppIcon';
 
 export default function Footer() {
   const [openGroup, setOpenGroup] = useState(null);
@@ -25,28 +26,42 @@ export default function Footer() {
               WILDMAC // PLATFORM PERSPECTIVE
             </span>
           </div>
-          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 4.5vw, 4.2rem)', fontWeight: 500, color: '#FFFFFF', lineHeight: 1.1, letterSpacing: '-0.025em', maxWidth: '840px' }}>
-            Build with purpose.<br />Grow with strategy.
+          <h2
+            style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: 'clamp(1.9rem, 4vw, 3.2rem)',
+              fontWeight: 650,
+              lineHeight: 1.15,
+              letterSpacing: '-0.02em',
+              color: '#FFFFFF',
+              maxWidth: '960px',
+              margin: '0 0 1.25rem 0',
+            }}
+          >
+            "Purpose is not discovered by haste. It is engineered through clarity, quiet courage and deliberate stewardship."
           </h2>
+          <p style={{ color: '#9BAEC0', fontSize: '0.95rem', margin: 0, fontFamily: 'var(--font-mono)' }}>
+            RODNEY MECK DE ALMEIDA — FOUNDER, AUTHOR & STRATEGIST // GOA, INDIA
+          </p>
         </div>
 
         {/* -------------------------------------------------------------
-            DESKTOP FOOTER (> 768px): 4 Full Columns
+            DESKTOP FOOTER (> 768px): Rich 4-Column Layout
             ------------------------------------------------------------- */}
-        <div className="footer-desktop-grid footer-top">
-          {/* Brand Col */}
-          <div style={{ maxWidth: '340px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem', marginBottom: '1.25rem' }}>
+        <div className="footer-top footer-desktop-grid">
+          {/* Brand Column */}
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
               <LionLogo size={46} />
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
                 <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.65rem', fontWeight: 600, letterSpacing: '0.06em', color: '#FFFFFF' }}>
                   WILDMAC
                 </span>
-                <span style={{ width: '5px', height: '5px', backgroundColor: 'var(--accent-red)', borderRadius: '50%' }} />
+                <span style={{ width: '6px', height: '6px', backgroundColor: 'var(--accent-red)', borderRadius: '50%' }} />
               </div>
             </div>
-            <p style={{ color: '#9BAEC0', fontSize: '0.92rem', lineHeight: 1.7, marginBottom: '1.75rem' }}>
-              Wildmac is a coaching, consulting and knowledge-driven brand helping individuals, professionals and businesses move forward with purpose, clarity and practical strategy.
+            <p style={{ color: '#9BAEC0', fontSize: '0.92rem', lineHeight: 1.7, marginBottom: '1.75rem', maxWidth: '320px' }}>
+              Coaching, consulting, and knowledge-driven advisory platform founded on 25+ years of multidisciplinary engineering and leadership experience.
             </p>
             <Link href="/consultation" className="btn btn-editorial" style={{ backgroundColor: 'transparent', color: '#FFFFFF', borderColor: 'rgba(255, 255, 255, 0.25)', padding: '0.65rem 1.25rem', fontSize: '0.85rem', gap: '0.5rem' }}>
               <span>Book a Consultation</span>
@@ -87,27 +102,46 @@ export default function Footer() {
           {/* Contact Details */}
           <div>
             <h4 className="footer-col-title">Direct Desk</h4>
-            <ul className="footer-nav" style={{ fontSize: '0.88rem', color: '#C0CFDB' }}>
-              <li style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <Mail size={14} color="var(--accent-red)" />
-                <span>desk@wildmac.com</span>
+            <ul className="footer-nav" style={{ fontSize: '0.88rem', color: '#C0CFDB', display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
+              <li>
+                <a href="mailto:contactmacalmeida@gmail.com" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', color: 'inherit', textDecoration: 'none' }}>
+                  <Mail size={14} color="var(--accent-red)" />
+                  <span>contactmacalmeida@gmail.com</span>
+                </a>
               </li>
-              <li style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <MessageSquare size={14} color="var(--accent-red)" />
-                <span>WhatsApp Direct</span>
+              <li>
+                <a href="https://wa.me/919657080490" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', color: '#25D366', textDecoration: 'none', fontWeight: 600 }}>
+                  <WhatsAppIcon size={15} color="#25D366" />
+                  <span>+91 96570 80490 (WhatsApp)</span>
+                </a>
               </li>
-              <li style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <ShieldCheck size={14} color="var(--accent-red)" />
-                <span>Confidential Practice</span>
+              <li>
+                <a href="tel:+917776022622" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', color: 'inherit', textDecoration: 'none' }}>
+                  <Phone size={14} color="var(--accent-red)" />
+                  <span>+91 77760 22622</span>
+                </a>
               </li>
-              <li style={{ marginTop: '1rem' }}>
+              <li style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontSize: '0.82rem', color: '#9BAEC0' }}>
+                <MapPin size={14} color="var(--accent-red)" style={{ flexShrink: 0, marginTop: '2px' }} />
+                <span>AG-1 Samarth Residency, Caranzalem, Goa 403002</span>
+              </li>
+              <li style={{ marginTop: '0.5rem', display: 'flex', gap: '1rem', alignItems: 'center' }}>
+                <a
+                  href="https://www.linkedin.com/in/rodney-de-almeida-958448409/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', color: '#0A66C2', fontWeight: 500, fontSize: '0.82rem' }}
+                >
+                  <Linkedin size={13} color="#0A66C2" />
+                  <span>LinkedIn</span>
+                </a>
                 <a
                   href="https://www.amazon.in"
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem', color: 'var(--accent-red)', fontWeight: 500 }}
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem', color: 'var(--accent-red)', fontWeight: 500, fontSize: '0.82rem' }}
                 >
-                  <span>Amazon Author Page</span>
+                  <span>Amazon Author</span>
                   <ArrowUpRight size={12} />
                 </a>
               </li>
@@ -238,18 +272,28 @@ export default function Footer() {
               <span style={{ color: 'var(--accent-red)' }}>{openGroup === 'contact' ? <Minus size={16} /> : <Plus size={16} />}</span>
             </button>
             {openGroup === 'contact' && (
-              <ul className="footer-nav" style={{ paddingBottom: '1rem', margin: 0, fontSize: '0.86rem' }}>
-                <li style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <Mail size={13} color="var(--accent-red)" />
-                  <span>desk@wildmac.com</span>
+              <ul className="footer-nav" style={{ paddingBottom: '1rem', margin: 0, fontSize: '0.86rem', display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
+                <li>
+                  <a href="mailto:contactmacalmeida@gmail.com" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'inherit', textDecoration: 'none' }}>
+                    <Mail size={13} color="var(--accent-red)" />
+                    <span>contactmacalmeida@gmail.com</span>
+                  </a>
                 </li>
-                <li style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <MessageSquare size={13} color="var(--accent-red)" />
-                  <span>WhatsApp Direct</span>
+                <li>
+                  <a href="https://wa.me/919657080490" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#25D366', textDecoration: 'none', fontWeight: 600 }}>
+                    <WhatsAppIcon size={14} color="#25D366" />
+                    <span>+91 96570 80490 (WhatsApp)</span>
+                  </a>
                 </li>
-                <li style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <ShieldCheck size={13} color="var(--accent-red)" />
-                  <span>Confidential Practice</span>
+                <li>
+                  <a href="tel:+917776022622" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'inherit', textDecoration: 'none' }}>
+                    <Phone size={13} color="var(--accent-red)" />
+                    <span>+91 77760 22622</span>
+                  </a>
+                </li>
+                <li style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontSize: '0.8rem', color: '#9BAEC0' }}>
+                  <MapPin size={13} color="var(--accent-red)" style={{ flexShrink: 0, marginTop: '2px' }} />
+                  <span>AG-1 Samarth Residency, Caranzalem, Goa</span>
                 </li>
               </ul>
             )}

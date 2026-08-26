@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { ArrowRight, MessageSquare } from 'lucide-react';
+import WhatsAppIcon from '@/components/WhatsAppIcon';
 
 export default function MajorConsultationCTA() {
   return (
@@ -79,7 +80,7 @@ export default function MajorConsultationCTA() {
               </Link>
 
               <a
-                href="https://wa.me/?text=Hello%20Wildmac%20Team,%20I%20would%20like%20to%20inquire%20about%20a%20strategic%20consultation."
+                href="https://wa.me/919657080490?text=Hello%20Rodney,%20I%20would%20like%20to%20inquire%20about%20a%20strategic%20consultation."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-secondary"
@@ -91,7 +92,7 @@ export default function MajorConsultationCTA() {
                   gap: '0.6rem',
                 }}
               >
-                <MessageSquare size={16} color="var(--accent-red)" />
+                <WhatsAppIcon size={16} color="#25D366" />
                 <span>Chat on WhatsApp</span>
               </a>
             </div>

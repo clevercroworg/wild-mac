@@ -119,7 +119,7 @@ export default function AboutPage() {
                 </div>
 
                 <div style={{ padding: '0.5rem 0.25rem 0.25rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.75rem', color: 'var(--text-light)', borderTop: '1px solid var(--border-subtle)' }}>
-                  <span>ELECTRICAL ENGINEER · AUTHOR · ADVISOR</span>
+                  <span>ELECTRONICS ENGINEER · AUTHOR · ADVISOR</span>
                   <span style={{ color: 'var(--accent-red)', fontWeight: 600 }}>25+ YRS EXPERIENCE</span>
                 </div>
               </div>
@@ -254,16 +254,16 @@ export default function AboutPage() {
 
               <div style={{ padding: '1rem 1.25rem', backgroundColor: 'var(--bg-pure-white)', borderLeft: '3px solid var(--accent-red)', marginBottom: '1.5rem', borderRadius: '0 2px 2px 0', border: '1px solid var(--border-subtle)', borderLeftWidth: '3px', borderLeftColor: 'var(--accent-red)' }}>
                 <p style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: '1.15rem', color: 'var(--text-ink)', margin: 0, lineHeight: 1.45 }}>
-                  “Experience creates perspective. Perspective becomes useful when shared.”
+                  “My philosophy is simple: to feed the hungry, build enduring sanctuaries, and share knowledge that empowers.”
                 </p>
               </div>
 
               <p style={{ fontSize: '1rem', lineHeight: 1.7, color: 'var(--text-deep-blue)', marginBottom: '1.15rem' }}>
-                Wildmac was founded by Rodney Almeida, an Electrical Engineering graduate whose career spans over two decades of corporate management, entrepreneurial ventures, and deep personal study.
+                Wildmac was founded by <strong>Rodney Meck De Almeida</strong>, an Electronics Engineering graduate from Government Polytechnic Panjim (2000) with advanced studies in multimedia design and 3D animation in Mumbai.
               </p>
 
               <p style={{ fontSize: '1rem', lineHeight: 1.7, color: 'var(--text-muted)', marginBottom: '1.75rem' }}>
-                Having authored four published books exploring purpose, financial awareness, and decision-making, Rodney established Wildmac to bridge high-leverage commercial strategy with deep human purpose.
+                His 25-year trajectory spans international management experience in Slough & London, UK, multi-venture business ownership, retail leadership, and authoring 4 published books on Amazon. Based in Caranzalem, Goa, Rodney combines engineering first-principles with practical life stewardship.
               </p>
 
               <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', flexWrap: 'wrap' }}>
@@ -271,8 +271,8 @@ export default function AboutPage() {
                   <span>Explore Published Books</span>
                   <ArrowRight size={13} />
                 </Link>
-                <Link href="/consultation" className="editorial-link" style={{ fontSize: '0.88rem' }}>
-                  <span>Schedule Advisory Discussion</span>
+                <Link href="/collaboration" className="editorial-link" style={{ fontSize: '0.88rem' }}>
+                  <span>Partner & Collaborate</span>
                   <ArrowRight size={13} />
                 </Link>
               </div>
