@@ -21,8 +21,9 @@ export default function WildmacHero() {
         overflow: 'visible',
       }}
     >
-      {/* Subtle Atmospheric Blue Field Underlay */}
+      {/* Subtle Atmospheric Blue Field Underlay (Desktop) */}
       <div
+        className="hidden-mobile"
         style={{
           position: 'absolute',
           top: '0',
@@ -34,6 +35,39 @@ export default function WildmacHero() {
           zIndex: 0,
         }}
       />
+
+      {/* Mobile-Only Authentic Atmospheric Background Overlay */}
+      <div
+        className="mobile-hero-bg-overlay"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          zIndex: 0,
+          pointerEvents: 'none',
+          overflow: 'hidden',
+          display: 'none',
+        }}
+      >
+        <img
+          src="/images/community-dialogue.jpg"
+          alt="Atmospheric Wildmac advisory environment"
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center 25%',
+            opacity: 0.15,
+            filter: 'contrast(1.1) saturate(0.85)',
+          }}
+        />
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background: 'linear-gradient(180deg, rgba(250, 250, 247, 0.92) 0%, rgba(250, 250, 247, 0.85) 45%, rgba(250, 250, 247, 0.98) 100%)',
+          }}
+        />
+      </div>
 
       <div className="container" style={{ position: 'relative', zIndex: 1, flex: '1 0 auto', display: 'flex', alignItems: 'center' }}>
         <div
@@ -302,6 +336,9 @@ export default function WildmacHero() {
             padding-top: 2rem !important;
             padding-bottom: 1.5rem !important;
             min-height: auto !important;
+          }
+          .mobile-hero-bg-overlay {
+            display: block !important;
           }
           .hero-main-title {
             font-size: 2.35rem !important;
