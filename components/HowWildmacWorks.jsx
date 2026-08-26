@@ -192,104 +192,77 @@ export default function HowWildmacWorks() {
         </div>
 
         {/* -------------------------------------------------------------
-            MOBILE VIEW (<= 768px): Compact Interactive Stepper Tabs
+            MOBILE VIEW (<= 768px): Vertical Connected Timeline Stepper
             ------------------------------------------------------------- */}
-        <div className="how-mobile-stepper">
-          {/* Top Horizontal Step Selector Tabs */}
-          <div
-            style={{
-              display: 'flex',
-              gap: '0.5rem',
-              overflowX: 'auto',
-              paddingBottom: '0.75rem',
-              marginBottom: '1.25rem',
-              WebkitOverflowScrolling: 'touch',
-            }}
-          >
-            {steps.map((step, idx) => {
-              const isActive = activeStep === idx;
-              return (
-                <button
+        <div className="how-mobile-timeline">
+          <div style={{ position: 'relative', paddingLeft: '1.75rem' }}>
+            {/* Vertical Connecting Line */}
+            <div
+              style={{
+                position: 'absolute',
+                top: '16px',
+                bottom: '24px',
+                left: '11px',
+                width: '2px',
+                backgroundColor: 'var(--border-medium)',
+                zIndex: 0,
+              }}
+            />
+
+            {/* 5 Vertical Step Nodes */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+              {steps.map((step, idx) => (
+                <div
                   key={step.number}
-                  type="button"
-                  onClick={() => setActiveStep(idx)}
                   style={{
-                    padding: '0.65rem 1rem',
-                    backgroundColor: isActive ? 'var(--text-deep-blue)' : 'var(--bg-pure-white)',
-                    color: isActive ? '#FFFFFF' : 'var(--text-deep-blue)',
-                    border: '1px solid',
-                    borderColor: isActive ? 'var(--text-deep-blue)' : 'var(--border-subtle)',
+                    position: 'relative',
+                    zIndex: 1,
+                    backgroundColor: 'var(--bg-pure-white)',
+                    border: '1px solid var(--border-subtle)',
+                    borderLeft: '3px solid var(--accent-red)',
                     borderRadius: '2px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.45rem',
-                    cursor: 'pointer',
-                    whiteSpace: 'nowrap',
-                    flexShrink: 0,
-                    fontSize: '0.85rem',
-                    fontFamily: 'var(--font-display)',
-                    fontWeight: 600,
+                    padding: '1.1rem 1.15rem',
+                    boxShadow: 'var(--shadow-subtle)',
                   }}
                 >
-                  <span style={{ color: isActive ? 'var(--accent-red)' : 'var(--text-light)', fontSize: '0.75rem', fontFamily: 'var(--font-mono)' }}>
-                    {step.number}
-                  </span>
-                  <span>{step.title}</span>
-                </button>
-              );
-            })}
-          </div>
+                  {/* Timeline Dot on the left */}
+                  <div
+                    style={{
+                      position: 'absolute',
+                      top: '1.2rem',
+                      left: '-2.15rem',
+                      width: '24px',
+                      height: '24px',
+                      borderRadius: '50%',
+                      backgroundColor: 'var(--text-deep-blue)',
+                      color: '#FFFFFF',
+                      border: '2px solid #FFFFFF',
+                      boxShadow: '0 0 0 1px var(--text-deep-blue)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontFamily: 'var(--font-mono)',
+                      fontSize: '0.65rem',
+                      fontWeight: 700,
+                    }}
+                  >
+                    {idx + 1}
+                  </div>
 
-          {/* Active Step Details Panel */}
-          <div
-            style={{
-              backgroundColor: 'var(--bg-pure-white)',
-              border: '1px solid var(--border-medium)',
-              borderLeft: '4px solid var(--accent-red)',
-              borderRadius: '2px',
-              padding: '1.5rem 1.25rem',
-              boxShadow: 'var(--shadow-subtle)',
-            }}
-          >
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.65rem' }}>
-              <span style={{ fontFamily: 'var(--font-display)', fontSize: '0.85rem', fontWeight: 700, color: 'var(--accent-red)' }}>
-                STAGE {steps[activeStep].number}
-              </span>
-              <span style={{ fontSize: '0.72rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)' }}>
-                {steps[activeStep].detail}
-              </span>
-            </div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '0.35rem' }}>
+                    <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.15rem', fontWeight: 650, color: 'var(--text-ink)', margin: 0 }}>
+                      {step.title}
+                    </h3>
+                    <span style={{ fontSize: '0.68rem', fontFamily: 'var(--font-mono)', color: 'var(--accent-red)', fontWeight: 600, textTransform: 'uppercase' }}>
+                      {step.detail}
+                    </span>
+                  </div>
 
-            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.45rem', fontWeight: 650, color: 'var(--text-ink)', marginBottom: '0.5rem' }}>
-              {steps[activeStep].title}
-            </h3>
-
-            <p style={{ fontSize: '0.94rem', color: 'var(--text-muted)', lineHeight: 1.65, margin: '0 0 1.25rem 0' }}>
-              {steps[activeStep].desc}
-            </p>
-
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid var(--border-subtle)', paddingTop: '0.85rem' }}>
-              <span style={{ fontSize: '0.78rem', color: 'var(--text-light)' }}>
-                Tap tabs above to explore next step
-              </span>
-              <button
-                type="button"
-                onClick={() => setActiveStep((activeStep + 1) % steps.length)}
-                style={{
-                  background: 'none',
-                  border: 'none',
-                  color: 'var(--text-ink)',
-                  fontWeight: 600,
-                  fontSize: '0.82rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.25rem',
-                  cursor: 'pointer',
-                }}
-              >
-                <span>Next Stage</span>
-                <ChevronRight size={14} color="var(--accent-red)" />
-              </button>
+                  <p style={{ fontSize: '0.86rem', color: 'var(--text-muted)', lineHeight: 1.55, margin: 0 }}>
+                    {step.desc}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -299,7 +272,7 @@ export default function HowWildmacWorks() {
         .how-desktop-view {
           display: block;
         }
-        .how-mobile-stepper {
+        .how-mobile-timeline {
           display: none;
         }
 
@@ -307,7 +280,7 @@ export default function HowWildmacWorks() {
           .how-desktop-view {
             display: none !important;
           }
-          .how-mobile-stepper {
+          .how-mobile-timeline {
             display: block !important;
           }
         }
