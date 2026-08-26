@@ -15,6 +15,7 @@ import {
   Sparkles,
   FileCheck,
 } from 'lucide-react';
+import ImageUploader from '@/components/ImageUploader';
 
 function ResourceEditorForm() {
   const router = useRouter();
@@ -527,7 +528,7 @@ function ResourceEditorForm() {
               </div>
             </div>
 
-            {/* Cover Image Selector */}
+            {/* Cover Image Selector & Uploader */}
             <div
               style={{
                 backgroundColor: 'var(--bg-pure-white)',
@@ -544,17 +545,16 @@ function ResourceEditorForm() {
                 </h3>
               </div>
 
-              <div style={{ height: '120px', width: '100%', borderRadius: '2px', overflow: 'hidden', marginBottom: '1rem', border: '1px solid var(--border-subtle)' }}>
-                <img
-                  src={formData.coverImage}
-                  alt="Cover Preview"
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                />
-              </div>
+              {/* Interactive Drag & Drop Uploader */}
+              <ImageUploader
+                value={formData.coverImage}
+                onChange={(url) => setFormData({ ...formData, coverImage: url })}
+                label="Upload Image (Local Storage)"
+              />
 
-              <div>
+              <div style={{ marginBottom: '1rem' }}>
                 <label style={{ display: 'block', fontSize: '0.7rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)', marginBottom: '0.35rem' }}>
-                  SELECT CURATED PHOTO
+                  OR SELECT CURATED PHOTO
                 </label>
                 <select
                   value={formData.coverImage}
@@ -576,6 +576,27 @@ function ResourceEditorForm() {
                     </option>
                   ))}
                 </select>
+              </div>
+
+              <div>
+                <label style={{ display: 'block', fontSize: '0.7rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)', marginBottom: '0.35rem' }}>
+                  OR ENTER CUSTOM IMAGE PATH / URL
+                </label>
+                <input
+                  type="text"
+                  value={formData.coverImage}
+                  onChange={(e) => setFormData({ ...formData, coverImage: e.target.value })}
+                  style={{
+                    width: '100%',
+                    padding: '0.5rem 0.65rem',
+                    fontSize: '0.75rem',
+                    fontFamily: 'var(--font-mono)',
+                    border: '1px solid var(--border-medium)',
+                    borderRadius: '2px',
+                    backgroundColor: 'var(--bg-paper-white)',
+                    boxSizing: 'border-box',
+                  }}
+                />
               </div>
             </div>
           </div>

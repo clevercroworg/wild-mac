@@ -23,6 +23,7 @@ import {
   Link2,
 } from 'lucide-react';
 import { generateSlug } from '@/lib/utils';
+import ImageUploader from '@/components/ImageUploader';
 
 function BlogEditorForm() {
   const router = useRouter();
@@ -736,7 +737,7 @@ function BlogEditorForm() {
               </div>
             </div>
 
-            {/* Cover Image Selector */}
+            {/* Cover Image Selector & Uploader */}
             <div
               style={{
                 backgroundColor: 'var(--bg-pure-white)',
@@ -753,19 +754,17 @@ function BlogEditorForm() {
                 </h3>
               </div>
 
-              {/* Image Preview */}
-              <div style={{ height: '140px', width: '100%', borderRadius: '2px', overflow: 'hidden', marginBottom: '1rem', border: '1px solid var(--border-subtle)' }}>
-                <img
-                  src={formData.coverImage}
-                  alt="Cover Preview"
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                />
-              </div>
+              {/* Interactive Drag & Drop Uploader */}
+              <ImageUploader
+                value={formData.coverImage}
+                onChange={(url) => setFormData({ ...formData, coverImage: url })}
+                label="Upload Image (Local Storage)"
+              />
 
               {/* Preset Selector */}
               <div style={{ marginBottom: '1rem' }}>
                 <label style={{ display: 'block', fontSize: '0.7rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)', marginBottom: '0.35rem' }}>
-                  SELECT CURATED EDITORIAL PHOTO
+                  OR SELECT CURATED EDITORIAL PHOTO
                 </label>
                 <select
                   value={formData.coverImage}
