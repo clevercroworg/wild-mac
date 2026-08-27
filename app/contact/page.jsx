@@ -105,8 +105,8 @@ export default function ContactPage() {
                       <a href="https://wa.me/919657080490" target="_blank" rel="noopener noreferrer" style={{ fontWeight: 600, fontSize: '0.95rem', color: 'var(--text-ink)', textDecoration: 'none' }}>
                         +91 96570 80490 <span style={{ fontSize: '0.75rem', color: '#25D366', fontFamily: 'var(--font-mono)' }}>(WhatsApp Primary)</span>
                       </a>
-                      <a href="tel:+917776022622" style={{ fontSize: '0.88rem', color: 'var(--text-muted)', textDecoration: 'none' }}>
-                        +91 77760 22622 <span style={{ fontSize: '0.75rem', color: 'var(--text-light)', fontFamily: 'var(--font-mono)' }}>(Direct Line)</span>
+                      <a href="tel:+919657080490" style={{ fontSize: '0.88rem', color: 'var(--text-muted)', textDecoration: 'none' }}>
+                        +91 96570 80490 <span style={{ fontSize: '0.75rem', color: 'var(--text-light)', fontFamily: 'var(--font-mono)' }}>(Direct Line)</span>
                       </a>
                     </div>
                   </div>

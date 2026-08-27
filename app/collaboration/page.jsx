@@ -229,10 +229,10 @@ export default function CollaborationPage() {
                   <ArrowUpRight size={14} color="#25D366" />
                 </a>
                 <a
-                  href="tel:+917776022622"
+                  href="tel:+919657080490"
                   style={{ fontSize: '0.82rem', fontFamily: 'var(--font-mono)', color: 'var(--text-muted)', textAlign: 'center', textDecoration: 'none', padding: '0.25rem 0' }}
                 >
-                  Direct Call: +91 77760 22622
+                  Direct Call: +91 96570 80490
                 </a>
               </div>
             </div>

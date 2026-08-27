@@ -147,11 +147,11 @@ export default function Footer() {
                   <span>+91 96570 80490 (WhatsApp)</span>
                 </a>
                 <a
-                  href="tel:+917776022622"
+                  href="tel:+919657080490"
                   style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', color: '#9BAEC0', fontSize: '0.82rem', textDecoration: 'none' }}
                 >
                   <Phone size={13} color="#9BAEC0" />
-                  <span>+91 77760 22622 (Direct Call)</span>
+                  <span>+91 96570 80490 (Direct Call)</span>
                 </a>
                 <a
                   href="https://www.linkedin.com/in/rodney-de-almeida-958448409/"
@@ -285,9 +285,9 @@ export default function Footer() {
                   </a>
                 </li>
                 <li>
-                  <a href="tel:+917776022622" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'inherit', textDecoration: 'none' }}>
+                  <a href="tel:+919657080490" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'inherit', textDecoration: 'none' }}>
                     <Phone size={13} color="var(--accent-red)" />
-                    <span>+91 77760 22622</span>
+                    <span>+91 96570 80490 (Direct Call)</span>
                   </a>
                 </li>
                 <li style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontSize: '0.8rem', color: '#9BAEC0' }}>
