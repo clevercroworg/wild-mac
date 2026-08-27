@@ -83,7 +83,7 @@ export default function Footer() {
               <li><Link href="/future-projects">Future Projects</Link></li>
               <li><Link href="/work-with-us">Work With Us</Link></li>
               <li><Link href="/faq">FAQ & Inquiries</Link></li>
-              <li><Link href="/blog">Wildmac Insights</Link></li>
+              <li><Link href="/blog">Blogs & Articles</Link></li>
               <li><Link href="/donate" style={{ color: 'var(--accent-red)', fontWeight: 500 }}>Donate & Social Impact ♡</Link></li>
               <li><Link href="/contact">Contact Direct Desk</Link></li>
             </ul>

@@ -21,6 +21,7 @@ import {
   Briefcase,
   FileText,
   Sparkles,
+  Newspaper,
 } from 'lucide-react';
 import { servicesData } from '@/data/services';
 import LionLogo from '@/components/LionLogo';
@@ -374,10 +375,10 @@ export default function Navbar() {
                     onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'var(--bg-ice-blue)'; e.currentTarget.style.color = 'var(--text-ink)'; }}
                     onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = 'var(--text-deep-blue)'; }}
                   >
-                    <Sparkles size={16} color="var(--accent-red)" />
+                    <Newspaper size={16} color="var(--accent-red)" />
                     <div>
-                      <div style={{ fontWeight: 600 }}>Wildmac Insights</div>
-                      <div style={{ fontSize: '0.72rem', color: 'var(--text-light)' }}>Essays on judgment, business & life</div>
+                      <div style={{ fontWeight: 600 }}>Blogs & Articles</div>
+                      <div style={{ fontSize: '0.72rem', color: 'var(--text-light)' }}>Essays on strategy, business & life</div>
                     </div>
                   </Link>
 
@@ -723,7 +724,7 @@ export default function Navbar() {
                     • Knowledge Resources
                   </Link>
                   <Link href="/blog" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: '0.85rem', color: 'var(--text-deep-blue)', textDecoration: 'none', padding: '0.35rem 0' }}>
-                    • Wildmac Insights (Blog)
+                    • Blogs & Articles
                   </Link>
                   <Link href="/faq" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: '0.85rem', color: 'var(--text-deep-blue)', textDecoration: 'none', padding: '0.35rem 0' }}>
                     • FAQ & Inquiries
