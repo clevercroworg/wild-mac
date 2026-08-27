@@ -666,10 +666,47 @@ function ResourceEditorForm() {
         </div>
       </form>
 
+      {/* Sticky Mobile Bottom Save Bar */}
+      <div
+        className="admin-mobile-bottom-bar"
+        style={{
+          position: 'fixed',
+          bottom: 0,
+          left: 0,
+          right: 0,
+          backgroundColor: '#FFFFFF',
+          borderTop: '1px solid var(--border-medium)',
+          padding: '0.75rem 1rem',
+          display: 'none',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          zIndex: 100,
+          boxShadow: '0 -4px 16px rgba(0,0,0,0.08)',
+        }}
+      >
+        <Link href="/admin/resources" className="btn btn-secondary" style={{ padding: '0.55rem 0.85rem', fontSize: '0.8rem' }}>
+          Cancel
+        </Link>
+        <button
+          type="button"
+          onClick={handleSubmit}
+          disabled={saving}
+          className="btn btn-primary"
+          style={{ padding: '0.55rem 1.25rem', fontSize: '0.82rem', gap: '0.35rem' }}
+        >
+          <Save size={14} />
+          <span>{saving ? 'Saving...' : isEditing ? 'Save Changes' : 'Publish Resource'}</span>
+        </button>
+      </div>
+
       <style jsx global>{`
         @media (max-width: 860px) {
           .admin-editor-grid {
             grid-template-columns: 1fr !important;
+            gap: 1.25rem !important;
+          }
+          .admin-mobile-bottom-bar {
+            display: flex !important;
           }
         }
       `}</style>

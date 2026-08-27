@@ -182,126 +182,213 @@ export default function AdminResourcesManagerPage() {
             </Link>
           </div>
         ) : (
-          <div style={{ overflowX: 'auto' }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
-              <thead>
-                <tr style={{ backgroundColor: 'var(--bg-ice-blue)', borderBottom: '1px solid var(--border-medium)' }}>
-                  <th style={{ padding: '0.85rem 1.25rem', fontSize: '0.7rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-                    FRAMEWORK TITLE
-                  </th>
-                  <th style={{ padding: '0.85rem 1rem', fontSize: '0.7rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-                    CATEGORY
-                  </th>
-                  <th style={{ padding: '0.85rem 1rem', fontSize: '0.7rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-                    FORMAT & SIZE
-                  </th>
-                  <th style={{ padding: '0.85rem 1rem', fontSize: '0.7rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-                    KEY TAKEAWAYS
-                  </th>
-                  <th style={{ padding: '0.85rem 1.25rem', fontSize: '0.7rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)', letterSpacing: '0.08em', textTransform: 'uppercase', textAlign: 'right' }}>
-                    ACTIONS
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredResources.map((res) => (
-                  <tr
-                    key={res.id}
-                    style={{
-                      borderBottom: '1px solid var(--border-subtle)',
-                      transition: 'background-color 0.15s ease',
-                    }}
-                    onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'var(--bg-paper-white)')}
-                    onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}
-                  >
-                    {/* Title */}
-                    <td style={{ padding: '1rem 1.25rem', maxWidth: '340px' }}>
-                      <div style={{ fontWeight: 650, fontSize: '0.95rem', color: 'var(--text-ink)', marginBottom: '0.2rem' }}>
-                        {res.title}
-                      </div>
-                      <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                        {res.description}
-                      </div>
-                    </td>
+          <>
+            {/* Desktop Table View (>= 768px) */}
+            <div className="admin-desktop-table" style={{ overflowX: 'auto' }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
+                <thead>
+                  <tr style={{ backgroundColor: 'var(--bg-ice-blue)', borderBottom: '1px solid var(--border-medium)' }}>
+                    <th style={{ padding: '0.85rem 1.25rem', fontSize: '0.7rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+                      FRAMEWORK TITLE
+                    </th>
+                    <th style={{ padding: '0.85rem 1rem', fontSize: '0.7rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+                      CATEGORY
+                    </th>
+                    <th style={{ padding: '0.85rem 1rem', fontSize: '0.7rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+                      FORMAT & SIZE
+                    </th>
+                    <th style={{ padding: '0.85rem 1rem', fontSize: '0.7rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+                      KEY TAKEAWAYS
+                    </th>
+                    <th style={{ padding: '0.85rem 1.25rem', fontSize: '0.7rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)', letterSpacing: '0.08em', textTransform: 'uppercase', textAlign: 'right' }}>
+                      ACTIONS
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {filteredResources.map((res) => (
+                    <tr
+                      key={res.id}
+                      style={{
+                        borderBottom: '1px solid var(--border-subtle)',
+                        transition: 'background-color 0.15s ease',
+                      }}
+                      onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'var(--bg-paper-white)')}
+                      onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}
+                    >
+                      {/* Title */}
+                      <td style={{ padding: '1rem 1.25rem', maxWidth: '340px' }}>
+                        <div style={{ fontWeight: 650, fontSize: '0.95rem', color: 'var(--text-ink)', marginBottom: '0.2rem' }}>
+                          {res.title}
+                        </div>
+                        <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                          {res.description}
+                        </div>
+                      </td>
 
-                    {/* Category */}
-                    <td style={{ padding: '1rem 1rem' }}>
-                      <span
+                      {/* Category */}
+                      <td style={{ padding: '1rem 1rem' }}>
+                        <span
+                          style={{
+                            fontSize: '0.68rem',
+                            fontFamily: 'var(--font-mono)',
+                            padding: '0.2rem 0.5rem',
+                            backgroundColor: 'rgba(201, 59, 43, 0.08)',
+                            color: 'var(--accent-red)',
+                            borderRadius: '2px',
+                            fontWeight: 600,
+                          }}
+                        >
+                          {res.category}
+                        </span>
+                      </td>
+
+                      {/* Format & Size */}
+                      <td style={{ padding: '1rem 1rem', fontSize: '0.8rem', color: 'var(--text-deep-blue)', whiteSpace: 'nowrap' }}>
+                        <div>{res.format}</div>
+                        <div style={{ fontSize: '0.7rem', color: 'var(--text-light)', fontFamily: 'var(--font-mono)' }}>{res.fileSize}</div>
+                      </td>
+
+                      {/* Key Takeaways */}
+                      <td style={{ padding: '1rem 1rem', fontSize: '0.8rem', color: 'var(--text-deep-blue)' }}>
+                        <span style={{ fontSize: '0.75rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)' }}>
+                          {res.keyTakeaways?.length || 0} core pillars
+                        </span>
+                      </td>
+
+                      {/* Actions */}
+                      <td style={{ padding: '1rem 1.25rem', textAlign: 'right', whiteSpace: 'nowrap' }}>
+                        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.45rem' }}>
+                          <Link
+                            href={`/admin/resources/editor?id=${res.id}`}
+                            title="Edit framework"
+                            style={{
+                              padding: '0.35rem 0.65rem',
+                              backgroundColor: 'var(--bg-ice-blue)',
+                              border: '1px solid var(--border-medium)',
+                              borderRadius: '2px',
+                              color: 'var(--text-deep-blue)',
+                              fontSize: '0.75rem',
+                              fontFamily: 'var(--font-mono)',
+                              textDecoration: 'none',
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              gap: '0.3rem',
+                            }}
+                          >
+                            <Edit size={12} />
+                            <span>EDIT</span>
+                          </Link>
+                          <button
+                            type="button"
+                            onClick={() => setDeleteModalResource(res)}
+                            title="Delete framework"
+                            style={{
+                              padding: '0.35rem 0.55rem',
+                              backgroundColor: 'rgba(201, 59, 43, 0.08)',
+                              border: '1px solid rgba(201, 59, 43, 0.3)',
+                              borderRadius: '2px',
+                              color: 'var(--accent-red)',
+                              cursor: 'pointer',
+                              display: 'inline-flex',
+                            }}
+                          >
+                            <Trash2 size={13} />
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            {/* Mobile Cards View (< 768px) */}
+            <div className="admin-mobile-cards" style={{ display: 'none', flexDirection: 'column', gap: '0.75rem', padding: '0.75rem' }}>
+              {filteredResources.map((res) => (
+                <div
+                  key={res.id}
+                  style={{
+                    backgroundColor: 'var(--bg-paper-white)',
+                    border: '1px solid var(--border-subtle)',
+                    borderRadius: '4px',
+                    padding: '1rem',
+                  }}
+                >
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.4rem', gap: '0.5rem' }}>
+                    <span
+                      style={{
+                        fontSize: '0.65rem',
+                        fontFamily: 'var(--font-mono)',
+                        padding: '0.15rem 0.45rem',
+                        backgroundColor: 'rgba(201, 59, 43, 0.08)',
+                        color: 'var(--accent-red)',
+                        borderRadius: '2px',
+                        fontWeight: 600,
+                      }}
+                    >
+                      {res.category}
+                    </span>
+                    <span style={{ fontSize: '0.68rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)' }}>
+                      {res.format} · {res.fileSize}
+                    </span>
+                  </div>
+
+                  <h3 style={{ fontSize: '0.98rem', fontWeight: 650, color: 'var(--text-ink)', margin: '0 0 0.3rem 0', lineHeight: 1.3 }}>
+                    {res.title}
+                  </h3>
+                  <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginBottom: '0.75rem', lineHeight: 1.4 }}>
+                    {res.description}
+                  </div>
+
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderTop: '1px solid var(--border-subtle)', paddingTop: '0.65rem' }}>
+                    <span style={{ fontSize: '0.7rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)' }}>
+                      {res.keyTakeaways?.length || 0} core pillars
+                    </span>
+
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                      <Link
+                        href={`/admin/resources/editor?id=${res.id}`}
+                        className="btn btn-editorial"
+                        style={{ padding: '0.35rem 0.65rem', fontSize: '0.75rem', gap: '0.3rem' }}
+                      >
+                        <Edit size={12} />
+                        <span>Edit</span>
+                      </Link>
+                      <button
+                        type="button"
+                        onClick={() => setDeleteModalResource(res)}
                         style={{
-                          fontSize: '0.68rem',
-                          fontFamily: 'var(--font-mono)',
-                          padding: '0.2rem 0.5rem',
+                          padding: '0.35rem 0.55rem',
                           backgroundColor: 'rgba(201, 59, 43, 0.08)',
-                          color: 'var(--accent-red)',
+                          border: '1px solid rgba(201, 59, 43, 0.3)',
                           borderRadius: '2px',
-                          fontWeight: 600,
+                          color: 'var(--accent-red)',
+                          cursor: 'pointer',
+                          display: 'inline-flex',
                         }}
                       >
-                        {res.category}
-                      </span>
-                    </td>
-
-                    {/* Format & Size */}
-                    <td style={{ padding: '1rem 1rem', fontSize: '0.8rem', color: 'var(--text-deep-blue)', whiteSpace: 'nowrap' }}>
-                      <div>{res.format}</div>
-                      <div style={{ fontSize: '0.7rem', color: 'var(--text-light)', fontFamily: 'var(--font-mono)' }}>{res.fileSize}</div>
-                    </td>
-
-                    {/* Key Takeaways */}
-                    <td style={{ padding: '1rem 1rem', fontSize: '0.8rem', color: 'var(--text-deep-blue)' }}>
-                      <span style={{ fontSize: '0.75rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)' }}>
-                        {res.keyTakeaways?.length || 0} core pillars
-                      </span>
-                    </td>
-
-                    {/* Actions */}
-                    <td style={{ padding: '1rem 1.25rem', textAlign: 'right', whiteSpace: 'nowrap' }}>
-                      <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.45rem' }}>
-                        <Link
-                          href={`/admin/resources/editor?id=${res.id}`}
-                          title="Edit framework"
-                          style={{
-                            padding: '0.35rem 0.65rem',
-                            backgroundColor: 'var(--bg-ice-blue)',
-                            border: '1px solid var(--border-medium)',
-                            borderRadius: '2px',
-                            color: 'var(--text-deep-blue)',
-                            fontSize: '0.75rem',
-                            fontFamily: 'var(--font-mono)',
-                            textDecoration: 'none',
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            gap: '0.3rem',
-                          }}
-                        >
-                          <Edit size={12} />
-                          <span>EDIT</span>
-                        </Link>
-                        <button
-                          type="button"
-                          onClick={() => setDeleteModalResource(res)}
-                          title="Delete framework"
-                          style={{
-                            padding: '0.35rem 0.55rem',
-                            backgroundColor: 'rgba(201, 59, 43, 0.08)',
-                            border: '1px solid rgba(201, 59, 43, 0.3)',
-                            borderRadius: '2px',
-                            color: 'var(--accent-red)',
-                            cursor: 'pointer',
-                            display: 'inline-flex',
-                          }}
-                        >
-                          <Trash2 size={13} />
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                        <Trash2 size={13} />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </>
         )}
       </div>
+
+      <style jsx>{`
+        @media (max-width: 768px) {
+          .admin-desktop-table {
+            display: none !important;
+          }
+          .admin-mobile-cards {
+            display: flex !important;
+          }
+        }
+      `}</style>
 
       {/* Delete Confirmation Modal */}
       {deleteModalResource && (

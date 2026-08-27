@@ -83,7 +83,7 @@ export default function AdminDashboardPage() {
       </div>
 
       {/* Metric Cards Grid */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.25rem', marginBottom: '2.5rem' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', marginBottom: '2rem' }}>
         {/* Card 1: Blog Articles */}
         <div
           style={{
@@ -160,7 +160,7 @@ export default function AdminDashboardPage() {
       </div>
 
       {/* Two Column Layout: Recent Articles + Recent Resources */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(460px, 1fr))', gap: '2rem' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
         {/* Left Column: Recent Blog Articles */}
         <div
           style={{

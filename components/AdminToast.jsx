@@ -61,6 +61,7 @@ export function ToastProvider({ children }) {
       {/* Floating Toast Notification Container */}
       <aside
         aria-label="Admin Notifications"
+        className="admin-toast-container"
         style={{
           position: 'fixed',
           bottom: '1.5rem',
@@ -150,6 +151,18 @@ export function ToastProvider({ children }) {
           );
         })}
       </aside>
+
+      <style jsx global>{`
+        @media (max-width: 600px) {
+          .admin-toast-container {
+            bottom: 0.75rem !important;
+            right: 0.75rem !important;
+            left: 0.75rem !important;
+            width: auto !important;
+            max-width: none !important;
+          }
+        }
+      `}</style>
     </ToastContext.Provider>
   );
 }

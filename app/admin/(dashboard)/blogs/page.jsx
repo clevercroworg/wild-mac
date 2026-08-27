@@ -199,158 +199,267 @@ export default function AdminBlogsManagerPage() {
             </Link>
           </div>
         ) : (
-          <div style={{ overflowX: 'auto' }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
-              <thead>
-                <tr style={{ backgroundColor: 'var(--bg-ice-blue)', borderBottom: '1px solid var(--border-medium)' }}>
-                  <th style={{ padding: '0.85rem 1.25rem', fontSize: '0.7rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-                    ARTICLE TITLE & SLUG
-                  </th>
-                  <th style={{ padding: '0.85rem 1rem', fontSize: '0.7rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-                    CATEGORY
-                  </th>
-                  <th style={{ padding: '0.85rem 1rem', fontSize: '0.7rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-                    DATE
-                  </th>
-                  <th style={{ padding: '0.85rem 1rem', fontSize: '0.7rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-                    STATUS
-                  </th>
-                  <th style={{ padding: '0.85rem 1.25rem', fontSize: '0.7rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)', letterSpacing: '0.08em', textTransform: 'uppercase', textAlign: 'right' }}>
-                    ACTIONS
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredBlogs.map((blog) => (
-                  <tr
-                    key={blog.id}
-                    style={{
-                      borderBottom: '1px solid var(--border-subtle)',
-                      transition: 'background-color 0.15s ease',
-                    }}
-                    onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'var(--bg-paper-white)')}
-                    onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}
-                  >
-                    {/* Title & Slug */}
-                    <td style={{ padding: '1rem 1.25rem', maxWidth: '380px' }}>
-                      <div style={{ fontWeight: 650, fontSize: '0.95rem', color: 'var(--text-ink)', marginBottom: '0.2rem' }}>
-                        {blog.title}
-                      </div>
-                      <div style={{ fontSize: '0.72rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                        /blog/{blog.slug}
-                      </div>
-                    </td>
+          <>
+            {/* Desktop Table View (>= 768px) */}
+            <div className="admin-desktop-table" style={{ overflowX: 'auto' }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
+                <thead>
+                  <tr style={{ backgroundColor: 'var(--bg-ice-blue)', borderBottom: '1px solid var(--border-medium)' }}>
+                    <th style={{ padding: '0.85rem 1.25rem', fontSize: '0.7rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+                      ARTICLE TITLE & SLUG
+                    </th>
+                    <th style={{ padding: '0.85rem 1rem', fontSize: '0.7rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+                      CATEGORY
+                    </th>
+                    <th style={{ padding: '0.85rem 1rem', fontSize: '0.7rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+                      DATE
+                    </th>
+                    <th style={{ padding: '0.85rem 1rem', fontSize: '0.7rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+                      STATUS
+                    </th>
+                    <th style={{ padding: '0.85rem 1.25rem', fontSize: '0.7rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)', letterSpacing: '0.08em', textTransform: 'uppercase', textAlign: 'right' }}>
+                      ACTIONS
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {filteredBlogs.map((blog) => (
+                    <tr
+                      key={blog.id}
+                      style={{
+                        borderBottom: '1px solid var(--border-subtle)',
+                        transition: 'background-color 0.15s ease',
+                      }}
+                      onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'var(--bg-paper-white)')}
+                      onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}
+                    >
+                      {/* Title & Slug */}
+                      <td style={{ padding: '1rem 1.25rem', maxWidth: '380px' }}>
+                        <div style={{ fontWeight: 650, fontSize: '0.95rem', color: 'var(--text-ink)', marginBottom: '0.2rem' }}>
+                          {blog.title}
+                        </div>
+                        <div style={{ fontSize: '0.72rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                          /blog/{blog.slug}
+                        </div>
+                      </td>
 
-                    {/* Category */}
-                    <td style={{ padding: '1rem 1rem' }}>
-                      <span
-                        style={{
-                          fontSize: '0.72rem',
-                          fontFamily: 'var(--font-mono)',
-                          padding: '0.2rem 0.55rem',
-                          backgroundColor: 'rgba(201, 59, 43, 0.08)',
-                          color: 'var(--accent-red)',
-                          borderRadius: '2px',
-                          fontWeight: 600,
-                        }}
-                      >
-                        {blog.category}
-                      </span>
-                    </td>
+                      {/* Category */}
+                      <td style={{ padding: '1rem 1rem' }}>
+                        <span
+                          style={{
+                            fontSize: '0.72rem',
+                            fontFamily: 'var(--font-mono)',
+                            padding: '0.2rem 0.55rem',
+                            backgroundColor: 'rgba(201, 59, 43, 0.08)',
+                            color: 'var(--accent-red)',
+                            borderRadius: '2px',
+                            fontWeight: 600,
+                          }}
+                        >
+                          {blog.category}
+                        </span>
+                      </td>
 
-                    {/* Date */}
-                    <td style={{ padding: '1rem 1rem', fontSize: '0.82rem', color: 'var(--text-deep-blue)', whiteSpace: 'nowrap' }}>
-                      {blog.date}
-                    </td>
+                      {/* Date */}
+                      <td style={{ padding: '1rem 1rem', fontSize: '0.82rem', color: 'var(--text-deep-blue)', whiteSpace: 'nowrap' }}>
+                        {blog.date}
+                      </td>
 
-                    {/* Status Toggle */}
-                    <td style={{ padding: '1rem 1rem' }}>
-                      <button
-                        type="button"
-                        onClick={() => handleToggleStatus(blog)}
-                        title="Click to toggle publish status"
-                        style={{
-                          padding: '0.25rem 0.6rem',
-                          fontSize: '0.7rem',
-                          fontFamily: 'var(--font-mono)',
-                          fontWeight: 600,
-                          borderRadius: '2px',
-                          border: '1px solid',
-                          cursor: 'pointer',
-                          backgroundColor: blog.isPublished ? 'rgba(37, 211, 102, 0.12)' : 'rgba(243, 156, 18, 0.12)',
-                          color: blog.isPublished ? '#1E8E48' : '#D68910',
-                          borderColor: blog.isPublished ? 'rgba(37, 211, 102, 0.3)' : 'rgba(243, 156, 18, 0.3)',
-                        }}
-                      >
-                        {blog.isPublished ? '● PUBLISHED' : '○ DRAFT'}
-                      </button>
-                    </td>
+                      {/* Status Toggle */}
+                      <td style={{ padding: '1rem 1rem' }}>
+                        <button
+                          type="button"
+                          onClick={() => handleToggleStatus(blog)}
+                          title="Click to toggle publish status"
+                          style={{
+                            padding: '0.25rem 0.6rem',
+                            fontSize: '0.7rem',
+                            fontFamily: 'var(--font-mono)',
+                            fontWeight: 600,
+                            borderRadius: '2px',
+                            border: '1px solid',
+                            cursor: 'pointer',
+                            backgroundColor: blog.isPublished ? 'rgba(37, 211, 102, 0.12)' : 'rgba(243, 156, 18, 0.12)',
+                            color: blog.isPublished ? '#1E8E48' : '#D68910',
+                            borderColor: blog.isPublished ? 'rgba(37, 211, 102, 0.3)' : 'rgba(243, 156, 18, 0.3)',
+                          }}
+                        >
+                          {blog.isPublished ? '● PUBLISHED' : '○ DRAFT'}
+                        </button>
+                      </td>
 
-                    {/* Actions */}
-                    <td style={{ padding: '1rem 1.25rem', textAlign: 'right', whiteSpace: 'nowrap' }}>
-                      <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.45rem' }}>
-                        {blog.isPublished && (
+                      {/* Actions */}
+                      <td style={{ padding: '1rem 1.25rem', textAlign: 'right', whiteSpace: 'nowrap' }}>
+                        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.45rem' }}>
+                          {blog.isPublished && (
+                            <Link
+                              href={`/blog/${blog.slug}`}
+                              target="_blank"
+                              title="View live article on public site"
+                              style={{
+                                padding: '0.35rem 0.55rem',
+                                backgroundColor: 'var(--bg-ice-blue)',
+                                border: '1px solid var(--border-medium)',
+                                borderRadius: '2px',
+                                color: 'var(--text-deep-blue)',
+                                display: 'inline-flex',
+                              }}
+                            >
+                              <ExternalLink size={13} />
+                            </Link>
+                          )}
                           <Link
-                            href={`/blog/${blog.slug}`}
-                            target="_blank"
-                            title="View live article on public site"
+                            href={`/admin/blogs/editor?id=${blog.id}`}
+                            title="Edit article"
                             style={{
-                              padding: '0.35rem 0.55rem',
+                              padding: '0.35rem 0.65rem',
                               backgroundColor: 'var(--bg-ice-blue)',
                               border: '1px solid var(--border-medium)',
                               borderRadius: '2px',
                               color: 'var(--text-deep-blue)',
+                              fontSize: '0.75rem',
+                              fontFamily: 'var(--font-mono)',
+                              textDecoration: 'none',
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              gap: '0.3rem',
+                            }}
+                          >
+                            <Edit size={12} />
+                            <span>EDIT</span>
+                          </Link>
+                          <button
+                            type="button"
+                            onClick={() => setDeleteModalBlog(blog)}
+                            title="Delete article"
+                            style={{
+                              padding: '0.35rem 0.55rem',
+                              backgroundColor: 'rgba(201, 59, 43, 0.08)',
+                              border: '1px solid rgba(201, 59, 43, 0.3)',
+                              borderRadius: '2px',
+                              color: 'var(--accent-red)',
+                              cursor: 'pointer',
                               display: 'inline-flex',
                             }}
                           >
-                            <ExternalLink size={13} />
-                          </Link>
-                        )}
-                        <Link
-                          href={`/admin/blogs/editor?id=${blog.id}`}
-                          title="Edit article"
-                          style={{
-                            padding: '0.35rem 0.65rem',
-                            backgroundColor: 'var(--bg-ice-blue)',
-                            border: '1px solid var(--border-medium)',
-                            borderRadius: '2px',
-                            color: 'var(--text-deep-blue)',
-                            fontSize: '0.75rem',
-                            fontFamily: 'var(--font-mono)',
-                            textDecoration: 'none',
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            gap: '0.3rem',
-                          }}
-                        >
-                          <Edit size={12} />
-                          <span>EDIT</span>
-                        </Link>
-                        <button
-                          type="button"
-                          onClick={() => setDeleteModalBlog(blog)}
-                          title="Delete article"
-                          style={{
-                            padding: '0.35rem 0.55rem',
-                            backgroundColor: 'rgba(201, 59, 43, 0.08)',
-                            border: '1px solid rgba(201, 59, 43, 0.3)',
-                            borderRadius: '2px',
-                            color: 'var(--accent-red)',
-                            cursor: 'pointer',
-                            display: 'inline-flex',
-                          }}
-                        >
-                          <Trash2 size={13} />
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                            <Trash2 size={13} />
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            {/* Mobile Cards View (< 768px) */}
+            <div className="admin-mobile-cards" style={{ display: 'none', flexDirection: 'column', gap: '0.75rem', padding: '0.75rem' }}>
+              {filteredBlogs.map((blog) => (
+                <div
+                  key={blog.id}
+                  style={{
+                    backgroundColor: 'var(--bg-paper-white)',
+                    border: '1px solid var(--border-subtle)',
+                    borderRadius: '4px',
+                    padding: '1rem',
+                  }}
+                >
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.4rem', gap: '0.5rem' }}>
+                    <span
+                      style={{
+                        fontSize: '0.65rem',
+                        fontFamily: 'var(--font-mono)',
+                        padding: '0.15rem 0.45rem',
+                        backgroundColor: 'rgba(201, 59, 43, 0.08)',
+                        color: 'var(--accent-red)',
+                        borderRadius: '2px',
+                        fontWeight: 600,
+                      }}
+                    >
+                      {blog.category}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => handleToggleStatus(blog)}
+                      style={{
+                        padding: '0.2rem 0.5rem',
+                        fontSize: '0.65rem',
+                        fontFamily: 'var(--font-mono)',
+                        fontWeight: 600,
+                        borderRadius: '2px',
+                        border: '1px solid',
+                        cursor: 'pointer',
+                        backgroundColor: blog.isPublished ? 'rgba(37, 211, 102, 0.12)' : 'rgba(243, 156, 18, 0.12)',
+                        color: blog.isPublished ? '#1E8E48' : '#D68910',
+                        borderColor: blog.isPublished ? 'rgba(37, 211, 102, 0.3)' : 'rgba(243, 156, 18, 0.3)',
+                      }}
+                    >
+                      {blog.isPublished ? '● PUBLISHED' : '○ DRAFT'}
+                    </button>
+                  </div>
+
+                  <h3 style={{ fontSize: '0.98rem', fontWeight: 650, color: 'var(--text-ink)', margin: '0 0 0.3rem 0', lineHeight: 1.3 }}>
+                    {blog.title}
+                  </h3>
+                  <div style={{ fontSize: '0.72rem', color: 'var(--text-light)', marginBottom: '0.75rem' }}>
+                    {blog.date} · {blog.readTime || '5 min read'}
+                  </div>
+
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderTop: '1px solid var(--border-subtle)', paddingTop: '0.65rem' }}>
+                    {blog.isPublished ? (
+                      <Link
+                        href={`/blog/${blog.slug}`}
+                        target="_blank"
+                        style={{ fontSize: '0.75rem', color: 'var(--text-deep-blue)', display: 'inline-flex', alignItems: 'center', gap: '0.25rem', textDecoration: 'none', fontWeight: 550 }}
+                      >
+                        <ExternalLink size={12} />
+                        <span>View</span>
+                      </Link>
+                    ) : <span />}
+
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                      <Link
+                        href={`/admin/blogs/editor?id=${blog.id}`}
+                        className="btn btn-editorial"
+                        style={{ padding: '0.35rem 0.65rem', fontSize: '0.75rem', gap: '0.3rem' }}
+                      >
+                        <Edit size={12} />
+                        <span>Edit</span>
+                      </Link>
+                      <button
+                        type="button"
+                        onClick={() => setDeleteModalBlog(blog)}
+                        style={{
+                          padding: '0.35rem 0.55rem',
+                          backgroundColor: 'rgba(201, 59, 43, 0.08)',
+                          border: '1px solid rgba(201, 59, 43, 0.3)',
+                          borderRadius: '2px',
+                          color: 'var(--accent-red)',
+                          cursor: 'pointer',
+                          display: 'inline-flex',
+                        }}
+                      >
+                        <Trash2 size={13} />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </>
         )}
       </div>
+
+      <style jsx>{`
+        @media (max-width: 768px) {
+          .admin-desktop-table {
+            display: none !important;
+          }
+          .admin-mobile-cards {
+            display: flex !important;
+          }
+        }
+      `}</style>
 
       {/* Delete Confirmation Modal */}
       {deleteModalBlog && (
