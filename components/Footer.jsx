@@ -75,13 +75,16 @@ export default function Footer() {
             <ul className="footer-nav">
               <li><Link href="/">Home</Link></li>
               <li><Link href="/about">About Wildmac</Link></li>
-              <li><Link href="/services">Services & Modules</Link></li>
+              <li><Link href="/services">Services & Practice</Link></li>
+              <li><Link href="/pricing">Pricing & Tiers</Link></li>
               <li><Link href="/books">Books & Publications</Link></li>
+              <li><Link href="/resources">Knowledge Resources</Link></li>
+              <li><Link href="/community" style={{ color: '#FFFFFF', fontWeight: 600 }}>Community Forum ★</Link></li>
               <li><Link href="/future-projects">Future Projects</Link></li>
-              <li><Link href="/collaboration">Collaborations</Link></li>
-              <li><Link href="/donate" style={{ color: 'var(--accent-red)', fontWeight: 500 }}>Donate & Social Impact ♡</Link></li>
-              <li><Link href="/careers">Careers at Wildmac</Link></li>
+              <li><Link href="/work-with-us">Work With Us</Link></li>
+              <li><Link href="/faq">FAQ & Inquiries</Link></li>
               <li><Link href="/blog">Wildmac Insights</Link></li>
+              <li><Link href="/donate" style={{ color: 'var(--accent-red)', fontWeight: 500 }}>Donate & Social Impact ♡</Link></li>
               <li><Link href="/contact">Contact Direct Desk</Link></li>
             </ul>
           </div>

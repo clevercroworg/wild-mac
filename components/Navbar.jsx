@@ -62,13 +62,15 @@ export default function Navbar() {
     { name: 'Home', href: '/', num: '01' },
     { name: 'About', href: '/about', num: '02' },
     { name: 'Services', href: '/services', isDropdown: true, num: '03' },
-    { name: 'Books', href: '/books', num: '04' },
-    { name: 'Resources', href: '/resources', num: '05' },
-    { name: 'Projects', href: '/future-projects', num: '06' },
-    { name: 'Blog', href: '/blog', num: '07' },
-    { name: 'Collaborate', href: '/collaboration', num: '08' },
-    { name: 'Donate', href: '/donate', num: '09', isHighlight: true },
-    { name: 'Contact', href: '/contact', num: '10' },
+    { name: 'Pricing', href: '/pricing', num: '04' },
+    { name: 'Books', href: '/books', num: '05' },
+    { name: 'Resources', href: '/resources', num: '06' },
+    { name: 'Community', href: '/community', num: '07' },
+    { name: 'Projects', href: '/future-projects', num: '08' },
+    { name: 'FAQ', href: '/faq', num: '09' },
+    { name: 'Blog', href: '/blog', num: '10' },
+    { name: 'Donate', href: '/donate', num: '11', isHighlight: true },
+    { name: 'Contact', href: '/contact', num: '12' },
   ];
 
   return (

@@ -5,8 +5,8 @@ import { servicesData } from '@/data/services';
 import MajorConsultationCTA from '@/components/MajorConsultationCTA';
 
 export const metadata = {
-  title: 'Advisory Practice & Modules — Wildmac',
-  description: 'Practical, high-judgment coaching, strategic guidance, and education across business, personal growth, real estate, investment education, and branding.',
+  title: 'Advisory Practice & Disciplines — Wildmac',
+  description: 'Practical, high-judgment coaching, strategic guidance, and education across business, personal growth, real estate, investment education, branding, engineering technical advisory, and wealth management.',
 };
 
 export default function ServicesPage() {
@@ -53,7 +53,7 @@ export default function ServicesPage() {
               <div style={{ width: '2.5rem', height: '2px', backgroundColor: 'var(--accent-red)', marginBottom: '1.75rem' }} />
 
               <p className="lead" style={{ fontSize: '1.18rem', color: 'var(--text-deep-blue)', marginBottom: '1.25rem', lineHeight: 1.65 }}>
-                Thoughtful, unhurried dialogues around business decisions, personal growth, real estate positioning, investment education, and brand architecture.
+                Thoughtful, unhurried dialogues around business decisions, personal growth, real estate, engineering advisory, wealth management, investment education, and brand architecture.
               </p>
 
               <p style={{ fontSize: '1rem', color: 'var(--text-muted)', lineHeight: 1.75, marginBottom: '2.25rem' }}>

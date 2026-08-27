@@ -78,6 +78,38 @@ export const servicesData = [
       "Designing authentic digital experiences that convert attention into respect."
     ],
     approach: "Editorial art direction and messaging strategy focused on dignity, prestige, and commercial efficacy."
+  },
+  {
+    number: "06",
+    id: "engineering-technical-advisory",
+    title: "Engineering & Technical Advisory",
+    subtitle: "Structured engineering perspective, systems architecture, feasibility audits, and technical project strategy.",
+    image: "/images/service-engineering.jpg",
+    overview: "Complex engineering, structural, and infrastructure projects require rigorous first-principles thinking, independent technical verification, and strategic risk management. We provide high-level engineering perspective to untangle technical bottlenecks, validate contractor estimates, and oversee architectural execution.",
+    whoItIsFor: "Property developers, enterprise founders, estate planners, and project principals managing technical builds and industrial initiatives.",
+    conversationThemes: [
+      "Technical project feasibility audits and structural integrity evaluation.",
+      "Engineering vendor assessment and milestone quality verification.",
+      "Systems architecture and operational durability planning.",
+      "Cost-efficiency engineering without compromising material standards."
+    ],
+    approach: "Rigorous first-principles engineering analysis combined with seasoned practical oversight."
+  },
+  {
+    number: "07",
+    id: "wealth-management",
+    title: "Wealth Management & Capital Stewardship",
+    subtitle: "Private capital allocation, generational wealth protection, estate positioning, and financial sovereignty.",
+    image: "/images/service-wealth.jpg",
+    overview: "Sustaining capital across decades requires a conservative, disciplined architecture that balances liquidity, defensive risk mitigation, and generational stewardship. We offer an independent, objective advisory space focused on protecting assets, rational capital allocation, and family financial sovereignty.",
+    whoItIsFor: "High-net-worth individuals, family offices, business owners, and estate stewards seeking unbiased capital perspective.",
+    conversationThemes: [
+      "Generational wealth transfer and estate preservation frameworks.",
+      "Defensive asset positioning against macroeconomic volatility.",
+      "Liquidity planning and cash-flow resilience modeling.",
+      "Structuring family governance and multi-generational financial values."
+    ],
+    approach: "Discreet, fiduciary-minded strategic perspective free of product commissions or speculative trading bias."
   }
 ];
 
