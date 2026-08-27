@@ -24,11 +24,13 @@ export default function AdminDashboardPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [blogsRes, resRes] = await fetch('/api/blogs?includeDrafts=true'),
-          resData = await fetch('/api/resources');
+        const [blogsRes, resourcesRes] = await Promise.all([
+          fetch('/api/blogs?includeDrafts=true'),
+          fetch('/api/resources?includeDrafts=true'),
+        ]);
 
         const blogsJson = await blogsRes.json();
-        const resourcesJson = await resData.json();
+        const resourcesJson = await resourcesRes.json();
 
         if (blogsJson.success) setBlogs(blogsJson.blogs || []);
         if (resourcesJson.success) setResources(resourcesJson.resources || []);

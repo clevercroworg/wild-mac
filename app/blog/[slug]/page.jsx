@@ -6,6 +6,7 @@ import { getBlogBySlug, getAllBlogs } from '@/lib/db';
 import MajorConsultationCTA from '@/components/MajorConsultationCTA';
 
 export const revalidate = 60;
+export const dynamicParams = true;
 
 export async function generateStaticParams() {
   const blogs = await getAllBlogs({ includeDrafts: false });
@@ -29,7 +30,9 @@ export default async function BlogPostPage({ params }) {
   const { slug } = await params;
   const article = await getBlogBySlug(slug);
 
-  if (!article || (!article.isPublished && process.env.NODE_ENV === 'production')) {
+  const isPublished = article && article.isPublished !== false && article.published !== false;
+
+  if (!article || (!isPublished && process.env.NODE_ENV === 'production')) {
     notFound();
   }
 
