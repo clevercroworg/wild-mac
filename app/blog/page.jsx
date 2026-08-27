@@ -9,7 +9,8 @@ export const metadata = {
   description: 'Practical perspectives, strategic frameworks, and reflective essays across business, personal growth, real estate, investment education, and branding.',
 };
 
-export const revalidate = 60;
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export default async function BlogPage() {
   const allArticles = await getAllBlogs({ includeDrafts: false });

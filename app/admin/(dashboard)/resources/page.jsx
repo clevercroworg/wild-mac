@@ -25,7 +25,7 @@ export default function AdminResourcesManagerPage() {
   const fetchResources = async () => {
     setLoading(true);
     try {
-      const res = await fetch('/api/resources');
+      const res = await fetch(`/api/resources?includeDrafts=true&_t=${Date.now()}`, { cache: 'no-store' });
       const data = await res.json();
       if (data.success) {
         setResources(data.resources || []);

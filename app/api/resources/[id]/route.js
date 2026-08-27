@@ -1,6 +1,10 @@
 import { NextResponse } from 'next/server';
+import { revalidatePath } from 'next/cache';
 import { getResourceById, updateResource, deleteResource } from '@/lib/db';
 import { getAdminSession } from '@/lib/auth';
+
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export async function GET(request, { params }) {
   try {
@@ -11,7 +15,10 @@ export async function GET(request, { params }) {
       return NextResponse.json({ error: 'Resource not found' }, { status: 404 });
     }
 
-    return NextResponse.json({ success: true, resource });
+    return NextResponse.json(
+      { success: true, resource },
+      { headers: { 'Cache-Control': 'no-store, max-age=0' } }
+    );
   } catch (err) {
     console.error('API /api/resources/[id] GET error:', err);
     return NextResponse.json({ error: 'Failed to fetch resource' }, { status: 500 });
@@ -33,6 +40,16 @@ export async function PUT(request, { params }) {
       return NextResponse.json({ error: 'Resource not found or could not be updated' }, { status: 404 });
     }
 
+    // Instant On-Demand Cache Revalidation on Vercel
+    try {
+      revalidatePath('/resources');
+      revalidatePath('/');
+      revalidatePath('/admin/resources');
+      revalidatePath('/admin');
+    } catch (revalErr) {
+      console.warn('revalidatePath warning:', revalErr.message);
+    }
+
     return NextResponse.json({ success: true, resource: updatedResource });
   } catch (err) {
     console.error('API /api/resources/[id] PUT error:', err);
@@ -52,6 +69,16 @@ export async function DELETE(request, { params }) {
 
     if (!deleted) {
       return NextResponse.json({ error: 'Resource not found or already deleted' }, { status: 404 });
+    }
+
+    // Instant On-Demand Cache Revalidation on Vercel
+    try {
+      revalidatePath('/resources');
+      revalidatePath('/');
+      revalidatePath('/admin/resources');
+      revalidatePath('/admin');
+    } catch (revalErr) {
+      console.warn('revalidatePath warning:', revalErr.message);
     }
 
     return NextResponse.json({ success: true, message: 'Resource deleted successfully' });

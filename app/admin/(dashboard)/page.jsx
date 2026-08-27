@@ -25,8 +25,8 @@ export default function AdminDashboardPage() {
     const fetchData = async () => {
       try {
         const [blogsRes, resourcesRes] = await Promise.all([
-          fetch('/api/blogs?includeDrafts=true'),
-          fetch('/api/resources?includeDrafts=true'),
+          fetch(`/api/blogs?includeDrafts=true&_t=${Date.now()}`, { cache: 'no-store' }),
+          fetch(`/api/resources?includeDrafts=true&_t=${Date.now()}`, { cache: 'no-store' }),
         ]);
 
         const blogsJson = await blogsRes.json();

@@ -9,7 +9,8 @@ export const metadata = {
   description: 'Downloadable frameworks, strategy guides, worksheets, and checklists created by Rodney Almeida to support purposeful planning and confident decision-making.',
 };
 
-export const revalidate = 60;
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export default async function ResourcesPage() {
   const resourcesData = await getAllResources();

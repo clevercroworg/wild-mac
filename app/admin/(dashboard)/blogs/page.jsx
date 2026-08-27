@@ -26,7 +26,7 @@ export default function AdminBlogsManagerPage() {
   const fetchBlogs = async () => {
     setLoading(true);
     try {
-      const res = await fetch('/api/blogs?includeDrafts=true');
+      const res = await fetch(`/api/blogs?includeDrafts=true&_t=${Date.now()}`, { cache: 'no-store' });
       const data = await res.json();
       if (data.success) {
         setBlogs(data.blogs || []);

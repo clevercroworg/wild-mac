@@ -14,14 +14,23 @@ import KnowledgeResources from '@/components/KnowledgeResources';
 import MajorConsultationCTA from '@/components/MajorConsultationCTA';
 import ConnectWildmac from '@/components/ConnectWildmac';
 
+import { getAllBlogs } from '@/lib/db';
+import { journalArticles as fallbackArticles } from '@/data/journal';
+
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export const metadata = {
   title: 'WILDMAC — Build with Purpose. Grow with Strategy.',
   description: 'Wildmac provides practical coaching, strategic guidance and knowledge-driven solutions to help individuals, professionals and businesses make confident decisions and achieve meaningful growth.',
 };
 
-export default function HomePage() {
-  const featuredArticle = journalArticles[0];
-  const recentArticles = journalArticles.slice(1, 3);
+export default async function HomePage() {
+  const liveBlogs = await getAllBlogs({ includeDrafts: false });
+  const articlesToUse = liveBlogs.length > 0 ? liveBlogs : fallbackArticles;
+
+  const featuredArticle = articlesToUse.find((a) => a.isFeatured) || articlesToUse[0];
+  const recentArticles = articlesToUse.filter((a) => a.slug !== featuredArticle.slug).slice(0, 2);
 
   return (
     <>

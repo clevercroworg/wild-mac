@@ -5,7 +5,8 @@ import { ArrowLeft, ArrowRight, Clock, Calendar } from 'lucide-react';
 import { getBlogBySlug, getAllBlogs } from '@/lib/db';
 import MajorConsultationCTA from '@/components/MajorConsultationCTA';
 
-export const revalidate = 60;
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 export const dynamicParams = true;
 
 export async function generateStaticParams() {

@@ -9,7 +9,7 @@ export default function KnowledgeResources() {
   const [resources, setResources] = useState(fallbackResources.slice(0, 3));
 
   useEffect(() => {
-    fetch('/api/resources')
+    fetch(`/api/resources?_t=${Date.now()}`, { cache: 'no-store' })
       .then((res) => res.json())
       .then((data) => {
         if (data.success && data.resources?.length > 0) {
