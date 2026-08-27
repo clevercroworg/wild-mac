@@ -143,7 +143,7 @@ export default function Navbar() {
                   fontSize: '0.9rem',
                 }}
               >
-                <span>Advisory</span>
+                <span>Services</span>
                 <ChevronDown
                   size={13}
                   style={{
@@ -657,7 +657,7 @@ export default function Navbar() {
               About Rodney Almeida
             </Link>
 
-            {/* Mobile Section 1: Advisory */}
+            {/* Mobile Section 1: Services */}
             <div style={{ borderBottom: '1px solid var(--border-subtle)', paddingBottom: '0.5rem' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0.6rem 0' }}>
                 <Link
@@ -665,7 +665,7 @@ export default function Navbar() {
                   onClick={() => setMobileMenuOpen(false)}
                   style={{ fontFamily: 'var(--font-display)', fontSize: '1.35rem', fontWeight: 650, color: 'var(--text-ink)', textDecoration: 'none' }}
                 >
-                  Advisory & Services
+                  Services
                 </Link>
                 <button
                   type="button"
