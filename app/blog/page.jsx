@@ -196,7 +196,7 @@ export default async function BlogPage() {
                 {/* Header Image */}
                 <div style={{ position: 'relative', width: '100%', height: '180px' }}>
                   <img
-                    src={articleImages[index % articleImages.length]}
+                    src={article.coverImage || articleImages[index % articleImages.length]}
                     alt={article.title}
                     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                   />
