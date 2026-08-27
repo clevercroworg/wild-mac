@@ -259,7 +259,7 @@ export default function Navbar() {
               )}
             </div>
 
-            {/* 3. Literature & Insights (Dropdown) */}
+            {/* 3. Books & Knowledge (Dropdown) */}
             <div
               style={{ position: 'relative' }}
               onMouseEnter={() => setOpenDropdown('literature')}
@@ -279,7 +279,7 @@ export default function Navbar() {
                   fontSize: '0.9rem',
                 }}
               >
-                <span>Literature</span>
+                <span>Books & Knowledge</span>
                 <ChevronDown
                   size={13}
                   style={{
@@ -309,7 +309,7 @@ export default function Navbar() {
                 >
                   <div style={{ paddingBottom: '0.4rem', borderBottom: '1px solid var(--border-subtle)', marginBottom: '0.35rem' }}>
                     <span style={{ fontSize: '0.68rem', fontFamily: 'var(--font-mono)', letterSpacing: '0.12em', color: 'var(--text-light)', textTransform: 'uppercase' }}>
-                      PUBLICATIONS & KNOWLEDGE
+                      BOOKS & RESOURCES
                     </span>
                   </div>
 
@@ -331,8 +331,8 @@ export default function Navbar() {
                   >
                     <BookOpen size={16} color="var(--accent-red)" />
                     <div>
-                      <div style={{ fontWeight: 600 }}>Books & Publications</div>
-                      <div style={{ fontSize: '0.72rem', color: 'var(--text-light)' }}>Rodney Almeida’s 4 published works</div>
+                      <div style={{ fontWeight: 600 }}>Books</div>
+                      <div style={{ fontSize: '0.72rem', color: 'var(--text-light)' }}>4 published works by Rodney Almeida</div>
                     </div>
                   </Link>
 
@@ -354,8 +354,8 @@ export default function Navbar() {
                   >
                     <FileText size={16} color="var(--accent-red)" />
                     <div>
-                      <div style={{ fontWeight: 600 }}>Knowledge Resources</div>
-                      <div style={{ fontSize: '0.72rem', color: 'var(--text-light)' }}>Frameworks, checklists & PDF guides</div>
+                      <div style={{ fontWeight: 600 }}>Free Guides & Resources</div>
+                      <div style={{ fontSize: '0.72rem', color: 'var(--text-light)' }}>Checklists, templates & PDF guides</div>
                     </div>
                   </Link>
 
@@ -403,15 +403,15 @@ export default function Navbar() {
                   >
                     <HelpCircle size={16} color="var(--accent-red)" />
                     <div>
-                      <div style={{ fontWeight: 600 }}>FAQ & Inquiries</div>
-                      <div style={{ fontSize: '0.72rem', color: 'var(--text-light)' }}>Answers on advisory, books & terms</div>
+                      <div style={{ fontWeight: 600 }}>FAQs</div>
+                      <div style={{ fontSize: '0.72rem', color: 'var(--text-light)' }}>Common questions & clear answers</div>
                     </div>
                   </Link>
                 </div>
               )}
             </div>
 
-            {/* 4. Community & Initiatives (Dropdown) */}
+            {/* 4. Community & Projects (Dropdown) */}
             <div
               style={{ position: 'relative' }}
               onMouseEnter={() => setOpenDropdown('community')}
@@ -461,7 +461,7 @@ export default function Navbar() {
                 >
                   <div style={{ paddingBottom: '0.4rem', borderBottom: '1px solid var(--border-subtle)', marginBottom: '0.35rem' }}>
                     <span style={{ fontSize: '0.68rem', fontFamily: 'var(--font-mono)', letterSpacing: '0.12em', color: 'var(--text-light)', textTransform: 'uppercase' }}>
-                      COMMUNITY & INITIATIVES
+                      COMMUNITY & PROJECTS
                     </span>
                   </div>
 
@@ -483,8 +483,8 @@ export default function Navbar() {
                   >
                     <MessageSquare size={16} color="var(--accent-red)" />
                     <div>
-                      <div style={{ fontWeight: 600 }}>Community Forum & Chat</div>
-                      <div style={{ fontSize: '0.72rem', color: 'var(--text-light)' }}>Discussion channels for readers & founders</div>
+                      <div style={{ fontWeight: 600 }}>Community Chat & Forum</div>
+                      <div style={{ fontSize: '0.72rem', color: 'var(--text-light)' }}>Join discussions with readers & founders</div>
                     </div>
                   </Link>
 
@@ -506,8 +506,8 @@ export default function Navbar() {
                   >
                     <Building size={16} color="var(--accent-red)" />
                     <div>
-                      <div style={{ fontWeight: 600 }}>Future Projects in Goa</div>
-                      <div style={{ fontSize: '0.72rem', color: 'var(--text-light)' }}>Cancona Ashram, Elder Care & Permaculture</div>
+                      <div style={{ fontWeight: 600 }}>Future Projects</div>
+                      <div style={{ fontSize: '0.72rem', color: 'var(--text-light)' }}>Ashram, elder care & farm in Goa</div>
                     </div>
                   </Link>
 
@@ -530,7 +530,7 @@ export default function Navbar() {
                     <Briefcase size={16} color="var(--accent-red)" />
                     <div>
                       <div style={{ fontWeight: 600 }}>Work With Us</div>
-                      <div style={{ fontSize: '0.72rem', color: 'var(--text-light)' }}>Fellowships & joint ventures</div>
+                      <div style={{ fontSize: '0.72rem', color: 'var(--text-light)' }}>Join our team or partner with us</div>
                     </div>
                   </Link>
                 </div>
@@ -696,7 +696,7 @@ export default function Navbar() {
               )}
             </div>
 
-            {/* Mobile Section 2: Literature */}
+            {/* Mobile Section 2: Books & Knowledge */}
             <div style={{ borderBottom: '1px solid var(--border-subtle)', paddingBottom: '0.5rem' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0.6rem 0' }}>
                 <Link
@@ -704,7 +704,7 @@ export default function Navbar() {
                   onClick={() => setMobileMenuOpen(false)}
                   style={{ fontFamily: 'var(--font-display)', fontSize: '1.35rem', fontWeight: 650, color: 'var(--text-ink)', textDecoration: 'none' }}
                 >
-                  Literature & Insights
+                  Books & Knowledge
                 </Link>
                 <button
                   type="button"
@@ -718,16 +718,16 @@ export default function Navbar() {
               {mobileSectionOpen.literature && (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem', paddingLeft: '0.75rem', marginTop: '0.25rem' }}>
                   <Link href="/books" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: '0.85rem', color: 'var(--text-deep-blue)', textDecoration: 'none', padding: '0.35rem 0' }}>
-                    • Books & Publications
+                    • Books
                   </Link>
                   <Link href="/resources" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: '0.85rem', color: 'var(--text-deep-blue)', textDecoration: 'none', padding: '0.35rem 0' }}>
-                    • Knowledge Resources
+                    • Free Guides & Resources
                   </Link>
                   <Link href="/blog" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: '0.85rem', color: 'var(--text-deep-blue)', textDecoration: 'none', padding: '0.35rem 0' }}>
                     • Blogs & Articles
                   </Link>
                   <Link href="/faq" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: '0.85rem', color: 'var(--text-deep-blue)', textDecoration: 'none', padding: '0.35rem 0' }}>
-                    • FAQ & Inquiries
+                    • FAQs
                   </Link>
                 </div>
               )}
@@ -755,13 +755,13 @@ export default function Navbar() {
               {mobileSectionOpen.community && (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem', paddingLeft: '0.75rem', marginTop: '0.25rem' }}>
                   <Link href="/community" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: '0.85rem', color: 'var(--text-deep-blue)', textDecoration: 'none', padding: '0.35rem 0' }}>
-                    • Community Forum & Chat
+                    • Community Chat & Forum
                   </Link>
                   <Link href="/future-projects" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: '0.85rem', color: 'var(--text-deep-blue)', textDecoration: 'none', padding: '0.35rem 0' }}>
-                    • Future Projects in Goa
+                    • Future Projects
                   </Link>
                   <Link href="/work-with-us" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: '0.85rem', color: 'var(--text-deep-blue)', textDecoration: 'none', padding: '0.35rem 0' }}>
-                    • Work With Us & Fellowships
+                    • Work With Us
                   </Link>
                 </div>
               )}
