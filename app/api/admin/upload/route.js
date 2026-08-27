@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getAdminSession } from '@/lib/auth';
+import { uploadToCloudinary, isCloudinaryConfigured } from '@/lib/cloudinary';
 import fs from 'fs';
 import path from 'path';
 
@@ -51,23 +52,7 @@ export async function POST(request) {
     const buffer = Buffer.from(bytes);
 
     const isDocument = file.type.startsWith('application/') || file.type.startsWith('text/');
-    const subFolder = isDocument ? 'docs' : 'images';
-    const uploadsDir = path.join(process.cwd(), 'public', 'uploads', subFolder);
-
-    if (!fs.existsSync(uploadsDir)) {
-      fs.mkdirSync(uploadsDir, { recursive: true });
-    }
-
-    // Create safe filename
-    const originalName = file.name.replace(/[^\w.-]/g, '_');
-    const extension = path.extname(originalName) || (isDocument ? '.pdf' : '.jpg');
-    const baseName = path.basename(originalName, extension);
-    const fileName = `${baseName}-${Date.now()}${extension}`;
-    const filePath = path.join(uploadsDir, fileName);
-
-    fs.writeFileSync(filePath, buffer);
-
-    const publicUrl = `/uploads/${subFolder}/${fileName}`;
+    const subFolder = isDocument ? 'resources' : 'blogs';
 
     // Format readable size
     let formattedSize = '1.0 MB';
@@ -76,6 +61,48 @@ export async function POST(request) {
     } else {
       formattedSize = `${(file.size / (1024 * 1024)).toFixed(1)} MB`;
     }
+
+    // 1. Try Cloudinary if credentials are configured
+    if (isCloudinaryConfigured()) {
+      try {
+        const cleanName = path.parse(file.name).name.replace(/[^\w-]/g, '_');
+        const uploadResult = await uploadToCloudinary(buffer, {
+          folder: `wildmac/${subFolder}`,
+          publicId: `${cleanName}-${Date.now()}`,
+          resourceType: isDocument ? 'raw' : 'image',
+        });
+
+        return NextResponse.json({
+          success: true,
+          url: uploadResult.secure_url,
+          publicId: uploadResult.public_id,
+          fileName: file.name,
+          originalName: file.name,
+          size: file.size,
+          formattedSize,
+          type: file.type,
+          isDocument,
+          provider: 'cloudinary',
+        });
+      } catch (cloudinaryErr) {
+        console.warn('Cloudinary upload warning, falling back to local storage:', cloudinaryErr.message);
+      }
+    }
+
+    // 2. Fallback to local storage
+    const uploadsDir = path.join(process.cwd(), 'public', 'uploads', subFolder);
+    if (!fs.existsSync(uploadsDir)) {
+      fs.mkdirSync(uploadsDir, { recursive: true });
+    }
+
+    const originalName = file.name.replace(/[^\w.-]/g, '_');
+    const extension = path.extname(originalName) || (isDocument ? '.pdf' : '.jpg');
+    const baseName = path.basename(originalName, extension);
+    const fileName = `${baseName}-${Date.now()}${extension}`;
+    const filePath = path.join(uploadsDir, fileName);
+
+    fs.writeFileSync(filePath, buffer);
+    const publicUrl = `/uploads/${subFolder}/${fileName}`;
 
     return NextResponse.json({
       success: true,
@@ -86,6 +113,7 @@ export async function POST(request) {
       formattedSize,
       type: file.type,
       isDocument,
+      provider: 'local',
     });
   } catch (err) {
     console.error('File upload error:', err);
