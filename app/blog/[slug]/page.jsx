@@ -5,7 +5,14 @@ import { ArrowLeft, ArrowRight, Clock, Calendar } from 'lucide-react';
 import { getBlogBySlug, getAllBlogs } from '@/lib/db';
 import MajorConsultationCTA from '@/components/MajorConsultationCTA';
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 60;
+
+export async function generateStaticParams() {
+  const blogs = await getAllBlogs({ includeDrafts: false });
+  return blogs.map((blog) => ({
+    slug: blog.slug,
+  }));
+}
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
