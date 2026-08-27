@@ -411,7 +411,7 @@ export default function Navbar() {
               )}
             </div>
 
-            {/* 4. Community & Projects (Dropdown) */}
+            {/* 4. Projects & Work (Dropdown) */}
             <div
               style={{ position: 'relative' }}
               onMouseEnter={() => setOpenDropdown('community')}
@@ -431,7 +431,7 @@ export default function Navbar() {
                   fontSize: '0.9rem',
                 }}
               >
-                <span>Community</span>
+                <span>Projects & Work</span>
                 <ChevronDown
                   size={13}
                   style={{
@@ -461,32 +461,9 @@ export default function Navbar() {
                 >
                   <div style={{ paddingBottom: '0.4rem', borderBottom: '1px solid var(--border-subtle)', marginBottom: '0.35rem' }}>
                     <span style={{ fontSize: '0.68rem', fontFamily: 'var(--font-mono)', letterSpacing: '0.12em', color: 'var(--text-light)', textTransform: 'uppercase' }}>
-                      COMMUNITY & PROJECTS
+                      PROJECTS & INITIATIVES
                     </span>
                   </div>
-
-                  <Link
-                    href="/community"
-                    onClick={() => setOpenDropdown(null)}
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '0.65rem',
-                      padding: '0.55rem 0.65rem',
-                      fontSize: '0.84rem',
-                      color: 'var(--text-deep-blue)',
-                      textDecoration: 'none',
-                      borderRadius: '3px',
-                    }}
-                    onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'var(--bg-ice-blue)'; e.currentTarget.style.color = 'var(--text-ink)'; }}
-                    onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = 'var(--text-deep-blue)'; }}
-                  >
-                    <MessageSquare size={16} color="var(--accent-red)" />
-                    <div>
-                      <div style={{ fontWeight: 600 }}>Community Chat & Forum</div>
-                      <div style={{ fontSize: '0.72rem', color: 'var(--text-light)' }}>Join discussions with readers & founders</div>
-                    </div>
-                  </Link>
 
                   <Link
                     href="/future-projects"
@@ -531,6 +508,29 @@ export default function Navbar() {
                     <div>
                       <div style={{ fontWeight: 600 }}>Work With Us</div>
                       <div style={{ fontSize: '0.72rem', color: 'var(--text-light)' }}>Join our team or partner with us</div>
+                    </div>
+                  </Link>
+
+                  <Link
+                    href="/collaboration"
+                    onClick={() => setOpenDropdown(null)}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.65rem',
+                      padding: '0.55rem 0.65rem',
+                      fontSize: '0.84rem',
+                      color: 'var(--text-deep-blue)',
+                      textDecoration: 'none',
+                      borderRadius: '3px',
+                    }}
+                    onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'var(--bg-ice-blue)'; e.currentTarget.style.color = 'var(--text-ink)'; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = 'var(--text-deep-blue)'; }}
+                  >
+                    <Users size={16} color="var(--accent-red)" />
+                    <div>
+                      <div style={{ fontWeight: 600 }}>Collaborations</div>
+                      <div style={{ fontSize: '0.72rem', color: 'var(--text-light)' }}>Strategic partnerships & advisory</div>
                     </div>
                   </Link>
                 </div>
@@ -733,15 +733,15 @@ export default function Navbar() {
               )}
             </div>
 
-            {/* Mobile Section 3: Community & Projects */}
+            {/* Mobile Section 3: Projects & Work */}
             <div style={{ borderBottom: '1px solid var(--border-subtle)', paddingBottom: '0.5rem' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0.6rem 0' }}>
                 <Link
-                  href="/community"
+                  href="/future-projects"
                   onClick={() => setMobileMenuOpen(false)}
                   style={{ fontFamily: 'var(--font-display)', fontSize: '1.35rem', fontWeight: 650, color: 'var(--text-ink)', textDecoration: 'none' }}
                 >
-                  Community & Projects
+                  Projects & Work
                 </Link>
                 <button
                   type="button"
@@ -754,14 +754,14 @@ export default function Navbar() {
 
               {mobileSectionOpen.community && (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem', paddingLeft: '0.75rem', marginTop: '0.25rem' }}>
-                  <Link href="/community" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: '0.85rem', color: 'var(--text-deep-blue)', textDecoration: 'none', padding: '0.35rem 0' }}>
-                    • Community Chat & Forum
-                  </Link>
                   <Link href="/future-projects" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: '0.85rem', color: 'var(--text-deep-blue)', textDecoration: 'none', padding: '0.35rem 0' }}>
                     • Future Projects
                   </Link>
                   <Link href="/work-with-us" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: '0.85rem', color: 'var(--text-deep-blue)', textDecoration: 'none', padding: '0.35rem 0' }}>
                     • Work With Us
+                  </Link>
+                  <Link href="/collaboration" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: '0.85rem', color: 'var(--text-deep-blue)', textDecoration: 'none', padding: '0.35rem 0' }}>
+                    • Collaborations
                   </Link>
                 </div>
               )}

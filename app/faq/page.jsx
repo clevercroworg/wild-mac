@@ -22,7 +22,7 @@ const FAQ_CATEGORIES = [
   { id: 'advisory', label: 'Advisory & Consultations', icon: Briefcase },
   { id: 'books', label: 'Books & Literature', icon: BookOpen },
   { id: 'disciplines', label: 'Practice Disciplines', icon: Compass },
-  { id: 'community', label: 'Community & Future Projects', icon: Users },
+  { id: 'projects', label: 'Future Projects & Initiatives', icon: Users },
   { id: 'payments', label: 'Payments & Logistics', icon: CreditCard },
 ];
 
@@ -83,16 +83,16 @@ const FAQ_DATA = [
     answer: 'Yes. Most real-world challenges span across boundaries—such as business transitions impacting personal life, or property investments connecting to overall wealth architecture. Our holistic approach accommodates multi-disciplinary inquiry.',
   },
 
-  // Community & Future Projects
+  // Future Projects & Social Sanctuaries
   {
-    category: 'community',
-    question: 'What is the Wildmac Community Forum?',
-    answer: 'The Wildmac Forum (/community) is a private, spam-free discussion space where founders, builders, and readers engage in high-judgment conversations across dedicated channels including #founders-strategy, #unhurried-living, and #wealth-real-estate.',
+    category: 'projects',
+    question: 'What are the upcoming Future Projects in Goa?',
+    answer: 'Our Future Projects (/future-projects) roadmap encompasses three social sanctuaries across Goa: the Ashram Sanctuary in Cancona for meditation and contemplative study, the Old Age Haven in Taleigao for compassionate elder care, and the Permaculture Hub in Caranzalem for youth self-reliance and organic farming.',
   },
   {
-    category: 'community',
-    question: 'What are the upcoming Future Projects?',
-    answer: 'Our Future Projects (/future-projects) initiative is establishing physical learning centers, vocational leadership academies, and heritage research fellowships across Goa to mentor emerging founders and young artisans with free access to wisdom and education.',
+    category: 'projects',
+    question: 'How can individuals or organizations support these initiatives?',
+    answer: 'You can contribute directly through our verified UPI and bank wire channels on the Donate page (/donate) or submit a partnership proposal on our Work With Us page (/work-with-us).',
   },
 
   // Payments & Logistics

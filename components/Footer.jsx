@@ -79,7 +79,6 @@ export default function Footer() {
               <li><Link href="/pricing">Pricing</Link></li>
               <li><Link href="/books">Books</Link></li>
               <li><Link href="/resources">Free Guides & Templates</Link></li>
-              <li><Link href="/community" style={{ color: '#FFFFFF', fontWeight: 600 }}>Community Forum ★</Link></li>
               <li><Link href="/future-projects">Future Projects</Link></li>
               <li><Link href="/work-with-us">Work With Us</Link></li>
               <li><Link href="/faq">FAQs</Link></li>

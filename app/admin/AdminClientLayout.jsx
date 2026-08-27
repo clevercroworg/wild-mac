@@ -35,7 +35,6 @@ export default function AdminClientLayout({ children, adminUser }) {
     { name: 'Executive Overview', href: '/admin', icon: LayoutDashboard },
     { name: 'Blog Articles', href: '/admin/blogs', icon: FileText, badge: 'Articles' },
     { name: 'Knowledge Resources', href: '/admin/resources', icon: FolderDown, badge: 'Downloads' },
-    { name: 'Community Forum', href: '/admin/community', icon: MessageSquare, badge: 'Live Chat' },
     { name: 'Database & Settings', href: '/admin/settings', icon: Settings },
   ];
 
