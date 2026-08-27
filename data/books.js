@@ -36,7 +36,7 @@ export const booksData = [
     subtitle: "Finding Direction and Meaning in an Unquiet World",
     tagline: "A calm, structured inquiry into uncovering what genuinely matters and aligning your actions with it.",
     coverImage: "/images/cover-the-path-of-purpose.jpg",
-    amazonUrl: "https://amzn.in/d/0qJXhoXy",
+    amazonUrl: "https://amzn.in/d/0gJXhoXy",
     isFeatured: false,
     theme: "Purpose & Direction",
     category: "Self-Realization / Strategy",
