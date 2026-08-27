@@ -849,6 +849,18 @@ p.lead {
    ========================================================================== */
 
 @media (max-width: 1024px) {
+  .nav-links, .nav-actions .nav-desktop-cta {
+    display: none !important;
+  }
+
+  .mobile-menu-btn {
+    display: flex !important;
+  }
+
+  .mobile-header-donate-btn {
+    display: inline-flex !important;
+  }
+
   .hero-grid {
     grid-template-columns: 1fr 1fr;
     gap: 3rem;
