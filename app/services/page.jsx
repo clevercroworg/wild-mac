@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { ArrowRight, ArrowUpRight, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, CheckCircle2, Clock, Calendar, Layers, Percent, ShieldCheck } from 'lucide-react';
 import { servicesData } from '@/data/services';
 import MajorConsultationCTA from '@/components/MajorConsultationCTA';
 
@@ -10,6 +10,42 @@ export const metadata = {
 };
 
 export default function ServicesPage() {
+  const pricingTeaser = [
+    {
+      num: '01',
+      name: 'Hourly Rate',
+      price: '₹10,000',
+      period: '/ hour',
+      desc: '1-on-1 strategy deep-dives to unblock specific bottlenecks or audit critical decisions.',
+      icon: Clock,
+    },
+    {
+      num: '02',
+      name: 'Monthly Retainer',
+      price: '₹10k – ₹1L',
+      period: '/ month',
+      desc: 'Continuous advisory partnership with regular sessions and priority WhatsApp access.',
+      icon: Calendar,
+      highlight: true,
+    },
+    {
+      num: '03',
+      name: 'Project-Based',
+      price: '₹1L – ₹5L',
+      period: 'based on scope',
+      desc: 'End-to-end strategic guidance for discrete business launches, restructurings, or blueprints.',
+      icon: Layers,
+    },
+    {
+      num: '04',
+      name: 'Percentage-Based',
+      price: '1%',
+      period: 'of project cost',
+      desc: 'Fiduciary oversight and engineering review for major infrastructure and developments.',
+      icon: Percent,
+    },
+  ];
+
   return (
     <>
       {/* ===================================================================
@@ -22,7 +58,7 @@ export default function ServicesPage() {
           minHeight: '75vh',
           display: 'flex',
           alignItems: 'center',
-          paddingTop: '3.5rem',
+          paddingTop: '4rem',
           paddingBottom: '3.5rem',
           position: 'relative',
           overflow: 'hidden',
@@ -57,7 +93,7 @@ export default function ServicesPage() {
               </p>
 
               <p style={{ fontSize: '1rem', color: 'var(--text-muted)', lineHeight: 1.75, marginBottom: '2.25rem' }}>
-                Every consultation is conducted directly with high-judgment clarity tailored to your unique objectives, constraints, and decision horizons.
+                Every consultation is conducted directly with Rodney Almeida with 4 transparent pricing options—from hourly sessions to monthly partnerships.
               </p>
 
               <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', flexWrap: 'wrap' }}>
@@ -65,34 +101,37 @@ export default function ServicesPage() {
                   <span>Book a Consultation</span>
                   <ArrowRight size={15} />
                 </Link>
-                <a href="#modules" className="editorial-link">
-                  <span>Explore the 5 Advisory Disciplines</span>
-                  <ArrowRight size={14} />
+                <Link href="/pricing" className="btn btn-secondary" style={{ padding: '0.95rem 1.75rem' }}>
+                  <span>View Pricing & Options</span>
+                  <ArrowUpRight size={15} />
+                </Link>
+                <a href="#modules" className="editorial-link" style={{ fontSize: '0.88rem' }}>
+                  <span>Explore the 7 Disciplines ↓</span>
                 </a>
               </div>
             </div>
 
-            {/* Right: Editorial 05 Service Index Stack */}
+            {/* Right: Editorial 07 Service Index Stack */}
             <div style={{ position: 'relative', display: 'flex', justifyContent: 'center' }}>
               <div
                 style={{
                   backgroundColor: 'var(--bg-pure-white)',
                   border: '1px solid var(--border-medium)',
-                  padding: '2.25rem 2rem',
-                  borderRadius: '2px',
+                  padding: '2rem 1.75rem',
+                  borderRadius: '4px',
                   width: '100%',
                   maxWidth: '440px',
                   boxShadow: 'var(--shadow-subtle)',
                 }}
               >
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem', borderBottom: '1px solid var(--border-subtle)', paddingBottom: '0.85rem' }}>
-                  <span className="editorial-stamp">5 ADVISORY DISCIPLINES</span>
-                  <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.4rem', color: 'var(--accent-red)', fontWeight: 700 }}>
-                    05
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem', borderBottom: '1px solid var(--border-subtle)', paddingBottom: '0.75rem' }}>
+                  <span className="editorial-stamp">7 ADVISORY DISCIPLINES</span>
+                  <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.3rem', color: 'var(--accent-red)', fontWeight: 700 }}>
+                    07
                   </span>
                 </div>
 
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.55rem' }}>
                   {servicesData.map((s) => (
                     <a
                       key={s.id}
@@ -101,7 +140,7 @@ export default function ServicesPage() {
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'space-between',
-                        padding: '0.75rem 1rem',
+                        padding: '0.65rem 0.85rem',
                         backgroundColor: 'var(--bg-paper-white)',
                         borderRadius: '2px',
                         border: '1px solid var(--border-subtle)',
@@ -110,16 +149,36 @@ export default function ServicesPage() {
                       }}
                     >
                       <div>
-                        <span style={{ display: 'block', fontSize: '0.68rem', fontFamily: 'var(--font-mono)', color: 'var(--accent-red)', fontWeight: 700 }}>
+                        <span style={{ display: 'block', fontSize: '0.65rem', fontFamily: 'var(--font-mono)', color: 'var(--accent-red)', fontWeight: 700 }}>
                           {s.number}
                         </span>
-                        <span style={{ fontFamily: 'var(--font-display)', fontSize: '1rem', fontWeight: 650, color: 'var(--text-ink)' }}>
+                        <span style={{ fontFamily: 'var(--font-display)', fontSize: '0.95rem', fontWeight: 650, color: 'var(--text-ink)' }}>
                           {s.title}
                         </span>
                       </div>
-                      <ArrowRight size={14} color="var(--text-deep-blue)" />
+                      <ArrowRight size={13} color="var(--text-deep-blue)" />
                     </a>
                   ))}
+                </div>
+
+                <div style={{ marginTop: '1.25rem', paddingTop: '1rem', borderTop: '1px solid var(--border-subtle)', textAlign: 'center' }}>
+                  <Link
+                    href="/pricing"
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: '0.45rem',
+                      fontSize: '0.82rem',
+                      fontFamily: 'var(--font-mono)',
+                      color: 'var(--accent-red)',
+                      fontWeight: 700,
+                      textDecoration: 'none',
+                    }}
+                  >
+                    <span>EXPLORE ALL 4 PRICING OPTIONS</span>
+                    <ArrowRight size={13} />
+                  </Link>
                 </div>
               </div>
             </div>
@@ -128,7 +187,7 @@ export default function ServicesPage() {
       </section>
 
       {/* ===================================================================
-          02 — FIVE COMPREHENSIVE SERVICE MONOGRAPHS
+          02 — SEVEN COMPREHENSIVE SERVICE MONOGRAPHS
           =================================================================== */}
       <section id="modules" className="section-py-lg" style={{ backgroundColor: 'var(--bg-ice-blue)', borderBottom: '1px solid var(--border-subtle)' }}>
         <div className="container">
@@ -161,7 +220,7 @@ export default function ServicesPage() {
                 style={{
                   backgroundColor: 'var(--bg-pure-white)',
                   border: '1px solid var(--border-subtle)',
-                  borderRadius: '2px',
+                  borderRadius: '4px',
                   boxShadow: 'var(--shadow-subtle)',
                   overflow: 'hidden',
                 }}
@@ -273,9 +332,18 @@ export default function ServicesPage() {
 
                     {/* Footer Action */}
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid var(--border-subtle)', paddingTop: '1.5rem', flexWrap: 'wrap', gap: '1rem' }}>
-                      <span style={{ fontSize: '0.82rem', color: 'var(--text-light)' }}>
-                        Confidential strategic dialogue
-                      </span>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                        <span style={{ fontSize: '0.82rem', color: 'var(--text-light)' }}>
+                          Available via Hourly, Retainer & Project
+                        </span>
+                        <Link
+                          href="/pricing"
+                          style={{ fontSize: '0.82rem', color: 'var(--accent-red)', fontWeight: 600, textDecoration: 'none' }}
+                        >
+                          View Rates →
+                        </Link>
+                      </div>
+
                       <Link
                         href={`/consultation?service=${service.id}`}
                         className="btn btn-primary"
@@ -294,7 +362,117 @@ export default function ServicesPage() {
       </section>
 
       {/* ===================================================================
-          03 — MAJOR CONSULTATION CTA
+          03 — PRICING OVERVIEW & ENGAGEMENT BRIDGE
+          =================================================================== */}
+      <section className="section-py" style={{ backgroundColor: 'var(--bg-pure-white)', borderBottom: '1px solid var(--border-subtle)' }}>
+        <div className="container">
+          <div style={{ maxWidth: '780px', margin: '0 auto', textAlign: 'center', marginBottom: '3rem' }}>
+            <span className="editorial-stamp">TRANSPARENT ENGAGEMENT RATES</span>
+            <h2
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: 'clamp(2.2rem, 3.8vw, 3rem)',
+                color: 'var(--text-ink)',
+                fontWeight: 700,
+                marginTop: '0.5rem',
+                marginBottom: '1rem',
+              }}
+            >
+              Four Clear Options Across All Disciplines.
+            </h2>
+            <p className="lead" style={{ color: 'var(--text-deep-blue)', lineHeight: 1.65, margin: '0 auto', maxWidth: '620px' }}>
+              Whether you need a single 1-on-1 strategy hour, a monthly executive retainer, project-based delivery, or large-scale oversight.
+            </p>
+          </div>
+
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+              gap: '1.5rem',
+              marginBottom: '3rem',
+            }}
+          >
+            {pricingTeaser.map((tier) => {
+              const IconComp = tier.icon;
+              return (
+                <div
+                  key={tier.num}
+                  style={{
+                    backgroundColor: 'var(--bg-paper-white)',
+                    border: tier.highlight ? '2px solid var(--accent-red)' : '1px solid var(--border-medium)',
+                    borderRadius: '4px',
+                    padding: '1.75rem 1.5rem',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                    position: 'relative',
+                  }}
+                >
+                  {tier.highlight && (
+                    <span
+                      style={{
+                        position: 'absolute',
+                        top: '-10px',
+                        right: '1rem',
+                        backgroundColor: 'var(--accent-red)',
+                        color: '#FFFFFF',
+                        fontSize: '0.62rem',
+                        fontFamily: 'var(--font-mono)',
+                        fontWeight: 700,
+                        padding: '0.15rem 0.5rem',
+                        borderRadius: '2px',
+                        letterSpacing: '0.08em',
+                      }}
+                    >
+                      POPULAR
+                    </span>
+                  )}
+                  <div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
+                      <span style={{ fontSize: '0.7rem', fontFamily: 'var(--font-mono)', color: 'var(--accent-red)', fontWeight: 700 }}>
+                        OPTION {tier.num}
+                      </span>
+                      <IconComp size={16} color="var(--text-deep-blue)" />
+                    </div>
+
+                    <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', color: 'var(--text-ink)', margin: '0 0 0.5rem 0', fontWeight: 700 }}>
+                      {tier.name}
+                    </h3>
+
+                    <div style={{ marginBottom: '0.75rem' }}>
+                      <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', fontWeight: 750, color: 'var(--text-ink)' }}>
+                        {tier.price}
+                      </span>
+                      <span style={{ fontSize: '0.76rem', color: 'var(--text-light)', fontFamily: 'var(--font-mono)', marginLeft: '0.35rem' }}>
+                        {tier.period}
+                      </span>
+                    </div>
+
+                    <p style={{ fontSize: '0.84rem', color: 'var(--text-deep-blue)', lineHeight: 1.5, margin: 0 }}>
+                      {tier.desc}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          <div style={{ textAlign: 'center' }}>
+            <Link
+              href="/pricing"
+              className="btn btn-primary"
+              style={{ padding: '0.95rem 2.25rem', fontSize: '0.92rem', gap: '0.5rem' }}
+            >
+              <span>Explore Full Pricing Breakdown & FAQs</span>
+              <ArrowRight size={15} />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ===================================================================
+          04 — MAJOR CONSULTATION CTA
           =================================================================== */}
       <MajorConsultationCTA />
     </>

@@ -485,8 +485,11 @@ export default function ServicesContinuum() {
             </p>
           </div>
 
-          <div>
-            <Link href="/consultation" className="btn btn-primary" style={{ padding: '0.9rem 2rem', fontSize: '0.92rem', gap: '0.6rem' }}>
+          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', alignItems: 'center' }}>
+            <Link href="/pricing" className="btn btn-secondary" style={{ padding: '0.9rem 1.65rem', fontSize: '0.9rem' }}>
+              <span>View Pricing Plans</span>
+            </Link>
+            <Link href="/consultation" className="btn btn-primary" style={{ padding: '0.9rem 1.85rem', fontSize: '0.9rem', gap: '0.5rem' }}>
               <span>Book a Consultation</span>
               <ArrowRight size={15} />
             </Link>
