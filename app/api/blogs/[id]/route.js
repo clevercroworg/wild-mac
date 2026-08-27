@@ -3,6 +3,7 @@ import { revalidatePath } from 'next/cache';
 import { getBlogById, getBlogBySlug, updateBlog, deleteBlog } from '@/lib/db';
 import { getAdminSession } from '@/lib/auth';
 
+export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 

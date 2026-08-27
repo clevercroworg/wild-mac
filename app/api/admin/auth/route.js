@@ -9,6 +9,9 @@ import {
 
 const COOKIE_NAME = 'wildmac_admin_session';
 
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
+
 export async function POST(request) {
   try {
     const body = await request.json();

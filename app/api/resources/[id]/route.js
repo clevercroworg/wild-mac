@@ -3,6 +3,7 @@ import { revalidatePath } from 'next/cache';
 import { getResourceById, updateResource, deleteResource } from '@/lib/db';
 import { getAdminSession } from '@/lib/auth';
 
+export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 

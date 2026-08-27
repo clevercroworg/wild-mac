@@ -4,6 +4,9 @@ import { getMongoDb } from '@/lib/db/mongodb';
 import { isCloudinaryConfigured } from '@/lib/cloudinary';
 import { getAllBlogs, getAllResources } from '@/lib/db';
 
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   try {
     const session = await getAdminSession();

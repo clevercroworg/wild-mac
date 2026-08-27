@@ -4,6 +4,9 @@ import { uploadToCloudinary, isCloudinaryConfigured } from '@/lib/cloudinary';
 import fs from 'fs';
 import path from 'path';
 
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
+
 export async function POST(request) {
   try {
     const session = await getAdminSession();

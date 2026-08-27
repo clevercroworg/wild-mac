@@ -1,5 +1,23 @@
 [
   {
+    "id": "blog-1787818564519",
+    "slug": "testing",
+    "title": "testing",
+    "subtitle": "testing",
+    "category": "Strategy",
+    "date": "August 27, 2026",
+    "readTime": "5 min read",
+    "isFeatured": false,
+    "isPublished": true,
+    "published": true,
+    "excerpt": "",
+    "content": "\n## testing",
+    "quote": "",
+    "coverImage": "/images/collaboration-hero-wide.jpg",
+    "createdAt": "2026-08-27T08:16:04.519Z",
+    "updatedAt": "2026-08-27T08:16:04.519Z"
+  },
+  {
     "id": "blog-1-on-the-architecture-of-unhurried-time",
     "slug": "on-the-architecture-of-unhurried-time",
     "title": "On the Architecture of Unhurried Time",
