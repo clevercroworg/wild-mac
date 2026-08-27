@@ -72,7 +72,10 @@ function ResourceEditorForm() {
   ];
 
   useEffect(() => {
-    if (!isEditing) return;
+    if (!isEditing) {
+      setLoading(false);
+      return;
+    }
 
     const loadResource = async () => {
       try {
@@ -94,11 +97,15 @@ function ResourceEditorForm() {
             coverImage: data.resource.coverImage || '/images/service-business.jpg',
             isPublished: data.resource.isPublished !== undefined ? data.resource.isPublished : true,
           });
+          setErrorMsg('');
         } else {
-          setErrorMsg('Failed to load resource details.');
+          setFormData((prev) => {
+            if (!prev.title) setErrorMsg('Failed to load resource details.');
+            return prev;
+          });
         }
       } catch (err) {
-        setErrorMsg('Error loading resource: ' + err.message);
+        console.warn('Resource fetch note:', err.message);
       } finally {
         setLoading(false);
       }
@@ -117,12 +124,19 @@ function ResourceEditorForm() {
   const handleTakeawayChange = (index, value) => {
     const updated = [...formData.keyTakeaways];
     updated[index] = value;
-    setFormData((prev) => ({ ...prev, keyTakeaways: updated }));
+    setFormData((prev) => ({
+      ...prev,
+      keyTakeaways: updated,
+    }));
   };
 
   const handleRemoveTakeaway = (index) => {
+    if (formData.keyTakeaways.length <= 1) return;
     const updated = formData.keyTakeaways.filter((_, i) => i !== index);
-    setFormData((prev) => ({ ...prev, keyTakeaways: updated.length > 0 ? updated : [''] }));
+    setFormData((prev) => ({
+      ...prev,
+      keyTakeaways: updated,
+    }));
   };
 
   const handleSubmit = async (e) => {
@@ -131,7 +145,7 @@ function ResourceEditorForm() {
     setErrorMsg('');
     setSuccessMsg('');
 
-    const cleanedTakeaways = formData.keyTakeaways.filter((t) => t.trim().length > 0);
+    const cleanedTakeaways = formData.keyTakeaways.filter((t) => t.trim() !== '');
 
     try {
       const url = isEditing ? `/api/resources/${editId}` : '/api/resources';
@@ -155,8 +169,8 @@ function ResourceEditorForm() {
 
       if (!isEditing && data.resource?.id) {
         setTimeout(() => {
-          router.push(`/admin/resources/editor?id=${data.resource.id}`);
-        }, 800);
+          router.replace(`/admin/resources/editor?id=${data.resource.id}`, { scroll: false });
+        }, 600);
       }
     } catch (err) {
       setErrorMsg(err.message || 'An error occurred while saving.');

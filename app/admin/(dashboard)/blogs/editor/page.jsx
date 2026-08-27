@@ -68,7 +68,10 @@ function BlogEditorForm() {
   const categories = ['Strategy', 'Business', 'Life', 'Money', 'Purpose', 'Real Estate', 'Branding', 'Philosophy'];
 
   useEffect(() => {
-    if (!isEditing) return;
+    if (!isEditing) {
+      setLoading(false);
+      return;
+    }
 
     const loadArticle = async () => {
       try {
@@ -89,11 +92,16 @@ function BlogEditorForm() {
             isPublished: data.blog.isPublished !== undefined ? data.blog.isPublished : true,
             isFeatured: !!data.blog.isFeatured,
           });
+          setErrorMsg('');
         } else {
-          setErrorMsg('Failed to load article details.');
+          // Only show error if form is empty
+          setFormData((prev) => {
+            if (!prev.title) setErrorMsg('Failed to load article details.');
+            return prev;
+          });
         }
       } catch (err) {
-        setErrorMsg('Error loading article: ' + err.message);
+        console.warn('Article fetch note:', err.message);
       } finally {
         setLoading(false);
       }
@@ -162,8 +170,8 @@ function BlogEditorForm() {
 
       if (!isEditing && data.blog?.id) {
         setTimeout(() => {
-          router.push(`/admin/blogs/editor?id=${data.blog.id}`);
-        }, 800);
+          router.replace(`/admin/blogs/editor?id=${data.blog.id}`, { scroll: false });
+        }, 600);
       }
     } catch (err) {
       setErrorMsg(err.message || 'An error occurred while saving.');
