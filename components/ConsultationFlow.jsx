@@ -12,6 +12,7 @@ export default function ConsultationFlow({ preselectedServiceId = '' }) {
     selectedDate: '2026-09-08',
     selectedTime: '10:00 AM EST',
     duration: '45-minute strategic consultation',
+    preferredModel: 'Hourly Advisory (₹10,000 / hr)',
     name: '',
     email: '',
     phone: '',
@@ -85,7 +86,7 @@ export default function ConsultationFlow({ preselectedServiceId = '' }) {
           Your Consultation is Reserved
         </h2>
         <p style={{ fontSize: '1.02rem', color: 'var(--text-muted)', lineHeight: '1.7', marginBottom: '2rem' }}>
-          Thank you, <strong>{formData.name}</strong>. We have reserved your requested appointment window on <strong>{formData.selectedDate} at {formData.selectedTime}</strong> regarding <em>{servicesData.find(s => s.id === formData.serviceId)?.title || 'Advisory'}</em>. A confirmation has been dispatched to <strong>{formData.email}</strong>.
+          Thank you, <strong>{formData.name}</strong>. We have reserved your requested appointment window on <strong>{formData.selectedDate} at {formData.selectedTime}</strong> regarding <em>{servicesData.find(s => s.id === formData.serviceId)?.title || 'Advisory'}</em> under <strong>{formData.preferredModel}</strong>. A confirmation has been dispatched to <strong>{formData.email}</strong>.
         </p>
         <div style={{ padding: '1.25rem', backgroundColor: 'var(--bg-paper-white)', border: '1px solid var(--border-subtle)', marginBottom: '2rem', textAlign: 'left', fontSize: '0.9rem', color: 'var(--text-muted)', borderRadius: '2px' }}>
           <div style={{ fontWeight: 600, color: 'var(--text-deep-blue)', marginBottom: '0.4rem' }}>Preparation Note:</div>
@@ -323,6 +324,23 @@ export default function ConsultationFlow({ preselectedServiceId = '' }) {
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                 className="form-input"
               />
+            </div>
+
+            <div className="form-group" style={{ marginBottom: '1.25rem' }}>
+              <label className="form-label" htmlFor="flow-model">Preferred Engagement Model</label>
+              <select
+                id="flow-model"
+                value={formData.preferredModel}
+                onChange={(e) => setFormData({ ...formData, preferredModel: e.target.value })}
+                className="form-input"
+                style={{ cursor: 'pointer' }}
+              >
+                <option value="Hourly Advisory (₹10,000 / hr)">Option 01: Hourly Advisory (₹10,000 / hour)</option>
+                <option value="Monthly Retainer (₹10,000 – ₹1,00,000 / mo)">Option 02: Monthly Retainer (₹10,000 – ₹1,00,000 / month)</option>
+                <option value="Project-Based (₹1,00,000 – ₹5,00,000)">Option 03: Project-Based (₹1,00,000 – ₹5,00,000)</option>
+                <option value="Percentage-Based (1% of Project Cost)">Option 04: Percentage-Based (1% of total project cost)</option>
+                <option value="Flexible / Discuss on Call">Flexible / Discuss on Consultation Call</option>
+              </select>
             </div>
 
             <div className="form-group" style={{ marginBottom: '2rem' }}>
