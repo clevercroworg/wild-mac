@@ -147,14 +147,28 @@ export default async function ResourcesPage() {
                     </div>
 
                     {/* Download CTA Button */}
-                    <a
-                      href={`mailto:contactmacalmeida@gmail.com?subject=Request%20Framework:%20${encodeURIComponent(resource.title)}`}
-                      className="btn btn-primary"
-                      style={{ width: '100%', padding: '0.75rem', fontSize: '0.84rem', justifyContent: 'center' }}
-                    >
-                      <Download size={13} />
-                      <span>Request Framework (PDF)</span>
-                    </a>
+                    {resource.downloadUrl && resource.downloadUrl !== '#' ? (
+                      <a
+                        href={resource.downloadUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        download
+                        className="btn btn-primary"
+                        style={{ width: '100%', padding: '0.75rem', fontSize: '0.84rem', justifyContent: 'center' }}
+                      >
+                        <Download size={13} />
+                        <span>Download Framework ({resource.format || 'PDF'})</span>
+                      </a>
+                    ) : (
+                      <a
+                        href={`mailto:contactmacalmeida@gmail.com?subject=Request%20Framework:%20${encodeURIComponent(resource.title)}`}
+                        className="btn btn-primary"
+                        style={{ width: '100%', padding: '0.75rem', fontSize: '0.84rem', justifyContent: 'center' }}
+                      >
+                        <Download size={13} />
+                        <span>Request Framework (PDF)</span>
+                      </a>
+                    )}
                   </div>
                 </div>
               );

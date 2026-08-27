@@ -143,7 +143,9 @@ export default function KnowledgeResources() {
                     {resource.fileSize} · Free
                   </span>
                   <a
-                    href="/consultation"
+                    href={resource.downloadUrl && resource.downloadUrl !== '#' ? resource.downloadUrl : '/resources'}
+                    target={resource.downloadUrl && resource.downloadUrl !== '#' ? '_blank' : '_self'}
+                    rel="noopener noreferrer"
                     className="btn btn-editorial"
                     style={{ padding: '0.5rem 0.95rem', fontSize: '0.78rem', gap: '0.4rem' }}
                   >
@@ -242,7 +244,9 @@ export default function KnowledgeResources() {
                       Free Download
                     </span>
                     <a
-                      href="/consultation"
+                      href={resource.downloadUrl && resource.downloadUrl !== '#' ? resource.downloadUrl : '/resources'}
+                      target={resource.downloadUrl && resource.downloadUrl !== '#' ? '_blank' : '_self'}
+                      rel="noopener noreferrer"
                       style={{ fontSize: '0.75rem', color: 'var(--accent-red)', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '0.25rem', textDecoration: 'none' }}
                     >
                       <Download size={11} />

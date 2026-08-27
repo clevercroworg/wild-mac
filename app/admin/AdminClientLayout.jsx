@@ -15,6 +15,7 @@ import {
   PlusCircle,
 } from 'lucide-react';
 import LionLogo from '@/components/LionLogo';
+import { ToastProvider } from '@/components/AdminToast';
 
 export default function AdminClientLayout({ children, adminUser }) {
   const pathname = usePathname();
@@ -39,6 +40,7 @@ export default function AdminClientLayout({ children, adminUser }) {
   ];
 
   return (
+    <ToastProvider>
     <div style={{ display: 'flex', minHeight: '100vh', backgroundColor: '#F4F5F7' }}>
       {/* -------------------------------------------------------------
           SIDEBAR NAVIGATION (DESKTOP)
@@ -279,5 +281,6 @@ export default function AdminClientLayout({ children, adminUser }) {
         }
       `}</style>
     </div>
+    </ToastProvider>
   );
 }

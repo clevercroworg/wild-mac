@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState, useRef } from 'react';
-import { UploadCloud, FileText, CheckCircle2, AlertCircle, Loader2, Download, Trash2 } from 'lucide-react';
+import { UploadCloud, FileText, CheckCircle2, AlertCircle, Loader2, Download, Trash2, ExternalLink } from 'lucide-react';
+import { useToast } from '@/components/AdminToast';
 
 export default function DocumentUploader({ value, onChange, onSizeDetected, label = 'Upload Your File (PDF, Word, Excel, ZIP)' }) {
   const [uploading, setUploading] = useState(false);
@@ -9,6 +10,7 @@ export default function DocumentUploader({ value, onChange, onSizeDetected, labe
   const [dragOver, setDragOver] = useState(false);
   const [fileName, setFileName] = useState('');
   const fileInputRef = useRef(null);
+  const { addToast } = useToast();
 
   const handleFile = async (file) => {
     if (!file) return;
@@ -29,14 +31,27 @@ export default function DocumentUploader({ value, onChange, onSizeDetected, labe
         throw new Error(data.error || 'Upload failed');
       }
 
-      setFileName(data.originalName || file.name);
+      const cleanOriginalName = data.originalName || file.name;
+      setFileName(cleanOriginalName);
       onChange(data.url);
 
       if (onSizeDetected && data.formattedSize) {
         onSizeDetected(data.formattedSize);
       }
+
+      addToast({
+        type: 'success',
+        title: 'File Uploaded',
+        message: `${cleanOriginalName} (${data.formattedSize || 'Ready'}) stored on ${data.provider === 'cloudinary' ? 'Cloudinary CDN' : 'Local Storage'}.`,
+      });
     } catch (err) {
-      setError(err.message || 'Error uploading document');
+      const errMsg = err.message || 'Error uploading document';
+      setError(errMsg);
+      addToast({
+        type: 'error',
+        title: 'Upload Error',
+        message: errMsg,
+      });
     } finally {
       setUploading(false);
     }
@@ -50,7 +65,19 @@ export default function DocumentUploader({ value, onChange, onSizeDetected, labe
     }
   };
 
-  const isUploaded = value && value !== '#' && value.startsWith('/uploads/');
+  const isUploaded = Boolean(value && value !== '#' && value !== '');
+
+  const getDisplayFileName = () => {
+    if (fileName) return fileName;
+    if (!value || value === '#') return 'Document File';
+    try {
+      const parts = value.split('/');
+      const last = parts[parts.length - 1];
+      return decodeURIComponent(last.split('?')[0]);
+    } catch {
+      return 'Attached Document';
+    }
+  };
 
   return (
     <div>
@@ -63,28 +90,31 @@ export default function DocumentUploader({ value, onChange, onSizeDetected, labe
         </span>
       </div>
 
-      {/* Active File State */}
+      {/* Active File State Card */}
       {isUploaded && (
         <div
           style={{
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            padding: '0.75rem 1rem',
-            backgroundColor: 'rgba(37, 211, 102, 0.08)',
-            border: '1px solid rgba(37, 211, 102, 0.3)',
+            padding: '0.85rem 1rem',
+            backgroundColor: 'rgba(34, 197, 94, 0.08)',
+            border: '1px solid rgba(34, 197, 94, 0.35)',
             borderRadius: '4px',
             marginBottom: '0.75rem',
+            gap: '0.75rem',
+            flexWrap: 'wrap',
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
-            <FileText size={20} color="#1E8E48" />
-            <div>
-              <div style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-ink)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', maxWidth: '280px' }}>
-                {fileName || value.split('/').pop()}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', minWidth: 0, flex: 1 }}>
+            <FileText size={22} color="#16A34A" style={{ flexShrink: 0 }} />
+            <div style={{ minWidth: 0 }}>
+              <div style={{ fontSize: '0.85rem', fontWeight: 650, color: 'var(--text-ink)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', maxWidth: '280px' }}>
+                {getDisplayFileName()}
               </div>
-              <span style={{ fontSize: '0.72rem', color: '#1E8E48', fontWeight: 600 }}>
-                ✓ File attached and ready for download
+              <span style={{ fontSize: '0.72rem', color: '#16A34A', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+                <CheckCircle2 size={12} />
+                <span>Active download asset wired</span>
               </span>
             </div>
           </div>
@@ -93,19 +123,21 @@ export default function DocumentUploader({ value, onChange, onSizeDetected, labe
             <a
               href={value}
               target="_blank"
+              rel="noopener noreferrer"
               download
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '0.3rem',
-                padding: '0.35rem 0.65rem',
+                gap: '0.35rem',
+                padding: '0.4rem 0.75rem',
                 fontSize: '0.78rem',
                 backgroundColor: '#FFFFFF',
                 border: '1px solid var(--border-medium)',
                 borderRadius: '3px',
                 color: 'var(--text-deep-blue)',
                 textDecoration: 'none',
-                fontWeight: 550,
+                fontWeight: 600,
+                boxShadow: '0 1px 3px rgba(0,0,0,0.05)',
               }}
             >
               <Download size={13} />
@@ -114,19 +146,29 @@ export default function DocumentUploader({ value, onChange, onSizeDetected, labe
 
             <button
               type="button"
-              onClick={() => onChange('#')}
+              onClick={() => {
+                onChange('#');
+                setFileName('');
+                addToast({
+                  type: 'info',
+                  title: 'File Removed',
+                  message: 'Attached download file unlinked from this resource.',
+                });
+              }}
               style={{
                 background: 'none',
-                border: 'none',
+                border: '1px solid rgba(201, 59, 43, 0.2)',
+                borderRadius: '3px',
                 cursor: 'pointer',
                 color: 'var(--accent-red)',
-                padding: '0.3rem',
+                padding: '0.4rem 0.5rem',
                 display: 'flex',
                 alignItems: 'center',
+                backgroundColor: '#FFFFFF',
               }}
               title="Remove file"
             >
-              <Trash2 size={16} />
+              <Trash2 size={15} />
             </button>
           </div>
         </div>
@@ -160,8 +202,8 @@ export default function DocumentUploader({ value, onChange, onSizeDetected, labe
 
         {uploading ? (
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.4rem', color: 'var(--accent-red)' }}>
-            <Loader2 size={24} style={{ animation: 'spin 1s linear infinite' }} />
-            <span style={{ fontSize: '0.85rem', fontWeight: 600 }}>Uploading file... please wait</span>
+            <Loader2 size={26} style={{ animation: 'spin 1s linear infinite' }} />
+            <span style={{ fontSize: '0.85rem', fontWeight: 600 }}>Uploading file to secure cloud... please wait</span>
           </div>
         ) : (
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.35rem' }}>
