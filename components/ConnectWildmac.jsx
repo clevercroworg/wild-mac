@@ -67,7 +67,9 @@ export default function ConnectWildmac() {
                   <span style={{ display: 'block', fontSize: '0.72rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
                     DIRECT DESK EMAIL
                   </span>
-                  <span style={{ fontWeight: 600, color: 'var(--text-ink)', fontSize: '0.95rem' }}>desk@wildmac.com</span>
+                  <a href="mailto:contactmacalmeida@gmail.com" style={{ fontWeight: 600, color: 'var(--text-ink)', fontSize: '0.95rem', textDecoration: 'none' }}>
+                    contactmacalmeida@gmail.com
+                  </a>
                 </div>
               </div>
 
@@ -77,9 +79,14 @@ export default function ConnectWildmac() {
                 </div>
                 <div>
                   <span style={{ display: 'block', fontSize: '0.72rem', fontFamily: 'var(--font-mono)', color: 'var(--text-light)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
-                    WHATSAPP DIRECT
+                    WHATSAPP & DIRECT CALL
                   </span>
-                  <span style={{ fontWeight: 600, color: 'var(--text-ink)', fontSize: '0.95rem' }}>+1 (800) WILD-MAC</span>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
+                    <a href="https://wa.me/919657080490" target="_blank" rel="noopener noreferrer" style={{ fontWeight: 600, color: 'var(--text-ink)', fontSize: '0.95rem', textDecoration: 'none' }}>
+                      +91 96570 80490
+                    </a>
+                    <span style={{ fontSize: '0.75rem', color: '#25D366', fontFamily: 'var(--font-mono)', fontWeight: 600 }}>(WhatsApp / Phone)</span>
+                  </div>
                 </div>
               </div>
 
@@ -177,7 +184,7 @@ export default function ConnectWildmac() {
                     <input
                       type="tel"
                       id="phone"
-                      placeholder="+1 (555) 000-0000"
+                      placeholder="+91 96570 80490"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       className="form-input"

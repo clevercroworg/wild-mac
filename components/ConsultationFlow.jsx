@@ -319,7 +319,7 @@ export default function ConsultationFlow({ preselectedServiceId = '' }) {
               <input
                 id="flow-phone"
                 type="tel"
-                placeholder="+1 (555) 000-0000"
+                placeholder="+91 96570 80490"
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                 className="form-input"

@@ -224,7 +224,7 @@ export default function CareersPage() {
                 </div>
 
                 <a
-                  href={`mailto:careers@wildmac.com?subject=Application%20for%20${encodeURIComponent(role.title)}`}
+                  href={`mailto:contactmacalmeida@gmail.com?subject=Application%20for%20${encodeURIComponent(role.title)}`}
                   className="btn btn-primary"
                   style={{ padding: '0.75rem 1.5rem', fontSize: '0.88rem' }}
                 >
@@ -241,7 +241,7 @@ export default function CareersPage() {
               Don’t see your exact profile?
             </h4>
             <p style={{ fontSize: '0.94rem', color: 'var(--text-deep-blue)', lineHeight: 1.65, marginBottom: '1.25rem' }}>
-              We are always open to exceptional minds — economists, architects, editors, and strategists. Email your portfolio, CV, and a 1-page note outlining how you can add leverage to Wildmac to <a href="mailto:careers@wildmac.com" style={{ color: 'var(--accent-red)', fontWeight: 600, textDecoration: 'underline' }}>careers@wildmac.com</a>.
+              We are always open to exceptional minds — economists, architects, editors, and strategists. Email your portfolio, CV, and a 1-page note outlining how you can add leverage to Wildmac to <a href="mailto:contactmacalmeida@gmail.com" style={{ color: 'var(--accent-red)', fontWeight: 600, textDecoration: 'underline' }}>contactmacalmeida@gmail.com</a>.
             </p>
           </div>
         </div>
